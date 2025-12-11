@@ -8,7 +8,7 @@ DSP (Digital Sound Processor) for audio track metrics generation, visualization 
 
 - Project code: https://github.com/falaelcom/Falael.Audio.Sda
  
-![bmt.zich.sample.mp3.png](https://github.com/falaelcom/Falael.Audio.Sda/blob/trunk/sample/out/sample.mp3/images-fingerprint/bmt.zich.sample.mp3.png)
+![bmt.zich.sample.mp3.png](https://github.com/falaelcom/Falael.Audio.Sda/blob/main/sample/out/sample.mp3/images-fingerprint/bmt.zich.sample.mp3.png)
 
 ## C# - Class Library Projects
 

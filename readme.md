@@ -63,7 +63,7 @@ A simple binary-tree-based fractal playground app.
 
 A FOREX trading simulator for algo-trading research using real historical tick data - backend and frontend with experimental trading bots.
 
-- Project path: https://github.com/falaelcom/Falael.Demo/tree/main/js/Falael.Forex
+- Project path: https://github.com/falaelcom/Falael.Demo/tree/main/js/Falael.Forex/js
 
 ![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/main/Falael.Forex.png)
 
@@ -71,7 +71,7 @@ A FOREX trading simulator for algo-trading research using real historical tick d
 
 An in-app manual code profiler and logger for NodeJs.
 
-- Project code: https://github.com/falaelcom/raw-profiler
+- Project code and summary: https://github.com/falaelcom/raw-profiler
 
 ### No Dog's Land - Gamebook
 

@@ -1,0 +1,8 @@
+Making unimaginable clanging noise you impuslively throw yourself after the running figure, then stop, hindered by your chains. It's too late. The priest, scared even more by the commotion you created, has already reached the turn of the tunnel, and you can hear him yell in panic: "The beast got loose! Guards! Guards!". A door slam follows, and then a short silence. After that a new distant sound echoes around the dungeon.
+
+{
+	"exits":
+	{
+		"next": "And then..."
+	}
+}

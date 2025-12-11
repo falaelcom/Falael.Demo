@@ -1,0 +1,14 @@
+You are standing in the hallway outside your chambers, and you are querying your inner voice whether there is something else that you want to do before you leave the Palace. The urge for action is getting stronger and you know that whatever you decide to do next will be the last thing you do before you go to the tower rooftop and fly away from the Palace. Here's what comes to mind:
+
+{
+	"exits":
+	{
+		"goToWinterGardens": "Go to the Winter Gardens",
+		"goToJudgementChambers": "Go to the Chamber of Judgement ",
+		"goToRoomNo7": "Go to the Hall No.7",
+		"goToSermonRoom": "Go to the Sermon Room",
+		"goToPalaceDungeons": "Go to the Palace Dungeons",
+		"goToTowerRooftop": "Go directly to the Tower Rooftop",
+		"theNightBefore": "[TEST] theNightBefore"
+	}
+}

@@ -1,0 +1,20 @@
+﻿You quickly undress and put the chainmail on. It fits perfectly. You make several movements to test it and, fully satisfied, put your leather suit back on.
+
+@takeChainmail@
+
+"Thank you, old rat!" you exclaim and hug him briefly. Unused to such affection he blushes. Even his naked tail turns a little reddish.
+
+"It's such a pleasure, your Highness!" he sighs blissfully. "I've been keeping this for months! I've been adjusting it for you for months! I'm so happy!"
+
+You smile and tap him on the back.
+
+{
+	"exits":
+	{
+		"continue": "Continue"
+	},
+	"inventory":
+	{
+		"lightChainmail1": "Light Chainmail"
+	}
+}

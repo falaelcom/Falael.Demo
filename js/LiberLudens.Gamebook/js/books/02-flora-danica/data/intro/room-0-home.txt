@@ -1,0 +1,44 @@
+<div class="center">
+	An RPG choice book
+	By Dan Lovschmidt
+	2018
+</div>
+
+<separator />
+
+<div class="epigraph">"Woe to you, oh Earth and sea, for the Devil sends the Beast with wrath, because he knows the time is short. Let him who hath understanding reckon the number of the Beast, for it is a human number! Its number is six hundred and sixty six!"</div>
+<div class="source">-- Stephen Percy Harris</div>
+
+Well met, Reader! Welcome to "Pandemonium Incursion!" - half-book and half-RPG! In this adventure the main character is YOU! Choose your path wisely, kind Player, and may the Providence guide your steps through the bizzare and mysterios events to follow!
+
+<separator />
+
+<div class="center detail">
+	<b style="color: yellow;">BETA VERSION</b>
+	<i style="color: yellow;">This application is an early beta version of the game. You might experience bugs, crashes and content problems while playing. At this stage of testing and development such behaviors are normal and expected.</i>
+</div>
+
+<separator />
+
+<div class="center">
+	<b>TOC</b>
+
+	-=( Part One:   <i>Intro</i> )=-
+	-=( Part Two:   <i>Haywire</i> )=-
+	-=( Part Three: <i>Deamon Hunter</i> )=-
+	-=( Part Four:  <i>Epilogue</i> )=-
+</div>
+
+<separator />
+
+<i>Press the button below to begin your adventure!</i>
+
+{
+	"title": "Pandemonium Incursion!",
+	"coverImage": "bookCover.jpg",
+	"coverImageSize": "size16_9",
+	"exits":
+	{
+		"next": "Play \"Part One: Intro\""
+	}
+}

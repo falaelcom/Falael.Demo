@@ -1,0 +1,5 @@
+@@DEF entranceHall.entry.fromDungeonOrMezzanine.guardsDescription@
+
+In the middle of the room are standing the two soldiers and the priest, happily unaware of your presence.
+
+@@ENDDEF@

@@ -1,0 +1,18 @@
+{
+    "rooms": 
+    [
+        {
+            "key": "_subdirSample2",
+            "file": "_room-_subdirSample2.txt",
+            "time": "",
+            "duration": "",
+            "exits": 
+            [
+                {
+                    "text": "_subdirSample1",
+                    "target": "_subdirSample1"
+                }
+            ]
+        }
+    ]
+}

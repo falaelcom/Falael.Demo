@@ -1,0 +1,8 @@
+{
+	"stances":
+	{
+		"afoot": { "title": "afoot", "transition": "You are back on the ground." },
+		"flying": { "title": "flying", "transition": "You are up in the air, flying." },
+		"dragon": { "title": "dragon", "transition": "You are flying, mounted on a dragon." }
+	}
+}

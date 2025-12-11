@@ -1,0 +1,70 @@
+﻿The Winter Gardens spread over several huge halls on different levels along the south side of the Palace. During summer, the huge glass panes covering the outer walls are removed and you can enjoy head-on the capricious and whimsical games of the weather. You come here often when there are heavy showers to relish the divine scents spread by the plants in wet weather and to dance naked in the rain.
+
+In the middle of the main garden hall there is a beautiful sparkling fountain with fine flower motives. The water is especially fresh and clear and it looks like it glows with its own mystical light.
+
+As you approach you see your mother, Queen Veronica, sitting on the fountain curb in a translucent fairy dress, her black hair falling freely on her shoulders and her delicate transparent wings spread and slightly flickering. She notices you and smiles tenderly.
+
+"Good morning, Margarita," she says.
+
+"Good morning, mother," you respond and join her on the fountain curb.
+
+"Going somewhere?" she asks, inspecting your equipment.
+
+"I think so," you drop your hand in the cold water and start moving it around. "I need some space. Need to change the setting a bit. Hope you don't mind?"
+
+"Of course not," she smiles. "Where to?"
+
+"Haven't decided yet."
+
+A bird starts to sing nearby. Both of you sit quietly for a while.
+
+"You know the stained glass in my room?" you break the silence eventually.
+
+"Yes?"
+
+"Who crafted it?"
+
+Veronica thinks for a minute or two. "Oh, I remember," she exclaims. "I was little, as little as 5, when this wandering artist came around and offered his services to your grandmother. She allowed him to paint the portret of her, that hangs now in main the hallway. Gentile something..." She squints, trying to recall his last name. "Anyway, Laura liked his work and let him decorate parts of the palace, as well the window panes in your chambers. Back then these rooms were used as a ceremony halls or something. And he did very good job on this."
+
+You nod. "Definitely. I was looking at them just this morning."
+
+"I know that I know his last name!" your mother says. Then she stands up and walks to a wooden cabinet situated between the plants. When she returns there is a crystal flask in her hand. She removes the plug and fills the flask with water from the fountain. "This is living water," she explains. "It has some remarkable qualities."
+
+You take the flask. It has a beautiful design and the water in it is very clear. You look through it and you can see the garden upside down.
+
+"What qualities?" you inquire.
+
+"Healing. It will heal you while you keep it close to your heart. Keeping in mind what happened last time you were away, you definitely need this."
+
+@takeFlask@
+
+You are touched by your mother's concern. You embrace her and hold her tight for a while. She smells so sweet... like mom. You know that you are gonna miss her, but you also know that it's time to leave.
+
+You get up and say: "I'm gonna go. See you when I see you, mother!"
+
+"Martini!" Veronica exclaimes and also stands up. You look at her questioningly. "The name of the painter. Gentile Martini." she explains.
+
+@learnName@
+
+"Ok," you say. "Bye!"
+
+And you leave before she notices the tears in your eyes.
+
+{
+	"exits":
+	{
+		"goToTowerRooftop": "Go to the Tower Rooftop"
+	},
+	"knowledge":
+	{
+		"glassPainterName": "Painter's name Gentile Martini"
+	},
+	"inventory":
+	{
+		"livingWaterPotion": "Potion of Living Water"
+	},
+	"skills":
+	{
+		"self-healing":  "Self-Healing"
+	}
+}

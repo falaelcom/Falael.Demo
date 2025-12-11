@@ -1,0 +1,13 @@
+!!!
+
+You slowly enter the balcony. After reading Demonologica you already know what does the figure drawn on the balcony floor mean - it's an active summoning circle. The candles are burning with unwaining purple flames, which according to the book means that there must be somethgin confined in that circle. Something unearthly. While you stand there, right outside the perimeter of the pentacle, you suddenly feel a light whiff of air brushing the most sensitive hairs of your fur, as if someone has just passed right in front of you. You stare long and concentratedly, but there is nothing to see. The way towards freedom seems clear in front of you.
+
+What would you like to do?
+
+{
+	"exits":
+	{
+		"stepIntoTheCircle": "Cross the balcony and leap away",
+		"goBack": "Go back to the room"
+	}
+}

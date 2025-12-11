@@ -1,0 +1,174 @@
+@@DEF (death).dungeon.begin.throwDice.fail@
+	You listen for a second or two before you realize that it's the energetic thumping of many feet what you hear, and it's getting stronger with every moment. Damn! You feel that you have missed the window of opportunity you had to escape from this dreaded dungeon.
+
+	You look around for a possible solution, but there's none. The footsteps are rapidly getting closer, and you do the only thing that's left in your situation - you turn in the direction of the noise. Only if your limbs were free! You could charge at the attackers with all your weight, pushing down the first to come in your way and tear asunder their followers... But you can't.
+
+	You twist your neck slowly, warming up your joints and muscles, and focus on the first soldier who in this precise moment appears from behind the corner in the far end of the corridor. A dead man running, you think, as you slide underneath his sword and repeat the maneuver you used to neutralize the guard who opened the cell door earlier.
+
+	One down, two. A painful lacerating hit on your back. You will pay for this! You bite and kill... but there are too many of them. Eventually a halberd falls on your spine and instantly paralizes your lower parts. You stumble and fall. Several more hits mutilite your body, before a hammer meets your forehead and you pass out.
+
+	The last and fatal blow, you miss...
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).dungeon.lookAround.corridor.(timers.backupSummoned)@
+	Backup for the guard you killed arrives while you are standing in the corridor. You die.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).dungeon.lookAround.cell.(timers.backupSummoned)@
+	Backup for the guard you killed arrives while you are standing in a cells. You die.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).dungeon.lookAround.memoryLane.(timers.backupSummoned)@
+	Backup for the guard you killed arrives while you are standing in the cells and daydream about your past. You die.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).dungeon.lookAround.dungeonExit.(timers.backupSummoned)@
+	Backup for the guard you killed arrives while you are standing at the dungeon exit. You die.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.(timers.backupSummoned)@
+	Backup for the guard you killed arrives while you are standing in the entrance hall. You die.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.unguarded.openTheSideDoor.0@
+	Human stupidity is infinite, they say. Well, canine has no limit either. Why in God's name would you open a door which you suspect to be leading straight to a barracks full of armed men?
+
+	The fight is short and deadly. For you. While your consciousness is fading out, you seem to hear a distant eerie voice singing:
+
+	<div class="song">"...A man once kept a fighting dog 
+	a bob-tail'd hungry cuss
+	and a woman kept a Thomas cat
+	that fit at fifteen pound..."</div>
+
+	The voice vanishes for a while, then returns, weak and waining:
+
+	<div class="song">"...so never keep a fighting dog
+	do anything but that..."</div>
+
+	...and with this last thought you pass away.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.guarded.entry.withChains.noisy.0@
+	You were killed in the fight!
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.0@
+	You were killed in the fight!
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.0@
+	You were killed in the fight!
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.0@
+	You were killed in the fight!
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.0@
+	You were killed in the fight!
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).entranceHall.guarded.location.wallShadows.withChains.noisy.0@
+	You were killed in the fight!
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).mezzanine.leftDoor.breakIn.fail@
+	Guards appear attracted by the loud noise and kill you.
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).mezzanine.rightDoor.room.balcony.jumpOver.instantDeath.0@
+	You jump over the pentacle, aiming for the parapet. The invisible demon attacks you. 
+
+	You take and endure the first hit, which sets you on fire. Distracted and confused you twist and bite in the direction the hit came from, but your teeth squeeze only the thin air. Another hit follows, so powerful that it finishes you. Your body flies to the side and the last thing that you see with the corner of your dying eye are the blurry figures of several guards running out on the balcony, accompanied by the dark silhouette of a priest holding something in his stretched right arm. A second later a dark vail mercifully falls over your senses and you pass away.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).mezzanine.rightDoor.room.balcony.enterSlowly.instantDeath.0@
+	You very slowly step into the pentacle. The invisible demon attacks you. 
+
+	You take and endure the first hit, which sets you on fire. Distracted and confused you twist and bite in the direction the hit came from, but your teeth squeeze only the thin air. Another hit follows, so powerful that it finishes you. Your body flies to the side and the last thing that you see with the corner of your dying eye are the blurry figures of several guards running out on the balcony, accompanied by the dark silhouette of a priest holding something in his stretched right arm. A second later a dark vail mercifully falls over your senses and you pass away.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).mezzanine.rightDoor.room.balcony.jumpOver.arcaneSight.0@
+	You were killed in the fight!
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).secretPassage.bridge.crossTheBridge.slow.0@
+	Hobbled with the chains, you start moving slowly over the bridge. Halfway, the bridge, being very old and quite eroded, breaks down under your weight. You instinctively jump forward, but the abutment is too far and you fall down. The fortress moat is deep, filled with cold water, and its walls are insurmountable. Being a ferocous wild beast you are completely OK with the cold, and with the water. You start swimming, looking for a place where you could climb up.
+
+	Eventually you find yourself in the part of the moat that's in front of the keep. The situation there is helpless as well, only that a guard from the regular patrol sees you, and very soon a horde of soldiers is trotting all around the fortress frantically yelling and trying to pierce you with crossbow arrows. You dive and swim underwater until you reach back the back side of the fortress, where you stay for several days, desparately trying to crawl up the stone walls, hiding under the bridge abutment from occasional soldiers, getting weaker and weaker, until you lose consiousness and drown to death. Your spirit abandons the now uslesess corpse, raises up, and on the way to the Eternal Hunting Fields in the Dog Paradise it briefly stops. It looks at YOU, dear Player, and it's a reprehensive look as if to say "You could do better, you know!", then passes on.
+
+	What an inglorious death...
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+

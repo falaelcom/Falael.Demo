@@ -1,0 +1,46 @@
+Q: Is this a game or a book?
+A: It's a game <i>and</i> a book at the same time. More formally, No Dog's Land is a text based role playing adventure and quest game, which is really another name for a digital "choose your own adventure" book (see next question).
+
+<separator />
+
+Q: What is a "choose your own adventure" (CYOA) book?
+A: Also called a gamebook, it's an interactive form of fiction writing which allows the reader to alter the course of the story by making choices and navigating through possibilities. The name of the genre comes from the influential "Choose Your Own Adventure" paper book series originally published by US company Bantam Books in 1976. In its digital form the reading experience is enhanced with many traditional video game features like player stats (health points, energy points, speed, strength, defense etc.), inventory, random events, NPCs, interactive fights and dialogs.
+
+<separator />
+
+Q: How do I play?
+A: Just click on the "Begin!" button at the end of this page and read. Whenever the action forks, the available choices will present themselfs as buttons - click on the one that feels right. Don't worry if it turns out to be the wrong choice, and your character dies (which will probably happen alot) - you can always start over and experiment with different decisions. It's part of the puzzle, to find the right path towards victory! Implementing some common sense will raise your chance for success, though.
+
+<separator />
+
+Q: Who's my character?
+A: You'll be playing as the Wolf. Who's the Wolf, you ask? (The silence is deliberate.)
+
+<separator />
+
+Q: What's the goal of the game?
+A: The goal of the game is to help the Wolf to escape the well guarded fortress of the religious order of the Ivy Chross where he has been imprisoned and interrogated. It's a hard job to do, and you may fail many times before successding.
+
+<separator />
+
+Q: I keep dying, and I hate this game!
+A: It's actually your character who's dying. Maybe these two quotes will help to sooth the pain:
+
+<i>	Oh no, don't hate, you don't want to put that out into the universe!</i> --Phoebe Buffay
+
+and
+
+<i> If at first you don't succeed // dust yourself off, and try again</i> --Aaliyah
+
+<separator />
+
+Q: Ha ha ha. Now what?
+A: Click "Begin!"
+
+{
+	"title": "QUESTIONS AND ANDSWERS",
+	"exits":
+	{
+		"next": "Begin!"
+	}
+}

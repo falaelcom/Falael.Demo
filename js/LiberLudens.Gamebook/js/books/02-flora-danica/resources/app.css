@@ -1,0 +1,416 @@
+td
+{
+	text-align: left;
+	vertical-align: top;
+	padding: 0px;
+}
+
+table
+{
+	border: none;
+	border-collapse: collapse;
+}
+
+hr
+{
+	border-bottom: 0px;
+}
+
+@media only screen and (max-width: 400px) 
+{
+	.bookView.backpane
+	{
+		box-sizing: border-box;
+		padding: 10px 10px 10px 10px;
+		width: 100%;
+	}
+	.bookView.backpane .navigation input
+	{
+		width: 100%;
+		height: 48px;
+		margin-bottom: 7px;
+	}
+}
+
+@media only screen and (min-width: 401px) and (max-width: 960px) 
+{
+	.bookView.backpane
+	{
+		box-sizing: border-box;
+		padding: 10px 10px 10px 10px;
+		width: 100%;
+	}
+	.bookView.backpane .navigation input
+	{
+		width: 100%;
+		height: 48px;
+		margin-bottom: 7px;
+	}
+}
+
+@media only screen and (min-width: 961px)
+{
+	.bookView.backpane
+	{
+		padding: 10px 10px 10px 10px;
+		width: 640px;
+	}
+	.bookView.backpane .navigation input
+	{
+		width: 365px;
+	}
+}
+
+.bookView.backpane .text .stub
+{
+    width: 100%;
+    margin: 10px 10px 10px -10px;
+    padding: 3px 5px 3px 5px;
+    font-size: 11pt;
+    font-style: italic;
+}
+
+.bookView.backpane,
+.bookView.backpane input
+{
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 13pt;
+    text-align: justify;
+}
+
+.bookView.backpane .header
+{
+    border-bottom: solid 1px;
+    padding-bottom: 12px;
+    min-height: 27px;
+}
+
+.bookView.backpane .betaVersion
+{
+	padding-left: 60px;
+	color: yellow;
+}
+
+.bookView.backpane .subHeader
+{
+    border-bottom: solid 1px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-style: italic;
+}
+
+.bookView.backpane .dateTime
+{
+    font-family: Courier New;
+    border-bottom: solid 1px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 9pt;
+}
+
+.bookView.backpane .navigation
+{
+    padding-bottom: 10px;
+}
+
+.bookView.backpane .navigationRow
+{
+    margin-bottom: 4px;
+    text-align: right;
+}
+
+.bookView.backpane .navigationRow_diceDebug
+{
+    margin-bottom: 4px;
+    text-align: right;
+}
+
+.bookView.backpane .navigationRow_diceDebug input
+{
+	width: auto;
+}
+
+.bookView.backpane .navigationRow_randomIntDebug
+{
+    margin-bottom: 4px;
+    text-align: right;
+}
+
+.bookView.backpane .navigationRow_randomIntDebug input
+{
+	width: auto;
+}
+
+.bookView.backpane .actionList
+{
+    border-bottom: solid 1px;
+    padding-top: 6px;
+    padding-bottom: 10px;
+}
+
+.bookView.backpane .finalActionList
+{
+    border-top: solid 1px;
+    padding-top: 10px;
+    padding-bottom: 6px;
+}
+
+.bookView.backpane .actionListRow
+{
+    font-size: 11pt;
+    margin-bottom: 4px;
+}
+
+.bookView.backpane .playerStats
+{
+    float: right;
+    text-align: left;
+}
+
+.bookView.backpane .playerStats .value,
+.bookView.backpane .playerStats .title
+{
+    float: right;
+    text-align: left;
+    padding: 5px;
+}
+
+.bookView.backpane .playerStats .value
+{
+    margin-right: 8px;
+    border: solid 1px;
+}
+
+.bookView.backpane .playerStats .title
+{
+    font-weight: bold;
+    padding-right: 5px;
+    padding-top: 6px;
+}
+
+.bookView.backpane .playerInventory .title
+{
+    font-weight: bold;
+}
+
+.bookView.backpane .playerInventory .title,
+.bookView.backpane .playerInventory .value
+{
+    vertical-align: top;
+    padding: 10px;
+    width: 33%;
+}
+
+.bookView.backpane .playerInventory .value
+{
+    border: solid 1px;
+    font-size: 11pt;
+}
+
+.bookView.backpane .playerInventory 
+{
+    border-top: solid 1px;
+    padding-top: 12px;
+}
+
+.bookView.backpane .context
+{
+    white-space: pre;
+}
+
+
+.bookView.backpane .footnoteAsterisk
+{
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+.bookView.backpane .footnotes
+{
+    font-style: italic;
+    font-size: 11pt;
+    width: 100%;
+    border-top: solid 1px;
+}
+
+.bookView.backpane .coverTitle
+{
+    font-weight: bold;
+    font-size: 18pt;
+    padding-top: 15px;
+    padding-bottom: 13px;
+    text-align: center;
+}
+
+.bookView.backpane .coverImage
+{
+    background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+.bookView.backpane .coverImage.size16_9
+{
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.bookView.backpane .coverImage.size4_3
+{
+    width: 100%;
+    padding-top: 75%;
+}
+
+.bookView.backpane .coverImage.size1_1
+{
+    width: 100%;
+    padding-top: 100%;
+}
+
+.bookView.backpane .epigraph
+{
+    margin-left: auto;
+    margin-right: 0px;
+    font-style: italic;
+    width: 30%;
+}
+
+.bookView.backpane .source
+{
+    margin-left: auto;
+    margin-right: 0px;
+    font-size: 11pt;
+    width: 50%;
+    text-align: right;
+}
+
+.bookView.backpane .song
+{
+    margin-left: auto;
+    margin-right: 0px;
+    font-style: italic;
+    width: 50%;
+}
+
+.bookView.backpane .center
+{
+    font-size: 14pt;
+    text-align: center;
+}
+
+.bookView.backpane .detail
+{
+    font-size: 12pt;
+}
+
+.bookView.backpane .text .illustration
+{
+    width: 43%;
+    padding: 5px 13px 13px 13px;
+    float: left;
+}
+
+.bookView.backpane .text .illustration.pullUp_lightly
+{
+	margin-top: -50px;
+	z-index: -999;
+	position: relative;
+}
+
+.bookView.backpane .text .illustration.pullUp_medium
+{
+	margin-top: -75px;
+	z-index: -999;
+	position: relative;
+}
+
+.bookView.backpane .text .illustration.pullUp_strong
+{
+	margin-top: -100px;
+	z-index: -999;
+	position: relative;
+}
+
+.bookView.backpane .text .illustration.right
+{
+    float: right;
+}
+
+.bookView.backpane .text .illustration.span
+{
+    width: 100%;
+    padding: 5px 0px 13px 0px;
+    float: none;
+}
+
+.bookView.backpane .text .illustration.small
+{
+    width: 30%;
+}
+
+.bookView.backpane .text .illustration.medium
+{
+    width: 37%;
+}
+
+.bookView.backpane .text .illustration.large
+{
+    width: 55%;
+	max-width: 300px;
+}
+
+.bookView.backpane .twoDiceRollView
+{
+    position: relative;
+    width: 200px;
+    height: 80px;
+    background: url(dice-bg.png);
+	background-repeat: no-repeat;
+	background-size: 200px;
+	background-position: center; 
+
+    margin-left: auto;
+}
+
+.bookView.backpane .dice1
+{
+    position: absolute;
+    left: 47px;
+    top: 4px;
+    width: 52px;
+    height: 52px;
+}
+
+.bookView.backpane .dice2
+{
+    position: absolute;
+    left: 68px;
+    top: 25px;
+    width: 60px;
+    height: 60px;
+}
+
+.bookView.backpane .timers.title
+{
+    font-weight: bold;
+    padding: 10px;
+}
+
+.bookView.backpane .timersTable .tableHeader
+{
+    font-weight: bold;
+    border: solid 1px;
+    padding: 3px;
+    padding-left: 9px;
+    font-size: 9pt;
+}
+
+.bookView.backpane .timersTable .value
+{
+    color: #d1d1d1;
+    margin-right: 8px;
+    border: solid 1px;
+    font-size: 9pt;
+    padding: 3px;
+    padding-left: 9px;
+}

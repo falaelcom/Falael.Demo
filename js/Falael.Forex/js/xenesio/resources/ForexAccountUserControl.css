@@ -1,0 +1,52 @@
+.button.buyButton
+{
+    width: 140px;
+    margin-right: 5px;
+}
+
+.button.sellButton
+{
+    width: 140px;
+    margin-right: 5px;
+}
+
+.button.closeButton 
+{
+    height: 10px;
+}
+
+.button.closeButton span.text 
+{
+    margin-top: -3px;
+}
+
+span.listView.verticalList.positions
+{
+    height: 109px;
+}
+
+span.listView.verticalList.positions table.container td.itemLayoutField
+{
+    padding-top: 7px; 
+    padding-left: 3px; 
+    padding-right: 3px; 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+span.listView.verticalList.positions table.container td.itemLayoutField.first
+{
+    padding-left: 8px; 
+}
+
+span.listView.verticalList.positions table.container td.itemLayoutButton
+{
+    white-space: nowrap;
+    padding-top: 4px; 
+}
+
+span.label.currentPositionInfoLabel 
+{
+    height: 32px;
+}

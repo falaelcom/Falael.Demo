@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="application=application/xhtml+xml; text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en" />
+
+    <meta name="appConfig.jsBasePath" content="engine/" />
+    <meta name="appConfig.jsSharedBasePath" content="engine/shared/" />
+    <meta name="appConfig.cssBasePath" content="resources/" />
+    <meta name="appConfig.templateBasePath" content="resources/" />
+
+    <script src="engine/framework/Boot.Pass1.js"></script>
+
+    <script type="text/javascript">
+    // <![CDATA[
+        "use strict";
+
+        //	query string interface
+		//	- ?debug - enables debug logging at the client
+		window.appConfig =
+        {
+            isDebugMode: (getQueryStringField("debug") !== void (0)),
+            isUnitTestMode: (getQueryStringField("test") !== void (0)),
+            ioBasePath: location.protocol + '//' + location.hostname + (location.port ? ":" + location.port : "") + stripHtmlFileFromPath(location.pathname),
+        };
+
+		copyAppConfigFromMetaTags(window.appConfig);
+    // ]]>
+    </script>
+
+    <script src="engine/framework/Boot.Pass2.js"></script>
+    <script src="engine/Program.js"></script>
+
+    <link rel="icon" href="resources/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon" />
+
+</head>
+<body onload="javascript:Program.main()" style="background: white;">
+    <div id="root"></div>
+    <div id="mainChart"></div>
+    <div id="simulationChart"></div>
+</body>
+</html>

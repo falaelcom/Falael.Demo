@@ -1,0 +1,9 @@
+!!! You look through the window. There is a human figure chained to the wall (the chain of one of the hands is attachet to the wall too high and the hand is hanging helplessly, streched upwords). You can either address him or leave.
+
+{
+	"exits":
+	{
+		"talkToPrisoner": "Talk to the prisoner",
+		"go": "Go back to the corridor"
+	}
+}

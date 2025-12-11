@@ -1,0 +1,11 @@
+You approach the iron lattice of the door and try to open it. The door resists. You push it harder, and it moves slightly, making a sharp scraping noise - a quite unpleasant and very unwanted sound, indeed. You try to study the cell enterior through the iron rods, but the weak glow of the single torch illuminating the dungeon corridor is not enough for you to destinguish any details. You can see only the dark silhouettes of some rags piled up in one of the corners. And there is this strong smell of rust that you sensed earlier.
+
+You feel that if you put all of your weight on the door, it will open. Are you ready to try this?
+
+{
+	"exits":
+	{
+		"openFirstDoor": "Yes, force the door",
+		"giveUp": "No, it's too dangerous"
+	}
+}

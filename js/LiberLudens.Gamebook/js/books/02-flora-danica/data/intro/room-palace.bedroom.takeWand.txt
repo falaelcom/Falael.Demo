@@ -1,0 +1,20 @@
+You take the magic wand and put it safe under your leather top.
+
+@takeWand@
+
+You take one final look around, but there is nothing interesting left here.
+
+{
+	"exits":
+	{
+		"leave": "Leave your bedroom"
+	},
+	"inventory":
+	{
+		"wand1": "Magic Wand"
+	},
+	"skills":
+	{
+		"spell-caster": "Spell Caster"
+	}
+}

@@ -1,0 +1,5 @@
+cmd as admin
+cd books/<bookDir>
+mklink /D engine ..\..\engine
+
+mount books/<bookDir> as "web server for chrome" root

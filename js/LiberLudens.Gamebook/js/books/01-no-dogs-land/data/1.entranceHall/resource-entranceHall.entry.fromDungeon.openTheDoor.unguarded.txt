@@ -1,0 +1,6 @@
+@@DEF entranceHall.entry.fromDungeon.openTheDoor.unguarded@
+
+You open the door and enter the empty entrance hall.
+
+@@ENDDEF@
+

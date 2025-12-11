@@ -1,0 +1,1 @@
+print FileSystemSnapshot.cs as is, only apply the minimum changes necessary to migrate to relative paths. stick to all details of code styling and formatting as seen in the code

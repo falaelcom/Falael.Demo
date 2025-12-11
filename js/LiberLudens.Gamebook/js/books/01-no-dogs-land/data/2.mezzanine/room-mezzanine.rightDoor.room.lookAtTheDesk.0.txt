@@ -1,0 +1,14 @@
+!!! You look over to the desk. There is a book that gets your attention with its cruel, bloody and mesmerizing images - the Demonologica. You get the knowledge about the invisible demons and the pentacles used to restrain their movement in the physical realm.
+
+@learnAboutPentagrams@
+
+{
+	"knowledge":
+	{
+		"pentagramUsageWithDemons": "Demonologica texts"
+	},
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

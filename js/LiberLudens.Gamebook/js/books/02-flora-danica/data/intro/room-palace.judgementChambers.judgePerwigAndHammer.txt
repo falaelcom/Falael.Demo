@@ -1,0 +1,20 @@
+﻿Stroking the white periwig hair feels so nice that you decide to take it with you. You put the periwig in one of the many inner pockets of your leather suit. 
+
+Now without the periwig the judge's hammer is lying so lonely on the desk! You take this too.
+
+@takeJudgePerwigAndHammer@
+
+{
+	"exits":
+	{
+		"backToJudgementChambers": "Continue"
+	},
+	"inventory":
+	{
+		"judgePerwigAndHammer": "Judge's Perwig and Hammer"
+	},
+	"skills":
+	{
+		"justice":  "Justice"
+	}
+}

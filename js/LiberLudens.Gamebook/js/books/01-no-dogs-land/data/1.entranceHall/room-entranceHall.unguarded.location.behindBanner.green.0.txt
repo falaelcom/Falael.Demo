@@ -1,0 +1,21 @@
+!!!
+
+You are behind the green banner.
+
+@@TEST true@
+@@IF true, onlyOnce(entranceHall.behindBanner.green.lookingForSecretDoor)@
+You look closely at the wall and quickly locate the reddish stone the prisoner has told you about. If the prisoner was telling the thruth, and for so long everything he has told you has proved to be nothing but truth, it's a matter of a push to open the secret door. "But there is no sign of any door here!" you think. Despite the shadows cast by the banner and the other decorations, enough torch-light reaches the wall to reveal to you its features. And if it weren't for the slight change in the air around this place, it'd be very hard for you to believe that there is any door here.
+@@ELSE@
+Behind your back is the secret door.
+@@ENDTEST@
+
+What do you want to do?
+
+{
+	"exits":
+	{
+		"lookAround": "Look around the entrance hall",
+		"openSecretDoor": "Push the marked stone",
+		"goToSecretPassage": "Go through the secret door"
+	}
+}

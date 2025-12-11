@@ -1,0 +1,1 @@
+@@INSERT (death).mezzanine.rightDoor.room.balcony.enterSlowly.instantDeath.0@

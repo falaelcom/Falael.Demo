@@ -1,0 +1,11 @@
+In the air...
+
+{
+	"title": "Part Two: Haywire",
+	"coverImage": "part1Cover.jpg",
+	"coverImageSize": "size16_9",
+	"exits":
+	{
+		"next": "Next"
+	}
+}

@@ -1,0 +1,10 @@
+
+
+{
+	"title": "TIMERS TEST ROOMS",
+	"exits":
+	{
+		"_startTimerRoomEnter5min": "Start a timer (onRoomEnter, 5min interval)",
+		"_startTimerRoomEnter5minOnce": "Start a timer (onRoomEnter, 5min interval, once)"
+	}
+}

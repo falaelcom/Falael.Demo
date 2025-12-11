@@ -1,0 +1,10 @@
+The cell is still empty. You aimlessly push around the heap of garbage and the old chains. There is nothing else interesting here.
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"goBack": "Go back to the corridor"
+	}
+}

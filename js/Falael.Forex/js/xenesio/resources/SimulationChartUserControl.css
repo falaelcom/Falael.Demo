@@ -1,0 +1,32 @@
+.label.infoLabel
+{
+    width: 500px; 
+    margin-bottom: 7px;
+}
+
+.button.runButton_discrete,
+.button.runButton_realTime,
+.button.runButton_afaic,
+.simulateButton_visibleRange,
+.simulateButton_geneticSimulator
+{
+    margin-right: 6px;
+}
+
+.slider.horizontal 
+{
+    width: 200px;
+    height: 32px;
+}
+.slider.horizontal  span.gripper
+{
+    margin-top: -32px;
+    border-width: 0 2.5px 32px 2.5px;
+}
+
+.channelAdjustLayout
+{
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 540px;
+}

@@ -1,0 +1,22 @@
+A distant echoing sound of waterdrops. A dark, cold, damp prison cell. A huge beast is lying motinless on the floor, occupying most of the cell, eyes closed, breathing evenly. Metal chains attached to the beast's limbs hinder it's movements. A strap muzzle is hanging sideways from its neck, torn.
+
+This is you, captured by the Order of the Ivy Cross and imprisoned in this God-forsaken keep located high in the rocky Insurmount.
+
+You're taking a cat nap when you hear the distant sound of clanking metal. Your gray hairy ears prick up cautiously but that's the only movement you care to make.
+
+<illustration image="dungeon.begin.png" align="span" />
+
+A minute later there are footsteps. Two people are approaching. You recognize the heavy walk of an armed guard and the wary gait of a priest. "Another interrogation?" you wonder.
+
+You hate these interrogations. The guard usually enters the cell first, holding a naked sword and a goad, and stands a bit behind you, ready to slash at your neck by the slightest sign of aggression on your part. Then the priest steps in and starts asking questions. You have to growl your answers through your gritted teeth and through the tight muzzle, or else the guard pokes you mercilessly with the goad.
+
+You <i>really</i> hate these interrogations! You very strongly feel that you don't belong in a prison cell. Your place is in the Woods, unchained, doing all the exciting things a wild beast usually does. That's why you have invested many of your empty hours of lockup rubbing the muzzle on the stone walls and on the metal door hindges, eventually having the straps torn and freeing your deadly jaws. Your lips and nose are all bruised and covered in dried up blood, true, but you don't mind - it's an insignificant price to pay for the freedom to bite!
+
+The humans are almost at the door now, which interrupts your thoughts.
+
+{
+	"exits":
+	{
+		"next": "When a key rattles in the keyhole..."
+	}
+}

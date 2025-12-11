@@ -1,0 +1,191 @@
+<html>
+<head>
+
+<script>
+    function postEmptyContentType(url, callback)
+    {
+        let request = new XMLHttpRequest();
+        request.open("POST", url, true);
+        request.setRequestHeader("Content-Type", "");
+        request.onreadystatechange = function ()
+        {
+            if (request.readyState == 4 || request.readyState == 0)
+            {
+                if (request.status == "200")
+                {
+                    return callback(null, request.responseText);
+                }
+                else
+                {
+                    return callback(
+                    {
+                        readyState: request.readyState,
+                        status: request.status,
+                    }, request.responseText);
+                }
+            }
+        };
+        request.send();
+    }
+
+    function postEmpty(url, callback)
+    {
+        let request = new XMLHttpRequest();
+        request.open("POST", url, true);
+        request.onreadystatechange = function ()
+        {
+            if (request.readyState == 4 || request.readyState == 0)
+            {
+                if (request.status == "200")
+                {
+                    return callback(null, request.responseText);
+                }
+                else
+                {
+                    return callback(
+                    {
+                        readyState: request.readyState,
+                        status: request.status,
+                    }, request.responseText);
+                }
+            }
+        };
+        request.send();
+    }
+
+    function postJson(url, json, callback)
+    {
+        let request = new XMLHttpRequest();
+        request.open("POST", url, true);
+        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        request.onreadystatechange = function ()
+        {
+            if (request.readyState == 4 || request.readyState == 0)
+            {
+                if (request.status == "200")
+                {
+                    return callback(null, request.responseText);
+                }
+                else
+                {
+                    return callback(
+                    {
+                        readyState: request.readyState,
+                        status: request.status,
+                    }, request.responseText);
+                }
+            }
+        };
+        request.send(JSON.stringify(json));
+    }
+
+    function postStream(url, array, callback)
+    {
+        let request = new XMLHttpRequest();
+        request.open("POST", url, true);
+        request.setRequestHeader("Content-Type", "application/octet-stream");
+        request.onreadystatechange = function ()
+        {
+            if (request.readyState == 4 || request.readyState == 0)
+            {
+                if (request.status == "200")
+                {
+                    return callback(null, request.responseText);
+                }
+                else
+                {
+                    return callback(
+                    {
+                        readyState: request.readyState,
+                        status: request.status,
+                    }, request.responseText);
+                }
+            }
+        };
+        request.send(array.buffer);
+    }
+
+    //let binaryArray1 = new ArrayBuffer(1024 * 1024 * 40);
+    let binaryArray1 = new ArrayBuffer(1024 * 1024 * 10);
+    //let binaryArray1 = new ArrayBuffer(1024);
+    let binaryArray2 = new Uint8Array(binaryArray1);
+
+    // generate some data
+    for (let i = 0; i < binaryArray2.length; ++i)
+    {
+        binaryArray2[i] = i % 256;
+    }
+
+    let checksum = 0;
+    for (let i = 0; i < binaryArray2.length; ++i)
+    {
+        checksum += binaryArray2[i];
+    }
+    console.log(checksum);
+
+    function onLoad()
+    {
+        //var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)serverCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        //document.getElementById("cookieHolder").innerHTML = cookieValue || "(empty)";
+        document.getElementById("cookieHolder").innerHTML = document.cookie || "(empty)";
+    }
+
+</script>
+
+</head>
+<body onload="javascript: onLoad();">
+    <h2 id="cookieHolder"></h2>
+
+	<div>
+        <h3>Form Get</h3>
+		<form method="get" action="http://192.168.56.13/Test/123/Run/zxc">
+            <input type="text" name="path" value="../xenesio/index.html" />
+            <input type="submit" value="http://192.168.56.13/Test/123/Run/zxc" />
+        </form>
+	</div>
+
+    <div>
+        <h3>Form Post</h3>
+        <form method="post" action="http://192.168.56.13/Test/Post">
+            <input type="text" name="anything" value="anything" />
+            <input type="submit" value="http://192.168.56.13/Test/Post" />
+        </form>
+    </div>
+
+    <div>
+        <h3>Form Post File Upload</h3>
+        <form method="post" action="http://192.168.56.13/Test/Upload" enctype="multipart/form-data">
+            <input type="file" name="upload" />
+            <input type="submit" value="http://192.168.56.13/Test/Upload" />
+        </form>
+    </div>
+
+    <div>
+        <h3>Json Post</h3>
+        <input type="button" value="Post JSON - OK" onclick="postJson('http://192.168.56.13/Test/Json', { hello: 'world' }, function (err, result) { alert(err ? err.status : result); });"/>
+        <input type="button" value="Post JSON - FAIL" onclick="postJson('http://192.168.56.13/Test/Json', { hello: 'world', goodbye: 'milk' }, function (err, result) { alert(err ? err.status : result); console.log(err, result); });" />
+        <input type="button" value="Post empty content type - FAIL" onclick="postEmptyContentType('http://192.168.56.13/Test/Json', function (err, result) { alert(err ? err.status : result); console.log(err, result); });" />
+    </div>
+
+    <div>
+        <h3>Stream Post</h3>
+        <input type="button" value="Post Binary Array" onclick="postStream('http://192.168.56.13/Test/Stream', binaryArray2, function (err, result) { alert(err ? err.status : result == checksum); });" />
+        <input type="button" value="Post Binary Array (reflect)" onclick="postStream('http://192.168.56.13/Test/StreamResponse', binaryArray2, function (err, result) { console.log(err, result) } );" />
+        <input type="button" value="Read Binary Array (test-stream.js)" onclick="postStream('http://192.168.56.13/zzz', binaryArray2, function (err, result) { console.log(err, result) });" />
+    </div>
+
+    <div>
+        <h3>Binary response</h3>
+        <input type="button" value="Read Binary Array (Buffer)" onclick="postEmpty('http://192.168.56.13/Test/BinaryResponse1', function (err, result) { console.log(err, result) });" />
+        <input type="button" value="Read Binary Array (Stream)" onclick="postEmpty('http://192.168.56.13/Test/BinaryResponse2', function (err, result) { console.log(err, result) });" />
+    </div>
+
+    <div>
+        <h3>Text response</h3>
+        <input type="button" value="Read Text (string)" onclick="postEmpty('/Test/TextResponse1', function (err, result) { console.log(err, result) });" />
+        <input type="button" value="Read Text (int - fails)" onclick="postEmpty('/Test/TextResponse2', function (err, result) { console.log(err, result) });" />
+    </div>
+
+	<img src="test-bookCover.png" width="50" /><br />
+</body>
+</html>

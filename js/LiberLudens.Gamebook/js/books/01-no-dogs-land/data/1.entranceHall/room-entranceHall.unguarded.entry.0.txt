@@ -1,0 +1,14 @@
+!!!
+
+@@ON entranceHall.entry.fromDungeon@@@INSERT entranceHall.entry.fromDungeon.openTheDoor.unguarded@
+@@ON entranceHall.entry.fromMezzanine@@@INSERT entranceHall.entry.fromMezzanine.goDownstairs.unguarded@
+@@ON entranceHall.entry.fromSecretPassage@@@INSERT entranceHall.entry.fromSecretPassage.throughTheHiddenDoor.unguarded@
+@@ON !entranceHall.entry.fromSecretPassage && knowledge::secretPassage, onlyOnce(entranceHall.entry.firstTime.greenBannerDescription)@@@INSERT entranceHall.entry.firstTime.greenBannerDescription@
+@@ENDON@
+
+{
+	"exits":
+	{
+		"lookAround": "Look around"
+	}
+}

@@ -1,0 +1,16 @@
+!!!
+
+With one final blow you finish the demon. Or at least the hellspawn produces a deafaning scream and dissolves in the air. 
+
+As you stand there, panting, all coverd in blood and some other ephemerial thing that was oosing from the demon's wounds, you hear the trotting of heavy feet coming from the inside of the fortress. The noise of the fight and especially the final shriek of the demon must have alerted the guards.
+
+<illustration image="illustration-escape.jpg" align="span" />
+
+There's nothing to keep you here anymore, so you agilely turn away from the sound, climb on the balcony parapet and leaving the yelling humans behind, produce one of your best leaps in your whole life - high, long, elegant and full of grace and power.
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

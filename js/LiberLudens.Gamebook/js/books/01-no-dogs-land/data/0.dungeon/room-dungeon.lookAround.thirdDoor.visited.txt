@@ -1,0 +1,9 @@
+!!! You are standing in front of the third cell. You can either address the prisoner who's inside or leave.
+
+{
+	"exits":
+	{
+		"talkToPrisoner": "Talk to the prisoner",
+		"go": "Go back to the corridor"
+	}
+}

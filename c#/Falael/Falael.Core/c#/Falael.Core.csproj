@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Falael.Core</AssemblyName>
+    <RootNamespace>Falael.Core</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>..\..\..\..\bin\debug\Falael\</OutputPath>
+    <DocumentationFile>..\..\..\..\bin\debug\Falael\Falael.Core.xml</DocumentationFile>
+    <WarningLevel>8</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>..\..\..\..\bin\release\Falael\</OutputPath>
+    <DocumentationFile>..\..\..\..\bin\release\Falael\Falael.Core.xml</DocumentationFile>
+    <WarningLevel>8</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591;CS1998;CS0618;IDE0062;IDE0066;IDE0055;IDE0063;IDE0290;CA1869;SYSLIB1045;SYSLIB1054</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591;CS1998;CS0618;IDE0062;IDE0066;IDE0055;IDE0063;IDE0290;CA1869;SYSLIB1045;SYSLIB1054</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Falael\c#\Falael.csproj" />
+  </ItemGroup>
+
+</Project>

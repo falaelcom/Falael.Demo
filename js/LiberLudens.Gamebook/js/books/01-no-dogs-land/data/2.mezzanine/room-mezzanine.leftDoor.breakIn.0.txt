@@ -1,0 +1,12 @@
+!!!
+
+You force the door with a lunge of your shoulder and it yields to your weight with a loud crashing noise.
+
+Did the noise alert anybody in the stronghold? Roll a dice to find out (rolling 7 or more is good luck for you)!
+
+{
+	"exits":
+	{
+		"throwDice": "Roll the damn dice!"
+	}
+}

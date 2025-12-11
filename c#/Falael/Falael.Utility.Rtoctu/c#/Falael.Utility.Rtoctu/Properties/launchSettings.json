@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Falael.Utility.Rtoctu": {
+      "commandName": "Project",
+      "commandLineArgs": "-bDebug\r\n-cc:\\repos\\Kljuchko.WEB\\data\\Falael.Utility.Rtoctu\\config.json"
+    }
+  }
+}

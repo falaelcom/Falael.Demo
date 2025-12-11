@@ -1,0 +1,26 @@
+!!!
+
+You are crouching, hidden behind the green banner and some other decorations.
+
+@@TEST true@
+@@IF true, onlyOnce(entranceHall.behindBanner.green.lookingForSecretDoor)@
+You look at the wall and quickly locate the reddish stone the prisoner has told you about. You impatientlly reach to press it as instructed, but in the last moment you stop. What if the mechanism that opens the door makes a loud noise when activated, and gives away your presence? On the other hand this door may very well be leading towards freedom! Let the guards hear you; when they realize what' going on you'd be already outside, out of reach, racing towards the safety of the forest.
+
+If only could you break away from this unnatural, claustrophobic, cold place!
+@@ELSE@
+Behind your back is the secret door.
+@@ENDTEST@
+
+What do you want to do?
+
+{
+	"exits":
+	{
+		"attackTheGuards": "Attack the humans in surprise!",
+		"goToWallShadows": "Sneak out in the shadows",
+		"goToMezzanine": "Go upstairs to the mezzanine",
+		"goToDungeon": "Go back to the dungeon",
+		"openSecretDoor": "Push the marked stone",
+		"goToSecretPassage": "Go through the secret door"
+	}
+}

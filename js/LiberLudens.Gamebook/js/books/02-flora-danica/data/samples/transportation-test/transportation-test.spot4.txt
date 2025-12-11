@@ -1,0 +1,10 @@
+﻿Transportation Test SPOT 4
+
+{
+	"exits":
+	{
+		"home,route1": "Go back home - Route 1",
+		"home,route2": "Go back home - Route 2",
+		"spot1": "Go to Spot 1 (fixed duration)"
+	}
+}

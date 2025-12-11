@@ -1,0 +1,5 @@
+@@DEF entranceHall.entry.fromDungeon.moveInTheShadows@
+
+You sneak behind the humans' backs and crouch in your previous location, in the shadows near the wall.
+
+@@ENDDEF@

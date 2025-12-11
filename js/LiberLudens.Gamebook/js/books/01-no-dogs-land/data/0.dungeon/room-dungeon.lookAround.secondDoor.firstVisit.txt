@@ -1,0 +1,21 @@
+When you try to push the door, it yields easily, sharply creaking. You enter the narrow room. It's dark in here - rather than shedding any light the distant shimmering of the torch only accents the shadows (especially your own).
+
+This cell smells like mold, like abandonment, like desparation. You wait for a short while for your eyes to adjust to the almost complete darkness, which they do only partially. Then you start wiggling around, moving your shadow from corner to corner and inspecting the interior of the empty prison cell. Human bones are scattered around the floor (you recognize five left ribs attached to a spine, a radius, two ulnas from different arms and something that could be a very deformed patella), several corroded chain links lie in the dirt, a huge web is hanging right under the ceiling, illegible lines are scratched on one of the walls. Somebody should have counted their last days, you think. You pat sympathetically the ribs, which happen to be resting right beside your right foot.
+
+And that's all this cell has to offer - sadness and remembrance of death.
+
+<illustration image="dungeon.lookAround.secondDoor.png" align="span" />
+
+You could stick around for a little bit longer and give yourself over to sorrow... Or you can remember that you are this bulky beast with a strong wolfy nature! Sorrow is a word you never use, the clock is thicking, and you better keep going if you wish to escape this dreadful bastion of religious fanaticism! 
+
+@blend.actions.final@
+
+What would it be?
+
+{
+	"exits":
+	{
+		"stay": "Stay",
+		"go": "Go back to the corridor"
+	}
+}

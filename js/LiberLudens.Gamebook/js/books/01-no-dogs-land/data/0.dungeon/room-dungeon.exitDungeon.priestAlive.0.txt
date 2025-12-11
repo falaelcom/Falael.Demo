@@ -1,0 +1,18 @@
+Without further ceremony you move past the priest through the narrow corridor, squeezing him to the wall. Behind your back you hear the soft sound of a slumping body. "This one fainted!" you think but almost immediately forget about it, because you reach the first corner of the corridor and make a right turn. You are now closer to the stairs leading upwards to the entrance hall of the fortress, and the clanking of your chains strikes your ears with the painful realization of how noisy you are right now, when you most of all need to be silent as a night owl.
+
+The corridor makes two left turns before you reach the stairwell. The reason for this is a guardroom built in such a way that everybody who is going in or out the dungeon must walk around it, submitting himself to rigorous scrunity. The guardroom is empty, though, and you recognize the residual smell of the guard you killed coming from it's open door. You also pass through two subsequent heavy iron gates, carelessly left open by your earlier visitors. You mark for yourself how lucky you are, because weren't your captivators so sloppy, you'd never manage to secape from such a well-designed prison.
+
+You move even slower now, trying to keep it as silent as possible. Step by step you climb up towards the prison entrance door. Eventually you reach the upper stairwell landing and stop there for a while, tensely listening to the noises coming from the other side of the door.
+
+At first you only hear somebody breathing and some metal rubing into metal, but then people start talking, and you distinguish the voice of a soldier muted by his helmet and the soft tone of another priest. "These asshats are all over the place!" you whisper contemptuously through your teeth.
+
+You could turn back and return to the dungeon downstairs. Or you could open the door and enter the keep's hall.
+
+{
+	"exits":
+	{
+		"goBack": "Go back",
+		"next": "Open the door"
+	}
+}
+

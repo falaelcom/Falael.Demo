@@ -1,0 +1,24 @@
+!!!
+
+@@DEF mezzanine.leftDoor.state.2.A@You force the door with a lunge of your shoulder and enter the room.@@ENDDEF@
+@@DEF mezzanine.leftDoor.state.2.B@You try several keys, before a smooth clicking sound announces the successful unlocking of the door. You open it and enter the room.@@ENDDEF@
+@@DEF mezzanine.leftDoor.state.2.C@You enter the room.@@ENDDEF@
+
+@mezzanine.leftDoor.state.2@ On your left there's a large window with an amazing view of the mountainside with a beautiful waterfall. But more interestingly, there is a terrified priest squirming in terror in the opposite corner - you identify the one who was engaged in a discussion with the guards downstairs in the entrance hall by the sweet-sour smell he's radiating. When you make a step towards him, he suddenly straightens up, a mad sparkle flickers in his wild eyes, and he attacks you with a short knife. You easily deflect the attack and finish the weak human in place.
+
+The smell of this creature triggers your vomit reflex, and, eager to leave, you are already turning away, when a beautiful green glitter makes you stop and turn back.
+
+On the right thumb of the priest there is a @@INSERT global.aventurineRingText@
+
+@takeAventurineRing@
+
+{
+	"inventory":
+	{
+		"aventurineRing": "Green Aventurine Ring"
+	},
+	"exits":
+	{
+		"goBack": "Go back to the mezzanine balcony"
+	}
+}

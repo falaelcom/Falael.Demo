@@ -1,0 +1,120 @@
+{
+    "mapData": 
+    {
+        "transportation-test": "transportation-test-map.json"
+    },
+    "rooms": 
+    [
+        {
+            "key": "transportation-test.home",
+            "file": "transportation-test.home.txt",
+            "locationKey": "transportation-test:home",
+            "exits": 
+            [
+                {
+                    "text": "spot1",
+                    "target": "transportation-test.spot1"
+                },
+                {
+                    "text": "spot2",
+                    "target": "transportation-test.spot2"
+                },
+                {
+                    "text": "spot3",
+                    "target": "transportation-test.spot3"
+                },
+                {
+                    "text": "spot4,route1",
+                    "target": "transportation-test.spot4",
+                    "route": "route1"
+                },
+                {
+                    "text": "spot4,route2",
+                    "target": "transportation-test.spot4",
+                    "route": "route2"
+                }
+            ]
+        },
+        {
+            "key": "transportation-test.spot1",
+            "file": "transportation-test.spot1.txt",
+            "locationKey": "transportation-test:spot1",
+            "duration":  "02:00",
+            "exits": 
+            [
+                {
+                    "text": "home",
+                    "target": "transportation-test.home"
+                },
+                {
+                    "text": "spot2",
+                    "target": "transportation-test.spot2"
+                },
+                {
+                    "text": "spot4",
+                    "target": "transportation-test.spot4",
+                    "duration": "2;14:30:00"
+                }
+            ]
+        },
+        {
+            "key": "transportation-test.spot2",
+            "file": "transportation-test.spot2.txt",
+            "locationKey": "transportation-test:spot2",
+            "exits": 
+            [
+                {
+                    "text": "home",
+                    "target": "transportation-test.home"
+                },
+                {
+                    "text": "spot1",
+                    "target": "transportation-test.spot1"
+                },
+                {
+                    "text": "spot3",
+                    "target": "transportation-test.spot2"
+                }
+            ]
+        },
+        {
+            "key": "transportation-test.spot3",
+            "file": "transportation-test.spot3.txt",
+            "locationKey": "transportation-test:spot3",
+            "exits": 
+            [
+                {
+                    "text": "home",
+                    "target": "transportation-test.home"
+                },
+                {
+                    "text": "spot2",
+                    "target": "transportation-test.spot2"
+                }
+            ]
+        },
+        {
+            "key": "transportation-test.spot4",
+            "file": "transportation-test.spot4.txt",
+            "locationKey": "transportation-test:spot4",
+            "exits": 
+            [
+                {
+                    "text": "home,route1",
+                    "target": "transportation-test.home",
+                    "route": "route1"
+                },
+                {
+                    "text": "home,route2",
+                    "target": "transportation-test.home",
+                    "route": "route2"
+                },
+                {
+                    "text": "spot1",
+                    "target": "transportation-test.spot1",
+                    "duration": "1:30:00"
+                }
+            ]
+        }
+    ]
+}

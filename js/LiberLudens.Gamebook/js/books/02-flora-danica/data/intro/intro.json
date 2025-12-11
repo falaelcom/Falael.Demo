@@ -1,0 +1,438 @@
+{
+    "rooms":
+    [
+        {
+            "key": "home",
+            "file": "room-0-home.txt",
+            "dateTime": "1119.03.26;22:30:00",
+            "duration": "15:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "part1.home"
+                }
+            ],
+            "onRoomEnter": 
+            {
+                "changeHealth": 100,
+                "changeEnergy": 5,
+                "changeMight": 5,
+                "changeSpeed": 25,
+                "changeStance": "afoot",
+                "addSkills": 
+                [
+                    "flying",
+                    "night-vision"
+                ]
+            }
+        },
+        {
+            "key": "part1.home",
+            "file": "room-0-part1.home.txt",
+            "exits": 
+            [
+                {
+                    "text": "thoughts",
+                    "target": "theNightBefore-thoughts"
+                },
+                {
+                    "text": "theNightBefore-palace",
+                    "target": "theNightBefore-palace"
+                },
+                {
+                    "condition": { "isDebugMode": true },
+                    "text": "transportation-test",
+                    "target": "transportation-test.home"
+                },
+                {
+                    "condition": { "isDebugMode": true },
+                    "text": "_timerTests",
+                    "target": "_timerTests"
+                },
+                {
+                    "condition": { "isDebugMode": true },
+                    "text": "_sample1",
+                    "target": "_sample1"
+                }
+            ]
+        },
+        {
+            "key": "theNightBefore-thoughts",
+            "file": "room-0-theNightBefore-thoughts.txt",
+            "exits":
+            [
+                {
+                    "text": "theNightBefore-palace",
+                    "target": "theNightBefore-palace"
+                }
+            ]
+        },
+        {
+            "key": "theNightBefore-palace",
+            "file": "room-0-theNightBefore-palace.txt",
+            "exits":
+            [
+                {
+                    "text": "room-palace.bedroom.waking.up",
+                    "target": "room-palace.bedroom.waking.up"
+                }
+            ]
+        },
+        {
+            "key": "room-palace.bedroom.waking.up",
+            "file": "room-palace.bedroom.waking.up.txt",
+            "duration": "30:00",
+            "dateTime": "1119.03.27;07:00:00",
+            "exits":
+            [
+                {
+                    "text": "lookAround",
+                    "target": "palace.bedroom"
+                },
+                {
+                    "text": "leave",
+                    "target": "palace.bedroom.navigationHub"
+                }
+            ]
+        },
+        {
+            "key": "palace.bedroom",
+            "file": "room-palace.bedroom.txt",
+            "duration": "05:00",
+            "exits":
+            [
+                {
+                    "text": "flyUpAndCheck",
+                    "target": "palace.bedroom.fly.up"
+                },
+                {
+                    "text": "continueLookingAround",
+                    "target": "palace.bedroom.continue.looking.1"
+                }
+            ],
+            "on learnLetter1":
+            {
+                "addKnowledge": [ "bedroomLetters1" ]
+            }
+        },
+        {
+            "key": "palace.bedroom.fly.up",
+            "file": "room-palace.bedroom.fly.up.txt",
+            "duration": "03:00",
+            "exits":
+            [
+                {
+                    "text": "continueLookingAround",
+                    "target": "palace.bedroom.continue.looking.1"
+                }
+            ],
+            "onRoomEnter":
+            {
+                "changeStance": "flying"
+            },
+            "onRoomExit":
+            {
+                "changeStance": "afoot"
+            },
+            "on learnLetter2":
+            {
+                "addKnowledge": [ "bedroomLetters2" ]
+            }
+        },
+        {
+            "key": "palace.bedroom.continue.looking.1",
+            "file": "room-palace.bedroom.continue.looking.1.txt",
+            "exits":
+            [
+                {
+                    "text": "takeSabre",
+                    "target": "palace.bedroom.takeSabre"
+                },
+                {
+                    "text": "continueLooking",
+                    "target": "palace.bedroom.continue.looking.2"
+                }
+            ]
+        },
+        {
+            "key": "palace.bedroom.takeSabre",
+            "file": "room-palace.bedroom.takeSabre.txt",
+            "exits":
+            [
+                {
+                    "text": "leave",
+                    "target": "palace.bedroom.navigationHub"
+                }
+            ],
+            "on takeWeapon":
+            {
+                "addInventory": [ { "key": "sabre1", "quantity": 1, "properties": { "speed": -3, "might": 30, "skills": [ "death-from-above" ] } } ]
+            }
+        },
+        {
+            "key": "palace.bedroom.continue.looking.2",
+            "file": "room-palace.bedroom.continue.looking.2.txt",
+            "exits":
+            [
+                {
+                    "text": "takeCrown",
+                    "target": "palace.bedroom.takeCrown"
+                },
+                {
+                    "text": "continueLooking",
+                    "target": "palace.bedroom.continue.looking.3"
+                }
+            ]
+        },
+        {
+            "key": "palace.bedroom.takeCrown",
+            "file": "room-palace.bedroom.takeCrown.txt",
+            "exits":
+            [
+                {
+                    "text": "leave",
+                    "target": "palace.bedroom.navigationHub"
+                }
+            ],
+            "on takeCrown":
+            {
+                "addInventory": [ { "key": "crown1", "quantity": 1, "properties": { "skills": [ "authority" ] } } ]
+            }
+        },
+        {
+            "key": "palace.bedroom.continue.looking.3",
+            "file": "room-palace.bedroom.continue.looking.3.txt",
+            "exits":
+            [
+                {
+                    "text": "takeWand",
+                    "target": "palace.bedroom.takeWand"
+                },
+                {
+                    "text": "noWeapon",
+                    "target": "palace.bedroom.navigationHub"
+                }
+            ]
+        },
+        {
+            "key": "palace.bedroom.takeWand",
+            "file": "room-palace.bedroom.takeWand.txt",
+            "exits":
+            [
+                {
+                    "text": "leave",
+                    "target": "palace.bedroom.navigationHub"
+                }
+            ],
+            "on takeWand":
+            {
+                "addInventory": [ { "key": "wand1", "quantity": 1, "properties": { "skills": [ "spell-caster" ] } } ]
+            }
+        },
+        {
+            "key": "palace.bedroom.navigationHub",
+            "file": "room-palace.bedroom.navigationHub.txt",
+            "exits":
+            [
+                {
+                    "text": "goToWinterGardens",
+                    "target": "palace.winterGardens"
+                },
+                {
+                    "text": "goToJudgementChambers",
+                    "target": "palace.judgementChambers"
+                },
+                {
+                    "text": "goToRoomNo7",
+                    "target": "palace.roomNo7"
+                },
+                {
+                    "text": "goToSermonRoom",
+                    "target": "palace.sermonRoom"
+                },
+                {
+                    "text": "goToPalaceDungeons",
+                    "target": "palace.palaceDungeons"
+                },
+                {
+                    "text": "goToTowerRooftop",
+                    "target": "palace.towerRooftop"
+                },
+                {
+                    "condition": { "isDebugMode": true },
+                    "text": "theNightBefore",
+                    "target": "theNightBefore"
+                }
+            ]
+        },
+        {
+            "key": "palace.winterGardens",
+            "file": "room-palace.winterGardens.txt",
+            "exits":
+            [
+                {
+                    "text": "goToTowerRooftop",
+                    "target": "palace.towerRooftop"
+                }
+            ],
+            "onRoomEnter":
+            {
+                "setImplicitData": { "secondaryQuest": "findGentileMartinisDiary" }
+            },
+            "on learnName":
+            {
+                "addKnowledge": [ "glassPainterName" ]
+            },
+            "on takeFlask":
+            {
+                "addInventory": [ { "key": "livingWaterPotion", "quantity": 1, "properties": { "skills": [ "self-healing" ] } } ]
+            }
+        },
+        {
+            "key": "palace.judgementChambers",
+            "file": "room-palace.judgementChambers.txt",
+            "exits":
+            [
+                {
+                    "text": "goToTowerRooftop",
+                    "target": "palace.towerRooftop"
+                }
+            ],
+            "onRoomEnter":
+            {
+                "setImplicitData": { "secondaryQuest": "findBenoJunior" }
+            },
+            "on learnLocation":
+            {
+                "addKnowledge": [ "dragonLocation" ]
+            },
+            "on takeMuzzle":
+            {
+                "addInventory": [ { "key": "dragonMuzzle", "quantity": 1, "properties": { "skills": [ "dragon-rider" ] } } ]
+            }
+        },
+        {
+            "key": "palace.judgementChambers.judgePerwigAndHammer",
+            "file": "room-palace.judgementChambers.judgePerwigAndHammer.txt",
+            "exits":
+            [
+                {
+                    "text": "backToJudgementChambers",
+                    "target": "palace.judgementChambers",
+                    "ignoreActions": true
+                }
+            ],
+            "on takeJudgePerwigAndHammer":
+            {
+                "addInventory": [ { "key": "judgePerwigAndHammer", "quantity": 1, "properties": { "skills": [ "justice" ] } } ]
+            }
+        },
+        {
+            "key": "palace.roomNo7",
+            "file": "room-palace.roomNo7.txt",
+            "exits":
+            [
+                {
+                    "text": "goToTowerRooftop",
+                    "target": "palace.towerRooftop"
+                }
+            ],
+            "onRoomEnter":
+            {
+                "setImplicitData": { "secondaryQuest": "findSecretCastleRoom" }
+            },
+            "on learnLocation":
+            {
+                "addKnowledge": [ "secretCastleRoomLocation" ]
+            },
+            "on takeCat":
+            {
+                "addInventory": [ { "key": "catLady", "quantity": 1, "properties": { "skills": [ "recreation" ] } } ]
+            }
+        },
+        {
+            "key": "palace.sermonRoom",
+            "file": "room-palace.sermonRoom.txt",
+            "exits":
+            [
+                {
+                    "text": "goToTowerRooftop",
+                    "target": "palace.towerRooftop"
+                }
+            ],
+            "onRoomEnter":
+            {
+                "setImplicitData": { "secondaryQuest": "findForgottenSwamp" }
+            },
+            "on learnLocation":
+            {
+                "addKnowledge": [ "forgottenSwampLocation" ]
+            },
+            "on takeGlasses":
+            {
+                "addInventory": [ { "key": "hedgehogGlasses", "quantity": 1, "properties": { "skills": [ "arcane-sight" ] } } ]
+            }
+        },
+        {
+            "key": "palace.palaceDungeons",
+            "file": "room-palace.palaceDungeons.txt",
+            "exits":
+            [
+                {
+                    "text": "takeChainMail",
+                    "target": "palace.palaceDungeons.takeChainMail"
+                },
+                {
+                    "text": "ignoreChainMail",
+                    "target": "palace.palaceDungeons.theCell"
+                }
+            ],
+            "onRoomEnter":
+            {
+                "setImplicitData": { "secondaryQuest": "accessNanPopCabin" }
+            }
+        },
+        {
+            "key": "palace.palaceDungeons.takeChainMail",
+            "file": "room-palace.palaceDungeons.takeChainMail.txt",
+            "exits": 
+            [
+                {
+                    "text": "continue",
+                    "target": "palace.palaceDungeons.theCell"
+                }
+            ],
+            "on takeChainmail": 
+            {
+                "addInventory": [ { "key": "lightChainmail1", "quantity": 1, "properties": { "speed": -2, "might": 10 } } ]
+            }
+        },
+        {
+            "key": "palace.palaceDungeons.theCell",
+            "file": "room-palace.palaceDungeons.theCell.txt",
+            "exits": 
+            [
+                {
+                    "text": "continue",
+                    "target": "woods.nanPopCabin"
+                }
+            ],
+            "on takeNecklace": 
+            {
+                    "addInventory": [ { "key": "silverCross1", "quantity": 1 } ]
+            }
+        },
+        {
+            "key": "palace.towerRooftop",
+            "file": "room-palace.towerRooftop.txt",
+            "exits": 
+            [
+                {
+                    "text": "flyUp",
+                    "target": "woods.palace.inAir" 
+                }
+            ]
+        }
+    ]
+}

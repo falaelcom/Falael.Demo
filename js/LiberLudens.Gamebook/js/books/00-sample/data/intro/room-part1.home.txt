@@ -1,0 +1,28 @@
+It's a late evening. You have finished your dinner and your evening routine, and now you are lying in your bed, counting goatlings. One goatling, two goatling, three... and happily asleep are thee.
+
+You lie quietly for a while, unconsciously enjoying the rest, then a tiny teeny voice suddenly pronounces very clearly in your ear: "Drystan! It's time to go, Sir!"
+
+<illustration image="room-part1.home-rabbit.1.jpg" />
+
+"Who's this?" you wonder. Somehow you are aware that you are sound asleep. You are absolutely confident that nobody could be talking to you with such a teeny tiny voice. "I must be dreaming," you decide and continue sleepeing. But only a second later the voice speaks again. "Sir Drystan the Valiant!" New tones in the voice call to urgency and unconditional obedience. "It's time to go, or else everything will be lost!"
+
+The overtones in the mysterious voice overcome your desire to sleep and you reluctantly sit up in your bed. Then you open your eyes and what you see astounds you. This is not your bed. Your not in your room anymore. It's not even dark! There is a lancet in the stone wall on your left side and through it you can see the sun in the blue skye above some hills.
+
+<illustration image="room-part1.home-rabbit.2.jpg" align="right" />
+
+"What in God's name!" you think and look around thoroughly. It seems that you are inside a room located high in a round stone tower! The only decoration is a simple wooden table with an iron laver on it.
+
+Somebody pulls your sleeve. Yes, you are fully clothed with some sort of greeen-brown suit with leather parts. You look in the direction from where the pulling comes and there it is, the source of the voice, just startin to speak again: "Sir Drystan, Sir!"
+
+It's a rabbit.
+
+{
+	"title": "Part One: Intro",
+	"coverImage": "part1Cover.jpg",
+	"coverImageSize": "size4_3",
+	"exits":
+	{
+		"next": ""
+	}
+}
+

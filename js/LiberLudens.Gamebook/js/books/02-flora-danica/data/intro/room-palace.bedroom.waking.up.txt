@@ -1,0 +1,29 @@
+In the emerging twilight zone between sleep and wakefulness, lazy thoughts start flowing through your mind.
+
+"...three sheep." Continuing your last thought from the evening, your brain offers you the image of a sheep's curly butt disappearing behind a fence.
+
+Then, randomly at first:
+
+"...I must have inherited grandfather Zybar's genes... I don't seem to be aging at all with the years!..."
+
+"...I bet the daily yoga exercises contribute to keeping me young... My spirit is young... I'm young... I'll be young forever..."
+
+Forever. You see your future as a straight endlesss road ahead and...
+
+"...I must become a Queen!" you remember. "I'm doomed to be a Queen!"
+
+This one last thought sends a hot sharp wave through your body, and suddenly you are completely awake, lying in bed. You open your eyes.
+
+It's a delightful late-spring morning, bright and fresh. The dream images quickly fade away, and the pounding of your heart calms down. Almost. There's a new urge in your veins, though - an urge to go and do something novel and unexpected (as opposed to becoming a Queen; not that somebody is forcing it onto you right here right now... but the feeling of being doomed is kind of unbarabale). Following that urge, you skip the usual morning lie-in and get up sprightly.
+
+You stretch your naked body, slowly, enjoying the warm caressing sunlight that falls through the arched windows, spread your bat wings and shiver briefly with blissful tension. Then the moment is gone and you start your morning routine. Some 30 minutes later you are all clean, well-fed and completely equipped for the new day.
+
+Right now, you are standing in your bedroom. Choose your next action:
+
+{
+	"exits":
+	{
+		"lookAround": "Take one last look around before you leave",
+		"leave": "Leave your bedroom"
+	}
+}

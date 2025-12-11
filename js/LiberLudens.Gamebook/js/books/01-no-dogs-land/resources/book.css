@@ -1,0 +1,5 @@
+.playerStats .energy,
+.playerStats .stance
+{
+    display: none;
+}

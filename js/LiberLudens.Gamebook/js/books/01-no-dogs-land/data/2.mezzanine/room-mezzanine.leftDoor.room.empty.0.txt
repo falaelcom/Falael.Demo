@@ -1,0 +1,17 @@
+!!!
+
+@@DEF mezzanine.leftDoor.state.1.A@You enter the room through the broken door.@@ENDDEF@
+@@DEF mezzanine.leftDoor.state.1.B@You try several keys, before a smooth clicking sound annoounces the successful unlocking of the door. You open it and enter the room.@@ENDDEF@
+@@DEF mezzanine.leftDoor.state.1.C@You enter the room.@@ENDDEF@
+
+@mezzanine.leftDoor.state.1@ It's empty. On your left there's a large window revealing an amazing view to the mountainside, with a beautiful waterfall descending from above.
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"enjoyTheView": "Go to the window and enjoy the view",
+		"goBack": "Go back to the mezzanine balcony"
+	}
+}

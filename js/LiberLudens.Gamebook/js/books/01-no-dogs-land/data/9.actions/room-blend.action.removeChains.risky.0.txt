@@ -1,0 +1,10 @@
+@@INSERT (blend.action.removeChains).description.1@
+
+But before that... throw a dice to test your luck! (You must throw 5 or more to avoid unwanted attention).
+
+{
+	"exits":
+	{
+		"next": "Throw the goddamn dice!"
+	}
+}

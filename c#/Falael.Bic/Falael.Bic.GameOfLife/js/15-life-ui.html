@@ -1,0 +1,1797 @@
+<html>
+<head>
+	<script>
+        //  TODO:
+        //  - generation size currently reports modified cells count
+        //  - add world wrap option
+        //  - transform pattern list to hashtable
+        //  - let patterns specify zoom level
+        //  - move rulesets into objects
+        //  - let rulesets define own flavors
+        //  - add random pattern generator function for rulesets that overrides the default implementation
+        //  - user rulesets flavors in the default random pattern generator implementation
+
+        //<editor-fold desc="utility">
+        var utility =
+        {
+            color:
+            {
+                RGBtoHSV: function(par)
+                {
+                    var r = par.r;
+                    var g = par.g;
+                    var b = par.b;
+
+                    var max = Math.max(r, g, b), min = Math.min(r, g, b),
+                            d = max - min,
+                            h,
+                            s = (max === 0 ? 0 : d / max),
+                            v = max / 255;
+
+                    switch(max)
+                    {
+                        case min:
+                            h = 0;
+                            break;
+                        case r:
+                            h = (g - b) + d * (g < b ? 6 : 0);
+                            h /= 6 * d;
+                            break;
+                        case g:
+                            h = (b - r) + d * 2;
+                            h /= 6 * d;
+                            break;
+                        case b:
+                            h = (r - g) + d * 4;
+                            h /= 6 * d;
+                            break;
+                    }
+
+                    return {
+                        h: h,
+                        s: s,
+                        v: v
+                    };
+                },
+
+                HSVtoRGB: function(par)
+                {
+                    var s = par.s;
+                    var v = par.v;
+                    var h = par.h;
+
+                    var r, g, b, i, f, p, q, t;
+                    i = Math.floor(h * 6);
+                    f = h * 6 - i;
+                    p = v * (1 - s);
+                    q = v * (1 - f * s);
+                    t = v * (1 - (1 - f) * s);
+                    switch(i % 6)
+                    {
+                        case 0:
+                            r = v, g = t, b = p;
+                            break;
+                        case 1:
+                            r = q, g = v, b = p;
+                            break;
+                        case 2:
+                            r = p, g = v, b = t;
+                            break;
+                        case 3:
+                            r = p, g = q, b = v;
+                            break;
+                        case 4:
+                            r = t, g = p, b = v;
+                            break;
+                        case 5:
+                            r = v, g = p, b = q;
+                            break;
+                    }
+                    return {
+                        r: Math.round(r * 255),
+                        g: Math.round(g * 255),
+                        b: Math.round(b * 255)
+                    };
+                },
+
+                HSVtoHSL: function(par)
+                {
+                    var s = par.s;
+                    var v = par.v;
+                    var h = par.h;
+
+                    var _h = h,
+                            _s = s * v,
+                            _l = (2 - s) * v;
+                    _s /= (_l <= 1) ? _l : 2 - _l;
+                    _l /= 2;
+
+                    return {
+                        h: _h,
+                        s: _s,
+                        l: _l,
+                    };
+                },
+
+                HSLtoHSV: function(par)
+                {
+                    var s = par.s;
+                    var l = par.l;
+                    var h = par.h;
+
+                    var _h = h,
+                            _s,
+                            _v;
+
+                    l *= 2;
+                    s *= (l <= 1) ? l : 2 - l;
+                    _v = (l + s) / 2;
+                    _s = (2 * s) / (l + s);
+
+                    return {
+                        h: _h,
+                        s: _s,
+                        v: _v
+                    };
+                },
+            },
+        };
+        //</editor-fold>
+
+        //<editor-fold desc="utility functions">
+
+        //returns uniformly distributed random numbers between m and n, inclusive
+        function _math_randomIntegerInRange(m, n)
+        {
+            return Math.floor(m + ( n - m + 1) * Math.random());
+        }
+
+        //  rounds the fractional f towards the closest bigger (N) or smaller (n) integer with biased probability
+        //  the probability (pN) for the closest bigger integer N to be selected equals the distance of f from n
+        // (the closer f to N, the higher pN)
+        function _math_biasedFuzzyRound(f)
+        {
+            var n = Math.floor(f);
+            var pN = f - n;
+            var selectN = Math.random() < pN;
+            return selectN ? Math.ceil(f) : n;
+        }
+
+        function _stringArray_fromHashSetKeys(hashSet)
+        {
+            var result = [];
+            for(var key in hashSet)
+            {
+                result.push(key);
+            }
+            return result;
+        }
+
+        function _stringArray_compare(left, right)
+        {
+            if(!left || !right)
+            {
+                return -1;
+            }
+
+            if(!left.length)
+            {
+                if(!right.length)
+                {
+                    return 0;
+                }
+
+                return -1;
+            }
+
+            if(!right.length)
+            {
+                return 1;
+            }
+
+            if(left.length < right.length)
+            {
+                return -1;
+            }
+            if(left.length > right.length)
+            {
+                return 1;
+            }
+
+            var leftHashSet = _stringArray_getKeyHashSet(left);
+            for(var length = right.length, i = 0; i < 0; ++i)
+            {
+                var item = right[i];
+                if(!leftHashSet[item])
+                {
+                    return -1;
+                }
+            }
+
+            return 0;
+        }
+
+        function _stringArray_getKeyHashSet(array)
+        {
+            var result = {};
+            for(var length = array.length, i = 0; i < length; ++i)
+            {
+                result[String(array[i])] = {index: i};
+            }
+
+            return result;
+        }
+
+        function _stringArray_pluck(array, propertyName)
+        {
+            var result = [];
+            for(var length = array.length, i = 0; i < length; ++i)
+            {
+                result.push(array[i][propertyName]);
+            }
+
+            return result;
+        }
+
+        //</editor-fold>
+
+        //<editor-fold desc="CanvasDevice">
+        function CanvasDevice(canvasElement, width, height)
+        {
+            this.width = width;
+            this.height = height;
+
+            this.scale = 1;
+            this.offsetX = 0;
+            this.offsetY = 0;
+            this.scaledOffsetX = 0;
+            this.scaledOffsetY = 0;
+
+            this.canvasElement = canvasElement;
+            this.canvasElement.style.width = this.width + "px";
+            this.canvasElement.style.height = this.height + "px";
+            this.canvasElement.width = this.canvasElement.offsetWidth;
+            this.canvasElement.height = this.canvasElement.offsetHeight;
+
+            this.canvasGraphics = this.canvasElement.getContext("2d", {alpha: false});
+            this.canvasGraphics.imageSmoothingEnabled = false;
+
+            this.bufferElement = document.createElement("canvas");
+            this.bufferElement.width = this.canvasElement.width;
+            this.bufferElement.height = this.canvasElement.height;
+
+            this.bufferGraphics = this.bufferElement.getContext("2d", {alpha: false});
+            this.bufferGraphics.imageSmoothingEnabled = false;
+            this.bufferGraphics.translate(0.5, 0.5);    //  decrease antialiasing, grant pixel-accurate h- and v-lines
+
+            this.lockType = CanvasDevice.LOCK_TYPE_NONE;
+            this.pixelGraphics = null;
+            this.vectorGraphics = null;
+
+            this.setScale = function(value)
+            {
+                this.canvasGraphics.scale(1/this.scale, 1/this.scale);
+                this.scale = value;
+                this.scaledOffsetX = Math.round(this.offsetX / this.scale);
+                this.scaledOffsetY = Math.round(this.offsetY / this.scale);
+
+                this.bufferGraphics.translate(-0.5, -0.5);
+                this.bufferElement.width = Math.ceil(this.canvasElement.width / this.scale);
+                this.bufferElement.height = Math.ceil(this.canvasElement.height / this.scale);
+                this.bufferGraphics.translate(0.5, 0.5);
+
+                this.canvasGraphics.scale(this.scale, this.scale);
+            };
+
+            this.getScale = function()
+            {
+                return this.scale;
+            };
+
+            this.getScaledWidth = function()
+            {
+                return this.bufferElement.width;
+            }
+
+            this.getScaledHeight = function()
+            {
+                return this.bufferElement.height;
+            }
+
+            this.setOrigin = function(offsetX, offsetY)
+            {
+                this.bufferGraphics.translate(-this.scaledOffsetX, -this.scaledOffsetY);
+                this.offsetX = offsetX;
+                this.offsetY = offsetY;
+                this.scaledOffsetX = Math.round(this.offsetX / this.scale);
+                this.scaledOffsetY = Math.round(this.offsetY / this.scale);
+                this.bufferGraphics.translate(this.scaledOffsetX, this.scaledOffsetY);
+            };
+
+            this.getScaledOriginX = function()
+            {
+                return this.scaledOffsetX;
+            };
+
+            this.getScaledOriginY = function()
+            {
+                return this.scaledOffsetY;
+            };
+
+            this.lockVectorGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_NONE)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_NONE";
+                }
+                this.lockType = CanvasDevice.LOCK_TYPE_VECTOR;
+
+                this.vectorGraphics =
+                {
+                    graphics: this.bufferGraphics,
+                    canvas: this.bufferElement,
+                    device: this,
+                    clear: function(fillStyle)
+                    {
+                        this.graphics.beginPath();
+                        this.graphics.fillStyle = fillStyle;
+                        this.graphics.fillRect(
+                                -this.device.getScaledOriginX() - 1,
+                                -this.device.getScaledOriginY() - 1,
+                                this.canvas.width + 1,
+                                this.canvas.height + 1
+                        );
+                        this.graphics.fill();
+                    },
+                    drawRect: function(x, y, width, height, strokeStyle)
+                    {
+                        this.graphics.beginPath();
+                        this.graphics.strokeStyle = strokeStyle.strokeStyle;
+                        this.graphics.lineWidth = strokeStyle.lineWidth;
+                        this.graphics.rect(x, y, width, height);
+                        this.graphics.stroke();
+                    },
+                };
+
+                return this.vectorGraphics;
+            };
+
+            this.releaseVectorGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_VECTOR)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_VECTOR";
+                }
+                this.vectorGraphics = null;
+                this.lockType = CanvasDevice.LOCK_TYPE_NONE;
+            };
+
+            this.lockRasterGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_NONE)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_NONE";
+                }
+                this.lockType = CanvasDevice.LOCK_TYPE_RASTER;
+
+                this.pixelGraphics =
+                {
+                    pixelData: this.bufferGraphics.getImageData(0, 0, this.bufferElement.width, this.bufferElement.height),
+                    device: this,
+                    setPixel: function(x, y, r, g, b, a)
+                    {
+                        if(this.device.lockType != CanvasDevice.LOCK_TYPE_RASTER)
+                        {
+                            throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_RASTER";
+                        }
+
+                        x = Math.round(x + this.device.scaledOffsetX);
+                        y = Math.round(y + this.device.scaledOffsetY);
+
+                        if(x >= this.pixelData.width || x < 0)
+                        {
+                            return;
+                        }
+                        if(y >= this.pixelData.height || y < 0)
+                        {
+                            return;
+                        }
+
+                        var index = (x + y * this.pixelData.width) * 4;
+                        this.pixelData.data[index++] = r;
+                        this.pixelData.data[index++] = g;
+                        this.pixelData.data[index++] = b;
+                        this.pixelData.data[index++] = a;
+                    },
+                };
+
+                return this.pixelGraphics;
+            };
+
+            this.releaseRasterGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_RASTER)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_RASTER";
+                }
+
+                this.bufferGraphics.putImageData(this.pixelGraphics.pixelData, 0, 0);
+                this.pixelGraphics = null;
+                this.lockType = CanvasDevice.LOCK_TYPE_NONE;
+            };
+
+            this.flush = function()
+            {
+                this.canvasGraphics.drawImage(this.bufferElement, 0, 0);
+            };
+        }
+
+        CanvasDevice.LOCK_TYPE_NONE = 0;
+        CanvasDevice.LOCK_TYPE_VECTOR = 1;
+        CanvasDevice.LOCK_TYPE_RASTER = 2;
+        //</editor-fold>
+
+        //<editor-fold desc="LifeDocument">
+        function LifeDocument()
+        {
+            this.wrap = false;
+            this.wrapRadius = 0;
+
+            this.cells = {};
+            this.futureFlavorCells = [];
+            this.invalidCellKeys = {};
+            this.neighbourCountHash = {combined: {}, flavored: {}};
+
+            this.topLeft = {x: 0, y: 0};
+            this.bottomRight = {x: 0, y: 0};
+
+            this.generation = 0;
+            this.memCellCount = 0;
+            this.previousMmemCellCount = 0;
+            this.activeCellCounts = {combined: 0, flavored: {}};
+
+            this.recycleFrequencyUpperBound = 5000; //  low values = recycle more often
+
+            this.getWrap = function ()
+            {
+                return this.wrap;
+            };
+
+            this.setWrap = function (value)
+            {
+                this.wrap = value;
+            };
+
+            this.getWrapRadius = function ()
+            {
+                return this.wrapRadius;
+            };
+
+            this.setWrapRadius = function (value)
+            {
+                this.wrapRadius = value;
+            };
+
+
+            //	data: {flavor: [{x, y}, {x, y}, ...], flavor: [{x, y}, {x, y}, ...], ...}
+            this.setInitialCells = function(data)
+            {
+                this.cells = {};
+
+                for(var flavor in data)
+                {
+                    var points = data[flavor];
+                    flavor = parseInt(flavor);
+                    for(var length = points.length, i = 0; i < length; ++i)
+                    {
+                        var point = points[i];
+                        var key = LifeDocument.getKey(point.x, point.y);
+                        this.cells[key] =
+                        {
+                            x: point.x,
+                            y: point.y,
+                            key: key,
+                            flavor: parseInt(flavor),
+                        };
+                        this._invalidateNeighbourhood(point.x, point.y);
+                        this.invalidCellKeys[key] = true;
+                    }
+                }
+            },
+
+            this.setCellFutureFlavor = function(x, y, flavor)
+            {
+                var key = LifeDocument.getKey(x, y);
+                var cell = this.cells[key];
+                if(!cell)
+                {
+                    cell =
+                    {
+                        x: x,
+                        y: y,
+                        key: key,
+                        flavor: LifeDocument.DEAD,
+                        futureFlavor: flavor,
+                    };
+                    this.cells[key] = cell;
+                    this.futureFlavorCells.push(cell);
+                    return;
+                }
+                if(cell.flavor == flavor)
+                {
+                    return;
+                }
+                cell.futureFlavor = flavor;
+                this.futureFlavorCells.push(cell);
+            };
+
+            this.applyFutureFlavors = function ()
+            {
+                this.invalidCellKeys = {};
+                for (var length = this.futureFlavorCells.length, i = 0; i < length; ++i)
+                {
+                    var cell = this.futureFlavorCells[i];
+                    cell.flavor = cell.futureFlavor;
+                    this._invalidateNeighbourhood(cell.x, cell.y);
+                }
+                this.futureFlavorCells = [];
+            };
+
+            this.queryNeighbourCount = function(x, y)
+            {
+                var result = {combined: 0, flavored: {}};
+                var keys = this._getNeighbourhoodKeys(x, y);
+                for(var length = keys.length, i = 0; i < length; ++i)
+                {
+                    var key = keys[i];
+                    var cell = this.cells[key];
+                    if(!cell || cell.flavor == LifeDocument.DEAD)
+                    {
+                        continue;
+                    }
+                    ++result.combined;
+
+                    var flavorResult = result.flavored[cell.flavor] || 0;
+                    ++flavorResult;
+                    result.flavored[cell.flavor] = flavorResult;
+                }
+
+                return result;
+            };
+
+            this.querySignificantCells = function()
+            {
+                var result = [];
+
+                for(var key in this.invalidCellKeys)
+                {
+                    var cell = this.cells[key];
+                    result.push(
+                    {
+                        x: cell.x,
+                        y: cell.y,
+                        key: cell.key,
+                        flavor: cell.flavor,
+                        futureFlavor: cell.futureFlavor,
+                    });
+                }
+
+                return result;
+            };
+
+            this.queryGenerationSizes = function ()
+            {
+                var result = { combined: 0, flavored: {} };
+
+                for (var key in this.cells)
+                {
+                    var cell = this.cells[key];
+                    if (cell.flavor == LifeDocument.DEAD)
+                    {
+                        continue;
+                    }
+                    result.combined++;
+                    result.flavored[cell.flavor] = (result.flavored[cell.flavor] || 0) + 1;
+                }
+
+                return result;
+            };
+
+
+            this.recycle = function()
+            {
+                for(var key in this.cells)
+                {
+                    if (this.cells[key].flavor == LifeDocument.DEAD && !this.invalidCellKeys[key])
+                    {
+                        delete this.cells[key];
+                    }
+                }
+            };
+
+            this.nextGeneration = function(rules)
+            {
+                ++this.generation;
+
+                if(this.memCellCount > this.previousMmemCellCount)
+                {
+                    var recycleFrequency = Math.ceil(this.recycleFrequencyUpperBound / this.memCellCount);
+                    if(!(this.generation % recycleFrequency))
+                    {
+                        this.recycle();
+                    }
+                }
+
+                var cells = this.querySignificantCells();
+
+                this.neighbourCountHash = {combined: {}, flavored: {}};
+                for(var length = cells.length, i = 0; i < length; ++i)
+                {
+                    var cell = cells[i];
+
+                    this.topLeft.x = Math.min(this.topLeft.x, cell.x);
+                    this.topLeft.y = Math.min(this.topLeft.y, cell.y);
+                    this.bottomRight.x = Math.max(this.bottomRight.x, cell.x);
+                    this.bottomRight.y = Math.max(this.bottomRight.y, cell.y);
+
+                    var counts = this.queryNeighbourCount(cell.x, cell.y);
+                    this.neighbourCountHash.combined[cell.key] = counts.combined;
+                    for(var flavor in counts.flavored)
+                    {
+                        var flavorNeighbourCountHash = this.neighbourCountHash.flavored[flavor];
+                        if(!flavorNeighbourCountHash)
+                        {
+                            flavorNeighbourCountHash = {};
+                            this.neighbourCountHash.flavored[flavor] = flavorNeighbourCountHash;
+                        }
+                        flavorNeighbourCountHash[cell.key] = counts.flavored[flavor];
+                    }
+                }
+
+                var self = this;
+                function applyRules(cell, rules)
+                {
+                    var counts = {combined: 0, flavored: {}};
+                    for(var length = rules.length, i = 0; i < length; ++i)
+                    {
+                        var rule = rules[i];
+
+                        if(rule.test(self, cell))
+                        {
+                            rule.apply(self, cell)
+                            break;
+                        }
+
+                        if(cell.flavor == LifeDocument.DEAD)
+                        {
+                            continue;
+                        }
+                        counts.combined = 1;
+                        counts.flavored[cell.flavor] = 1;
+                    }
+                    return counts;
+                }
+
+                this.activeCellCounts = {combined: 0, flavored: {}};
+                for(var length = cells.length, i = 0; i < length; ++i)
+                {
+                    var counts = applyRules(cells[i], rules);
+                    this.activeCellCounts.combined += counts.combined;
+                    for(var flavor in counts.flavored)
+                    {
+                        this.activeCellCounts.flavored[flavor] += counts.flavored[flavor];
+                    }
+                }
+
+                this.applyFutureFlavors();
+
+                this.previousMmemCellCount = this.memCellCount;
+                this.memCellCount = this._queryMemCellCount();
+            }
+
+
+            this.getMemCellCount = function()
+            {
+                return this.memCellCount;
+            };
+
+            this.getNeighbourCount = function(key, flavor)
+            {
+                if(!flavor)
+                {
+                    return this.neighbourCountHash.combined[key] || 0;
+                }
+
+                var flavorNeighbourCountHash = this.neighbourCountHash.flavored[flavor];
+                if(!flavorNeighbourCountHash)
+                {
+                    return 0;
+                }
+                return flavorNeighbourCountHash[key] || 0;
+            }
+
+            this.getMinX = function()
+            {
+                return this.topLeft.x;
+            };
+
+            this.getMinY = function()
+            {
+                return this.topLeft.y;
+            };
+
+            this.getMaxWidth = function()
+            {
+                return this.bottomRight.x - this.topLeft.x;
+            };
+
+            this.getMaxHeight = function()
+            {
+                return this.bottomRight.y - this.topLeft.y;
+            };
+
+            this.getGeneration = function()
+            {
+                return this.generation;
+            };
+
+            this.getActiveCellCounts = function()
+            {
+                return this.activeCellCounts;
+            };
+
+            this.print = function(par)
+            {
+                var printAll = par ? par.printAll : false;
+
+                var sb = [];
+
+                for(var key in this.cells)
+                {
+                    var cell = this.cells[key];
+                    if(!printAll)
+                    {
+                        if(!cell.flavor)
+                        {
+                            continue;
+                        }
+                    }
+                    sb.push(cell.x);
+                    sb.push(",");
+                    sb.push(cell.y);
+                    if(printAll)
+                    {
+                        sb.push(",");
+                        sb.push(cell.flavor);
+                    }
+                    sb.push("; ");
+                }
+
+                return sb.join("");
+            }
+
+            this._invalidateNeighbourhood = function(x, y)
+            {
+                var keys = this._getNeighbourhoodKeys(x, y);
+
+                for(var length = keys.length, i = 0; i < length; ++i)
+                {
+                    var key = keys[i];
+                    var cell = this.cells[key];
+                    if(!cell)
+                    {
+                        var xy = LifeDocument.splitKey(key);
+                        cell =
+                        {
+                            x: xy.x,
+                            y: xy.y,
+                            key: key,
+                            flavor: LifeDocument.DEAD,
+                        };
+                        this.cells[key] = cell;
+                    }
+
+                    this.invalidCellKeys[key] = true;
+                }
+            };
+
+            this._queryMemCellCount = function()
+            {
+                var counter = 0;
+                for(var key in this.cells)
+                {
+                    counter++;
+                }
+                return counter;
+            };
+
+            this._getNeighbourhoodKeys = function(x, y)
+            {
+                var left = x - 1;
+                var right = x + 1;
+                var bottom = y - 1;
+                var top = y + 1;
+
+                if(this.wrap)
+                {
+                    var minX = -this.wrapRadius;
+                    var maxX = this.wrapRadius;
+                    var minY = -this.wrapRadius;
+                    var maxY = this.wrapRadius;
+
+                    if (left < minX) left = maxX;
+                    if (right > maxX) right = minX;
+                    if (bottom < minY) bottom = maxY;
+                    if (top > maxY) top = minY;
+                }
+
+                var result =
+                [
+                    LifeDocument.getKey(left, bottom),
+                    LifeDocument.getKey(x, bottom),
+                    LifeDocument.getKey(right, bottom),
+
+                    LifeDocument.getKey(left, y),
+                    LifeDocument.getKey(right, y),
+
+                    LifeDocument.getKey(left, top),
+                    LifeDocument.getKey(x, top),
+                    LifeDocument.getKey(right, top),
+                ];
+
+                return result;
+            }
+        }
+
+        LifeDocument.DEAD = 0;
+
+        LifeDocument.getKey = function(x, y)
+        {
+            x += 1000000 / 2;
+            y += 1000000 / 2;
+            if(x < 0 || y < 0)
+            {
+                throw "34785623";
+            }
+            return 1000000 * x + y;
+        };
+
+        LifeDocument.splitKey = function(key)
+        {
+            var x = Math.floor(key / 1000000);
+            var y = key - 1000000 * x;
+            return {
+                x: x - 1000000 / 2,
+                y: y - 1000000 / 2,
+            };
+        };
+        //</editor-fold>
+
+        //<editor-fold desc="LifeView">
+        function LifeView(device, width, height, style)
+        {
+            this.device = device;
+            this.width = width;
+            this.height = height;
+
+            this.style = style || {};
+            this.style.bounds = this.style.bounds || {};
+            this.style.bounds.show = typeof(this.style.bounds.show) != "undefined" ? this.style.bounds.show : true;
+            this.style.bounds.strokeStyle = this.style.bounds.strokeStyle || {};
+            this.style.bounds.strokeStyle.lineWidth = typeof(this.style.bounds.strokeStyle.lineWidth) != "undefined" ? this.style.bounds.strokeStyle.lineWidth : 1;
+            this.style.bounds.strokeStyle.strokeStyle = this.style.bounds.strokeStyle.strokeStyle || "red";
+            this.style.flavors = this.style.flavors || {};
+
+            this.lifeDocument = null;
+
+            this.refresh = function()
+            {
+				var v = this.device.lockVectorGraphics();
+				try
+				{
+					v.clear("white");
+
+					if(this.style.bounds.show)
+					{
+						if(!this.lifeDocument)
+						{
+							return;
+						}
+
+						v.drawRect(
+								this.lifeDocument.getMinX(),
+								this.lifeDocument.getMinY(),
+								this.lifeDocument.getMaxWidth(),
+								this.lifeDocument.getMaxHeight(),
+								this.style.bounds.strokeStyle
+						);
+					}
+				}
+				finally
+				{
+					this.device.releaseVectorGraphics();
+				}
+
+                var r = this.device.lockRasterGraphics();
+                try
+                {
+                    for(var key in this.lifeDocument.cells)
+                    {
+                        var cell = this.lifeDocument.cells[key];
+
+                        switch(cell.flavor)
+                        {
+                            case LifeDocument.DEAD:
+                                break;
+                            default:
+                                var flavor = this.style.flavors[cell.flavor];
+                                if(flavor && flavor.color)
+                                {
+                                    r.setPixel(cell.x, cell.y, flavor.color.r, flavor.color.g, flavor.color.b, 255);
+                                }
+                                else
+                                {
+                                    r.setPixel(cell.x, cell.y, 0, 0, 0, 255);
+                                }
+                                break;
+                        }
+                    }
+                }
+                finally
+                {
+                    this.device.releaseRasterGraphics();
+                }
+            };
+
+            this.setDocument = function(value)
+            {
+                this.lifeDocument = value;
+            };
+
+            this.setScale = function(value)
+            {
+                this.device.setScale(value);
+            };
+
+            this.setOrigin = function(originX, originY)
+            {
+                this.device.setOrigin(originX, originY);
+            };
+
+            this.centerOrigin = function()
+            {
+                this.device.setOrigin(this.width / 2, this.height / 2);
+            };
+        }
+        //</editor-fold>
+
+        //<editor-fold desc="Multicast">
+
+        function Multicast()
+        {
+            this.callbacks = [];
+            this.callbacksMap = {};
+
+            this.add = function(callback)
+            {
+                if(!callback)
+                {
+                    throw "Invalid argument";
+                }
+                var multicastId = callback.__multicastId;
+                if(!multicastId)
+                {
+                    multicastId = Multicast.counter || 0;
+                    callback.__multicastId = multicastId;
+                    ++Multicast.counter;
+                }
+
+                if(this.callbacksMap[multicastId])
+                {
+                    throw "Multicast handler already registered: " + callback;
+                }
+
+                this.callbacks.push(callback);
+                this.callbacksMap[multicastId] = true;
+
+                return multicastId;
+            };
+
+            this.remove = function(multicastId)
+            {
+                if(!this.callbacksMap[multicastId])
+                {
+                    throw "Multicast id not registered: " + multicastId;
+                }
+                var match = false;
+                for(var length = this.callbacks.length, i = 0; i < length; ++i)
+                {
+                    var callback = this.callbacks[i];
+                    if(callback.__multicastId == multicastId)
+                    {
+                        this.callbacks.splice(i, 1);
+                        match = true;
+                        break;
+                    }
+                }
+                if(!match)
+                {
+                    throw "Multicast registry inconsistent: " + multicastId;
+                }
+                delete this.callbacksMap[multicastId];
+            };
+
+            this.fire = function(args)
+            {
+                for(var length = this.callbacks.length, i = 0; i < length; ++i)
+                {
+                    this.callbacks[i](args);
+                }
+            };
+        }
+
+        //</editor-fold>
+
+        //<editor-fold desc="Application">
+        function Application(resources, defaults)
+        {
+            this.lifeViewStyle = resources.lifeViewStyle;
+
+            this.timerId = -1;
+            this.device = null;
+            this.lifeView = null;
+
+            this.run = function()
+            {
+                var hosts =_renderLayout.bind(this)();
+                _renderInfoDiv.bind(this)(hosts.headerCellElement);
+                _renderResources.bind(this)(hosts.resourcesCellElement, resources);
+
+                var deviceCanvas = document.createElement("canvas");
+                hosts.viewCellElement.appendChild(deviceCanvas);
+
+                this.device = new CanvasDevice(deviceCanvas, 800, 800);
+
+                this.lifeView = new LifeView(this.device, this.device.width, this.device.height, this.lifeViewStyle);
+                this.lifeView.setScale(4);
+                this.lifeView.centerOrigin();
+
+                var pattern;
+                if(defaults.defaultPatternName == "random")
+                {
+                    pattern = _getRandomPattern(this.device.getScaledWidth(), this.device.getScaledHeight(), [EFlavor.Dead, EFlavor.Neutral], 25);
+                }
+                else
+                {
+                    pattern = _getPattern(defaults.defaultRulesetName, defaults.defaultPatternName);
+                }
+
+                _runPattern.bind(this)(resources.rulesets[defaults.defaultRulesetName], pattern);
+
+                function _getPattern(rulesetName, patternName)
+                {
+                    var patternList = resources.patternLibrary[rulesetName];
+                    for(var length = patternList.length, i = 0; i < length; ++i)
+                    {
+                        if(patternList[i].title == patternName)
+                        {
+                            return patternList[i];
+                        }
+                    }
+                    return null;
+                }
+
+                function _renderLayout()
+                {
+                    var layoutTableElement = document.createElement("table");
+                    layoutTableElement.style.width = "1200px";
+
+                    var headerRowElement = document.createElement("tr");
+                    layoutTableElement.appendChild(headerRowElement);
+                    var rowElement = document.createElement("tr");
+                    layoutTableElement.appendChild(rowElement);
+
+                    var headerCellElement = document.createElement("td");
+                    headerCellElement.id = "header";
+                    headerCellElement.style.width = "1200px";
+                    headerCellElement.setAttribute("colspan", 2);
+                    headerRowElement.appendChild(headerCellElement);
+
+                    var resourcesCellElement = document.createElement("td");
+                    resourcesCellElement.id = "resources";
+                    resourcesCellElement.style.width = "300px";
+                    rowElement.appendChild(resourcesCellElement);
+
+                    var viewCellElement = document.createElement("td");
+                    viewCellElement.id = "view";
+                    viewCellElement.style.width = "800px";
+                    rowElement.appendChild(viewCellElement);
+
+                    document.body.appendChild(layoutTableElement);
+
+                    return {
+                        headerCellElement: headerCellElement,
+                        resourcesCellElement: resourcesCellElement,
+                        viewCellElement: viewCellElement,
+                    };
+                }
+
+                function _renderInfoDiv(host)
+                {
+                    var infoDivElement = document.createElement("div");
+                    infoDivElement.id = "infoDiv";
+                    host.appendChild(infoDivElement);
+                }
+
+                function _renderResources(host, resources)
+                {
+                    var rulesetListElement = document.createElement("ul");
+                    for(var rulesetName in resources.rulesets)
+                    {
+                        var rulesetListItemElement = document.createElement("li");
+                        rulesetListItemElement.innerHTML = rulesetName;
+                        rulesetListElement.appendChild(rulesetListItemElement);
+
+                        var patternListElement = document.createElement("ul");
+                        for(var coll = resources.patternLibrary[rulesetName], length = coll.length, i = 0; i < length; ++i)
+                        {
+                            var item = coll[i];
+                            var patternName = item.title;
+                            var timeoutMs = item.timeoutMs;
+                            var patternListItemElement = document.createElement("li");
+                            patternListElement.appendChild(patternListItemElement);
+
+                            var patternLinkElement = document.createElement("a");
+                            patternLinkElement.setAttribute("rulesetName", rulesetName);
+                            patternLinkElement.setAttribute("patternName", patternName);
+                            patternLinkElement.setAttribute("href", "javascript:void(0)");
+                            patternLinkElement.innerHTML = patternName + " (tempo: " + Math.round(1000 / timeoutMs) + ")";
+                            patternLinkElement.onclick = function(e)
+                            {
+                                e = e || window.event;
+                                e = e.target || e.srcElement;
+
+                                var rulesetName = e.getAttribute("rulesetName");
+                                var patternName = e.getAttribute("patternName");
+
+                                _runPattern.bind(this)(resources.rulesets[rulesetName], _getPattern(rulesetName, patternName));
+                            }.bind(this);
+                            patternListItemElement.appendChild(patternLinkElement);
+                        }
+
+                        var patternListItemElement = document.createElement("li");
+                        patternListElement.appendChild(patternListItemElement);
+
+                        var patternLinkElement = document.createElement("a");
+                        patternLinkElement.setAttribute("rulesetName", rulesetName);
+                        patternLinkElement.setAttribute("href", "javascript:void(0)");
+                        patternLinkElement.innerHTML = "RANDOM (tempo: 25)";
+                        patternLinkElement.onclick = function(e)
+                        {
+                            e = e || window.event;
+                            e = e.target || e.srcElement;
+
+                            var rulesetName = e.getAttribute("rulesetName");
+
+                            _runPattern.bind(this)(resources.rulesets[rulesetName], _getRandomPattern(this.device.getScaledWidth(), this.device.getScaledHeight(), [EFlavor.Dead, EFlavor.Neutral], 25));
+                        }.bind(this);
+                        patternListItemElement.appendChild(patternLinkElement);
+
+                        rulesetListItemElement.appendChild(patternListElement);
+                    }
+
+                    host.appendChild(rulesetListElement);
+                }
+
+                function _runPattern(ruleset, pattern)
+                {
+                    if(this.timerId != -1)
+                    {
+                        window.clearInterval(this.timerId);
+                        this.timerId = -1;
+                    }
+
+                    var lifeDocument = new LifeDocument();
+                    lifeDocument.setWrap(true);
+                    lifeDocument.setWrapRadius(40);
+                    lifeDocument.setInitialCells(pattern.pattern);
+                    this.lifeView.setDocument(lifeDocument);
+
+                    this.lifeView.refresh();
+                    this.device.flush();
+
+                    var infoDiv = document.getElementById("infoDiv");
+                    var stepStart;
+                    var stepEnd;
+                    var durationMs;
+                    this.timerId = window.setInterval(function()
+                    {
+                        stepStart = new Date();
+
+                        lifeDocument.nextGeneration(ruleset);
+
+                        stepEnd = new Date();
+                        durationMs = stepEnd.getTime() - stepStart.getTime();
+
+                        var sb = [];
+                        sb.push("G: ");
+                        sb.push(lifeDocument.getGeneration());
+                        sb.push("; GTS: ");
+                        sb.push(lifeDocument.getActiveCellCounts().combined);
+                        sb.push("; max size: ");
+                        sb.push(lifeDocument.getMaxWidth());
+                        sb.push(", ");
+                        sb.push(lifeDocument.getMaxHeight());
+                        sb.push("; memcells: ");
+                        sb.push(lifeDocument.getMemCellCount());
+                        sb.push("; time: ");
+                        sb.push(durationMs);
+                        sb.push(" ms");
+
+                        infoDiv.innerHTML = sb.join("");
+
+                        this.lifeView.refresh();
+                        this.device.flush();
+                    }.bind(this), pattern.timeoutMs);
+                }
+            };
+
+            this.runRandomTest = function()
+            {
+                console.log("uniform distribution test");
+                var results = [];
+                var count = 100000;
+                for(var i = 0; i < count; ++i)
+                {
+                    var hit = _math_randomIntegerInRange(0, 4);
+                    results[hit] = (results[hit] || 0) + 1;
+                }
+                console.log("=>", results);
+
+                console.log("biased fuzzy round test");
+                var step = 0.1;
+                for(var t = 1; t <= 2.1; t += step)
+                {
+                    var results = [];
+                    var count = 10000;
+                    for(var i = 0; i < count; ++i)
+                    {
+                        var hit = _math_biasedFuzzyRound(t);
+                        results[hit] = (results[hit] || 0) + 1;
+                    }
+                    console.log(t, "=>", results);
+                }
+            };
+
+            this.runExplore = function()
+            {
+                var isolationTreshold = 0, isolationTresholdMax = 3, isolationTresholdStep = 0.5;               //  x
+                var overcrowdingTreshold = 3, overcrowdingTresholdMax = 6, overcrowdingTresholdStep = 0.5;      //  y
+                var birthCondition = 1, birthConditionMax = 4, birthConditionStep = 0.5;                        //  z (slice)
+
+                var options =
+                {
+                    depth: 500,
+                    patternSize: 10,
+                    activeTreshold: 5,
+                }
+
+                //  2.135, 3.62, 3.2
+                var isolationTreshold = 2.1, isolationTresholdMax = 2.2, isolationTresholdStep = 0.01;
+                var overcrowdingTreshold = 3.5, overcrowdingTresholdMax = 3.7, overcrowdingTresholdStep = 0.01;
+
+                var deviceScale = 16;
+                var deivceSize =
+                {
+                    width: Math.ceil((isolationTresholdMax - isolationTreshold) / isolationTresholdStep) * deviceScale,
+                    height: Math.ceil((overcrowdingTresholdMax - overcrowdingTreshold) / overcrowdingTresholdStep) * deviceScale,
+                }
+
+                var count = 3;
+                var counter = 0;
+                var avgTime = 0;
+                var timerId = -1;
+                timerId = setInterval(function()
+                {
+                    if(counter > count)
+                    {
+                        clearInterval(timerId);
+                        return;
+                    }
+
+                    var start = new Date().getTime();
+                    _doSlice(3.2, "last avg time: " + avgTime + "ms; estimated total time: " + (avgTime * count / 1000) + "s");
+                    var end = new Date().getTime();
+                    var duration = end - start;
+                    ++counter;
+                    avgTime = avgTime + (duration - avgTime) / counter;
+                }, 0);
+
+                function _doTextSlice(z)
+                {
+                    var sb = [];
+                    for(var x = isolationTreshold; x <= isolationTresholdMax; x += isolationTresholdStep)
+                    {
+                        var deviceX = Math.round((x - isolationTreshold ) / isolationTresholdStep);
+                        for(var y = overcrowdingTreshold; y <= overcrowdingTresholdMax; y += overcrowdingTresholdStep)
+                        {
+                            var deviceY = Math.round((y - overcrowdingTreshold ) / overcrowdingTresholdStep);
+
+                            var testResult = _testRuleset(buildConwayFuzzyRules(x, y, z), options);
+                            sb.push("(" + deviceX);
+                            sb.push(",");
+                            sb.push(deviceY + "): ");
+                            sb.push(testResult.finite);
+                            sb.push(", ");
+                            sb.push(testResult.activeCellCountTrend * 255);
+                            sb.push(", ");
+                            sb.push(testResult.generationSizeTrend * 255);
+                            sb.push("<br />");
+                        }
+                    }
+                    document.body.innerHTML = sb.join("");
+                }
+
+//                var z = birthCondition;
+//                var timerId = -1;
+//                timerId = setInterval(function()
+//                {
+//                    if(z > birthConditionMax)
+//                    {
+//                        clearInterval(timerId);
+//                        return;
+//                    }
+//
+//                    _doSlice(z);
+//
+//                    z += birthConditionStep;
+//                }, 0);
+
+                function _doSlice(z, comment)
+                {
+                    var device = _renderBirthConditionSlice(z, comment);
+                    var r = device.lockRasterGraphics();
+                    try
+                    {
+                        for(var x = isolationTreshold; x <= isolationTresholdMax; x += isolationTresholdStep)
+                        {
+                            var deviceX = Math.round((x - isolationTreshold ) / isolationTresholdStep);
+                            for(var y = overcrowdingTreshold; y <= overcrowdingTresholdMax; y += overcrowdingTresholdStep)
+                            {
+                                var deviceY = Math.round((y - overcrowdingTreshold ) / overcrowdingTresholdStep);
+                                var testResult = _testRuleset(buildConwayFuzzyRules(x, y, z), options);
+                                var red = 0, green = 0, blue = 0;
+                                if(!testResult.finite)
+                                {
+                                    if(testResult.activeCellCountTrend <= 0)
+                                    {
+                                        blue = Math.round(-testResult.activeCellCountTrend * 255);
+                                    }
+                                    else
+                                    {
+                                        red = Math.round(testResult.activeCellCountTrend * 255);
+                                    }
+
+//                                    var orbit = 0.05;
+//                                    var value = 0.05/(Math.abs(testResult.generationSizeTrend) + orbit);
+//                                    green = Math.round(value * 255);
+                                }
+                                r.setPixel(deviceX, deviceY, red, green, blue, 255);
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        device.releaseRasterGraphics();
+                    }
+                    device.flush();
+                }
+
+                function _renderBirthConditionSlice(birthCondition, comment)
+                {
+                    var host = document.body;
+
+                    var infoDivElement = document.createElement("div");
+                    infoDivElement.innerHTML = "birthCondition: " + birthCondition + " " + (comment || "");
+                    host.appendChild(infoDivElement);
+
+                    var deviceCanvas = document.createElement("canvas");
+                    host.appendChild(deviceCanvas);
+                    var device = new CanvasDevice(deviceCanvas, deivceSize.width, deivceSize.height);
+                    device.setScale(deviceScale);
+
+                    var v = device.lockVectorGraphics();
+                    try
+                    {
+                        v.clear("white");
+                    }
+                    finally
+                    {
+                        device.releaseVectorGraphics();
+                    }
+
+                    return device;
+                }
+
+                function _testRuleset(ruleset, options)
+                {
+                    var depth = options.depth;                          //  iteration count before decision
+                    var patternSize = options.patternSize;                            //  world initial side width
+                    var activeTreshold = options.activeTreshold;        //  minimum count of active cells; when active cell count drops below this value decision is made
+
+                    var infoDiv = document.getElementById("infoDiv");
+                    var sb = [];
+
+                    var lifeDocument = new LifeDocument();
+                    lifeDocument.setInitialCells(_getRandomPattern(patternSize, patternSize, [EFlavor.Dead, EFlavor.Neutral], 25).pattern);
+
+                    var lastActiveCellCount = 0;
+                    var activeCellCountTrendValue = 0;
+                    var lastGenerationSize = 0;
+                    var generationSizeTrendValue = 0;
+                    var length = depth;
+                    var i = 0;
+                    for(; i < length; ++i)
+                    {
+                        lifeDocument.nextGeneration(ruleset);
+
+                        var activeCellCount = lifeDocument.getActiveCellCounts().combined;
+                        var activeCellCountDelta = activeCellCount - lastActiveCellCount;
+                        activeCellCountTrendValue += Math.sign(activeCellCountDelta);
+
+                        var generationSize = lifeDocument.queryGenerationSizes().combined;
+                        var generationSizeDelta = generationSize - lastGenerationSize;
+                        generationSizeTrendValue += Math.sign(generationSizeDelta);
+
+                        if(lifeDocument.getActiveCellCounts().combined < activeTreshold)
+                        {
+                            break;
+                        }
+                        lastActiveCellCount = activeCellCount;
+                        lastGenerationSize = generationSize;
+                    }
+
+                    var result =
+                    {
+                        finite: (i != length),
+                        activeCellCountTrend: activeCellCountTrendValue / i,
+                        generationSizeTrend: generationSizeTrendValue / i,
+                    };
+                    
+                    return result;
+                }
+            };
+
+            function _getRandomPattern(width, height, flavors, timeoutMs)
+            {
+                var result =
+                {
+                    title: "random",
+                    pattern: {},
+                    timeoutMs: timeoutMs,
+                    wrap: true,
+                };
+
+                for(var x = Math.ceil(-width/2), maxX = Math.floor(width/2); x < maxX; ++x)
+                {
+                    for(var y = Math.ceil(-height/2), maxY = Math.floor(height/2); y < maxY; ++y)
+                    {
+                        var flavorIndex = Math.round(Math.random() * (flavors.length - 1));
+                        var flavor = flavors[flavorIndex];
+                        if(flavor == EFlavor.Dead)
+                        {
+                            continue;
+                        }
+                        var cells = result.pattern[flavor];
+                        if(!cells)
+                        {
+                            cells = [];
+                            result.pattern[flavor] = cells;
+                        }
+                        cells.push({x: x, y: y});
+                    }
+                }
+
+                return result;
+            }
+        }
+        //</editor-fold>
+
+        //<editor-fold desc="Resources">
+        var EFlavor =
+        {
+            Dead: LifeDocument.DEAD,
+            Neutral: 1,
+            Red: 2,
+        };
+
+        var conwayRules =
+        [
+            {
+                name: "death by isolation",
+                test: function(lifeDocument, cell)
+                {
+                    var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                    return neighbourCount < 2;
+                },
+                apply: function(lifeDocument, cell)
+                {
+                    lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Dead);
+                },
+            },
+            {
+                name: "death by overcrowding",
+                test: function(lifeDocument, cell)
+                {
+                    var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                    return neighbourCount > 3;
+                },
+                apply: function(lifeDocument, cell)
+                {
+                    lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Dead);
+                },
+            },
+            {
+                name: "birth",
+                test: function(lifeDocument, cell)
+                {
+                    var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                    return neighbourCount == 3;
+                },
+                apply: function(lifeDocument, cell)
+                {
+                    var redNeighbourCount = lifeDocument.getNeighbourCount(cell.key, EFlavor.Red);
+                    if(redNeighbourCount > 1)
+                    {
+                        lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Red);
+                        return;
+                    }
+                    lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Neutral);
+                },
+            }
+        ];
+
+        var conwayRules2Mod =
+        [
+            {
+                name: "death by isolation",
+                test: function(lifeDocument, cell)
+                {
+                    var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                    return neighbourCount < 1;
+                },
+                apply: function(lifeDocument, cell)
+                {
+                    lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Dead);
+                },
+            },
+            {
+                name: "death by overcrowding",
+                test: function(lifeDocument, cell)
+                {
+                    var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                    return neighbourCount > 3;
+                },
+                apply: function(lifeDocument, cell)
+                {
+                    lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Dead);
+                },
+            },
+            {
+                name: "birth",
+                test: function(lifeDocument, cell)
+                {
+                    var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                    return neighbourCount == 2;
+                },
+                apply: function(lifeDocument, cell)
+                {
+                    lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Neutral);
+                },
+            }
+        ];
+
+        function buildConwayFuzzyRules(isolationTreshold, overcrowdingTreshold, birthCondition)
+        {
+            return [
+                {
+                    name: "death by isolation",
+                    test: function(lifeDocument, cell)
+                    {
+                        var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                        return neighbourCount < _math_biasedFuzzyRound(isolationTreshold);
+                    },
+                    apply: function(lifeDocument, cell)
+                    {
+                        lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Dead);
+                    },
+                },
+                {
+                    name: "death by overcrowding",
+                    test: function(lifeDocument, cell)
+                    {
+                        var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                        return neighbourCount > _math_biasedFuzzyRound(overcrowdingTreshold);
+                    },
+                    apply: function(lifeDocument, cell)
+                    {
+                        lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Dead);
+                    },
+                },
+                {
+                    name: "birth",
+                    test: function(lifeDocument, cell)
+                    {
+                        var neighbourCount = lifeDocument.getNeighbourCount(cell.key);
+                        return neighbourCount == _math_biasedFuzzyRound(birthCondition);
+                    },
+                    apply: function(lifeDocument, cell)
+                    {
+                        var redNeighbourCount = lifeDocument.getNeighbourCount(cell.key, EFlavor.Red);
+                        if(redNeighbourCount > 1)
+                        {
+                            lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Red);
+                            return;
+                        }
+                        lifeDocument.setCellFutureFlavor(cell.x, cell.y, EFlavor.Neutral);
+                    },
+                }
+            ];
+        }
+
+        var conway3_r_pentomino =
+        {
+            1:	//	EFlavor.Neutral
+            [
+                {x: 0, y: 0},
+                {x: 0, y: 1},
+                {x: 0, y: 2},
+                {x: 1, y: 0},
+                {x: -1, y: 1}
+            ],
+        };
+
+        var conway3_gleider =
+        {
+            1:	//	EFlavor.Neutral
+            [
+                {x: 0, y: 0},
+                {x: 1, y: 0},
+                {x: 2, y: 0},
+                {x: 2, y: 1},
+                {x: 1, y: 2}
+            ],
+        };
+
+        var conway3_acorn =
+        {
+            1:	//	EFlavor.Neutral
+            [
+                {x: 0, y: 0},
+                {x: 1, y: 0},
+                {x: 4, y: 0},
+                {x: 5, y: 0},
+                {x: 6, y: 0},
+
+                {x: 3, y: -1},
+                {x: 1, y: -2},
+            ],
+        };
+
+        var conway3_ship =
+        {
+            1:	//	EFlavor.Neutral
+            [
+                {x: 50 + 0, y: 0},
+                {x: 50 + 1, y: 0},
+                {x: 50 + 2, y: 0},
+                {x: 50 + 3, y: 0},
+
+                {x: 50 + 0, y: -1},
+                {x: 50 + 4, y: -1},
+
+                {x: 50 + 0, y: -2},
+
+                {x: 50 + 1, y: -3},
+                {x: 50 + 3, y: -3},
+            ],
+        };
+
+        var conway3_ak47reaction =
+        {
+            1:	//	EFlavor.Neutral
+            [
+                {x: 0, y: 0},
+
+                {x: -1, y: -1},
+                {x: 1, y: -1},
+
+                {x: -2, y: -2},
+                {x: 2, y: -2},
+                {x: -2, y: -3},
+                {x: 2, y: -3},
+                {x: -2, y: -4},
+                {x: 2, y: -4},
+
+                {x: -1, y: -5},
+                {x: 1, y: -5},
+
+                {x: 0, y: -6},
+
+                {x: -2, y: -8},
+                {x: -3, y: -8},
+                {x: -2, y: -9},
+                {x: -3, y: -10},
+                {x: -4, y: -10},
+                {x: -5, y: -10},
+                {x: -5, y: -11},
+
+                {x: 3, y: -10},
+                {x: 4, y: -10},
+                {x: 3, y: -11},
+                {x: 4, y: -11},
+            ],
+        };
+
+        var lifeViewStyle =
+        {
+            flavors: {}
+        };
+        lifeViewStyle.flavors[EFlavor.Neutral] = {color: {r: 0, g: 0, b: 0}};
+        lifeViewStyle.flavors[EFlavor.Red] = {color: {r: 255, g: 0, b: 0}};
+        var resources =
+        {
+            rulesets:
+            {
+                conway3: conwayRules,
+                conway2: conwayRules2Mod,
+                conwayFuzy: buildConwayFuzzyRules(2.135, 3.62, 3.2),
+            },
+            patternLibrary:
+            {
+                conway3:
+                [
+                    //	https://bitstorm.org/gameoflife/lexicon/
+                    { title: "r-pentomino", pattern: conway3_r_pentomino, timeoutMs: 25 },
+                    { title: "gleider", pattern: conway3_gleider, timeoutMs: 250 },
+                    { title: "acorn", pattern: conway3_acorn, timeoutMs: 40 },
+                    { title: "ship", pattern: conway3_ship, timeoutMs: 250 },
+                    { title: "AK47 reaction", pattern: conway3_ak47reaction, timeoutMs: 100 },
+                ],
+                conway2:
+                [
+                    { title: "r-pentomino (temp)", pattern: conway3_r_pentomino, timeoutMs: 250 },
+                ],
+                conwayFuzy:
+                [
+                    { title: "r-pentomino", pattern: conway3_r_pentomino, timeoutMs: 25 },
+                    { title: "gleider", pattern: conway3_gleider, timeoutMs: 250 },
+                ],
+            },
+            lifeViewStyle: lifeViewStyle,
+        };
+        //</editor-fold>
+
+        function onload()
+		{
+            //var defaults =
+            //{
+            //    defaultRulesetName: "conwayFuzy",
+            //    defaultPatternName: "random",
+            //};
+
+            var defaults =
+            {
+                defaultRulesetName: "conway3",
+                defaultPatternName: "r-pentomino",
+            };
+
+            var application = new Application(resources, defaults);
+            //application.runRandomTest();
+            //application.runExplore();
+            application.run();
+        }
+	</script>
+</head>
+<body onload="javascript:onload()"></body>
+</html>

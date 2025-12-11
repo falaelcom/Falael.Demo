@@ -1,0 +1,23 @@
+Your bedroom is located up high in the eastern tower of the palace. Outside your open windows lies the pine forest that belongs to your Kingdom, forming a thick green cover over the land, with only an occasional white smoke plume from an oven or a fireplace slowly carried by the air currents. At the far end you can see the grayish outlines of the Mystery Castle where your other grandfather, The Mad Herzog, lives, and some barely distinguishable mountain silhouettes behind.
+
+The arched windows you are looking through are high and beautiful. You like them alot, especially the stained glass with royal ceremony motives. You close both wings of the main window and stand in front of it for a while, admiring the fine craftsmanship of the stained glass. Here are the familiar images of the young Prince being crowned as King and the young Princess sitting by a window with a falcon on her arm. A bit lower you can see the beloved scene of the traitor who's being guillotined by the towering crimson executioner figure. Even lower, there is the orange hellfire with the burning impaled sinners, their red faces deformed in agony. You look up at the highest parts of the window, where rays of divine sliver light are pouring from the blue skies down on cute little angels soaring on white feathered wings through fluffy shiny clouds...
+
+One of the angels is holding an open book. Suddenly you have the feeling that you have seen this book elswhere. Your eyes go back down to the burning sinners. One of them also holds a book, and the images of the two books look exactly the same, which, you have no doubt, is done intentionally. You examine the book picture up close, wondering how is it possible that you have never noticed the similarity. You discover that at a certain angle there is a letter shimmering on the book's visible page: the letter <b>H</b>.
+
+@learnLetter1@
+
+You look up again and ask yourself whether the other book has the same letter on it.
+
+You have wings. You could easily fly up and check.
+
+{
+	"exits":
+	{
+		"flyUpAndCheck": "Fly up and check",
+		"continueLookingAround": "Continue looking around"
+	},
+	"knowledge":
+	{
+		"bedroomLetters1": "Secret holographic letter H"
+	}
+}

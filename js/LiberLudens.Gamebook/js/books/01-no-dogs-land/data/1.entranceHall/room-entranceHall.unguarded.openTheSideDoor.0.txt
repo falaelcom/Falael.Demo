@@ -1,0 +1,2 @@
+@@INSERT (death).entranceHall.unguarded.openTheSideDoor.0@
+

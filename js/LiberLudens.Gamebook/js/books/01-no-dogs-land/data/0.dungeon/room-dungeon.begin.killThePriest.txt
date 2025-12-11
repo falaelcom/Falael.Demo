@@ -1,0 +1,21 @@
+<illustration image="dungeon.begin.killThePriest.png" align="right" size="small" />
+
+You slowly come at him. The chains are restraining your movements, making a loud unpleasant noise in the process, but right now there's nothing you can do about it. You focus on the priest, who is still standing there like petrified in the middle of the corridor. You cannot see his face, which is well covered under a black hood. But you don't need to. You can smell the fear, and this smell tells you everything you need to know. One last clanking step and you are close enough. A second later the soft dead body falls to the floor, and you feel the salty warm taste of blood in your mouth. You quickly lick your snout.
+
+Now that there is no imminent threat for your life, you pause for a second to consider your next moves. 
+
+First of all, you are hungry as, well... as a wolf. The taste of blood and flesh on your tongue only intensifies the feeling. The idea for a little snarling feast with the dead priest makes your stomach clench in joyful excitement.
+
+But you are not sure how long it will be before reinfrocement appears for the dead guard. You made a lot of noise, and somebody could've heard it. So, maybe it would be a good idea for you to keep going.
+
+What would it be?
+
+{
+	"exits":
+	{
+		"eatThePriest": "Feast on the priest's dead body",
+		"exitDungeon": "Head towards the dungeon's exit",
+		"enterOldCell": "Get into your old cell",
+		"lookAround": "Explore the dungeon"
+	}
+}

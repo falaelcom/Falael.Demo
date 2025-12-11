@@ -1,0 +1,48 @@
+<div class="center">
+	A role playing short story
+	By Dan Lovschmidt
+	2019
+</div>
+<div class="center detail">
+	Illustrations by Danny Pavlov
+</div>
+
+<separator />
+
+<div class="center detail">
+	<b style="color: yellow;">BETA VERSION</b>
+	<i style="color: yellow;">This application is an early beta version of the game. You might experience bugs, crashes and content problems while playing. At this stage of testing and development such behaviors are normal and expected.</i>
+</div>
+
+<separator />
+
+<div class="epigraph">"A hound it was, an enormous coal-black hound, but not such a hound as mortal eyes have ever seen."</div>
+<div class="source">-- Arthur Conan Doyle</div>
+
+Well met, Reader!
+
+Welcome to "No Dog's Land" - a role playing short story where the main character is you, and where you steer the course of the action by making decisions and testing your luck! Choose your path wisely, kind Player, and may the Providence guide your steps towards a successful outcome!
+
+<separator />
+
+@@ON system::isFirstRun@
+<i>Let's start with a short introduction to the gameplay, offered in the form of questions and answers:</i>
+@@ON !system::isFirstRun@
+<i>Make your first choice by pressing one of the buttons below!</i>
+@@ENDON@
+
+{
+	"title": "No Dog's Land",
+	"coverImage": "bookCover.png",
+	"coverImageSize": "size4_3",
+	"inventory":
+	{
+		"chains": "Chains"
+	},
+	"exits":
+	{
+		"qna": "Tell me more about the game",
+		"next": "Begin!",
+		"readOn": "Read on!"
+	}
+}

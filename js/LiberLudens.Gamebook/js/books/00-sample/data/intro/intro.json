@@ -1,0 +1,20 @@
+{
+    "rooms":
+    [
+        {
+            "key": "part1.home",
+            "file": "room-part1.home.txt",
+            "duration": "15:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "part1.home"
+                }
+            ],
+            "onRoomEnter":
+            {
+            }
+        }
+    ]
+}

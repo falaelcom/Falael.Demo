@@ -1,0 +1,80 @@
+.slider
+{
+	display: inline-flex;
+
+	border: solid 1px red;
+	border-radius: 4px;
+
+	height: 21px;
+
+	background: #ffeeee;
+	color: darkred;
+
+    user-select: none;
+}
+
+.slider.highlight,
+.slider.edit
+{
+	background: #fffafa;
+}
+
+.slider.down
+{
+	background: #fef0f0;
+}
+
+.slider span.rail
+{
+    display: block;
+	height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider span.text
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    padding-left: 3px;
+}
+
+.slider span.gripper
+{
+    margin-top: -21px;
+    display: block;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 2.5px 21px 2.5px;
+    border-color: transparent transparent rgba(255, 0, 0, .5) transparent;
+}
+
+.slider.up input,
+.slider.highlight input,
+.slider.down input,
+.slider.edit span.text,
+.slider.edit span.gripper
+{
+    display: none;
+}
+.slider.edit input
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.slider.xns-disabled,
+.slider.highlight.xns-disabled,
+.slider.down.xns-disabled,
+.slider.up.xns-disabled
+{
+	border: solid 1px #808080;
+	background: #aeaeae;
+	color: lightgray;
+}

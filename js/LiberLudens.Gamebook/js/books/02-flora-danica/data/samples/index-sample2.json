@@ -1,0 +1,16 @@
+{
+    "rooms":
+    [
+        {
+            "key": "_sample3",
+            "file": "_room-sample3.txt",
+            "exits":
+            [
+                {
+                    "text": "_subdirSample1",
+                    "target": "_subdirSample1"
+                }
+            ]
+        }
+    ]
+}

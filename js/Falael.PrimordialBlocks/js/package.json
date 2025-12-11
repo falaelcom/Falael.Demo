@@ -1,0 +1,38 @@
+{
+    "name": "zen",
+    "version": "1.0.1",
+    "description": "Sample solution for the Primordial Blocks framework.",
+    "main": "zen/dion/app.js",
+    "author": {
+        "name": "Danny Apostolov",
+        "email": "daniel@falael.com",
+        "url": "http://falael.com"
+    },
+    "license": "Copyright (C) 2021 Falael Ltd.",
+    "maintainers": [
+        {
+            "email": "daniel@falael.com",
+            "name": "Danny Apostolov"
+        }
+    ],
+    "scripts": {
+        "test": "node zen/dion/app --unittest"
+    },
+    "workspaces": [
+        "pb"
+    ],
+    "_moduleAliases": {
+        "-/zz": "pb/dion",
+        "-/pb/dion": "pb/dion",
+        "-/pb/natalis": "pb/natalis",
+        "-/pb/xenesio": "pb/xenesio",
+        "-/zen/dion": "zen/dion",
+        "-/zen/natalis": "zen/natalis",
+        "-/zen/xenesio": "zen/xenesio"
+    },
+    "dependencies": {
+        "formidable": "^1.2.2",
+        "module-alias": "^2.2.1",
+        "mongodb": "^3.6.11"
+    }
+}

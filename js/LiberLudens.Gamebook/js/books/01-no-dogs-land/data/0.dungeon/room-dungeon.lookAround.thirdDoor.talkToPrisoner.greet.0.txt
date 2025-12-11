@@ -1,0 +1,9 @@
+!!! The breathing becomes more intense, then the prisoner mumbles something illegible as if in a dellirium and gets quiet again.
+
+{
+	"exits":
+	{
+		"continueTalking": "Continue talking",
+		"goAway": "Go away"
+	}
+}

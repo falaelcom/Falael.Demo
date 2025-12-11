@@ -1,0 +1,45 @@
+<template>
+    <snippet>
+        <table id="{backplane:id}" style="width: 2025px;">
+            <tr>
+                <td style="width: 1500px;"><div id="{chartHost:id}" style="width: 1500px; height: 450px;" /></td>
+                <td style="width: 525px; padding-left: 10px;"><div id="{detailHost:id}" style="width: 525px; height: 450px;" /></td>
+            </tr>
+            <tr>
+                <td style="width: 1500px;"><div id="{indicatorChartHost:id}" style="width: 1500px; height: 130px; margin-top: 1px;" /></td>
+                <td style="width: 525px; padding-left: 10px;"></td>
+            </tr>
+            <tr style="display: none">
+                <td style="width: 1500px;"><div id="{indicator2ChartHost:id}" style="width: 1500px; height: 100px; margin-top: 1px;" /></td>
+                <td style="width: 525px; padding-left: 10px;"></td>
+            </tr>
+        </table>
+    </snippet>
+    <snippet name="infoLayout">
+        <div id="{infoLabelHost:id}" style="width: 525px; min-width: 525px;" />
+        <div id="{buttonsHost:id}" style="text-align: right; width: 525px; margin-top: 15px;" />
+        <div id="{buttonsHostRow2:id}" style="text-align: right; width: 525px; margin-top: 7px;" />
+        <div id="{forexAccountHost:id}" style="width: 100%; margin-top: 15px;" />
+    </snippet>
+    <snippet name="channelAdjustLayout">
+        <div class="channelAdjustLayout">
+            <div id="{csc_channelShaper_priceSourcing_host:id}" style="text-align: right; width: 502px; margin-top: 15px;" />
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(SNR) Min Channel Spread: <span id="{csc_channelShaper_supportAndResistance_minChannelSpread_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(SNR) Derange Threshold Factor: <span id="{csc_channelShaper_supportAndResistance_derangeThresholdFactor_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(SNR) Trade Threshold Factor: <span id="{csc_channelShaper_traderSNR_ZigZag_SNR_ZigZag_trade_thresholdFactord_slider_host:id}" style="margin-left: 7px;" /></div>
+            <hr />
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) Variability Window Size: <span id="{csc_channelShaper_lineOfBestFit_variability_windowSize_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) Variability Lower Threshold (SPI1): <span id="{csc_channelShaper_lineOfBestFit_spi1_variability_lowerThreshold_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) Sd Threshold Factor (SPI2): <span id="{csc_channelShaper_lineOfBestFit_spi1_standardDeviation_thresholdFactor_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) Dead Zone Inertia Point Count: <span id="{csc_channelShaper_lineOfBestFit_deadZone_inertiaPointCount_slider_host:id}" style="margin-left: 7px;" /></div>
+            <hr />
+            <div style="text-align: right; width: 502px; margin-top: 0px; color: antiquewhite;">(LBF) Spread Threshold (Open Trade): <span id="{csc_channelShaper_traderLBF_LBF_tradeOpen_spreadThreshold_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) ldN (Open Trade): <span id="{csc_channelShaper_traderLBF_LBF_tradeOpen_ldNValue_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) sd Angle Threshold (Open Trade): <span id="{csc_channelShaper_traderLBF_LBF_tradeOpen_sdAngleThreshold_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) sd y Threshold Factor (Open Trade): <span id="{csc_channelShaper_traderLBF_LBF_tradeOpen_sdyThresholdFactor_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) sd y Threshold Factor (Close Trade): <span id="{csc_channelShaper_traderLBF_LBF_tradeClose_sdyThresholdFactor_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div style="text-align: right; width: 502px; margin-top: 10px; color: antiquewhite;">(LBF) sd Target Profit (Close Trade): <span id="{csc_channelShaper_traderLBF_LBF_tradeClose_sdTargetProfit_slider_host:id}" style="margin-left: 7px;" /></div>
+            <div id="{buttonsHost:id}" style="text-align: right; width: 502px; margin-top: 15px;" />
+        </div>
+    </snippet>
+</template>

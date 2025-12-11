@@ -1,0 +1,5 @@
+﻿TODO:
+
+BACKLOG:
+	--? `Falael.Services.DiscordService.OnReadyAsync` - `if (this.hasStarted)` - connection was lost and recovered; for best behavior also listen to the connection lost event of the discord client
+

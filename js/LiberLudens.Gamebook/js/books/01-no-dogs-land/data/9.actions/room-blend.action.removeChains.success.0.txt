@@ -1,0 +1,14 @@
+It seems to be your lucky day today, because the corridor is still empty and you can hear nothing more than the rhythmic sound of some distant water drops, and your own blood whooshing through your vains. You sit down more comfortably and get on with the shackles.
+
+@@INSERT (blend.action.removeChains).description.2@
+
+@chainsOff@
+
+@@INSERT (blend.action.removeChains).description.3@
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

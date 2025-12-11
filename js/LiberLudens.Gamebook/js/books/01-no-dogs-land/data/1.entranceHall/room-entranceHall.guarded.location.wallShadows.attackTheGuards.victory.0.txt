@@ -1,0 +1,10 @@
+!!!
+
+You killed the guards and the priest.
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

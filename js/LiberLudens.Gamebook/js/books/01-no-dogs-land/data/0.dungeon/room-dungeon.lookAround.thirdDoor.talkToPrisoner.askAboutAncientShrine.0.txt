@@ -1,0 +1,17 @@
+!!! 
+
+"You seem to know your way around. Are you familiar with the shrine-like structure nested in the rocks?" you say.
+
+Yes, he knows this place. Been there once, sent by the chaplain to dust the room. There is a secret passage leading there, through a secret door hidden behind the green banner in the entrance hall. The door blends seemlessly with the wall, one can recognize it by a slightly reddish stone marking its top right corner. To open the door one must push on this stone with some force, which triggers a hidden mechanism.
+
+{
+	"knowledge":
+	{
+		"secretPassage": "Secret passage location"
+	},
+	"exits":
+	{
+		"continueTalking": "Continue talking",
+		"goAway": "Go away"
+	}
+}

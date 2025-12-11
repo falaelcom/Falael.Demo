@@ -1,0 +1,23 @@
+!!!
+
+@@ON entranceHall.entry.fromDungeon && !entranceHall.visited@@@INSERT entranceHall.entry.fromDungeon.openTheDoor.firstTime@
+@@ON entranceHall.entry.fromDungeon && entranceHall.visited@@@INSERT entranceHall.entry.fromDungeon.openTheDoor@
+@@ON !entranceHall.visited@You take a quick look around, assessing the situation.
+@@ON entranceHall.entry.fromMezzanine@@@INSERT entranceHall.entry.fromMezzanine.goDownstairs@
+@@ON entranceHall.entry.fromSecretPassage@@@INSERT entranceHall.entry.fromSecretPassage.throughTheHiddenDoor@
+@@ON !entranceHall.visited@@@INSERT entranceHall.entry.firstTime.roomDescription@
+@@ON !entranceHall.entry.fromSecretPassage && knowledge::secretPassage, onlyOnce(entranceHall.entry.firstTime.greenBannerDescription)@@@INSERT entranceHall.entry.firstTime.greenBannerDescription@
+@@ON (entranceHall.entry.fromDungeon || entranceHall.entry.fromMezzanine) && !entranceHall.visited@@@INSERT entranceHall.entry.fromDungeonOrMezzanine.guardsDescription.firstTime@
+@@ON entranceHall.entry.fromSecretPassage@@@INSERT entranceHall.entry.fromSecretPassage.guardsDescription@
+@@ENDON@
+
+@@ON (entranceHall.entry.fromDungeon || entranceHall.entry.fromMezzanine) && !entranceHall.visited@@@INSERT entranceHall.entry.fromDungeon.moveInTheShadows.firstTime@
+@@ON (entranceHall.entry.fromDungeon || entranceHall.entry.fromMezzanine) && entranceHall.visited@@@INSERT entranceHall.entry.fromDungeon.moveInTheShadows@
+@@ENDON@
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

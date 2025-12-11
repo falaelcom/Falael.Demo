@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>Falael.Forex</Name>
+    <RootNamespace>Falael.Forex</RootNamespace>
+    <NodeExePath>C:\Program Files\nodejs\node.exe</NodeExePath>
+    <NodeExeArguments>--napi-modules</NodeExeArguments>
+    <ScriptArguments>-e win64dev -b full</ScriptArguments>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>f8c39024-30c1-430b-863d-de44c731ce64</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>dion\dion.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.\dion</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ProjectFiles</ProjectView>
+    <NodejsPort>80</NodejsPort>
+    <StartWebBrowser>False</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="dion\commands\Data\GetForexMetadataCommand.js" />
+    <Compile Include="dion\commands\Data\GetForexDataStatsCommand.js" />
+    <Compile Include="dion\commands\Data\GetForexSampledDataCommand.js" />
+    <Compile Include="dion\commands\Data\GetForexDataBoundariesCommand.js" />
+    <Compile Include="dion\commands\Data\GetForexTickDataCompactCommand.js" />
+    <Compile Include="dion\commands\Data\GetForexTickDataCommand.js" />
+    <Compile Include="dion\commands\Simulation\SimulateChannelTradeCommand.js" />
+    <Compile Include="dion\ptest.js" />
+    <Compile Include="dion\internal\DbCache.js" />
+    <Compile Include="dion\internal\Locking.js" />
+    <Compile Include="dion\commands\Maintenance\RefreshBasicIndicatorCommand.js" />
+    <Compile Include="dion\commands\Maintenance\RefreshForexSampledDataCommand.js" />
+    <Compile Include="dion\commands\Maintenance\ImportTruefxCommand.js" />
+    <Compile Include="dion\commands\Manifest\ListCommandsCommand.js" />
+    <Compile Include="dion\commands\Test\TextResponse2Command.js" />
+    <Compile Include="dion\commands\Test\TextResponse1Command.js" />
+    <Compile Include="dion\commands\Test\BinaryResponse2Command.js" />
+    <Compile Include="dion\commands\Test\JsonCommand.js" />
+    <Compile Include="dion\commands\Test\BinaryResponse1Command.js" />
+    <Compile Include="dion\commands\Test\StreamResponseCommand.js" />
+    <Compile Include="dion\commands\Test\UploadCommand.js" />
+    <Compile Include="dion\commands\Test\StreamCommand.js" />
+    <Compile Include="dion\commands\Test\PostCommand.js" />
+    <Compile Include="dion\commands\Test\RunCommand.js" />
+    <Compile Include="dion\commands\Test\{param}\RunCommand.js" />
+    <Compile Include="dion\shared\Range.js" />
+    <Compile Include="dion\framework\InvalidValueException.js" />
+    <Compile Include="dion\framework\UnexpectedException.js" />
+    <Compile Include="dion\framework\IoException.js" />
+    <Compile Include="dion\framework\DbException.js" />
+    <Compile Include="dion\framework\TimeoutException.js" />
+    <Compile Include="dion\framework\EDateTimeUnit.js" />
+    <Compile Include="dion\framework\FormatException.js" />
+    <Compile Include="dion\framework\CommandData.js" />
+    <Compile Include="dion\framework\CommandResult.js" />
+    <Compile Include="dion\framework\EErrorToClientPolicy.js" />
+    <Compile Include="dion\framework\DionException.js" />
+    <Compile Include="dion\framework\__Utility.Async.js" />
+    <Compile Include="dion\framework\__Utility.Object.js" />
+    <Compile Include="dion\shared\Exception.js" />
+    <Compile Include="dion\shared\Histogram.js" />
+    <Compile Include="xenesio\engine\forex\robot_v7\EForexChannelLocationV7.js" />
+    <Compile Include="dion\shared\Queue.js" />
+    <Compile Include="xenesio\engine\forex\robot_v7\ForexTradeEngineV7.js" />
+    <Compile Include="xenesio\engine\forex\robot_v7\ForexTradeSensorV7_Channel.js" />
+    <Compile Include="dion\shared\Simulator.js" />
+    <Compile Include="dion\testing\test-mongo.js" />
+    <Compile Include="dion\testing\test-promise-exceptions.js" />
+    <Compile Include="dion\testing\test-stream.js" />
+    <Compile Include="dion\dion.js" />
+    <Compile Include="dion\framework\RestEndpointException.js" />
+    <Compile Include="dion\framework\ResponseTypeException.js" />
+    <Compile Include="dion\framework\ArgumentNullException.js" />
+    <Compile Include="dion\framework\Configuration.js" />
+    <Compile Include="dion\framework\ConfigurationException.js" />
+    <Compile Include="dion\framework\DuplicateKeyException.js" />
+    <Compile Include="dion\framework\ECliBodyParserType.js" />
+    <Compile Include="dion\framework\EResponseType.js" />
+    <Compile Include="dion\framework\EHttpBodyParserType.js" />
+    <Compile Include="dion\framework\EHttpMethod.js" />
+    <Compile Include="dion\framework\CliProtocol.js" />
+    <Compile Include="dion\framework\ArgumentException.js" />
+    <Compile Include="dion\framework\ELoggerTarget.js" />
+    <Compile Include="dion\framework\ELoggerLevel.js" />
+    <Compile Include="dion\framework\LoggerFastifyProxy.js" />
+    <Compile Include="dion\framework\Logger.js" />
+    <Compile Include="dion\framework\ValidationFailedException.js" />
+    <Compile Include="dion\framework\Stream.js" />
+    <Compile Include="dion\framework\Protocol.js" />
+    <Compile Include="dion\framework\RestProtocol.js" />
+    <Compile Include="dion\framework\InvalidOperationException.js" />
+    <Compile Include="dion\framework\Utility.js" />
+    <Compile Include="dion\framework\__Utility.Type.js" />
+    <Compile Include="dion\framework\__Utility.Fs.js" />
+    <Compile Include="dion\framework\CommandRegistry.js" />
+    <Compile Include="dion\framework\NotImplementedException.js" />
+    <Compile Include="dion\framework\Command.js" />
+    <Compile Include="xenesio\engine\forex\ForexSimulatedDataChannel.js" />
+    <Compile Include="xenesio\engine\forex\ForexDataChannel.js" />
+    <Compile Include="xenesio\engine\forex\ForextFeedChartDataSource.js" />
+    <Compile Include="xenesio\engine\forex\ForextDbChartDataSource.js" />
+    <Compile Include="xenesio\engine\forex\EForexTimePassage.js" />
+    <Compile Include="xenesio\engine\forex\EForexPositionType.js" />
+    <Compile Include="xenesio\engine\forex\ForexAccountSlippageSimulator.js" />
+    <Compile Include="xenesio\engine\forex\ForexBrokerClient_Simulated.js" />
+    <Compile Include="xenesio\engine\forex\ForexDataBase.js" />
+    <Compile Include="xenesio\engine\forex\ForexDbDataChannel.js" />
+    <Compile Include="xenesio\engine\forex\ForexPosition.js" />
+    <Compile Include="xenesio\engine\forex\ForexAccount_Oanda_Simulated.js" />
+    <Compile Include="xenesio\engine\ForexAccountUserControl.js" />
+    <Compile Include="xenesio\engine\forex\robot-sample-code.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\EForexLandscapeActionType.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\EForexFeatureType.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexChannel.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexAgent.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexAgent_Channels.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexAgent_TradeDecisions.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexAgent_TrendLines.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexRobot.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexMessageBus.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexLandscape.js" />
+    <Compile Include="xenesio\engine\forex\robot_v2\ForexAgent_Extremums.js" />
+    <Compile Include="xenesio\engine\forex\robot_v3\ForexDataPointV3.js" />
+    <Compile Include="xenesio\engine\forex\robot_v3\EForexFeatureStatusV3.js" />
+    <Compile Include="xenesio\engine\forex\robot_v3\V3Rater.js" />
+    <Compile Include="xenesio\engine\forex\robot_v3\V3RaterComposite.js" />
+    <Compile Include="xenesio\engine\forex\robot_v3\V3Rater_TrendLine_Concentration.js" />
+    <Compile Include="xenesio\engine\forex\robot_v3\V3Rater_TrendLine_Length.js" />
+    <Compile Include="xenesio\engine\forex\robot_v3\ForexRobotV3.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\EExtremumTypesV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\EForexPositionCloseReasonV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\EForexFeatureStatusV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexDataPointV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexFeatureV4_Extremums.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexFeatureV4_TrendLine.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexFeatureVisualiserV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\EForexRobotStateV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexGeneticSimulatorV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexRobotFactoryV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexRobotTradeConfigV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexShaperV4_SignificantValleys.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexShaperV4_SignificantPeaks.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexShaperV4_TrendLine.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexShaperV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v4\ForexRobotV4.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ETransactionTypeV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\EDecisionTypeV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\EDataPointSelectorV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\EPriceSourcingV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\EExtremumTypesV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\EForexFeatureStatusV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexDataPointV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexFeatureV5_Channel.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexFeatureVisualiserV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexRangerV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexRobotV5_ChannelChain_GeneticSimulator.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexRobotV5_ChannelChain_Factory.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexRobotV5_ChannelChain.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexTraderV5_Channel_SNR_ZigZag.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexTraderV5_Channel_LBF.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexTraderV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexShaperV5_Channel_Obsolete.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexShaperV5_Channel.js" />
+    <Compile Include="xenesio\engine\forex\robot_v5\ForexShaperV5.js" />
+    <Compile Include="xenesio\engine\forex\robot_v6\ForexShaperV6.js" />
+    <Compile Include="xenesio\engine\forex\robot_v6\ForexShaper_PredictorV6.js" />
+    <Compile Include="dion\shared\Sample.js" />
+    <Compile Include="dion\shared\ArrayMapper.js" />
+    <Compile Include="dion\shared\ArrayView.js" />
+    <Compile Include="dion\shared\DataBuffer.js" />
+    <Compile Include="xenesio\engine\forex\robot_v7\ForexLandscapeShaperV7.js" />
+    <Compile Include="xenesio\engine\forex\robot_v7\ForexChannelV7.js" />
+    <Compile Include="dion\shared\HashSet.js" />
+    <Compile Include="xenesio\engine\framework\Dictionary.js" />
+    <Compile Include="xenesio\engine\framework\data\DataRegion.js" />
+    <Compile Include="xenesio\engine\framework\InvalidOperationException.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\visualizers\ChartMovementHistogramVisualizer.js" />
+    <Compile Include="xenesio\engine\framework\XenesioException.js" />
+    <Compile Include="xenesio\engine\framework\NotImplementedException.js" />
+    <Compile Include="xenesio\engine\framework\Sync.js" />
+    <Compile Include="xenesio\engine\framework\data\DataQuery.js" />
+    <Compile Include="xenesio\engine\framework\Deferrer.js" />
+    <Compile Include="xenesio\engine\framework\DelegateRegistry.js" />
+    <Compile Include="xenesio\engine\framework\obsolete\MappedArray.js" />
+    <Compile Include="xenesio\engine\framework\ui\TabControl.js" />
+    <Compile Include="xenesio\engine\framework\ui\Slider.js" />
+    <Compile Include="xenesio\engine\framework\ui\SliderBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\SliderVisual.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartDataSource_Buffer.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\controllers\ChartIndicatorsController.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\controllers\ChartHorizontalPanZoomController.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\markers\ChartLineMarker.js" />
+    <Compile Include="xenesio\engine\framework\ui\PanelVisual.js" />
+    <Compile Include="xenesio\engine\framework\ui\MultiViewVisual.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\series\ChartAreaSeries.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\markers\ChartChannelZoneMarker.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\ChartHorizontalRangeIndicator.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\behaviors\ChartHorizontalRangeSelectBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartDataSeries.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\series\ChartHeatMapSeries.js" />
+    <Compile Include="xenesio\engine\framework\ui\ListView.js" />
+    <Compile Include="xenesio\engine\framework\ui\listView\ListViewBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\listView\ListViewVerticalLayout.js" />
+    <Compile Include="xenesio\engine\framework\ui\listView\ListViewLayout.js" />
+    <Compile Include="xenesio\engine\framework\ui\listView\ListViewItem.js" />
+    <Compile Include="xenesio\engine\framework\ui\ListViewVisual.js" />
+    <Compile Include="dion\shared\LinearFunction.js" />
+    <Compile Include="xenesio\engine\framework\Utility.Format.js" />
+    <Compile Include="xenesio\engine\TransformExplorerChartUserControl.js" />
+    <Compile Include="xenesio\engine\SimulationChartUserControl.js" />
+    <Compile Include="xenesio\engine\MainChartUserControl.js" />
+    <Compile Include="xenesio\engine\forex\ForexAfx.js" />
+    <Compile Include="xenesio\engine\forex\ForexAccount.js" />
+    <Compile Include="xenesio\engine\forex\ForexBrokerClient.js" />
+    <Compile Include="xenesio\engine\forex\robot_v1\ForexRobot_TrendLineDetector_Obsolete.js" />
+    <Compile Include="xenesio\engine\forex\robot_v1\ForexRobot_Obsolete.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartPersistentStorage.js" />
+    <Compile Include="xenesio\engine\App.js" />
+    <Compile Include="xenesio\engine\framework\Boot.Pass1.js" />
+    <Compile Include="xenesio\engine\framework\Boot.Pass2.js" />
+    <Compile Include="xenesio\engine\framework\SimpleDuration.js" />
+    <Compile Include="xenesio\engine\framework\http\DionJsonSerializationError.js" />
+    <Compile Include="xenesio\engine\framework\http\DionValidateError.js" />
+    <Compile Include="xenesio\engine\framework\http\DionHttpError.js" />
+    <Compile Include="xenesio\engine\framework\http\DionJsonSyntaxError.js" />
+    <Compile Include="xenesio\engine\framework\http\DionClientError.js" />
+    <Compile Include="xenesio\engine\framework\http\DionClient.js" />
+    <Compile Include="xenesio\engine\framework\http\EHttpBodyParserType.js" />
+    <Compile Include="xenesio\engine\framework\http\EHttpMethod.js" />
+    <Compile Include="xenesio\engine\framework\http\EResponseType.js" />
+    <Compile Include="xenesio\engine\framework\MulticastDelegate.js" />
+    <Compile Include="xenesio\engine\framework\OfflineStorage.js" />
+    <Compile Include="xenesio\engine\framework\ui\ButtonBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\Button.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\markers\ChartLinearZoneMarker.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\behaviors\ChartKeyboardBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\markers\ChartPointMarker.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\EChartAxisRole.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\EChartRange2DIndicatorState.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\behaviors\ChartRangeCudBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\ChartRange2DIndicator.js" />
+    <Compile Include="xenesio\engine\framework\ui\LabelVisual.js" />
+    <Compile Include="xenesio\engine\framework\ui\TwoGraphicsDevice.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartLineStyle.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartLabelStyle.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartNumericAxis.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartDateTimeAxis.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\behaviors\ChartPanZoomBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\behaviors\ChartIndicatorsBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\behaviors\ChartAxisPanZoomBehavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\ChartVisual.js" />
+    <Compile Include="xenesio\engine\framework\ui\ButtonVisual.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartAspectRegistry.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartAspectedCache.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\ChartAxisRangeIndicator.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\ChartAxisLabelIndicator.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\ChartLabelIndicator.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\ChartAxisLineIndicator.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\indicators\ChartLineIndicator.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\series\ChartLineSeries.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartOverlay.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartSeries.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartDataSource.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartDataRange.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartBackplane.js" />
+    <Compile Include="xenesio\engine\framework\Collection.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartStyleSheet.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartNode.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartElement.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartScene.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\ChartAxis.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\EChartVAlign.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\EChartHAlign.js" />
+    <Compile Include="xenesio\engine\framework\EDateTimeUnit.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\EChartTickType.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\EChartDeviceType.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\EChartDataType.js" />
+    <Compile Include="xenesio\engine\framework\ui\chart\EChartAxisPosition.js" />
+    <Compile Include="xenesio\engine\framework\ui\ControlCollection.js" />
+    <Compile Include="xenesio\engine\framework\ui\EBrowserEventType.js" />
+    <Compile Include="xenesio\engine\framework\ui\Behavior.js" />
+    <Compile Include="xenesio\engine\framework\ui\Control.js" />
+    <Compile Include="xenesio\engine\framework\Utility.Type.js" />
+    <Compile Include="xenesio\engine\framework\Utility.IO.js" />
+    <Compile Include="xenesio\engine\framework\XhtmlTemplate.js" />
+    <Compile Include="xenesio\engine\Program.js" />
+    <Compile Include="xenesio\engine\StdAfx.js" />
+    <Compile Include="xenesio\engine\vendor\ajv.min.js" />
+    <Compile Include="xenesio\engine\vendor\async.min.js" />
+    <Compile Include="xenesio\engine\vendor\cardinal-spline-js-curve_calc.min.js" />
+    <Compile Include="xenesio\engine\vendor\dspUtils.js" />
+    <Compile Include="xenesio\engine\vendor\discreteFourierTransform.js" />
+    <Compile Include="xenesio\engine\vendor\moment-timezone-with-data.js" />
+    <Compile Include="xenesio\engine\vendor\moment.min.js" />
+    <Compile Include="xenesio\engine\vendor\rbtree.js" />
+    <Compile Include="xenesio\engine\vendor\taira.js" />
+    <Compile Include="xenesio\engine\vendor\two.js" />
+    <Content Include="dion\configuration.json" />
+    <Content Include="dion\package-lock.json" />
+    <Content Include="dion\package.json" />
+    <Content Include="dion\shared\Pool.js" />
+    <Content Include="dion\shared\robot_v81\Qmath.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="dion\shared\robot_v81\LongPositionV81.js" />
+    <Content Include="dion\shared\robot_v81\AlgoV81.js" />
+    <Content Include="dion\shared\robot_v81\SimulatorV81.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="dion\testing\checksum.txt" />
+    <Content Include="dion\testing\config.test - Copy.json" />
+    <Content Include="dion\testing\config.test.json" />
+    <Content Include="dion\testing\configuration-snippet1.json" />
+    <Content Include="dion\testing\configuration.json" />
+    <Content Include="dion\testing\test.bin" />
+    <Content Include="dion\testing\test.json" />
+    <Content Include="dion\testing\test.pdf" />
+    <Content Include="dion\testing\test.psd" />
+    <Content Include="xenesio\index.html" />
+    <Content Include="xenesio\resources\app.layout.css" />
+    <Content Include="xenesio\resources\ForexAccountUserControl.positionListItem.xhtml" />
+    <Content Include="xenesio\resources\ForexAccountUserControl.css" />
+    <Content Include="xenesio\resources\ForexAccountUserControl.xhtml" />
+    <Content Include="xenesio\resources\framework\tabControlVisual.plain.css" />
+    <Content Include="xenesio\resources\framework\sliderVisual.horizontal.css" />
+    <Content Include="xenesio\resources\framework\sliderVisual.horizontal.xhtml" />
+    <Content Include="xenesio\resources\framework\labelVisual.plain.css" />
+    <Content Include="xenesio\resources\framework\panelVisual.plain.css" />
+    <Content Include="xenesio\resources\framework\panelVisual.plain.xhtml" />
+    <Content Include="xenesio\resources\framework\multiViewVisual.plain.xhtml" />
+    <Content Include="xenesio\resources\framework\listViewVisual.verticalLayout.container.xhtml" />
+    <Content Include="xenesio\resources\framework\listViewVisual.verticalLayout.item.xhtml" />
+    <Content Include="xenesio\resources\framework\listViewVisual.css" />
+    <Content Include="xenesio\resources\framework\listViewVisual.verticalList.css" />
+    <Content Include="xenesio\resources\framework\listViewVisual.verticalList.xhtml" />
+    <Content Include="xenesio\resources\TransformExplorerChartUserControl.css" />
+    <Content Include="xenesio\resources\TransformExplorerChartUserControl.xhtml" />
+    <Content Include="xenesio\resources\SimulationChartUserControl.css" />
+    <Content Include="xenesio\resources\MainChartUserControl.css" />
+    <Content Include="xenesio\resources\SimulationChartUserControl.xhtml" />
+    <Content Include="xenesio\resources\MainChartUserControl.xhtml" />
+    <Content Include="xenesio\resources\framework\buttonVisual.textButton.css" />
+    <Content Include="xenesio\resources\framework\buttonVisual.textButton.xhtml" />
+    <Content Include="xenesio\resources\app.css" />
+    <Content Include="xenesio\resources\app.css" />
+    <Content Include="xenesio\resources\favicon.ico" />
+    <Content Include="xenesio\resources\favicon.ico" />
+    <Content Include="xenesio\resources\framework\multiViewVisual.plain.css" />
+    <Content Include="xenesio\resources\framework\labelVisual.plain.xhtml" />
+    <Content Include="xenesio\test-bookCover.png" />
+    <Content Include="xenesio\test-index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dion\" />
+    <Folder Include="dion\commands\Maintenance\" />
+    <Folder Include="dion\commands\Manifest\" />
+    <Folder Include="dion\commands\Data\" />
+    <Folder Include="dion\commands\Simulation\" />
+    <Folder Include="dion\internal\" />
+    <Folder Include="dion\commands\Test\" />
+    <Folder Include="dion\commands\Test\{param}\" />
+    <Folder Include="dion\framework\" />
+    <Folder Include="dion\commands\" />
+    <Folder Include="dion\httpupload\" />
+    <Folder Include="dion\shared\" />
+    <Folder Include="dion\testing\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="xenesio\" />
+    <Folder Include="xenesio\engine\" />
+    <Folder Include="dion\shared\robot_v81\" />
+    <Folder Include="xenesio\engine\forex\robot_v7\" />
+    <Folder Include="xenesio\engine\forex\robot_v6\" />
+    <Folder Include="xenesio\engine\forex\robot_v5\" />
+    <Folder Include="xenesio\engine\forex\robot_v4\" />
+    <Folder Include="xenesio\engine\forex\robot_v3\" />
+    <Folder Include="xenesio\engine\forex\robot_v1\" />
+    <Folder Include="xenesio\engine\forex\robot_v2\" />
+    <Folder Include="xenesio\engine\framework\" />
+    <Folder Include="xenesio\engine\framework\http\" />
+    <Folder Include="xenesio\engine\framework\data\" />
+    <Folder Include="xenesio\engine\framework\obsolete\" />
+    <Folder Include="xenesio\engine\framework\ui\" />
+    <Folder Include="xenesio\engine\framework\ui\chart\" />
+    <Folder Include="xenesio\engine\forex\" />
+    <Folder Include="xenesio\engine\framework\ui\chart\behaviors\" />
+    <Folder Include="xenesio\engine\framework\ui\chart\markers\" />
+    <Folder Include="xenesio\engine\framework\ui\chart\controllers\" />
+    <Folder Include="xenesio\engine\framework\ui\chart\visualizers\" />
+    <Folder Include="xenesio\engine\framework\ui\chart\series\" />
+    <Folder Include="xenesio\engine\framework\ui\chart\indicators\" />
+    <Folder Include="xenesio\engine\framework\ui\listView\" />
+    <Folder Include="xenesio\engine\vendor\" />
+    <Folder Include="xenesio\resources\" />
+    <Folder Include="xenesio\resources\framework\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

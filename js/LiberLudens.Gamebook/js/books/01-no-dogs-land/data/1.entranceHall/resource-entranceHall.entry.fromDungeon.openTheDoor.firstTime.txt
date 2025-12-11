@@ -1,0 +1,5 @@
+@@DEF entranceHall.entry.fromDungeon.openTheDoor.firstTime@
+
+With extremely slow and precise movements you open the door only as much as you need to slide sideways through it. The door hindges are well lubricated, and you exhale with relief, also lowering this way the volume of your enormous chest and making yourself thinner. You squeeze yourself through the slit without taking your eyes off the group of people standing in the middle of the hall, their backs turned to you. There are three of them - the guard and the priest that you heard talking moments ago, and one more soldier.
+
+@@ENDDEF@

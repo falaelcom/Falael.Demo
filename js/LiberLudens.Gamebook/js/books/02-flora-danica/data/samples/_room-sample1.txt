@@ -1,0 +1,27 @@
+@@DEF testText@
+
+TEST
+
+@@ENDDEF@
+
+aaaa   bbb
+zzz
+
+&commat;
+&lt;
+
+rrrrrr
+
+[@insertHere_jsonTextDef@]
+
+{
+	"title": "SAMPLE ROOM 1 TITLE",
+	"coverImage": "sampleCover.jpg",
+	"coverImageSize": "size16_9",
+	"exits":
+	{
+		"_sample2": "To Sample 2",
+		"_hubSample1": "To Hub Sample 1",
+		"_sample3": "To Sample 3 (include test)"
+	}
+}

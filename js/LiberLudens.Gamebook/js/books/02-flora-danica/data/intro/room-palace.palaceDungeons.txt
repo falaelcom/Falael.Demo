@@ -1,0 +1,37 @@
+﻿The Palace dungeouns are exactly what the name implies: a tangle of dark tunnels and dingy cells burried deep underneath the Palace. The dungeons are hardly ever used for anything - the last prisoner held there was the Wolf, and this happened many years ago, before you were even born. 
+
+You have been there several times, though, following your affection for darkness, moisture and mold. After your return from Lower Wirmington you spent almost a whole week hibernating in a cell until you regained strength and felt that you are ready to return to the life in the Woods.
+
+You go down the writhing stone stairwell. From some point on the light becomes too dim, and your night vision kicks in. The sound of your steps echoes omnious. One more turn and there it is - the heavy, rusty iron gate, secured with a lock. Through the gate bars you can see the faint orange glow of a torch hidden from your sight behind a corner. You can also see the tunnel that begins behind the gate, with several cell doors on both sides and a couple openings to side tunnels.
+
+You grab a short piece of iron hanging on a chain beside the gate and start banging relentlessly. The deafening sound echoes back and forth, overlapping in an almost unberable cacophony.
+
+"What? What? What is it?" a panicked voice shrieks in the darkness. You stop hitting the iron. "Who is it?"
+
+"It's me, Margarita," you reply. At the same moment the humped figure of the Rat, the dungeon keeper, appears hurriedly from one of the side exits to the main tunnel, his tiny paws pacing, his eyes sparkling, his nose sniffing.
+
+"Oh, it's you, Princess!" the Rat exclaims merrily and quickly pulls out of his pockets a huge rattling keychain. Being the only soul on this world who shows any interest in his underground domain, you are his favorite person and probably his only friend.
+
+The key turns in the keyhole, and the door opens with a chilling screech. The Rat bows respecfully. You step through the gate and say: "Glad to see you, old rat. How are you these days?"
+
+"I'm fine, I'm fine!" he starts to prattle. "Been there cleaning up a pipe. Pipes always get clogged. Need to unclog them. So many pipes and sewers, if I don't clean them the sewage pours into the tunnels. There's only one tunnel that has no pipes. My favorite tunnel. It's always clean from the rain water. It cleans itself. My favorite tunnel!"
+
+"Rainwater?" you ask, still standing next to the Rat at the dungeon gate. "There should be not rainwater in the dungeons! If there is, we should find the breach in the walls and do some repairs!"
+
+"No, no, no," the Rat wrings his hands then suddenly turns around and starts waking down the main tunnel. "There is no breach. It's the crack in the rocks, it's the crack in the rocks, you cannot repair a crack in the rocks!"
+
+You follow him. "What rocks?" you inquire. To your knowledge there are no rocks above the dungeon, only the Palace's floors.
+
+"The rocks, the rocks." The Rat stops abruptly and opens one of the cell doors. You look inside and recognize the place that you used as a residence during your last stay here. "Look what I've got for you!" And he slpis inside the cell. Then he opens an old chest standing in the corner and takes out a glittering silvery thing, which unfolds and reveals to be a magnificent light chainmail.
+
+"Oh my God, this is wonderful!" you exclaim. You take the chainmail and test the fine mesh with your fingers. It's lightweight and thin but feels strong and durable. You turn it around. It even has openings on the back for your wings! You definitely could wear this armor underneath your leather suit <i>(might: +10, speed: -2)</i>.
+
+Do you want to use it?
+
+{
+	"exits":
+	{
+		"takeChainMail": "Use the chainmail",
+		"ignoreChainMail": "No, thank you"
+	}
+}

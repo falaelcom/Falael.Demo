@@ -1,0 +1,98 @@
+{
+    "mainRoomKey": "begin.0",
+    "restartRoomKey": "begin.rewind.0",
+    "defaultStanceKey": "afoot",
+    "speedPointsToKmH":  0.2,
+    "include":
+    [
+        "0.dungeon/dungeon.json",
+        "1.entranceHall/entranceHall.json",
+        "2.mezzanine/mezzanine.json",
+        "3.secretPassage/secretPassage.json",
+        "9.actions/action-removeChains.json"
+    ],
+    "stances":
+    {
+        "afoot": {}
+    },
+    "rooms":
+    [
+        { "file": "resource-common.txt", "type": "resource" },
+        { "file": "resource-death.txt", "type": "resource" },
+        { "file": "resource-global.aventurineRingText.txt", "type": "resource" },
+        {
+            "key": "begin.0",
+			"type": "text",
+            "file": "room-begin.0.txt",
+            "exits":
+            [
+                {
+                    "text": "qna",
+                    "target": "begin.qna.0",
+					"condition": { "isFirstRun": false }
+                },
+                {
+                    "text": "next",
+                    "target": "begin.1",
+					"condition": { "isFirstRun": false }
+                },
+                {
+                    "text": "readOn",
+                    "target": "begin.qna.0",
+					"condition": { "isFirstRun": true }
+                }
+            ]
+        },
+        {
+            "key": "begin.rewind.0",
+			"type": "text",
+            "file": "room-begin.rewind.0.txt",
+            "exits":
+            [
+                {
+                    "text": "next",
+                    "target": "begin.1"
+                }
+            ]
+        },
+        {
+            "key": "begin.1",
+			"type": "redirect",
+            "target": "dungeon.begin.0",
+            "dateTime": "1117.04.02;11:20:00",
+            "onRoomEnter":
+            {
+				"silent": true,
+                "changeHealth": 115,
+                "changeEnergy": 0,
+                "changeMight": 50,
+                "changeSpeed": 40,
+                "changeStance": "afoot",
+                "addInventory":
+                [
+                    {
+                        "key": "chains",
+                        "quantity": 1,
+                        "properties":
+                        {
+                            "speed": -35,
+                            "might": -43
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "key": "begin.qna.0",
+			"type": "text",
+            "file": "room-begin.qna.0.txt",
+            "exits":
+            [
+                {
+					"text": "next",
+                    "target": "begin.1"
+                }
+           ]
+        }
+	]
+}

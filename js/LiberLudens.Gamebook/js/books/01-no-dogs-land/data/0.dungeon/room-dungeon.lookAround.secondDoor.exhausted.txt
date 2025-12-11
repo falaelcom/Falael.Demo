@@ -1,0 +1,15 @@
+!!! You enter the empty cell.
+
+You could stick around for a little bit longer and give yourself over to sorrow... Or you can remember that you are this bulky beast with a strong wolfy nature! Sorrow is a word you never use, the clock is thicking, and you better keep going if you wish to escape this dreadful bastion of religious fanaticism!
+
+@blend.actions.final@
+
+What would it be?
+
+{
+	"exits":
+	{
+		"stay": "Stay",
+		"go": "Go back to the corridor"
+	}
+}

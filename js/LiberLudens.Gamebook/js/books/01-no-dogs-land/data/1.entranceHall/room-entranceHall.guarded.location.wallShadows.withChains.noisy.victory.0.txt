@@ -1,0 +1,14 @@
+!!!
+
+@@ON entranceHall.priestFled@
+The guards are dead. The priest has fled bravely. Now you have time to have a look around.
+@@ON !entranceHall.priestFled@
+You killed the guards and the priest. Now you have time to have a look around.
+@@ENDON@
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

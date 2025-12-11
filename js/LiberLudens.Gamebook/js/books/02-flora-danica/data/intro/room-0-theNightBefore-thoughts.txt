@@ -1,0 +1,36 @@
+The rythm of your even steps calms your mind, and for a while you enter a light meditative state. After a short time random thoughts start popping up in the silent space of your mind, dissipating immediately to free room for new ones:
+
+"...my name is Margarita the Atramentous Reptile..."
+
+"...I'm the heir apparent to the throne of the Kingdom of the Woods..."
+
+"...I'm also an heir to the throne of the Underworld Domain..."
+
+"...it seems that grandfather King Zybar has no plans to retire in the forseeable future, so most likely it will take a long time before I accede the throne of the Underworld Domain..."
+
+"...my father Flesh, King of the Woods and my mother Veronica, Queen of the Woods, are definitely getting older; last year they discussed retirement options..."
+
+"...father wants to move to the semi-active vulcano New Kilauea, where, rumor has it, crystals of unseen beauty can be harvested from the depths of the enormous cave system that lies nearby..."
+
+"...mother is more of an LA<span class="footnoteAsterisk">*</span> fan; she insists that LA will offer better accommodation and hygiene options..."
+
+"...I don't see myself sitting all day in a throne and running a country..."
+
+"...I need change!"
+
+As if in response to your thoughts the texture of the road under your feet changes. Marble pavement replaces the soft pine-needle covering. The path takes a turn, and suddenly there are no more trees. Before your eyes lies the well-kept lawn surrounding the walls of the Royal Palace. The portcullis is open and two soldiers from the Royal Guard are leaning carelessly on the wall engaged in a conversation. You can even see from the distance the electrostatic discharges flickering between their metallic heads<span class="footnoteAsterisk">**</span>. 
+
+You head towards the gate.
+
+
+<div class="footnotes">
+	* An actual astral projection of Los Angeles in the fantasy world where your story takes place.
+	** The Royal Guard Service is constituted exclusively of semi-synthetic humanoid golems with cannon balls in place of their heads.
+</div>
+
+{
+	"exits":
+	{
+		"theNightBefore-palace": "Go to the Palace"
+	}
+}

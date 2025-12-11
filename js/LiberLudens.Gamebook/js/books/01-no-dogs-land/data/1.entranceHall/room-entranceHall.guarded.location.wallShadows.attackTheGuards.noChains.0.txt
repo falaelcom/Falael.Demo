@@ -1,0 +1,19 @@
+!!!
+
+It feels so good to be free from the chains! You confidently jump at the humans. Attacking the guards from behind is unfavorable because their armors are protecting their backs very well, and for a quick kill you need to have access to their throats. That's why you choose the unarmed priest as your first victim. After taking his head in a bite and breaking his neck with one mighty move, you instantly turn towards the startled guards and throw yourself at them.
+
+@@DEF entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.playerVictory@
+You are victorious!
+@@ENDDEF@
+
+{
+    "combat1.0":
+    {
+		"name": "Soldiers",
+		"image": "enemy_twoGuards.png"
+    },
+    "exits":
+    {
+        "next": "Continue..."
+    }
+}

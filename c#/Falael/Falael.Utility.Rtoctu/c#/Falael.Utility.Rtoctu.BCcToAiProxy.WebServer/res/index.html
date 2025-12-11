@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+
+    <script>
+        const USE_POST_MESSAGE_STREAMING = true;
+        const API_ENDPOINTS = {
+            CHECK_NEW_DATA: 'http://localhost:3523/is_valid',
+            READ_ALL_CHATS: 'http://localhost:3523/list_chats',
+            READ_CHAT_BY_ID: 'http://localhost:3523/read_chat_by_id',
+            POST_MESSAGE: 'http://localhost:3523/post_message',
+            POST_MESSAGE_STREAMING: 'http://localhost:3523/post_message_streaming',
+            DELETE_MESSAGE: 'http://localhost:3523/delete_message',
+        };
+    </script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+
+    <script src="index.js"></script>
+    <link href="index.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="chat-list">
+        <div id="chat-filter">
+            <input id="chat-filter-input" type="text" placeholder="Filter chats..." />
+        </div>
+        <div id="chat-loader">
+            <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left"><div class="circle"></div></div>
+                    <div class="gap-patch"><div class="circle"></div></div>
+                    <div class="circle-clipper right"><div class="circle"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="loading">Loading chats...</div>
+    </div>
+    
+    <div id="chat-container">
+        <div id="chat-content">
+            <div class="loading">Select a chat to start</div>
+        </div>
+        
+        <div id="input-container">
+            <textarea id="message-input" placeholder="Type your message... (Enter to send, Shift+Enter for new line)"></textarea>
+        </div>
+    </div>
+
+    <a id="scroll-top-btn" class="btn-floating btn-large blue scroll-btn">
+        <i class="material-icons">keyboard_double_arrow_up</i>
+    </a>
+    <a id="scroll-prev-btn" class="btn-floating btn-large teal scroll-btn">
+        <i class="material-icons">arrow_upward</i>
+    </a>
+    <a id="scroll-next-btn" class="btn-floating btn-large teal scroll-btn">
+        <i class="material-icons">arrow_downward</i>
+    </a>
+    <a id="scroll-bottom-btn" class="btn-floating btn-large green scroll-btn">
+        <i class="material-icons">keyboard_double_arrow_down</i>
+    </a>
+</body>
+</html>

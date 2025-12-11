@@ -1,0 +1,30 @@
+default:
+  - 'dev'
+
+build:
+  description: 'Building up...'
+  tasks:
+    - 'clean'
+    - 'styles'
+    - 'scripts'
+
+dev:
+   description: 'Packing up developed stuff...'
+   tasks:
+     - 'build'
+     - 'watch'
+
+styles:
+  description: 'Running styles tasks...'
+  tasks:
+    # - 'lesslint'
+    - 'clean:styles'
+    - 'less'
+
+scripts:
+  description: 'Running scripts tasks...'
+  tasks:
+    - 'jshint'
+    - 'clean:scripts'
+    - 'concat'
+    - 'uglify'

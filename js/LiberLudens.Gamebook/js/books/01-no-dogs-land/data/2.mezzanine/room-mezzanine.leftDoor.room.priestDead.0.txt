@@ -1,0 +1,12 @@
+!!!
+
+The dead priest lies on the floor facedown. Other than that the room is empty.
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"goBack": "Go back to the mezzanine balcony"
+	}
+}

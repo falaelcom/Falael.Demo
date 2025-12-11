@@ -1,0 +1,237 @@
+&:focus {
+	outline: none;
+}
+
+html {
+	background-color: #151515;
+	color: #eae7db;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+}
+
+body {
+	background-color: #151515;
+	color: #eae7db;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	overflow-x: hidden;
+}
+
+section {
+	font-family: 'Open Sans', sans-serif;
+	min-height: calc(100vh - 100px);
+	height: auto;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-blend-mode: darken;
+	-webkit-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+	position: relative;
+
+	&:not(.hero) {
+		padding: 100px 0;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	.inner {
+		text-align: center;
+	}
+
+	h2 {
+		text-shadow: #000 0px 2px 5px;
+	}
+
+	p {
+		text-shadow: #000 0px 2px 5px;
+		text-align: justify;
+	}
+
+	a {
+		color: #eae7db;
+		font-weight: 400;
+
+		&:hover {
+			color: #eae7db;
+		}
+	}
+
+	.text-center {
+		p {
+			text-align: center;
+		}
+	}
+
+	&.img-txt {
+		.row {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+		}
+	}
+}
+
+.scroll-up {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 1;
+	display: none;
+
+	img {
+		width: 40px;
+		height: 40px;
+	}
+
+	&.show {
+		display: block;
+	}
+}
+
+h2.heading {
+	font-family: "BeautifulPeoplePersonalUse";
+	text-align: center;
+}
+
+h3.heading {
+	text-align: center;
+}
+
+.subheading {
+	text-align: center;
+	font-size: 18px;
+}
+
+p.quote {
+	text-align: justify;
+	margin-top: 20px;
+	font-style: italic;
+}
+
+p.author {
+	text-align: right;
+}
+
+footer {
+	height: 100px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+section#about {
+	background: url('../img/night-sky01.png') no-repeat center center fixed, -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0) 100%);
+	background: url('../img/night-sky01.png') no-repeat center center fixed, -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+	background: url('../img/night-sky01.png') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+	background-size: cover;
+}
+	
+section#the-team {
+	background: url('../img/night-sky01.png') no-repeat center center fixed, -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0) 100%);
+	background: url('../img/night-sky01.png') no-repeat center center fixed, -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+	background: url('../img/night-sky01.png') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+	background-size: cover;
+}
+
+section#subscribe {
+	background: url('../img/night-sky01.png') no-repeat center center fixed, -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0) 100%);
+	background: url('../img/night-sky01.png') no-repeat center center fixed, -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+	background: url('../img/night-sky01.png') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+	background-size: cover;
+}
+
+@media (min-width: 769px) {
+	section.img-txt {
+		.row {
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+		}
+	}
+	
+	section#no-dogs-land {
+		background: url('../img/no-dogs-land-Escape.jpg') no-repeat center center fixed, -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 100%);
+		background: url('../img/no-dogs-land-Escape.jpg') no-repeat center center fixed, -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 100%);
+		background: url('../img/no-dogs-land-Escape.jpg') no-repeat center center fixed, linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 100%);
+		background-size: cover;
+	}
+	
+	section#pandemonium-incursion {
+		background: url('../img/pandemonium-incursion-001.png') no-repeat center center fixed, -moz-linear-gradient(left, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0) 100%);
+		background: url('../img/pandemonium-incursion-001.png') no-repeat center center fixed, -webkit-linear-gradient(left, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+		background: url('../img/pandemonium-incursion-001.png') no-repeat center center fixed, linear-gradient(to right, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+		background-size: cover;
+	}
+}
+
+@media(max-width: 768px) {
+	section:not(.hero) {
+		padding-top: 30px;
+		img {
+			padding-bottom: 30px;
+		}
+		.scroll-up {
+			img {
+				padding-bottom: 0;
+			}
+		}
+	}
+	.img-txt {
+		.image {
+			-webkit-box-ordinal-group: 2;
+			-ms-flex-order: 1;
+			order: 1;
+		}
+		.text {
+			-webkit-box-ordinal-group: 3;
+			-ms-flex-order: 2;
+			order: 2;
+		}
+	}
+	
+	section#no-dogs-land {
+		background: url('../img/night-sky01.png') no-repeat center center fixed, -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0) 100%);
+		background: url('../img/night-sky01.png') no-repeat center center fixed, -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+		background: url('../img/night-sky01.png') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+		background-size: cover;
+	}
+	
+	section#pandemonium-incursion {
+		background: url('../img/night-sky01.png') no-repeat center center fixed, -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0) 100%);
+		background: url('../img/night-sky01.png') no-repeat center center fixed, -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+		background: url('../img/night-sky01.png') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0,0,0,0.99) 0%,rgba(0,0,0,0) 100%);
+		background-size: cover;
+	}
+}
+
+@media (min-width: 426px) {
+	p.quote {
+		width: 50%;
+		margin-left: auto;
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.image {
+		img {
+			display: none !important;
+		}
+	}
+}

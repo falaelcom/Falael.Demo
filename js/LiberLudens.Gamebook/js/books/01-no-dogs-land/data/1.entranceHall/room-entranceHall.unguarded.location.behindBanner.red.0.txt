@@ -1,0 +1,15 @@
+!!!
+
+You are in the shadows behind the red banner.
+
+@@ON knowledge::ancientShrineExistence, onlyOnce(entranceHall.behindBanner.red.lookingForSecretDoor)@@@INSERT entranceHall.behindBanner.red.lookingForSecretDoor@
+@@ENDON@
+
+What do you want to do?
+
+{
+	"exits":
+	{
+		"lookAround": "Look around the entrance hall"
+	}
+}

@@ -1,0 +1,1128 @@
+{
+    "rooms":
+    [
+		{ "file": "resource-entranceHall.behindBanner.red.lookingForSecretDoor.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.firstTime.greenBannerDescription.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.firstTime.roomDescription.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromDungeon.moveInTheShadows.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromDungeon.moveInTheShadows.firstTime.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromDungeon.openTheDoor.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromDungeon.openTheDoor.firstTime.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromDungeon.openTheDoor.unguarded.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromDungeonOrMezzanine.guardsDescription.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromDungeonOrMezzanine.guardsDescription.firstTime.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromMezzanine.goDownstairs.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromMezzanine.goDownstairs.unguarded.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromSecretPassage.guardsDescription.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromSecretPassage.throughTheHiddenDoor.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.entry.fromSecretPassage.throughTheHiddenDoor.unguarded.txt", "type": "resource" },
+		{ "file": "resource-entranceHall.searchTheBodies.finish.txt", "type": "resource" },
+		{
+            "key": "entranceHall.entry.fromDungeon.0",
+			"type": "hub",
+            "exits": [ { "target": "entranceHall.entry.0", "onExit": { "setFlag": "entranceHall.entry.fromDungeon", "unsetFlags": [ "entranceHall.entry.fromMezzanine", "entranceHall.entry.fromSecretPassage" ] } } ]
+        },
+		{
+            "key": "entranceHall.entry.fromMezzanine.0",
+			"type": "hub",
+            "exits": [ { "target": "entranceHall.entry.0", "onExit": { "setFlag": "entranceHall.entry.fromMezzanine", "unsetFlags": [ "entranceHall.entry.fromDungeon", "entranceHall.entry.fromSecretPassage" ] } } ]
+        },
+		{
+            "key": "entranceHall.entry.fromSecretPassage.0",
+			"type": "hub",
+            "exits": [ { "target": "entranceHall.entry.0", "onExit": { "setFlag": "entranceHall.entry.fromSecretPassage", "unsetFlags": [ "entranceHall.entry.fromMezzanine", "entranceHall.entry.fromDungeon" ] } } ]
+        },
+		{
+            "key": "entranceHall.entry.0",
+			"type": "hub",
+            "exits":
+			[
+                { "target": "entranceHall.guarded.entry.noChains.0", "condition": { "test": "!entranceHall.unguarded && chainsOff" } },
+                { "target": "entranceHall.guarded.entry.withChains.0", "condition": { "test": "!entranceHall.unguarded && !chainsOff" } },
+                { "target": "entranceHall.unguarded.entry.0" }
+            ]
+        },
+        {
+            "key": "entranceHall.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-entranceHall.(timers.backupSummoned).txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "entranceHall.behindBanner.red.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-entranceHall.behindBanner.(timers.backupSummoned).txt",
+			"duration": "02:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "entranceHall.guarded.location.behindBanner.red.0",
+					"condition": { "hasNoFlag": "entranceHall.unguarded" }
+                },
+                {
+                    "text": "next",
+                    "target": "entranceHall.unguarded.location.behindBanner.red.0",
+					"condition": { "hasFlag": "entranceHall.unguarded" }
+                }
+            ]
+        },
+        {
+            "key": "entranceHall.behindBanner.green.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-entranceHall.behindBanner.(timers.backupSummoned).txt",
+			"duration": "02:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "entranceHall.guarded.location.behindBanner.green.0",
+					"condition": { "hasNoFlag": "entranceHall.unguarded" }
+                },
+                {
+                    "text": "next",
+                    "target": "entranceHall.unguarded.location.behindBanner.green.0",
+					"condition": { "hasFlag": "entranceHall.unguarded" }
+                }
+            ]
+        },
+		{
+            "key": "entranceHall.guarded.entry.noChains.0",
+			"type": "fork",
+			"duration": "01:00",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.entry.noChains.0.txt",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.behindBanner.green.0",
+								"condition": { "hasFlag": "entranceHall.entry.fromSecretPassage" }
+							},
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.wallShadows.0",
+								"condition": { "hasNoFlag": "entranceHall.entry.fromSecretPassage" }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.entry.withChains.0",
+			"type": "fork",
+			"duration": "01:30",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.entry.withChains.0.txt",
+						"onRoomExit":
+						{
+							"chaos": [ { "type": "diceRoll" } ]
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.entry.withChains.tentative.0"
+							}
+						]
+					}
+				}
+			]
+        },
+        {
+            "key": "entranceHall.guarded.entry.withChains.tentative.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "hub",
+						"exits":
+						[
+							{ "target": "entranceHall.guarded.entry.withChains.noisy.0", "condition": { "diceRoll": [1, 2] } },
+							{ "target": "entranceHall.guarded.entry.withChains.quiet.0" }
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.withChains.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.withChains.0.txt",
+						"onRoomExit":
+						{
+							"chaos": [ { "type": "diceRoll" } ]
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.wallShadows.withChains.tentative.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.withChains.tentative.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "hub",
+						"exits":
+						[
+							{ "target": "entranceHall.guarded.location.wallShadows.withChains.noisy.0", "condition": { "diceRoll": [1, 2] } },
+							{ "target": "entranceHall.guarded.location.wallShadows.withChains.quiet.0" }
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.withChains.noisy.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.withChains.noisy.0.txt",
+						"duration": "10:00",
+						"combat1.0":
+						{
+							"hp": 40,
+							"might": 23,
+							"advantage": 0,
+							"playerVictoryTextId": "entranceHall.guarded.location.wallShadows.withChains.noisy.playerVictory",
+							"playerDefeatTextId": "(death).entranceHall.guarded.location.wallShadows.withChains.noisy.0"
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.entry.withChains.noisy.victory.0",
+								"condition": { "isPlayerAlive": true },
+								"onExit":
+								{
+									"setFlags": [ "entranceHall.unguarded" ]
+								}
+							},
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver",
+								"condition": { "isPlayerDead": true }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.withChains.noisy.victory.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.withChains.noisy.victory.0.txt",
+						"duration": "00:20",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.withChains.quiet.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.withChains.quiet.0.txt",
+						"duration": "01:00",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.wallShadows.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.0.txt",
+						"duration": "00:30",
+						"onRoomExit":
+						{
+							"setFlag": "entranceHall.visited"
+						},
+						"exits":
+						[
+							{
+								"text": "attackTheGuards",
+								"target": "entranceHall.guarded.location.wallShadows.attackTheGuards.0"
+							},
+							{
+								"text": "goToMezzanine",
+								"target": "mezzanine.0"
+							},
+							{
+								"text": "goToDungeon",
+								"target": "(timers.backupSummoned)??dungeon.enterDungeon.0"
+							},
+							{
+								"text": "goBehindGreenBanner",
+								"target": "entranceHall.guarded.location.behindBanner.green.0",
+								"condition": { "hasKnowledge": "secretPassage" }
+							},
+							{
+								"text": "goBehindRedBanner",
+								"target": "entranceHall.guarded.location.behindBanner.red.0",
+								"condition": { "not": { "hasKnowledge": "secretPassage" } }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.entry.withChains.noisy.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.entry.withChains.noisy.0.txt",
+						"duration": "10:00",
+						"combat1.0":
+						{
+							"hp": 40,
+							"might": 23,
+							"advantage": 0,
+							"playerVictoryTextId": "entranceHall.guarded.entry.withChains.noisy.playerVictory",
+							"playerDefeatTextId": "(death).entranceHall.guarded.entry.withChains.noisy.0"
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.entry.withChains.noisy.victory.0",
+								"condition":
+								{
+									"and":
+									[
+										{ "isPlayerAlive": true },
+										{ "hasFlag": "entranceHall.entry.fromSecretPassage" }
+									]
+								},
+								"onExit":
+								{
+									"setFlags": [ "entranceHall.unguarded" ]
+								}
+							},
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.entry.withChains.noisy.victory.0",
+								"condition":
+								{
+									"and":
+									[
+										{ "isPlayerAlive": true },
+										{ "hasNoFlag": "entranceHall.entry.fromSecretPassage" }
+									]
+								},
+								"onExit":
+								{
+									"setFlags": [ "entranceHall.priestFled", "entranceHall.unguarded" ]
+								}
+							},
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver",
+								"condition": { "isPlayerDead": true }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.entry.withChains.noisy.victory.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.entry.withChains.noisy.victory.0.txt",
+						"duration": "00:20",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.entry.withChains.quiet.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.entry.withChains.quiet.0.txt",
+						"duration": "01:00",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.behindBanner.green.0",
+								"condition": { "hasFlag": "entranceHall.entry.fromSecretPassage" }
+							},
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.wallShadows.0",
+								"condition": { "hasNoFlag": "entranceHall.entry.fromSecretPassage" }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.attackTheGuards.0",
+			"type": "hub",
+            "exits":
+			[
+                { "target": "entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.0", "condition": { "hasFlag": "chainsOff" } },
+                { "target": "entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.0" }
+            ]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.0.txt",
+						"duration": "9:00",
+						"combat1.0":
+						{
+							"hp": 40,
+							"might": 23,
+							"advantage": 5,
+							"playerVictoryTextId": "entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.playerVictory",
+							"playerDefeatTextId": "(death).entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.0"
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.wallShadows.attackTheGuards.victory.0",
+								"condition": { "isPlayerAlive": true },
+								"duration": "10:00",
+								"onExit":
+								{
+									"setFlags": [ "entranceHall.priestFled", "entranceHall.unguarded" ]
+								}
+							},
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver",
+								"condition": { "isPlayerDead": true }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.0.txt",
+						"duration": "5:00",
+						"combat1.0":
+						{
+							"hp": 40,
+							"might": 23,
+							"advantage": 10,
+							"playerVictoryTextId": "entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.playerVictory",
+							"playerDefeatTextId": "(death).entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.0"
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.wallShadows.attackTheGuards.victory.0",
+								"condition": { "isPlayerAlive": true },
+								"duration": "10:00",
+								"onExit":
+								{
+									"setFlag": "entranceHall.unguarded"
+								}
+							},
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver",
+								"condition": { "isPlayerDead": true }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.wallShadows.attackTheGuards.victory.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.wallShadows.attackTheGuards.victory.0.txt",
+						"duration": "00:20",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.behindBanner.green.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.behindBanner.green.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.behindBanner.green.0.txt",
+						"duration": "01:00",
+						"exits":
+						[
+							{
+								"text": "attackTheGuards",
+								"target": "entranceHall.guarded.location.behindBanner.attackTheGuards.0"
+							},
+							{
+								"text": "goToWallShadows",
+								"target": "entranceHall.guarded.location.wallShadows.withChains.0",
+								"condition": { "test": "!chainsOff" }
+							},
+							{
+								"text": "goToWallShadows",
+								"target": "entranceHall.guarded.location.wallShadows.0",
+								"condition": { "test": "chainsOff" }
+							},
+							{
+								"text": "goToMezzanine",
+								"target": "mezzanine.0"
+							},
+							{
+								"text": "goToDungeon",
+								"target": "(timers.backupSummoned)??dungeon.enterDungeon.0"
+							},
+							{
+								"text": "openSecretDoor",
+								"target": "entranceHall.location.behindBanner.green.openSecretDoor.0",
+								"condition": { "hasNoFlag": "secretPassage.door.open" },
+								"onExit":
+								{
+									"setFlag": "secretPassage.door.open"
+								}
+							},
+							{
+								"text": "goToSecretPassage",
+								"target": "secretPassage.0",
+								"condition": { "hasFlag": "secretPassage.door.open" }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.behindBanner.red.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.behindBanner.red.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.behindBanner.red.0.txt",
+						"duration": "01:00",
+						"exits":
+						[
+							{
+								"text": "attackTheGuards",
+								"target": "entranceHall.guarded.location.behindBanner.attackTheGuards.0"
+							},
+							{
+								"text": "goToWallShadows",
+								"target": "entranceHall.guarded.location.wallShadows.withChains.0",
+								"condition": { "test": "!chainsOff" }
+							},
+							{
+								"text": "goToWallShadows",
+								"target": "entranceHall.guarded.location.wallShadows.0",
+								"condition": { "test": "chainsOff" }
+							},
+							{
+								"text": "goToMezzanine",
+								"target": "mezzanine.0"
+							},
+							{
+								"text": "goToDungeon",
+								"target": "(timers.backupSummoned)??dungeon.enterDungeon.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.behindBanner.attackTheGuards.0",
+			"type": "hub",
+            "exits":
+			[
+                { "target": "entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.0", "condition": { "hasFlag": "chainsOff" } },
+                { "target": "entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.0" }
+            ]
+        },
+		{
+			"key": "entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.0.txt",
+						"duration": "08:00",
+						"combat1.0":
+						{
+							"hp": 40,
+							"might": 23,
+							"advantage": -3,
+							"playerVictoryTextId": "entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.playerVictory",
+							"playerDefeatTextId": "(death).entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.0"
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.behindBanner.attackTheGuards.victory.0",
+								"condition": { "isPlayerAlive": true },
+								"duration": "10:00",
+								"onExit":
+								{
+									"setFlag": "entranceHall.unguarded"
+								}
+							},
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver",
+								"condition": { "isPlayerDead": true }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.0.txt",
+						"duration": "04:00",
+						"combat1.0":
+						{
+							"hp": 40,
+							"might": 23,
+							"advantage": 1,
+							"playerVictoryTextId": "entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.playerVictory",
+							"playerDefeatTextId": "(death).entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.0"
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.guarded.location.behindBanner.attackTheGuards.victory.0",
+								"condition": { "isPlayerAlive": true },
+								"duration": "10:00",
+								"onExit":
+								{
+									"setFlag": "entranceHall.unguarded"
+								}
+							},
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver",
+								"condition": { "isPlayerDead": true }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.guarded.location.behindBanner.attackTheGuards.victory.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.guarded.location.behindBanner.attackTheGuards.victory.0.txt",
+						"duration": "00:20",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.unguarded.entry.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.unguarded.entry.0.txt",
+						"duration": "00:30",
+						"exits":
+						[
+							{
+								"text": "lookAround",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0",
+								"condition": { "hasNoFlag": "entranceHall.entry.fromSecretPassage" }
+							},
+							{
+								"text": "lookAround",
+								"target": "entranceHall.unguarded.location.behindBanner.green.0",
+								"condition": { "hasFlag": "entranceHall.entry.fromSecretPassage" }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.unguarded.location.inTheMiddle.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.unguarded.location.inTheMiddle.0.txt",
+						"duration": "00:30",
+						"onRoomExit":
+						{
+							"setFlag": "entranceHall.visited"
+						},
+						"exits":
+						[
+							{
+								"text": "searchTheBodies",
+								"target": "entranceHall.unguarded.location.inTheMiddle.searchTheBodies.0",
+								"condition": { "hasNoFlag": "entranceHall.bodiesSearched" }
+							},
+							{
+								"text": "goToMezzanine",
+								"target": "mezzanine.0"
+							},
+							{
+								"text": "goToDungeon",
+								"target": "(timers.backupSummoned)??dungeon.enterDungeon.0"
+							},
+							{
+								"text": "openTheSideDoor",
+								"target": "entranceHall.unguarded.openTheSideDoor.0"
+							},
+							{
+								"text": "goBehindGreenBanner",
+								"target": "entranceHall.unguarded.location.behindBanner.green.0",
+								"condition": { "hasKnowledge": "secretPassage" }
+							},
+							{
+								"text": "goBehindRedBanner",
+								"target": "entranceHall.unguarded.location.behindBanner.red.0",
+								"condition": { "not": { "hasKnowledge": "secretPassage" } }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.unguarded.location.inTheMiddle.searchTheBodies.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.unguarded.location.inTheMiddle.searchTheBodies.0.txt",
+						"duration": "01:00",
+						"on takeKeyChain":
+						{
+							"addInventory": [ { "key": "keyChain", "quantity": 1 } ]
+						},
+						"exits":
+						[
+							{
+								"text": "lookAround",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0",
+								"condition": { "hasFlag": "entranceHall.priestFled" },
+								"onExit":
+								{
+									"setFlag": "entranceHall.bodiesSearched"
+								}
+							},
+							{
+								"text": "searchPriestBody",
+								"target": "entranceHall.unguarded.location.inTheMiddle.searchTheBodies.priestBody.0",
+								"condition": { "hasNoFlag": "entranceHall.priestFled" }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.unguarded.location.inTheMiddle.searchTheBodies.priestBody.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.unguarded.location.inTheMiddle.searchTheBodies.priestBody.0.txt",
+						"duration": "00:30",
+						"on takeAventurineRing":
+						{
+							"addInventory": [ { "key": "aventurineRing", "quantity": 1 } ]
+						},
+						"exits":
+						[
+							{
+								"text": "lookAround",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0",
+								"onExit":
+								{
+									"setFlag": "entranceHall.bodiesSearched"
+								}
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.unguarded.location.behindBanner.green.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.behindBanner.green.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.unguarded.location.behindBanner.green.0.txt",
+						"duration": "00:30",
+						"exits":
+						[
+							{
+								"text": "lookAround",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0"
+							},
+							{
+								"text": "openSecretDoor",
+								"target": "entranceHall.location.behindBanner.green.openSecretDoor.0",
+								"condition": { "hasNoFlag": "secretPassage.door.open" },
+								"onExit":
+								{
+									"setFlag": "secretPassage.door.open"
+								}
+							},
+							{
+								"text": "goToSecretPassage",
+								"target": "secretPassage.0",
+								"condition": { "hasFlag": "secretPassage.door.open" }
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.location.behindBanner.green.openSecretDoor.0",
+			"type": "text",
+			"file": "room-entranceHall.location.behindBanner.green.openSecretDoor.0.txt",
+			"duration": "00:10",
+			"exits":
+			[
+				{
+					"text": "goToSecretPassage",
+					"target": "secretPassage.0"
+				}
+			]
+        },
+		{
+            "key": "entranceHall.unguarded.location.behindBanner.red.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "entranceHall.behindBanner.red.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-entranceHall.unguarded.location.behindBanner.red.0.txt",
+						"duration": "00:20",
+						"exits":
+						[
+							{
+								"text": "lookAround",
+								"target": "entranceHall.unguarded.location.inTheMiddle.0"
+							}
+						]
+					}
+				}
+			]
+        },
+		{
+            "key": "entranceHall.unguarded.openTheSideDoor.0",
+			"type": "text",
+			"file": "room-entranceHall.unguarded.openTheSideDoor.0.txt",
+			"exits":
+			[
+				{
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+				}
+			]
+		}
+    ]
+}

@@ -1,0 +1,77 @@
+entrance hall
+	- 2 general states
+		- guarded
+		- unguarded
+	- 3 sub locations
+		- sub location - in the middle
+		- sub location - in the shadows near the wall, between the dungeon stairs and the mezzanine stairs
+		- sub location (conditional, requires knowledge) - behind the red banner, close to the secret passage entrance
+	- 3 entrance points
+		- entry from the dungeon
+			- first entry from the dungeon
+		- entry from the mezzanine
+		- entry from the secret passage
+	- 3 entrance modes
+		- quiet
+		- noisy
+		- unguarded
+
+rooms
+
+- entranceHall.entry.fromDungeon.0													HUB ? guarded => (entranceHall.guarded.entry.fromDungeon.0, entranceHall.unguarded.entry.fromDungeon.0)
+- entranceHall.guarded.entry.fromDungeon.0											HUB ? firstTime => (~.firstTime.0, ~.returning.0)
+- entranceHall.guarded.entry.fromDungeon.firstTime.0								HUB ? chains => (~.noChains.0, ~.withChains.0)
+
+- entranceHall.guarded.entry.fromDungeon.firstTime.noChains.0						(open the door, describe the room, describe the guards) => entranceHall.guarded.location.wallShadows.0
+- entranceHall.guarded.entry.fromDungeon.firstTime.withChains.0						(open the door, chaos - throw dice action) => ~.tentative.0
+- entranceHall.guarded.entry.fromDungeon.firstTime.withChains.tentative.0			HUB ? chaos => (~..~.noisy.0, ~..~.quiet.0)
+- entranceHall.guarded.entry.fromDungeon.firstTime.withChains.noisy.0				(priest flees, combat) => (~.victory.0)
+- entranceHall.guarded.entry.fromDungeon.firstTime.withChains.noisy.victory.0		(combat victory, describe the room) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.guarded.entry.fromDungeon.firstTime.withChains.quiet.0				(describe the room, describe the guards) => entranceHall.guarded.location.wallShadows.0
+- entranceHall.guarded.entry.fromDungeon.returning.0								HUB ? chains => (~.noChains.0, ~.withChains.0)
+- entranceHall.guarded.entry.fromDungeon.returning.noChains.0						(open the door, describe the guards) => entranceHall.guarded.location.wallShadows.0
+- entranceHall.guarded.entry.fromDungeon.returning.withChains.0						(chaos - throw dice action) => ~.tentative.0
+- entranceHall.guarded.entry.fromDungeon.returning.withChains.tentative.0			HUB ? chaos => (~..~.noisy.0, ~..~.quiet.0)
+- entranceHall.guarded.entry.fromDungeon.returning.withChains.noisy.0				(priest flees, combat) => (~.victory.0)
+- entranceHall.guarded.entry.fromDungeon.returning.withChains.noisy.victory.0		(combat victory) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.guarded.entry.fromDungeon.returning.withChains.quiet.0				(describe the guards) => entranceHall.guarded.location.wallShadows.0
+- entranceHall.entry.fromMezzanine.0												HUB ? guarded => (entranceHall.guarded.entry.fromMezzanine.0, entranceHall.unguarded.entry.fromMezzanine.0)
+- entranceHall.guarded.entry.fromMezzanine.0										HUB ? chains => (~.noChains.0, ~.withChains.0)
+- entranceHall.guarded.entry.fromMezzanine.noChains.0								(go down the stairs, describe the guards) => entranceHall.guarded.location.wallShadows.0
+- entranceHall.guarded.entry.fromMezzanine.withChains.0								(go down the stairs, chaos - throw dice action) => ~.tentative.0
+- entranceHall.guarded.entry.fromMezzanine.withChains.tentative.0					HUB ? chaos => (~..~.noisy.0, ~..~.quiet.0)
+- entranceHall.guarded.entry.fromMezzanine.withChains.noisy.0						(priest flees, combat) => (~.victory.0)
+- entranceHall.guarded.entry.fromMezzanine.withChains.noisy.victory.0				(combat victory) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.guarded.entry.fromMezzanine.withChains.quiet.0						(describe the guards) => entranceHall.guarded.location.wallShadows.0
+- entranceHall.entry.fromSecretPassage.0											HUB ? guarded => (entranceHall.guarded.entry.fromSecretPassage.0, entranceHall.unguarded.entry.fromSecretPassage.0)
+- entranceHall.guarded.entry.fromSecretPassage.0									HUB ? chains => (~.noChains.0, ~.withChains.0)
+- entranceHall.guarded.entry.fromSecretPassage.noChains.0							(sneak through the hidden door, describe the guards as seen behind the banner) => entranceHall.guarded.location.behindBanner.green.0
+- entranceHall.guarded.entry.fromSecretPassage.withChains.0							(sneak through the hidden door, chaos - throw dice action) => ~.tentative.0
+- entranceHall.guarded.entry.fromSecretPassage.withChains.tentative.0				HUB ? chaos => (~..~.noisy.0, ~..~.quiet.0)
+- entranceHall.guarded.entry.fromSecretPassage.withChains.noisy.0					(priest flees, combat) => (~.victory.0)
+- entranceHall.guarded.entry.fromSecretPassage.withChains.noisy.victory.0			(combat victory) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.guarded.entry.fromSecretPassage.withChains.quiet.0					(describe the guards as seen behind the banner) => entranceHall.guarded.location.behindBanner.green.0
+
+- entranceHall.guarded.location.wallShadows.0										(offer actions) => (~.attackTheGuards.0, ~..~.green.0 (if has knowl), ~..~.red.0 (if !has knowl), ...[to mezzanine], ...[to dungeon])
+- entranceHall.guarded.location.wallShadows.attackTheGuards.0						HUB ? chains => (~.noChains.0, ~.withChains.0)
+- entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.0				(priest stays, combat) => (~.victory.0)
+- entranceHall.guarded.location.wallShadows.attackTheGuards.noChains.victory.0		(combat victory) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.0			(priest flees, combat) => (~.victory.0)
+- entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.victory.0	(combat victory) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.guarded.location.behindBanner.green.0								(describe view, offer actions) => (~.attackTheGuards.0, ...[to mezzanine], ...[to dungeon], ...[to secret passsage])
+- entranceHall.guarded.location.behindBanner.red.0									(describe view, offer actions) => (~.attackTheGuards.0, ...[to mezzanine], ...[to dungeon])
+- entranceHall.guarded.location.behindBanner.attackTheGuards.0						HUB ? chains => (~.noChains.0, ~.withChains.0)
+- entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.0				(priest stays, combat) => (~.victory.0)
+- entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.victory.0		(combat victory) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.0			(priest flees, combat) => (~.victory.0)
+- entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.victory.0	(combat victory) => entranceHall.unguarded.location.inTheMiddle.0
+
+- entranceHall.unguarded.entry.fromDungeon.0										(open the door) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.unguarded.entry.fromMezzanine.0										(go down the stairs) => entranceHall.unguarded.location.inTheMiddle.0
+- entranceHall.unguarded.entry.fromSecretPassage.0									(sneak through the hidden door) => entranceHall.unguarded.location.behindBanner.green.0
+
+- entranceHall.unguarded.location.inTheMiddle.0										(describe the bodies, offer actions) => (~.searchTheBodies.0, ~..~.green.0 (if has knowl), ~..~.red.0 (if !has knowl), ...[to mezzanine], ...[to dungeon])
+- entranceHall.unguarded.location.inTheMiddle.searchTheBodies.0						(search the bodies, take items) => (~.priestBody.0, ~..~)
+- entranceHall.unguarded.location.inTheMiddle.searchTheBodies.priestBody.0			(search the priest body, take items) => (~..~.~..~)
+- entranceHall.unguarded.location.behindBanner.green.0								(offer actions) => (entranceHall.unguarded.location.inTheMiddle.0, ...[to mezzanine], ...[to dungeon], ...[to secret passsage])
+- entranceHall.unguarded.location.behindBanner.red.0								(offer actions) => (entranceHall.unguarded.location.inTheMiddle.0, ...[to mezzanine], ...[to dungeon])

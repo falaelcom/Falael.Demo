@@ -1,0 +1,16 @@
+!!!
+
+As if you have wings, you fly over the moat surrounding the fortress and land happily on the grass-covered mountain slope. Without stopping even for a second you start running, leaving several crossbow arrows, which were directed at you, sticking sadly from where they have found the earth. Then you disappear underneath the forest cover.
+
+<illustration image="sir-wolf-gameVictory.png" align="span" />
+
+You have successfully escaped the dreaded keep the even more dreaded Ivy Cross order has been keeping you prisoner! You may think that this is a happy ending, but actually it's just the beginning of your story. Yes, there's more to come! Why and how did Sir Wolf end up in this unfortunate situation? What happens to him after he has regained his freedom? Who was the deamon - a lesser hell minion or a lord of the Abaddon? Did he die or was just banished from the realm back to where he was summoned from? On a second though... how do we even know that he is a he, and not a she, or even some other bizzare inferno gender? To find out the answers to these much important questions, look out for the other upcoming books from the Myrrium Realm Series!
+
+In the meantime you could of course test again your luck and wits with the current adventure:
+
+{
+	"exits":
+	{
+		"startOver": "Start over!"
+	}
+}

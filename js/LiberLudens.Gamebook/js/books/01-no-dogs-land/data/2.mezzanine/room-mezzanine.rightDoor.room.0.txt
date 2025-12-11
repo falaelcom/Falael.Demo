@@ -1,0 +1,57 @@
+!!! 
+
+@@DEF mezzanine.rightDoor.state.1.A@You enter the room.@@ENDDEF@
+@@DEF mezzanine.rightDoor.state.1.B@You open the door and enter the room.@@ENDDEF@
+
+@@DEF mezzanine.rightDoor.state.2.A@
+
+	There is a desk on the right, covered with crimson linen, writing accessories and books with black covers scattered accross, decorated occasionally with the emblem of the Ivy Cross and one or two - with pentagrams and cabaistic symbols. A compact, abstract stone figure representing a complex three dimentional body with some disturbing assymetric features adds an unpleasant finish to the bedecking. The wooden chair behind the desk is empty.
+
+	On your right there is a large shelf arranged with old books, scrolls and here and there - some potion bottles of different colors, sizes and shapes.
+
+	In front of you there is a large window and a wide-open door leading to a large square balcony with green marble flooring. The balcony has no roof, but yet, a decorated pillar marks it's far right corner, supporting nothing. A pentacle, drawn with some dark paint that could very well be dry blood, spans over the whole balcony floor. Black candles are burning where the pentacle lines intersect with one another and the encompasing circle, and you can smell that the fat used for the candle bodies is human.
+	
+	Behind the balcony you can see distant mountain tops and the fresh blue sky, and on the left there is a hillock with some embedded structure looking a bit like an ancient shrine built by somebody who loved both rocks and plants. The structure alerts your attention - there is something familiar in its features. Perhaps it's the corroded wolf's had that's decorating the primitively built facade?
+
+	@learn.ancientShrineExistence@
+
+	But there is another even more intriguing detail - even from the place where you are standing you can see the green grass of the mountain slope right there in front of you, close enough so that you could jump from the balcony and land there safely. You can also see the trees of a forest starting a few meters away and offering a perfect hideout. You don't need to inspect your surroundings, your acute senses have already informed you that there are no humans anywhere near, nor in the room or on the balcony, or outside in the nearby mountain. But yet, your instinct tells you that you better run and jump over the pentacle straight to the balcony parapet to avoid stepping into its perimeter. You sense something quite unholy wafting from this figure.
+
+@@ENDDEF@
+
+
+@mezzanine.rightDoor.state.1@ @mezzanine.rightDoor.state.2@
+
+@@ON skill::arcaneSight@
+
+	It's very obvious that the aventurine ring is doing something. This arcane sight thing... it seems to be adding more to the picture. Where there were only some books on the desk, now you see intricate moving patterns of glowing green and purpule lights. Where the potions were arranged, little balls of emotionally loaded space concentrations are to be observed. Even the air in the middle of the room is like a moving living thing, carrying little sparkling things around. And behind the air, through the balcony door... Holy Fang! There is no more this empty space with a strange figure drawn on the floor! A pulsating energetc structure fills it and inside you see the enormous figure of a humanoid being with two glowing red eyes. Evil eyes. Eyes that drill holes directly into the matter your mind is made of and leave you bare and transparenty helpless. Demon eyes.
+
+	With enormous effort you manage to look to the side and take a deep breath with relief. Your instincts are tearing you appart. Part of you wants to hide under the desk and start whimpering like a little puppy, terrified by the supernormal creature lurking on the balcony; but some other part, more ancient and primal, is calling for immediate action, it wants to to bite, to dismember and to tear appart. This part you don't know, it emerges now, in this very moment, for the first time in yor life. And it's telling you that your ancestors in their times have destroyed demons like this in twos per breakfast.
+
+	Do you dare to engage in fight with the fearce hellspawn?
+
+@@ON !skill::arcaneSight@
+	
+	Standing there in front of the open balcony door, facing the clear way to freedom, you feel a strong urge to jump and get out of this dreaded keep. Your impulse is to jump, now! And run!
+
+	How would you like to proceed?
+	
+@@ENDON@
+
+@blend.actions.final@
+
+{
+	"knowledge":
+	{
+		"ancientShrineExistence": "Ancient shrine existence"
+	},
+	"exits":
+	{
+		"fight": "Fight the demon!",
+		"jumpOverBalcony": "Jump over the pentacle towards freedom!",
+		"goToBalcony": "Go out to the balcony, cautiously",
+		"lookAtTheDesk": "Inspect the desk",
+		"lookAtTheShelf": "Inspect the shelf",
+		"goBack": "Go back to the mezzanine"
+	}
+}

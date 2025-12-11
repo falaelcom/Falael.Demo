@@ -1,0 +1,278 @@
+{
+    "rooms": 
+    [
+        {
+            "key": "dungeon.lookAround.corridor.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-dungeon.lookAround.corridor.(timers.backupSummoned).txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.cell.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-dungeon.lookAround.cell.(timers.backupSummoned).txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.memoryLane.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-dungeon.lookAround.memoryLane.(timers.backupSummoned).txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.dungeonExit.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-dungeon.lookAround.dungeonExit.(timers.backupSummoned).txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.firstDoor.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.breakTheChains.1",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.cell.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.firstDoor.breakTheChains.1" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.breakTheChains.2",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.cell.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.firstDoor.breakTheChains.2" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.open",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.firstDoor.open" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.takeTheSaw",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.cell.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.firstDoor.takeTheSaw" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.inFrontOfOwnCell.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.inFrontOfOwnCell.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.secondDoor.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.cell.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.secondDoor.stay.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.1",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.memoryLane.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.secondDoor.stay.memoryLane.1" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.2",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.memoryLane.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.secondDoor.stay.memoryLane.2" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.3",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.memoryLane.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.secondDoor.stay.memoryLane.3" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.4",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.memoryLane.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.secondDoor.stay.memoryLane.4" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.5",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.memoryLane.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.secondDoor.stay.memoryLane.5" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.thirdDoor.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.thirdDoor.talkToPrisoner.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.greet.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.thirdDoor.talkToPrisoner.greet.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.askWho.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.thirdDoor.talkToPrisoner.askWho.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.askAboutAncientShrine.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.thirdDoor.talkToPrisoner.askAboutAncientShrine.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.growl.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.corridor.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.lookAround.thirdDoor.talkToPrisoner.growl.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.enterOldCell.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.cell.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.enterOldCell.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.exitDungeon.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.dungeonExit.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.exitDungeon.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??dungeon.enterDungeon.0",
+			"type": "hub",
+			"bookmark": "bookmark.removeChains.activate",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.dungeonExit.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } }},
+                { "target": "dungeon.enterDungeon.0" }
+            ]
+        }
+    ]
+}

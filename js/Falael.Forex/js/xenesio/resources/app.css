@@ -1,0 +1,224 @@
+html 
+{
+    font-family: calibri;
+}
+
+td
+{
+	text-align: left;
+	vertical-align: top;
+	padding: 0px;
+}
+
+table
+{
+	border: none;
+	border-collapse: collapse;
+}
+
+hr
+{
+	border-bottom: 0px;
+}
+
+body
+{
+    background: #413633 !important;
+    color: black;
+
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.mainChart 
+{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.mainChart, .simulationChart
+{
+    margin-left: 3px;
+}
+
+.label
+{
+    border: solid 1px #AFA1A1;
+	background: black;
+    color: white;
+
+    font-family: 'Lucida Console'; 
+    font-size: 8pt; 
+    line-height: 12pt;
+
+	padding: 7px 8px 7px 8px;
+}
+
+span.listView
+{
+    border: solid 1px #AFA1A1;
+	background: black;
+    color: white;
+
+    font-family: 'Lucida Console'; 
+    font-size: 8pt; 
+    line-height: 12pt;
+}
+
+span.listView::-webkit-scrollbar
+{
+    width: 7px;
+}
+span.listView::-webkit-scrollbar-track 
+{
+    background: #AFA1A1;
+}
+span.listView::-webkit-scrollbar-thumb 
+{
+    background: #cccccc;
+    border-style: outset;
+}
+
+
+.button
+{
+    border: solid 1px #AFA1A1;
+    background: rgb(82,65,65);
+    background: linear-gradient(180deg, rgba(82,65,65,1) 0%, rgba(145,121,121,1) 49%, rgba(82,65,65,1) 100%);
+    color: white;
+    font-weight: bold;
+}
+
+.button.highlight
+{
+    border: solid 1px white;
+    background: rgb(82,65,65);
+    background: linear-gradient(180deg, rgba(82,65,65,1) 0%, rgba(145,121,121,1) 49%, rgba(82,65,65,1) 100%);
+}
+
+.button.down
+{
+    border: solid 1px white;
+    background: rgb(82,65,65);
+    background: linear-gradient(180deg, rgba(82,65,65,1) 0%, #362A2A 49%, rgba(82,65,65,1) 100%);
+}
+
+.button.down span.text
+{
+	padding: 1px 0px 0px 0px;
+}
+
+.button.checked
+{
+    background: rgb(82,65,65) !important;
+    background: linear-gradient(180deg, rgba(82,65,65,1) 0%, #362A2A 49%, rgba(82,65,65,1) 100%) !important;
+}
+
+.button.checked span.text
+{
+	padding: 0px 0px 0px 0px !important;
+}
+
+.button.xns-disabled,
+.button.highlight.xns-disabled,
+.button.down.xns-disabled,
+.button.up.xns-disabled
+{
+	border: solid 1px #988888;
+	background: #746d6d;
+	color: #a6a6a6;
+}
+
+.button.tabButton
+{
+    color: #dddddd !important;
+    border-bottom: none;
+	border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background: rgb(82,65,65);
+    background: linear-gradient(180deg, rgba(82,65,65,1) 0%, #362A2A 49%, rgba(82,65,65,1) 100%);
+}
+
+.button.checked.tabButton
+{
+    border-bottom: none;
+	border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    color: white !important;
+    background: rgb(82,65,65) !important;
+    background: linear-gradient(180deg, rgba(82,65,65,1) 0%, rgba(145,121,121,1) 56%) !important;
+}
+
+.button.checked.highlight.tabButton,
+.button.checked.down.tabButton
+{
+    border-color: #AFA1A1;
+}
+
+.tabControl .tabControlNavigationPanel 
+{
+    border-bottom: solid 1px #AFA1A1;
+    display: flex;
+}
+
+.slider 
+{
+    border: solid 1px #AFA1A1;
+    background: rgb(201,182,182);
+    background: linear-gradient(180deg, rgba(201,182,182,1) 0%, rgba(224,218,218,1) 64%, rgba(201,182,182,1) 100%);
+    color: rgb(82,65,65);
+    font-weight: bold;
+}
+
+.slider span.text
+{
+    padding-top: 2px;
+}
+
+.slider input 
+{
+    color: rgb(82,65,65);
+    font-weight: bold;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.slider.highlight,
+.slider.down
+{
+    border: solid 1px white;
+    background: rgb(201,182,182);
+    background: linear-gradient(180deg, rgba(201,182,182,1) 0%, rgba(224,218,218,1) 64%, rgba(201,182,182,1) 100%);
+}
+
+.slider span.gripper
+{
+    border-color: transparent transparent rgba(82,65,65, .5) transparent;
+}
+
+.slider.highlight span.gripper
+{
+    border-color: transparent transparent rgba(82,65,65, .5) transparent;
+}
+
+.slider.down span.gripper
+{
+    border-color: transparent transparent rgba(255,255,255, .7) transparent;
+}
+
+.slider.down span.text
+{
+	color: black;
+}
+
+.slider.xns-disabled,
+.slider.highlight.xns-disabled,
+.slider.down.xns-disabled,
+.slider.up.xns-disabled
+{
+	border: solid 1px #988888;
+	background: #746d6d;
+	color: #a6a6a6;
+}
+
+

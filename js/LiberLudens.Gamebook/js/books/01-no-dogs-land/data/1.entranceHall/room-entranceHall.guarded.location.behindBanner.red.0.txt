@@ -1,0 +1,18 @@
+!!!
+
+You are crouching, hidden behind the red banner and several large urns with exotic plants.
+
+@@ON knowledge::ancientShrineExistence, onlyOnce(entranceHall.behindBanner.red.lookingForSecretDoor)@@@INSERT entranceHall.behindBanner.red.lookingForSecretDoor@
+@@ENDON@
+
+What do you want to do?
+
+{
+	"exits":
+	{
+		"attackTheGuards": "Attack the humans in surprise!",
+		"goToWallShadows": "Sneak out in the shadows",
+		"goToMezzanine": "Go upstairs to the mezzanine",
+		"goToDungeon": "Go back to the dungeon"
+	}
+}

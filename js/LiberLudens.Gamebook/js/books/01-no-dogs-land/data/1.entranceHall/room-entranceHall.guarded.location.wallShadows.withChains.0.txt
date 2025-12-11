@@ -1,0 +1,10 @@
+!!!
+
+Despite your efforts it's very hard for you to do any movements whithout producing loud metal noises. Can you manage to keep your appearance unanounced (dice roll is 3 or more)?
+
+{
+	"exits":
+	{
+		"next": "Roll a dice to find out!"
+	}
+}

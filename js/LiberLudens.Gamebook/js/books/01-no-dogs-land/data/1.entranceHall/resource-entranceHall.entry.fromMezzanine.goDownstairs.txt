@@ -1,0 +1,6 @@
+@@DEF entranceHall.entry.fromMezzanine.goDownstairs@
+
+Slowly and couciously you go down the stairs sliding along the wall. Fortunately the torches that light up the hall are located almost exclusively on the ground floor around the gate, and the many shadows offer some valuable privacy for a fugitive like you.
+
+@@ENDDEF@
+

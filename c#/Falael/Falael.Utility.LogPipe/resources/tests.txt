@@ -1,0 +1,25 @@
+lpipe.exe
+lpipe.exe -g
+lpipe.exe -gd
+lpipe -o test.log -i -t 0:0:10 -x lpipe -- -g
+lpipe -o test.log -di -t 0:0:10 -x lpipe -- -g
+lpipe -o test.log -e test.error.log -i -t 0:0:10 -x lpipe -- -g
+lpipe -o test.log -e test.error.log -di -t 0:0:10 -x lpipe -- -g
+lpipe -g 2>&1 | .\\lpipe.exe -i -t 0:0:10 -o stdout+stderr.log
+lpipe -g 2>&1 | .\\lpipe.exe -di -t 0:0:10 -o stdout+stderr.log
+lpipe -o test.log -e test.error.log -m -i -t 0:0:10 -x lpipe -- -g
+lpipe -o test.log -e test.error.log -m -di -t 0:0:10 -x lpipe -- -g
+lpipe -g 2>&1 | .\\lpipe.exe -i -m -t 0:0:10 -o stdout+stderr.log
+
+lpipe -g 2>&1 | .\\lpipe.exe -r lpipe.log -o
+lpipe.exe -g -r lpipe.log
+lpipe.exe -dg -r lpipe.log
+
+lpipe.exe -u
+lpipe.exe -u -r
+lpipe.exe -u -r lpipe.log
+lpipe.exe -g -r
+
+lpipe.exe -g -r lpipe.log
+
+

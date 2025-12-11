@@ -1,0 +1,77 @@
+lone pink - high activity, quick death
+dbi 4.250
+dbo 5
+b   4
+
+green line - flocking static curvy figures
+dbi 4
+dbo 7.5
+b   4
+- also 
+dbi 3.7
+dbo 8
+b   4.4
+
+early red - blinking chaos + emerging solid dots
+dbi 0.250
+dbo 0.118
+b   0.128
+
+high green - static random configuration + blinking dots
+dbi 1.75
+dbo 6
+b   6
+
+terrain map generator
+dbi 1.75
+dbo 8
+b   6
+
+parallel lines with a few blinking dots
+dbi 0.865
+dbo 4
+b   4
+
+blinking field with moving holes and several solid isolated dots, eventually dies off
+dbi 0.00
+dbo 0.010
+b   0.038
+
+
+	
+	
+Falael.Bic.GameOfLife.V02 tasks
++ separate the exploration from analysis
+	V lock database on read/write
+	- run exploration and analysis in separate threads
+		- test writing of structs with array fields
+		- ConwaySetExplorer won't call analyse immediately after explore, but save the results of every exploration instead (stage01db)
+		- analysis will read from stage01db, perform analysis and save the results in stage02db
+		- the viewer will monitor stage02db
+- split the application in 3 applications
+	- explorer - generates stage01db - command line
+	- alanyser - monitors stage01db, generates stage02db - command line
+	- viewer - monitors and visualizes stage02db - winfroms
+- explorer enhancements
+	- new configuration
+		- GOL_wrapRadius = 17;
+		- GOL_activeTreshold = 0;	//	don't use this stat to end experiments
+		- GOL_iterationCount = 1700;
+		- GOL_experimentRepeatCount = 17;
+		+ GOL_pulsationMaxInterval = 4;
+	- new initial configurations
+		- random, 75% full world
+		- random, 50% full world (current)
+		- random, 25% full world
+		- 1/4 initial random square
+		- random 3x3 square
+		- central dot
+	- detect pulsating generations (analyse GOL_pulsationMaxInterval consequent generations; build an md5 checksum for each generation (encode generations as byte arrays, 15x15 world results in 29 bytes)) http://stackoverflow.com/questions/800463/c-sharp-create-a-hash-for-a-byte-array-or-image
+		- finish experiment on pulsation repeat
+		- save the generation number of the first occurrance of the pulsation
+	- save to db full experiment evolutions, along with configuration and initial conditions used
+- analyser enhancements
+	- new stats 
+		- add min, max and last population, activity and fullness
+		- collect the averaged-per-experiment whuber profiles for every generation (see links in directory)
+

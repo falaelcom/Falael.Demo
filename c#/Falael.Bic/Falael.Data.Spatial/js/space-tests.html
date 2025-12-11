@@ -1,0 +1,429 @@
+<html>
+
+<head>
+<script src="space.js"></script>
+<script src="space-transformations.js"></script>
+<script src="space-storage.js"></script>
+<script>
+	function onload()
+	{
+		function test_c0()
+		{
+			console.log("c0 ==================================================");
+			var maxs = [5, 3, 4];
+			console.log("to_c0", [0, 2, 0], to_c0(maxs, [0, 2, 0]), "expected 10");
+			console.log("to_c0", [1, 0, 4], to_c0(maxs, [1, 0, 4]), "expected 24");
+			console.log("to_c0", [2, 3, 3], to_c0(maxs, [2, 3, 3]), "expected 58");
+
+			var maxs = [3, 4];
+			console.log("from_c0", 10, JSON.stringify(from_c0(maxs, 10)), "expected [0, 2, 0]");
+			console.log("from_c0", 24, JSON.stringify(from_c0(maxs, 24)), "expected [1, 0, 4]");
+			console.log("from_c0", 58, JSON.stringify(from_c0(maxs, 58)), "expected [2, 3, 3]");
+
+			var sb = [];
+			sb.push("c0 TEST ==================================================<br />");
+			var maxx = 3;
+			var maxy = 4;
+			var maxz = 5;
+
+			sb.push("<pre>");
+			sb.push("c0");
+			sb.push("\t");
+			sb.push("x");
+			sb.push("\t");
+			sb.push("x1");
+			sb.push("\t");
+			sb.push("y");
+			sb.push("\t");
+			sb.push("y1");
+			sb.push("\t");
+			sb.push("z");
+			sb.push("\t");
+			sb.push("z1");
+			sb.push("<br />");
+
+			for(var x = 0; x <= maxx; ++x)
+			{
+				for(var y = 0; y <= maxy; ++y)
+				{
+					for(var z = 0; z <= maxz; ++z)
+					{
+						var c0 = to_c0([maxx, maxy, maxz], [x, y, z]);
+						var vector = from_c0([maxy, maxz], c0);
+
+						sb.push(c0);
+						sb.push("\t");
+						sb.push(x);
+						sb.push("\t");
+						sb.push(vector[0]);
+						sb.push("\t");
+						sb.push(y);
+						sb.push("\t");
+						sb.push(vector[1]);
+						sb.push("\t");
+						sb.push(z);
+						sb.push("\t");
+						sb.push(vector[2]);
+						sb.push("<br />");
+					}
+				}
+			}
+			sb.push("</pre>");
+			document.getElementById("c0Div").innerHTML = sb.join("");
+		}
+
+		function test_dimensions()
+		{
+			var dimension1 = new Dimension(10, 3, 0, 10);
+			console.log("10, 3, 0, 10 ==================================================");
+			console.log(dimension1, dimension1.queryAllTicks());
+
+			console.log("hitTest", 5, dimension1.hitTest(5), "expected 0, 5");
+			console.log("hitTest", 0.7, dimension1.hitTest(0.7), "expected 1, 6");
+			console.log("hitTest", 1.2, dimension1.hitTest(1.2), "expected 1, 10");
+			console.log("hitTest", 9.5, dimension1.hitTest(9.5), "expected 1, 85");
+			console.log("hitTest", 7.84, dimension1.hitTest(7.84), "expected 2, 705");
+			console.log("hitTest", 9.897, dimension1.hitTest(9.897), "expected 3, 8907");
+
+			console.log("pass.getAt 0, 5 = ", dimension1.getAt(0, 5), "expected 5");
+			console.log("pass.getAt 1, 6 = ", dimension1.getAt(1, 6), "expected 0.7");
+			console.log("pass.getAt 1, 10 = ", dimension1.getAt(1, 10), "expected 1.2");
+			console.log("pass.getAt 1, 85 = ", dimension1.getAt(1, 85), "expected 9.5");
+			console.log("pass.getAt 2, 705 = ", dimension1.getAt(2, 705), "expected 7.84");
+			console.log("pass.getAt 3, 8907 = ", dimension1.getAt(3, 8907), "expected 9.897");
+
+			console.log("hitTest - nearest", 5, dimension1.hitTest(5, true), "expected 0, 5");
+			console.log("hitTest - nearest", 0.7, dimension1.hitTest(0.7, true), "expected 1, 6");
+			console.log("hitTest - nearest", 1.2, dimension1.hitTest(1.2, true), "expected 1, 10");
+			console.log("hitTest - nearest", 9.5, dimension1.hitTest(9.5, true), "expected 1, 85");
+			console.log("hitTest - nearest", 7.84, dimension1.hitTest(7.84, true), "expected 2, 705");
+			console.log("hitTest - nearest", 9.897, dimension1.hitTest(9.897, true), "expected 3, 8907");
+
+			console.log("hitTest - nearest", 5 - dimension1.epsilon / 1.01, dimension1.hitTest(5 - dimension1.epsilon / 1.01, true), "expected 0, 5");
+			console.log("hitTest - nearest", 5 + dimension1.epsilon / 1.01, dimension1.hitTest(5 + dimension1.epsilon / 1.01, true), "expected 0, 5");
+			console.log("hitTest - nearest", 9.897 - dimension1.epsilon, dimension1.hitTest(9.897 - dimension1.epsilon, true), "expected 3, 8906");
+			console.log("hitTest - nearest", 9.897 + dimension1.epsilon, dimension1.hitTest(9.897 + dimension1.epsilon, true), "expected 3, 8908");
+
+			var dimension2 = new Dimension(4, 10, 0, 10);
+			console.log("4, 10, 0, 10 ==================================================");
+			console.log(dimension2, dimension2.queryAllTicks());
+
+			console.log("hitTest", 5, dimension2.hitTest(5), "expected 0, 2");
+			console.log("hitTest", 5.625, dimension2.hitTest(5.625), "expected 1, 6");
+			console.log("hitTest", 8.75, dimension2.hitTest(8.75), "expected 1, 10");
+			console.log("hitTest", 5.46875, dimension2.hitTest(5.46875), "expected 2, 26");
+			console.log("hitTest", 9.84375, dimension2.hitTest(9.84375), "expected 2, 47");
+			console.log("hitTest", 7.4609375, dimension2.hitTest(7.4609375), "expected 3, 143");
+
+			console.log("pass.getAt 0, 2 = ", dimension2.getAt(0, 2), "expected 5");
+			console.log("pass.getAt 1, 6 = ", dimension2.getAt(1, 6), "expected 5.625");
+			console.log("pass.getAt 1, 10 = ", dimension2.getAt(1, 10), "expected 8.75");
+			console.log("pass.getAt 2, 26 = ", dimension2.getAt(2, 26), "expected 5.46875");
+			console.log("pass.getAt 2, 47 = ", dimension2.getAt(2, 47), "expected 9.84375");
+			console.log("pass.getAt 3, 143 = ", dimension2.getAt(3, 143), "expected 7.4609375");
+
+			console.log("hitTest - nearest", 5, dimension2.hitTest(5, true), "expected 0, 2");
+			console.log("hitTest - nearest", 5.625, dimension2.hitTest(5.625, true), "expected 1, 6");
+			console.log("hitTest - nearest", 8.75, dimension2.hitTest(8.75, true), "expected 1, 10");
+			console.log("hitTest - nearest", 5.46875, dimension2.hitTest(5.46875, true), "expected 2, 26");
+			console.log("hitTest - nearest", 9.84375, dimension2.hitTest(9.84375, true), "expected 2, 47");
+			console.log("hitTest - nearest", 7.4609375, dimension2.hitTest(7.4609375, true), "expected 3, 143");
+
+			console.log("hitTest - nearest", 5 - dimension2.epsilon / 1.01, dimension2.hitTest(5 - dimension2.epsilon / 1.01, true), "expected 0, 2");
+			console.log("hitTest - nearest", 5 + dimension2.epsilon / 1.01, dimension2.hitTest(5 + dimension2.epsilon / 1.01, true), "expected 0, 2");
+			console.log("hitTest - nearest", 7.4609375 - dimension2.epsilon, dimension2.hitTest(7.4609375 - dimension2.epsilon, true), "expected 10, ?");
+			console.log("hitTest - nearest", 7.4609375 + dimension2.epsilon, dimension2.hitTest(7.4609375 + dimension2.epsilon, true), "expected 10, ?");
+
+			var dimension3 = new Dimension(4, 4, 5.5, 15.76);
+			console.log("4, 4, 5.5, 15.76 ==================================================");
+			console.log(dimension3, dimension3.queryAllTicks());
+
+			console.log("hitTest", 13.195, dimension3.hitTest(13.195), "expected 0, 3");
+			console.log("hitTest", 15.76, dimension3.hitTest(15.76), "expected 0, 4");
+			console.log("hitTest", 11.27125, dimension3.hitTest(11.27125), "expected 1, 6");
+			console.log("hitTest", 14.4775, dimension3.hitTest(14.4775), "expected 1, 10");
+			console.log("hitTest", 11.1109375, dimension3.hitTest(11.1109375), "expected 2, 26");
+			console.log("hitTest", 15.5996875, dimension3.hitTest(15.5996875), "expected 2, 47");
+			console.log("hitTest", 13.154921875, dimension3.hitTest(13.154921875), "expected 3, 143");
+
+			console.log("pass.getAt 0, 3 = ", dimension3.getAt(0, 3), "expected 13.195");
+			console.log("pass.getAt 0, 4 = ", dimension3.getAt(0, 4), "expected 15.76");
+			console.log("pass.getAt 1, 6 = ", dimension3.getAt(1, 6), "expected 11.27125");
+			console.log("pass.getAt 1, 10 = ", dimension3.getAt(1, 10), "expected 14.4775");
+			console.log("pass.getAt 2, 26 = ", dimension3.getAt(2, 26), "expected 11.1109375");
+			console.log("pass.getAt 2, 47 = ", dimension3.getAt(2, 47), "expected 15.5996875");
+			console.log("pass.getAt 3, 143 = ", dimension3.getAt(3, 143), "expected 13.154921875");
+
+			console.log("hitTest - nearest", 13.195, dimension3.hitTest(13.195, true), "expected 0, 3");
+			console.log("hitTest - nearest", 11.27125, dimension3.hitTest(11.27125, true), "expected 1, 6");
+			console.log("hitTest - nearest", 14.4775, dimension3.hitTest(14.4775, true), "expected 1, 10");
+			console.log("hitTest - nearest", 11.1109375, dimension3.hitTest(11.1109375, true), "expected 2, 26");
+			console.log("hitTest - nearest", 15.5996875, dimension3.hitTest(15.5996875, true), "expected 2, 47");
+			console.log("hitTest - nearest", 13.154921875, dimension3.hitTest(13.154921875, true), "expected 3, 143");
+
+			console.log("hitTest - nearest", 13.195 - dimension3.epsilon / 1.01, dimension3.hitTest(13.195 - dimension3.epsilon / 1.01, true), "expected 0, 3");
+			console.log("hitTest - nearest", 13.195 + dimension3.epsilon / 1.01, dimension3.hitTest(13.195 + dimension3.epsilon / 1.01, true), "expected 0, 3");
+			console.log("hitTest - nearest", 13.154921875 - dimension3.epsilon, dimension3.hitTest(13.154921875 - dimension3.epsilon, true), "expected 4, ?");
+			console.log("hitTest - nearest", 13.154921875 + dimension3.epsilon, dimension3.hitTest(13.154921875 + dimension3.epsilon, true), "expected 4, ?");
+		}
+
+		function test_space1()
+		{
+			var dimension1 = new Dimension(10, 3, 0, 10);
+			var dimension2 = new Dimension(4, 10, 0, 10);
+			var dimension3 = new Dimension(4, 4, 5.5, 15.76);
+
+			var space = new Space([dimension1, dimension2, dimension3]);
+			console.log("SPACE 1 ==================================================");
+			console.log("tick count: ", space.getTickCount() );
+			console.log("getAt(0): ", JSON.stringify(space.getAt({ipi: 0, ic0: 0})));
+
+			/*for(var length = space.iterationPlan.length, i = 0; i < length; ++i)
+			 {
+			 var sb = [];
+			 sb.push("[");
+			 sb.push(i);
+			 sb.push("] ");
+			 sb.push(space.iterationPlan[i].join(", "));
+			 console.log(sb.join(""));
+			 }*/
+
+			console.log("space.getAt()", {ipi:0,ic0:149}, JSON.stringify(space.getAt({ipi:0,ic0:149})), "expected [5, 10, 15.76]");
+			console.log("space.hitTest()", [5, 10, 15.76], JSON.stringify(space.hitTest([5, 10, 15.76])), "expected {ipi:0,ic0:149}");
+
+			console.log("space.getAt()", {ipi:2,ic0:31}, JSON.stringify(space.getAt({ipi:2,ic0:31})), "expected [0, 5.625, 8.065]");
+			console.log("space.hitTest()", [0, 5.625, 8.065], JSON.stringify(space.hitTest([0, 5.625, 8.065])), "expected {ipi:2,ic0:31}");
+
+			var sb = [];
+
+			sb.push("SPACE 1 ==================================================<br />");
+			var indexer = {ipi: 0, ic0: 0};
+			for(var length = 1000, i = 0; i < length; ++i)
+			{
+				var vvector = space.getAt(indexer);
+				sb.push("[");
+				sb.push(i);
+				sb.push("] indexer=");
+				sb.push(JSON.stringify(indexer));
+				sb.push(", ipi_length=");
+				sb.push(space.getIpiLength(indexer.ipi));
+				sb.push(", ");
+				sb.push(vvector.join(", "));
+				sb.push("<br />");
+				indexer = space.next(indexer);
+			}
+			document.getElementById("space1Div").innerHTML = sb.join("");
+		}
+
+		function test_space2()
+		{
+			var dimension11 = new Dimension(4, 2, 0, 3);
+			var dimension12 = new Dimension(2, 3, 1, 2);
+			var dimension13 = new Dimension(3, 2, 0.5, 2.5);
+			var space = new Space([dimension11, dimension12, dimension13]);
+			console.log("SPACE 2 ==================================================");
+			console.log("tick count: ", space.getTickCount() );
+			console.log("getAt(0): ", JSON.stringify(space.getAt({ipi: 0, ic0: 0})));
+
+			for(var length = space.iterationPlan.length, i = 0; i < length; ++i)
+			{
+				var sb = [];
+				sb.push("[");
+				sb.push(i);
+				sb.push("] ");
+				sb.push(space.iterationPlan[i].join(", "));
+				console.log(sb.join(""));
+			}
+
+			var sb = [];
+
+			sb.push("SPACE 2 ==================================================<br />");
+			var indexer = {ipi: 0, ic0: 0};
+			for(var length = space.getTickCount() + 2, i = 0; i < length; ++i)
+			{
+				var vvector = space.getAt(indexer);
+				sb.push("[");
+				sb.push(i);
+				sb.push("] indexer=");
+				sb.push(JSON.stringify(indexer));
+				sb.push(", ipi_length=");
+				sb.push(space.getIpiLength(indexer.ipi));
+				sb.push(", ");
+				sb.push(vvector.join(", "));
+				sb.push("<br />");
+				indexer = space.next(indexer);
+			}
+			document.getElementById("space1Div").innerHTML += sb.join("");
+
+		}
+
+		function test_space3()
+		{
+			function getfrag_square(origin, p)
+			{
+				if(p == 0)
+				{
+					return origin;
+				}
+				var frag = Math.ceil(origin / ((p + 1) * (p + 1)));
+				return frag > 1 ? frag : 2;
+			}
+			var dimension1 = new Dimension(7, 3, 5.5, 10.007, getfrag_square);
+			var dimension2 = new Dimension(10, 4, 0.1, 0.333, getfrag_square);
+			var space = new Space([dimension1, dimension2]);
+			var indexer = space.first();
+			var counter = 0;
+
+			console.log("SPACE 3 ==================================================");
+			console.log("tick count: ", space.getTickCount() );
+			console.log("getAt(0): ", JSON.stringify(space.getAt({ipi: 0, ic0: 0})));
+
+			var sb = [];
+
+			sb.push("SPACE 3 ==================================================<br />");
+			var indexer = {ipi: 0, ic0: 0};
+			for(var length = 1000, i = 0; i < length; ++i)
+			{
+				var vvector = space.getAt(indexer);
+				sb.push("[");
+				sb.push(i);
+				sb.push("] indexer=");
+				sb.push(JSON.stringify(indexer));
+				sb.push(", ipi_length=");
+				sb.push(space.getIpiLength(indexer.ipi));
+				sb.push(", ");
+				sb.push(vvector.join(", "));
+				sb.push("<br />");
+				indexer = space.next(indexer);
+			}
+			document.getElementById("space1Div").innerHTML = sb.join("");
+		}
+
+		function test_space_transform()
+		{
+			function getfrag_square(origin, p)
+			{
+				if(p == 0)
+				{
+					return origin;
+				}
+				var frag = Math.ceil(origin / ((p + 1) * (p + 1)));
+				return frag > 1 ? frag : 2;
+			}
+			var dimension1 = new Dimension(4, 3, 0, 10, getfrag_square);
+			var dimension2 = new Dimension(4, 3, 5, 15, getfrag_square);
+			var dimension3 = new Dimension(4, 3, 10, 20, getfrag_square);
+			var space = new Space([dimension1, dimension2, dimension3]);
+
+			var transform = new SpaceTransformation(
+			{
+				operandDimensions: space.getDimensions(),
+				operandSchema: ["Ox", "Oy", "Oz"],
+				resultSchema: ["ROx", "ROy"],
+				operators:
+				[
+					new SliceOperator("Ox", 5, false),
+					new MapOperator("ROx", "Oz"),
+					new MapOperator("ROy", "Oy"),
+				],
+			});
+
+			var subSpace = new Space(transform.getResultDimensions());
+
+			var indexer = subSpace.first();
+			var counter = 0;
+
+			console.log("SUB SPACE ==================================================");
+			console.log("transformation - resultDimensions: ", transform.getResultDimensions());
+			console.log("transformation - dataTransformations: ", transform.getDataTransformations());
+			console.log("transformation - reverseDimensionMapping: ", transform.getReverseDimensionMapping());
+			console.log("tick count: ", subSpace.getTickCount() );
+			console.log("getAt(0): ", JSON.stringify(subSpace.getAt({ipi: 0, ic0: 0})));
+
+			var sb = [];
+
+			sb.push("SUB SPACE ==================================================<br />");
+			var indexer = {ipi: 0, ic0: 0};
+			for(var length = subSpace.getTickCount() + 2, i = 0; i < length; ++i)
+			{
+				var subVvector = subSpace.getAt(indexer);
+				//var vvector = subVvector.slice
+				sb.push("[");
+				sb.push(i);
+				sb.push("] indexer=");
+				sb.push(JSON.stringify(indexer));
+				sb.push(", reverseVvector()=[");
+				sb.push(transform.reverseVvector(subVvector));
+				sb.push("], [");
+				sb.push(subVvector.join(", "));
+				sb.push("]<br />");
+				indexer = subSpace.next(indexer);
+			}
+			document.getElementById("space1Div").innerHTML = sb.join("");
+		}
+
+		function test_spatial_storage()
+		{
+			function getfrag_square(origin, p)
+			{
+				if(p == 0)
+				{
+					return origin;
+				}
+				var frag = Math.ceil(origin / ((p + 1) * (p + 1)));
+				return frag > 1 ? frag : 2;
+			}
+			var dimension1 = new Dimension(4, 3, 0, 10, getfrag_square);
+			var dimension2 = new Dimension(4, 3, 5, 15, getfrag_square);
+			var dimension3 = new Dimension(4, 3, 10, 20, getfrag_square);
+			var space = new Space([dimension1, dimension2, dimension3]);
+
+			var fileSystem = new FileSystem();
+			var spatialIndex = new SpatialIndex(space);
+			var spatialStorage = new SpatialStorage(fileSystem, spatialIndex);
+
+			var indexer = space.first();
+			for(var length = space.getTickCount(), i = 0; i < length; ++i)
+			{
+				var vvector = space.getAt(indexer);
+				var value = "v" + i;
+				spatialStorage.setAt(vvector, value);
+				indexer = space.next(indexer);
+			}
+
+			var indexer = space.first();
+			for(var length = space.getTickCount(), i = 0; i < length; ++i)
+			{
+				var vvector = space.getAt(indexer);
+				var expectedValue = "v" + i;
+				var value = spatialStorage.getAt(vvector);
+				if(value != expectedValue)
+				{
+					debugger;
+				}
+				indexer = space.next(indexer);
+			}
+
+			console.log("SUB SPACE ==================================================");
+			console.log("tick count: ", space.getTickCount() );
+			console.log("getAt(0): ", JSON.stringify(space.getAt({ipi: 0, ic0: 0})));
+			console.log("fileSystem: ", fileSystem);
+		}
+
+		//test_c0();
+		//test_dimensions();
+		//test_space1();
+		//test_space2();
+		//test_space3();
+		//test_space_transform();
+		test_spatial_storage();
+	}
+</script>
+</head>
+
+<body onload="javascript:onload()">
+<div id="c0Div"></div>
+<div id="space1Div"></div>
+</body>
+
+</html>

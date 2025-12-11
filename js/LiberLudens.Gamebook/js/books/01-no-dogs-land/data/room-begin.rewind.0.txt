@@ -1,0 +1,12 @@
+You stand there on the side, watching your character's dead body with deep grief in your eyes, overwhelmed by sadness, and feeling a bit of outrage, too. The thing is that you kinda started to like the Wolf, and his death really upsets you. You so much wanted him to be a free beast again!
+
+Immeresed in such mirthless thoughts you fail to notice when it begins. Only when the Wolf's body twitches, you blink confusedly and focus back on the surroundings. Everything around gets in motion, slow at first but ganing speed, light starts pulsating, with unnatural movements the Wolf springs back to life, unusual sounds emerge and blend into a loud cacophony, and suddenly you realize that time's been rewound in front of your eyes.
+
+Then it all stops abruptly and you find yourself back at the beginning of your story!
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

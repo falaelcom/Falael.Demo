@@ -1,0 +1,29 @@
+.btn {
+	background-color: #5665ae;
+	color: #eae7db;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	min-width: 276px;
+	margin-top: 20px;
+	&:hover {
+		background-color: #3b4682;
+		color: #eae7db;
+	}
+	&:focus {
+		background-color: #3b4682;
+		color: #eae7db;
+	}
+}
+.btn.form-control {
+	margin-top: 0;
+	border-radius: 4px;
+}
+@media (max-width: 425px) {
+	.btn {
+		width: 80%;
+		&.form-control {
+			width: 100%;
+		}
+	}
+}

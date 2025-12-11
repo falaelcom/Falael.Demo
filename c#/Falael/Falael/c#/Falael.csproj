@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>..\..\..\..\bin\debug\Falael</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>..\..\..\..\bin\release\Falael</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591;CS1998;CS0618;IDE0062;IDE0066;IDE0055;IDE0063;IDE0290;CA1869;SYSLIB1045;SYSLIB1054</NoWarn>
+    <Optimize>False</Optimize>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591;CS1998;CS0618;IDE0062;IDE0066;IDE0055;IDE0063;IDE0290;CA1869;SYSLIB1045;SYSLIB1054</NoWarn>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+</Project>

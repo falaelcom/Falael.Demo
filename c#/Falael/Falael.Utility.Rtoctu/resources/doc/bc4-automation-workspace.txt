@@ -1,0 +1,65 @@
+aaa<?php
+
+echo "1"
+
+?>bbv
+
+c:\repos\Falael.CODE\bin\debug\Falael.Utility.Rtoctu\net8.0\Falael.Utility.Rtoctu.BCcToAiProxy.exe 
+--focused-file-full-path=%f 
+--focused-file-line-number=%l
+--file-name=%n
+--unfocused-dir-full-path=%p
+--file-ext=%x
+--file-name-without-ext=%b
+--unfocused-file-rel-path=%F
+--unfocused-dir-rel-path=%P
+
+c:\repos\Falael.CODE\bin\debug\Falael.Utility.Rtoctu\net8.0\Falael.Utility.Rtoctu.BCcToAiProxy.exe --focused-file-full-path=%f --focused-file-line-number=%l --file-name=%n --unfocused-dir-full-path=%p --file-ext=%x --file-name-without-ext=%b --unfocused-file-rel-path=%F --unfocused-dir-rel-path=%P
+
+
+c:\repos\Falael.CODE\bin\debug\Falael.Utility.Rtoctu\net8.0\Falael.Utility.Rtoctu.BCcToAiProxy.exe f-%f l-%l n-%n p-%p x-%x b-%b F-%F P-%P
+
+
+
+focus on left
+ARGS 
+	f-C:\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\controller\common\cart.php 
+	l-22 
+	n-cart.php 
+	p-C:\dev\www\oc_v4.1.0.3-accento\catalog\controller\common\ 
+	x-.php 
+	b-cart 
+	F-..\..\dev\www\oc_v4.1.0.3-accento\catalog\controller\common\cart.php 
+	P-..\..\dev\www\oc_v4.1.0.3-accento\catalog\controller\common\
+	
+focus on right
+ARGS
+	f-C:\dev\www\oc_v4.1.0.3-accento\catalog\controller\common\cart.php
+	l-29
+	n-cart.php
+	p-C:\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\controller\common\
+	x-.php
+	b-cart
+	F-..\..\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\controller\common\cart.php
+	P-..\..\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\controller\common\
+	
+	
+left	
+ARGS f-C:\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\view\stylesheet\fonts\fontawesome\css\fontawesome.css
+l-6
+n-fontawesome.css
+p-C:\dev\www\oc_v4.1.0.3-accento\catalog\view\stylesheet\fonts\fontawesome\css\
+x-.css
+b-fontawesome
+F-..\..\dev\www\oc_v4.1.0.3-accento\catalog\view\stylesheet\fonts\fontawesome\css\fontawesome.css
+P-..\..\dev\www\oc_v4.1.0.3-accento\catalog\view\stylesheet\fonts\fontawesome\css\	
+
+right
+ARGS f-C:\dev\www\oc_v4.1.0.3-accento\catalog\view\stylesheet\fonts\fontawesome\css\fontawesome.css
+l-9
+n-fontawesome.css
+p-C:\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\view\stylesheet\fonts\fontawesome\css\
+x-.css
+b-fontawesome
+F-..\..\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\view\stylesheet\fonts\fontawesome\css\fontawesome.css
+P-..\..\temp\kuchko-alvina-theme\src\oc_v4.0.2.3-alvina-stripped-tamed\catalog\view\stylesheet\fonts\fontawesome\css\

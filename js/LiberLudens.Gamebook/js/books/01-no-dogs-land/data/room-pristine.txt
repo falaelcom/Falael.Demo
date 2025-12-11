@@ -1,0 +1,14 @@
+!!!
+
+@blend.actions.starting@
+
+Text goes here...
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

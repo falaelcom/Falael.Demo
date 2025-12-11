@@ -1,0 +1,18 @@
+space
+	dimension1 (frag1, maxp1, n11, n12, genfrag1)
+	dimension2 (frag2, maxp2, n21, n22, genfrag2)
+	dimension3 (frag3, maxp3, n31, n32, genfrag3)
+	dimension4 (frag4, maxp4, n41, n42, genfrag4)
+
+	||
+	\/
+	
+	operations
+	
+	||
+	\/
+	
+subspace
+	dimension1 (frag2, maxp2, n21, n22, genfrag2)
+	dimension2 (frag4, maxp4, n41, n42, genfrag4)
+	dptransform = function(dp): dp

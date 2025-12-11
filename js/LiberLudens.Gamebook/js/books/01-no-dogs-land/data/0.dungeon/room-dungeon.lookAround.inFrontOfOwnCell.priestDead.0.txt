@@ -1,0 +1,15 @@
+!!!
+
+You are standing in front of your old cell. The dead priest's body is lying on the floor. What do you want to do?
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"eatTheDeadPriest": "Feast on the priest's dead body",
+		"exitDungeon": "Head towards the dungeon's exit",
+		"enterOldCell": "Get into your old cell",
+		"lookAround": "Explore the dungeon"
+	}
+}

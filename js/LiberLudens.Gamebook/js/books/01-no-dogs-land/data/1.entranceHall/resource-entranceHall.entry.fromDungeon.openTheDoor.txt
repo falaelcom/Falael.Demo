@@ -1,0 +1,5 @@
+@@DEF entranceHall.entry.fromDungeon.openTheDoor@
+
+With slow and careful movements you open the door only as much as you need to slide sideways through it. You squeeze yourself through the slit without taking your eyes from the group of people standing in the middle of the hall, their backs turned to you.
+
+@@ENDDEF@

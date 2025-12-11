@@ -1,0 +1,18 @@
+{
+    "name": "primordial-blocks",
+    "version": "1.0.0",
+    "description": "Client-server framework with minimal external dependencies for creating scalable web applications.",
+    "main": "",
+    "author": {
+        "name": "Danny Apostolov",
+        "email": "daniel@falael.com",
+        "url": "http://falael.com"
+    },
+    "license": "Copyright (C) 2021 Falael Ltd.",
+    "maintainers": [{
+		"email": "daniel@falael.com",
+		"name": "Danny Apostolov"
+	}],
+    "dependencies": {
+    }
+}

@@ -1,0 +1,8 @@
+﻿on the tower rooftop
+
+{
+	"exits":
+	{
+		"flyUp": "Play \"Part Two: Haywire\""
+	}
+}

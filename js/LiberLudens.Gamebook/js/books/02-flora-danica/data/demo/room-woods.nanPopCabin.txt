@@ -1,0 +1,12 @@
+﻿In the nan and pop's cabin...
+
+
+{
+	"title": "Part Two: Haywire",
+	"coverImage": "part1Cover.jpg",
+	"coverImageSize": "size16_9",
+	"exits":
+	{
+		"next": "Next"
+	}
+}

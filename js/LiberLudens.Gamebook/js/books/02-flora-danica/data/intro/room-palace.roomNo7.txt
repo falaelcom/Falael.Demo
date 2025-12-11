@@ -1,0 +1,68 @@
+﻿Room No.7 is a high and spacy room painted in white, accessible only from the outside, with no doors or windows connecting it to the other parts of the Palace. It can be entered only by air and has a large terrace for outside landing. A long time ago your mother, Queen Veronica, used to spend plenty of time here crafting things, reading a book or just napping in the huge hammock or on one of the enchanted brightly colored air platforms hovering freely at different altitudes.
+
+The tall arched windows stay always open except during the coldest winter days. The room's furniture is scarce. Only a few narrow shelves are fixed on the walls, and a small desk with a geographic globe on it and a neat little chair in front of it decorates the floor. The shelves are covered mainly with books and crafting materials like water colors, plastilin and colorful yarn balls. Lots of multicolored cushions are scattered around on the platforms.
+
+Unlike your mother, you almost never come here. It's far too bright for your taste, and you are not so mutch into reading, crafting and painting. You fancy dark and gloomy, and you prefer knives and swords to clay and yarn. On the other hand this is the place to visit when you need to talk to the huge old Spider Ho who lives in the The Mystery Castle and regularly flies over on his silvery web to clean up the dust and feast on the dead flies that aggregate in the corners. 
+
+You fly in and gracefully land on one of the middle platforms. Ho is not here, but you are well acquainted with his routine, and you expect his arrival anytime now. While waiting, you look around and suddenly spot Lady, the pied cat that lives in the Palace, now lying motionless on a yellow platform nearby, quietly inspecting you.
+
+"Lady!" you exclaim cheerfully. "Are you hungry?"
+
+Lady says "Meaw", gets up and bends her spine in a stretch. You reach underneath your leather suit and produce a squeaking mouse<span class="footnoteAsterisk">*</span>. Lady suddenly gets all excited and jumps over to you. You leave the mouse on the platform and the cat starts playing with it.
+
+In this moment a glimmer draws your attention. You look outside and there is Ho, shimmering in the sunlight, drifting with the air flows, erratically but yet somehow deliberately. His web performs several seemingly random moves and suddenly finds itself right in front of you.
+
+"Margarita, darling," he says, hovering. "What brings your atramentous persona here?"
+
+"Yo, Ho," you reply. "I dunno. Was about to leave the Palace and something kinda pulled me up here. How are you?"
+
+Ignoring the cat, Ho gingerly hangs his web on the platform corner and sits down in front of you, his compound eyes glittering with a thousand colors.
+
+"I'm completely fine, thank you. For how long are you leaving?"
+
+"No idea," you say. "I'll be gone for a while, though. I need some space. Need to change the setting a bit."
+
+"I see," the spider nods. In this moment Lady decides that the huge round spider is more attractive than the mouse and tries to push him with her paw, but Ho pokes her on the nose with his sharp leg, and she changes her mind. After a quick backleg licking, she throws herself after the mouse that is trying to escape the platform.
+
+"How is grandpa doing?" you inquire. You haven't visited the Mad Herzog in the Mystery Castle recently.
+
+"He's fine," the spider says. "Mad as a hatter. Do you know that during the past century he has ordered more than 120 secret rooms to be built in the castle? Then he puts random stuff in there and has them walled up. And, of course, then forgets their locations and orders new ones."
+
+"Oh my God!" you laugh out loud. "That's so grandpa!"
+
+"Yes, it is," agrees Ho. "There is one, I guess it's quite old, been there for a long time now, in the base of the light tower. The only mark is a pinkish stone in the wall."
+
+@learnLocation@
+
+"Cool!" you say. Lady comes to you and rubs herself in your knee, purring. "Wanna come with me?" you ask mildly, brushing her fur. "Wanna come?"
+
+Lady looks at you with her green cat eyes then jumps on your shoulder and wraps herself around your neck. You tap her gently.
+
+@takeCat@
+
+"I'm gonna go now," you proclaim.
+
+"Come and visit us!" Ho rises, then suddenly jumps accross the room and lands on the far wall. "Good luck, Princess!" he shouts. "Stay safe!"
+
+"I will!" you promise, then you spread your wings and head towards the eastern tower's rooftop. Lady digs her claws deep into the leather of your vest and stays there, firmly attached. It seems that you have got an unexpected companion for your journey. <i>(Lady grants you the Recreation skill; you will always gain double energy points.)</i>
+
+<div class="footnotes">* No animals were harmed during the writing of this scene. The mouse survives and eventually hides under a cushion; but that's only because the cat is not actually hungry.</div>
+
+{
+	"exits":
+	{
+		"goToTowerRooftop": "Go to the Tower Rooftop"
+	},
+	"knowledge":
+	{
+		"secretCastleRoomLocation": "Mystery Castle secret room"
+	},
+	"inventory":
+	{
+		"catLady": "Cat with the Name Lady"
+	},
+	"skills":
+	{
+		"recreation":  "Recreation"
+	}
+}

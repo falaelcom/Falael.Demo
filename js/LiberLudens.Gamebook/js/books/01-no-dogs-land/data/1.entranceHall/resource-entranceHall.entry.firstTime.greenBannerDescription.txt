@@ -1,0 +1,5 @@
+@@DEF entranceHall.entry.firstTime.greenBannerDescription@
+
+The green banner located in the base of the mezzanine balcony immediately captures your attention. This is the place the old prisoner has been telling you about! The secret door must be right behind it.
+
+@@ENDDEF@

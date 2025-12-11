@@ -1,0 +1,32 @@
+﻿You take a look around the cell. There is the straw bed you used to sleep in, and the tin canakin on the floor. But wait, what is that? Something is glittering in the corner of your eyesight, burried undeneath the bed straw. You duck beside the bed and take out the object. It turns out to be the heavy neckless with the silver cross that Countess Von Dick gave you in Wirmington. It was a very useful item back then, when you were surrounded by vampires, but after you came home it had no function, and you quickly forgot about its existence. You hold it for a while, thinking. "It might come handy," you say to yourself. "There are still vampires out there." You hang the necklace around your neck.
+
+@takeNecklace@
+
+Afaterwards you get up and turn to the Rat.
+
+"What rocks were you talking about?" you ask?
+
+"The rocks, the rocks!" he yells and rushes out of the cell. You follow him through the tunnels, until you reach a spot where the air is fresher and weak light squeezes from a deep narrow crack in the ceiling. It is obvious that you are already outside of the Palace premices. You were not aware that the dungeons spread so far in this direction. You remember that some tunnels had iron doors and stayed locked all the time when you were little and came down here to play. Maybe now you are in one of the locked tunnels?
+
+Anyway, now that you've seen where the rain water is coming from, you lose interest in the subject. What is more exciting for you is to check where this tunnel ends. You continue walking. The Rat paces behind you silently. After a while you realize that you are climbing, and it is not long before you reach a dead end with a wooden ladder leading upwards to a plank lid. You are anxious to check what's on the other side.
+
+"It was so nice to see you!" you say to the Rat. "But I'm afraid I have to leave you now."
+
+"Oh," he gets visibly sad when he hears this. "Where is your Highness going?"
+
+"Somewhere," you answer. "I need some space. Need to change the setting a bit."
+
+"Goodbye, Princess!" the Rat sighs.
+
+"Goodbye, old rat!" you say and climb the ladder. The lid is heavy, but eventuall you manage to lift it. The light that's coming from above is dim. You push harder and move the lid aside. One last look down to the Rat, then you jump up and exit the shaft.
+
+{
+	"exits":
+	{
+		"continue": "Play \"Part Two: Haywire\""
+	},
+	"inventory":
+	{
+		"silverCross1": "Silver Cross Necklace"
+	}
+}

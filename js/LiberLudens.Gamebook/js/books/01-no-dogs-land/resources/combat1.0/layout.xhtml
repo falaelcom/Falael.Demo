@@ -1,0 +1,34 @@
+﻿<table id="{layout:id}" class="combat1_0 backpane" width="100%">
+    <tr>
+        <td class="cardLeft">
+            <div class="cardRow cardTitle">{cardLeft_title}</div>
+            <div class="cardRow cardValue"><img src="resources/{cardLeft_image}" class="cardImage" /></div>
+            <div class="cardRow cardValue"><span class="cardRowLabel">Health Points:</span> {cardLeft_hp}</div>
+            <div class="cardRow cardValue"><span class="cardRowLabel">Might:</span> {cardLeft_might}</div>
+            <div class="cardRow cardValue"><span class="cardRowLabel">Advantage:</span> {cardLeft_advantage}</div>
+        </td>
+        <td width="100%">
+        </td>
+        <td class="cardRight">
+            <div class="cardRow cardTitle">{cardRight_title}</div>
+            <div class="cardRow cardValue"><img src="resources/{cardRight_image}" class="cardImage" /></div>
+            <div class="cardRow cardValue"><span class="cardRowLabel">Health Points:</span> {cardRight_hp}</div>
+            <div class="cardRow cardValue"><span class="cardRowLabel">Might:</span> {cardRight_might}</div>
+            <div class="cardRow cardValue"><span class="cardRowLabel">Advantage:</span> {cardRight_advantage}</div>
+        </td>
+    </tr>
+    <tr>
+        <td class="combatInfo" colspan="3">
+            vs.
+            <div class="ballanceLabel">Ballance of powers</div>
+            <div class="ballanceValue">{ballanceOfPowers}</div>
+        </td>
+    </tr>
+    <tr>
+        <td class="turnListContainer" colspan="3">
+            <div class="turnList">
+                {turnList:html}
+            </div>
+        </td>
+    </tr>
+</table>

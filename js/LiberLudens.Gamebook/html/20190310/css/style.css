@@ -1,0 +1,579 @@
+@font-face {
+	font-family: "elDiablo";
+	src: url("./fonts/eldiablo.eot");
+	/* IE9 Compat Modes */
+	src: url("./fonts/eldiablo.eot?#iefix") format("embedded-opentype"),
+		/* IE6-IE8 */
+		url("./fonts/eldiablo.otf") format("opentype"),
+		/* Open Type Font */
+		url("./fonts/eldiablo.svg") format("svg"),
+		/* Legacy iOS */
+		url("./fonts/eldiablo.ttf") format("truetype"),
+		/* Safari, Android, iOS */
+		url("./fonts/eldiablo.woff") format("woff"),
+		/* Modern Browsers */
+		url("./fonts/eldiablo.woff2") format("woff2");
+	/* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "BeautifulPeoplePersonalUse";
+	src: url("./fonts/BeautifulPeoplePersonalUse.eot");
+	/* IE9 Compat Modes */
+	src: url("./fonts/BeautifulPeoplePersonalUse.eot?#iefix") format("embedded-opentype"),
+		/* IE6-IE8 */
+		url("./fonts/BeautifulPeoplePersonalUse.otf") format("opentype"),
+		/* Open Type Font */
+		url("./fonts/BeautifulPeoplePersonalUse.svg") format("svg"),
+		/* Legacy iOS */
+		url("./fonts/BeautifulPeoplePersonalUse.ttf") format("truetype"),
+		/* Safari, Android, iOS */
+		url("./fonts/BeautifulPeoplePersonalUse.woff") format("woff"),
+		/* Modern Browsers */
+		url("./fonts/BeautifulPeoplePersonalUse.woff2") format("woff2");
+	/* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+:focus {
+	outline: none;
+}
+
+html,
+body {
+	background-color: #151515;
+	color: #eae7db;
+	font-family: "Open Sans";
+	font-size: 16px;
+}
+
+section {
+	font-family: 'Open Sans', sans-serif;
+	min-height: calc(100vh - 100px);
+	height: auto;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-blend-mode: darken;
+	-webkit-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+	position: relative;
+}
+
+section .inner {
+	text-align: center;
+}
+
+section h2,
+section p {
+	text-shadow: #000 0px 2px 5px;
+}
+
+section p {
+	text-align: left;
+}
+
+section a {
+	color: #eae7db;
+	font-weight: 400;
+}
+
+section a:hover {
+	color: #eae7db;
+}
+
+.scroll-up {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+.scroll-up img {
+	width: 40px;
+	height: 40px;
+}
+
+section#about {
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, -o-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background-size: cover;
+}
+
+section#no-dogs-land {
+	background: url('../img/no-dogs-land-Escape.jpg') no-repeat center center fixed, -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/no-dogs-land-Escape.jpg') no-repeat center center fixed, -o-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/no-dogs-land-Escape.jpg') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background-size: cover;
+}
+
+section#pandemonium-incursion {
+	background: url('../img/pandemonium-incursion-001.png') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-001.png') no-repeat center center fixed, -o-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-001.png') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background-size: cover;
+}
+
+section#the-team {
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, -o-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background-size: cover;
+}
+
+section#subscribe {
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, -o-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background: url('../img/pandemonium-incursion-006-nika-firsova-5.jpg') no-repeat center center fixed, radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+	background-size: cover;
+}
+
+.heading {
+	font-family: "BeautifulPeoplePersonalUse";
+	text-align: center;
+}
+
+.subheading {
+	text-align: center;
+	font-size: 18px;
+}
+
+p.quote {
+	font-family: "BeautifulPeoplePersonalUse";
+	font-size: 26px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+p.author {
+	text-align: right;
+}
+
+.navbar {
+	font-family: "BeautifulPeoplePersonalUse";
+	margin-bottom: 0;
+	border: none;
+	background-color: #151515;
+	color: #eae7db;
+	min-height: 100px;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.navbar-header {
+	min-height: 100px;
+}
+
+.navbar-brand {
+	font-size: 26px;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.navbar-default .navbar-brand {
+	color: #eae7db;
+}
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+	color: #dcdbdb;
+}
+
+.navbar-default .navbar-nav>li>a {
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	color: #eae7db;
+	font-size: 20px;
+}
+
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
+	color: #dcdbdb;
+}
+
+.hero {
+	background: url('../img/landing-page.jpg') no-repeat top center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: calc(100vh - 100px);
+	margin-top: 100px;
+}
+
+.hero .container,
+.hero .row {
+	height: 100%;
+}
+
+.hero p {
+	font-family: 'Open Sans', sans-serif;
+	color: #eae7db;
+	text-align: center;
+}
+
+.hero a {
+	max-width: 100%;
+	position: absolute;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.no-dogs-land,
+.pandemonium-incursion {
+	position: relative;
+	height: 100%;
+}
+
+.no-dogs-land p {
+	top: 20px;
+	right: 0;
+	position: relative;
+	z-index: 1;
+}
+
+.no-dogs-land p:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 115%;
+	height: 130%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background: url('./../img/text-shadow.png');
+	background-size: cover;
+	z-index: -1;
+}
+
+.no-dogs-land a {
+	top: 0;
+	right: 0;
+}
+
+.no-dogs-land img {
+	padding-top: 20px;
+}
+
+.pandemonium-incursion p {
+	width: 80%;
+	position: absolute;
+	bottom: -10px;
+}
+
+.pandemonium-incursion a {
+	bottom: 20px;
+	left: 0;
+}
+
+.hero img {
+	width: 100%;
+}
+
+.hero .inner {
+	position: relative;
+}
+
+#the-team h3 {
+	font-family: "BeautifulPeoplePersonalUse";
+	font-size: 26px;
+}
+
+#the-team ul {
+	padding-left: 0;
+
+}
+
+#the-team ul li {
+	list-style: none;
+
+}
+
+form input {
+	width: 100%;
+}
+
+.form-control {
+	background-color: #151515;
+	border: none;
+	border-radius: 0;
+}
+
+.btn {
+	background-color: #5665ae;
+	color: #eae7db;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	min-width: 150px;
+	margin-top: 20px;
+}
+
+.btn:hover,
+.btn:focus {
+	background-color: #3b4682;
+	color: #eae7db;
+}
+
+.btn.form-control {
+	margin-top: 0;
+	border-radius: 4px;
+}
+
+footer {
+	height: 100px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+/*Scrollbar*/
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	opacity: 0.1;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Navbar Toggle */
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-collapse {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #dcdbdb;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.navbar-toggle.active .icon-bar {
+	position: relative;
+}
+
+.navbar-toggle.active .icon-bar:nth-of-type(1) {
+	top: 6px;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.navbar-toggle.active .icon-bar:nth-of-type(2) {
+	background-color: transparent;
+}
+
+.navbar-toggle.active .icon-bar:nth-of-type(3) {
+	top: -6px;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+/* Collapse breakpoint */
+@media (max-width: 768px) {
+	.navbar-header {
+		float: none;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+
+	.navbar-brand {
+		margin-right: auto;
+		-webkit-box-ordinal-group: 2;
+		-ms-flex-order: 1;
+		order: 1;
+	}
+
+	.navbar-left {
+		float: none !important;
+	}
+
+	.navbar-right {
+		float: none !important;
+	}
+
+	.navbar-toggle {
+		display: block;
+		margin-left: auto;
+		-webkit-box-ordinal-group: 3;
+		-ms-flex-order: 2;
+		order: 2;
+	}
+
+	.navbar-collapse {
+		border-top: 1px solid transparent;
+		box-shadow: none;
+	}
+
+	.navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+
+	.navbar-collapse.collapse {
+		display: none !important;
+	}
+
+	.navbar-nav {
+		float: none !important;
+		margin-top: 7.5px;
+    text-align: center;
+	}
+
+	.navbar-nav>li {
+		float: none;
+	}
+
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.collapse.in {
+		display: block !important;
+	}
+}
+
+@media (min-width: 768px) {
+
+	.hero,
+	section {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+}
+
+@media (min-width: 769px) {
+
+	.navbar,
+	.navbar .container,
+	.navbar-header {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+}
+
+@media (max-width: 768px) {
+	.pandemonium-incursion a {
+		bottom: 110px;
+	}
+
+	.pandemonium-incursion p {
+		bottom: -100px;
+	}
+
+	section:not(.hero) {
+		padding: 100px 0;
+	}
+}
+
+@media (max-width: 425px) {
+	.hero {
+		background: none;
+	}
+
+	.hero .inner {
+		padding: 15px;
+	}
+
+	.no-dogs-land img {
+		padding-top: 0;
+		position: relative;
+		z-index: 1;
+	}
+
+	.no-dogs-land img:before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 115%;
+		height: 130%;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background: url('./../img/text-shadow.png');
+		background-size: cover;
+		z-index: -1;
+	}
+
+	.no-dogs-land {
+		background: url('../img/mobile-no-dogs-land-cropped.png');
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		height: 48%;
+		background-position: right;
+	}
+
+	.pandemonium-incursion {
+		background: url('../img/mobile-pandemonium.png');
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		height: 52%;
+		background-position: left;
+	}
+
+	.pandemonium-incursion a {
+		bottom: -20%;
+	}
+
+	.btn {
+		width: 100%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	.pandemonium-incursion a {
+		bottom: 60px;
+	}
+
+	.pandemonium-incursion p {
+		bottom: -55px;
+	}
+}

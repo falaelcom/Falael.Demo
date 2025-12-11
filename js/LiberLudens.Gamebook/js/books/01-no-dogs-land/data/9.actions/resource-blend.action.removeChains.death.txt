@@ -1,0 +1,21 @@
+@@DEF (death).blend.action.removeChains.fail.0@
+	Well, you should've known better. Maybe the dungeon corridor is not the most suitable venue for such noisy operations? It's not a question, actually... because it's the energetic thumping of many feet what you hear now, and it's getting stronger with every moment. Damn it!
+
+	You look around for an escape route, but there's none. The footsteps are rapidly getting closer, and you do the only thing that's left in your situation - you turn in the direction of the noise and prepare for a fight. Your arms are still shackled, but you can jump and you intend to use all your weight on the attackers.
+
+	You twist your neck slowly, warming up your joints and muscles, and focus on the first soldier who in this precise moment appears from behind the corner in the far end of the corridor. A dead man running, you think, as you leap forward and tackle the canned human. Then you furiously close your teeth in the slit between his body armor and his helmet.
+
+	One down, two, three... A painful lacerating hit on your back. You will pay for this! You bite and kill... but there are too many of them. Too many... Eventually a halberd falls on your spine and instantly paralizes your lower parts. You stumble and fall. Several more hits mutilite your body, before a hammer meets your forehead and you pass out. For good.
+	
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF (death).blend.action.removeChains.(timers.backupSummoned)@
+	Backup for the guard you killed while escaping your cell arrives and kills you.
+
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@

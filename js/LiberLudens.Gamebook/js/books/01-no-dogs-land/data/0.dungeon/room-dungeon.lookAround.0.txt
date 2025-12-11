@@ -1,0 +1,24 @@
+@@DEF dungeon.lookAround.playerMovement.1.A@You move deeper into the deadend part of the tunnel.@@ENDDEF@
+@@DEF dungeon.lookAround.playerMovement.1.B@You stand in the middle of the stone-walled corridor.@@ENDDEF@
+@@DEF dungeon.lookAround.playerMovement.3.A@ accompanied by the sound of a faint breathing@@ENDDEF@
+
+@dungeon.lookAround.playerMovement.1@ The three grated doors are on your left, exuding the faint whiff of rust, carrion and stall moisture. At the first door the smell of rust is remarkably stronger. The second door looks especially degraded. A tiny drift of air coming from the last door carries the stench of human feaces@dungeon.lookAround.playerMovement.3@.
+
+@@DEF dungeon.lookAround.playerMovement.2.A@first@@ENDDEF@
+@@DEF dungeon.lookAround.playerMovement.2.B@next@@ENDDEF@
+
+Which door would you like to check @dungeon.lookAround.playerMovement.2@?
+
+@blend.actions.final@
+
+<illustration image="dungeon.lookAround.0.png" align="span" pull-up="medium" />
+
+{
+	"exits":
+	{
+		"firstDoor": "The first door",
+		"secondDoor": "The second door",
+		"thirdDoor": "The third one",
+		"getBack": "Go back to the front of your cell"
+	}
+}

@@ -1,0 +1,62 @@
+﻿The sermon room is a peculiar place.
+
+<i>It was very much hated by your mother once. Your grandma, Queen-Mother Laura, used this place to discipline young Queen Veronica. Laura liked doing this by holding relentless speeches, sitting in the majestic Protohorse Throne, while having your mother stand upright in front of her. Veronica deeply despised the whole ritual, and after the first sermon she took an oath to never ever again set foot in this room deliberately. She broke the oath only many years later, when Flesh installed there his hydroponic station for growing hallucinogenic mushrooms.</i>
+
+You get to the sermon room and enter. You have to apply force in order to open the large heavy door. When already inside you close the door behind yourself, and the darkness of the hydroponic station engulfs you. The only pale light comes from the neat rows of ghostly shimmering shrooms. You stand there for a second or two before your night vision kicks in, and then the whole room lights up for you with mystical, beautiful colors and soft pulsations.
+
+There is one dark figure though, looking at you accusingly through huge glasses with a thick frame. A shiny little black nose twitches in front of them.
+
+"Good morning, Princess," says the figure reservedly. "What deeds bring Your Royal Highness up here?"
+
+"Good morning, Urcheon," you answer with a wisp of a smile. Urcheon the Hedgehog is your personal tutor (as he has been to your mother and grandmother), and you are very well familiar with his eccentric personality.
+
+"I will be gone for a while," you add. "Thought it would be nice to spend five minutes in my favorite place before I leave."
+
+The hedgehog approaches with a limping step.
+
+"Where are you going?" he enquiries, sternly.
+
+"I don't know yet, Urchin," you reply. "I need some space. Need to change the setting a bit. I'll be deciding on the go."
+
+"You don't have a plan?" Urchin exclaims. "Haven't I thought you anything, young lady?"
+
+You smile again. Nobody ever calls you "young lady". Except for Urchin.
+
+"You need a plan. At least you need to know what your next step would be. You know what? There is a place you need to visit. It's a perfect place for a young atramentous reptile who needs to meditate out a plan."
+
+Your smile gets even bigger. You always enjoyed the hedgehog's attitude towards your spiritual activites.
+
+"What is this place, Urchin?" you ask politely. You can see that the hedgehog's irritation with you is building up. "He," you think, "should be hating my smile right now!"
+
+"It's a swamp!" he zaps. "The Forgotten Swamp! Haven't I thought you anything?" He sharply inhales . "The swamp behind the Village! Two miles from the Village, then you turn right on the crossroad and follow the reeds!"
+
+@learnLocation@
+
+"Oh, <i>that</i> swamp!" you say. "I always thought it was a marsh."
+
+Your last words drive the hedgehog mad. He yells at you indistinguishably, takes off his glasses and throws them at you furiously. You catch them mid-flight, but before you can give them back to him, he disappears behind a low side door.
+
+"This was... I don't know," you think and sit down on a step - the whole room is arranged amphitheatrally. You put the glasses in one of the many inner pockets of your leather suit.
+
+@takeGlasses@
+
+You sit like this for a while, enjoying the silence and the familiar smells, then you get up and head for the tower rooftop.
+
+{
+	"exits":
+	{
+		"goToTowerRooftop": "Go to the Tower Rooftop"
+	},
+	"knowledge":
+	{
+		"forgottenSwampLocation": "Forgotten Swamp's location"
+	},
+	"inventory":
+	{
+		"hedgehogGlasses": "Hedgehog Glasses"
+	},
+	"skills":
+	{
+		"arcane-sight":  "Arcane Sight"
+	}
+}

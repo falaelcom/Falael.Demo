@@ -1,0 +1,967 @@
+{
+    "include":
+    [
+        "timer-backupSummoned.json"
+    ],
+    "rooms": 
+    [
+        {
+            "key": "dungeon.begin.0",
+			"type": "text",
+            "file": "room-dungeon.begin.0.txt",
+            "duration": "6:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "dungeon.begin.escape"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.begin.escape",
+			"type": "text",
+            "file": "room-dungeon.begin.escape.txt",
+            "duration": "1:00",
+            "exits":
+            [
+                {
+                    "text": "killThePriest",
+                    "target": "dungeon.begin.killThePriest"
+                },
+                {
+                    "text": "lookAround",
+                    "target": "dungeon.lookAround.priestAlive",
+                    "onExit":
+                    {
+                        "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+                    }
+                },
+                {
+                    "text": "exitDungeon",
+                    "target": "dungeon.exitDungeon.priestAlive.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.begin.killThePriest",
+			"type": "text",
+            "file": "room-dungeon.begin.killThePriest.txt",
+            "duration": "0:30",
+			"onRoomEnter":
+			{
+				"setImplicitData": { "dungeon.lookAround.priestState": "dead" },
+                "stopTimers": 
+				[
+					{ "key": "timers.backupSummoned" },
+					{ "key": "timers.priestUnconscious" }
+				]
+			},
+            "exits": 
+            [
+                {
+                    "text": "eatThePriest",
+                    "target": "dungeon.begin.eatThePriest"
+                },
+                {
+                    "text": "lookAround",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0",
+                    "onExit": 
+                    {
+                        "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+                    }
+                },
+                {
+                    "text": "enterOldCell",
+                    "target": "(timers.backupSummoned)??dungeon.enterOldCell.0"
+                },
+                {
+                    "text": "exitDungeon",
+                    "target": "(timers.backupSummoned)??dungeon.exitDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.begin.eatThePriest",
+			"type": "text",
+            "file": "room-dungeon.begin.eatThePriest.txt",
+            "duration": "7:00",
+            "on regainStrength": 
+            {
+                "changeMight": 7,
+                "changeHealth": 20
+            },
+			"onRoomEnter":
+			{
+                "stopTimers": 
+				[
+					{ "key": "timers.backupSummoned" },
+					{ "key": "timers.priestUnconscious" }
+				],
+				"setImplicitData": { "dungeon.lookAround.priestState": "missing" },
+				"setFlag": "dungeon.inFrontOfOwnCell.priestEaten"
+			},
+            "onRoomExit": 
+            {
+                "chaos": [ { "type": "diceRoll" } ]
+            },
+            "exits":
+            [ 
+                { 
+                    "text": "throwDice",
+                    "target": "dungeon.begin.throwDice"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.begin.throwDice",
+			"type": "hub",
+            "exits": 
+            [ 
+                { "target": "dungeon.begin.throwDice.fail", "condition": { "diceRoll": [ 1, 2 ] } }, 
+                { "target": "dungeon.begin.throwDice.success" }
+            ]
+        },
+        {
+            "key": "dungeon.begin.throwDice.success",
+			"type": "text",
+            "file": "room-dungeon.begin.throwDice.success.txt",
+            "exits": 
+            [
+                {
+                    "text": "lookAround",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0",
+                    "onExit": 
+                    {
+                        "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+                    }
+                },
+                {
+                    "text": "enterOldCell",
+                    "target": "(timers.backupSummoned)??dungeon.enterOldCell.0"
+                },
+                {
+                    "text": "exitDungeon",
+                    "target": "(timers.backupSummoned)??dungeon.exitDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.begin.throwDice.fail",
+			"type": "text",
+            "file": "room-dungeon.begin.throwDice.fail.txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.exitDungeon.priestAlive.0",
+			"type": "text",
+            "file": "room-dungeon.exitDungeon.priestAlive.0.txt",
+            "duration": "4:00",
+            "onRoomExit":
+            {
+                "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" },
+                "startTimers": 
+				[
+					{ "key": "timers.backupSummoned", "interval": "13:00", "once": true },
+					{ "key": "timers.priestUnconscious", "interval": "10:00", "once": true }
+				]
+            },
+            "exits": 
+            [
+                {
+                    "text": "goBack",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.inFrontOfOwnCell.0"
+                },
+                {
+                    "text": "next",
+                    "target": "entranceHall.entry.fromDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.priestAlive",
+			"type": "text",
+            "file": "room-dungeon.lookAround.priestAlive.txt",
+            "duration": "1:00",
+            "exits":
+            [
+                {
+                    "text": "followPriest",
+                    "target": "dungeon.lookAround.followPriest"
+                },
+                {
+                    "text": "continueExploring",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0",
+                    "onExit": 
+                    {
+                        "setImplicitData":
+						{
+							"dungeon.lookAround.playerMovement": "movingDeeper", 
+							"dungeon.lookAround.priestState": "missing"
+						},
+                        "startTimers": [ { "key": "timers.backupSummoned", "interval": "3:00", "once": true } ]
+                    }
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.followPriest",
+			"type": "text",
+            "file": "room-dungeon.lookAround.followPriest.txt",
+            "exits":
+            [
+                {
+                    "text": "next",
+                    "target": "dungeon.begin.throwDice.fail"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.exitDungeon.0",
+			"type": "text",
+            "file": "room-dungeon.exitDungeon.0.txt",
+            "duration": "2:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "entranceHall.entry.fromDungeon.0"
+                },
+                {
+                    "text": "goBack",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.inFrontOfOwnCell.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.enterDungeon.0",
+			"type": "text",
+            "file": "room-dungeon.enterDungeon.0.txt",
+            "duration": "2:00",
+            "onRoomExit":
+            {
+                "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+            },
+            "exits": 
+            [
+                {
+                    "text": "dungeon",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.inFrontOfOwnCell.0"
+                },
+                {
+                    "text": "entranceHall",
+                    "target": "entranceHall.entry.fromDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.0.txt",
+            "duration": "1:00",
+            "onRoomExit": 
+            {
+                "setImplicitData": { "dungeon.lookAround.playerMovement": "standingThere" }
+            },
+            "on dungeon.lookAround.playerMovement.1": 
+            {
+                "insertText": 
+                [
+                    { "textId": "dungeon.lookAround.playerMovement.1.A", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.playerMovement", "value": "movingDeeper" } } },
+                    { "textId": "dungeon.lookAround.playerMovement.1.B", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.playerMovement", "value": "standingThere" } } }
+                ]
+            },
+            "on dungeon.lookAround.playerMovement.2": 
+            {
+                "insertText": 
+                [
+                    { "textId": "dungeon.lookAround.playerMovement.2.A", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.playerMovement", "value": "movingDeeper" } } },
+                    { "textId": "dungeon.lookAround.playerMovement.2.B", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.playerMovement", "value": "standingThere" } } }
+                ]
+            },
+            "on dungeon.lookAround.playerMovement.3": 
+            {
+                "insertText": 
+                [
+                    { "textId": "dungeon.lookAround.playerMovement.3.A", "condition": { "hasNoFlag": "dungeon.lookAround.prisoner.dead" } }
+                ]
+            },
+            "exits": 
+            [
+                {
+                    "text": "firstDoor",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.0"
+                },
+                {
+                    "text": "secondDoor",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.0"
+                },
+                {
+                    "text": "thirdDoor",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.0"
+                },
+                {
+                    "text": "getBack",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.inFrontOfOwnCell.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.0",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.firstDoor.visited", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.firstDoor.state", "value": "visited" } }},
+                { "target": "dungeon.lookAround.firstDoor.exhausted", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.firstDoor.state", "value": "exhausted" } }},
+                { "target": "dungeon.lookAround.firstDoor.firstVisit"}
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.firstVisit",
+			"type": "text",
+            "file": "room-dungeon.lookAround.firstDoor.firstVisit.txt",
+            "duration": "1:00",
+			"onRoomEnter": 
+			{
+				"setImplicitData": { "dungeon.lookAround.firstDoor.state": "visited" }
+			},
+            "exits": 
+            [
+                {
+                    "text": "openFirstDoor",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.open"
+                },
+                {
+                    "text": "giveUp",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.visited",
+			"type": "text",
+            "file": "room-dungeon.lookAround.firstDoor.visited.txt",
+            "duration": "1:00",
+            "exits": 
+            [
+                {
+                    "text": "openFirstDoor",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.open"
+                },
+                {
+                    "text": "giveUp",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.exhausted",
+			"type": "text",
+            "file": "room-dungeon.lookAround.firstDoor.exhausted.txt",
+            "duration": "0:30",
+            "exits": 
+            [
+                {
+                    "text": "goBack",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.open",
+			"type": "text",
+            "file": "room-dungeon.lookAround.firstDoor.open.txt",
+            "duration": "4:00",
+			"onRoomEnter": 
+			{
+				"setImplicitData": { "dungeon.lookAround.firstDoor.state": "exhausted" }
+			},
+            "exits": 
+            [
+                {
+                    "text": "breakTheChains",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.breakTheChains.1"
+                },
+                {
+                    "text": "moveOn",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.takeTheSaw"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.breakTheChains.1",
+			"type": "text",
+            "file": "room-dungeon.lookAround.firstDoor.breakTheChains.1.txt",
+            "duration": "6:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.firstDoor.breakTheChains.2"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.breakTheChains.2",
+			"type": "text",
+            "file": "room-dungeon.lookAround.firstDoor.breakTheChains.2.txt",
+            "duration": "9:00",
+            "on chainsOff": 
+            {
+				"setFlags": [ "chainsOff" ],
+                "removeInventory": [ { "key": "chains", "quantity": 1 } ]
+            },
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.firstDoor.takeTheSaw",
+			"type": "text",
+            "file": "room-dungeon.lookAround.firstDoor.takeTheSaw.txt",
+            "duration": "0:30",
+            "on takeSaw":
+            {
+                "addInventory": [ { "key": "saw", "quantity": 1 } ]
+            },
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.0",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.secondDoor.exhausted", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.secondDoor.state", "value": "exhausted" } }},
+                { "target": "dungeon.lookAround.secondDoor.firstVisit"}
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.firstVisit",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.firstVisit.txt",
+            "duration": "3:00",
+			"onRoomEnter": 
+			{
+				"setImplicitData": { "dungeon.lookAround.secondDoor.state": "exhausted" }
+			},
+            "exits": 
+            [
+                {
+                    "text": "stay",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.0"
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.stay.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.stay.0.txt",
+            "duration": "3:00",
+            "exits":
+            [
+                {
+                    "text": "stay",
+                    "target": "dungeon.lookAround.secondDoor.stay.memoryLane.0",
+					"onExit":
+					{
+						"chaos": [ { "type": "randomInt", "from": 1, "to": 6, "constraint": "noConsecutiveRepeat" } ]
+					}
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.stay.memoryLane.0",
+			"type": "hub",
+            "exits":
+            [
+                { "condition": { "randomInt": [ 1 ] }, "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.1" },
+                { "condition": { "randomInt": [ 2 ] }, "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.2" },
+                { "condition": { "randomInt": [ 3 ] }, "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.3" },
+                { "condition": { "randomInt": [ 4 ] }, "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.4" },
+                { "condition": { "randomInt": [ 5 ] }, "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.memoryLane.5" },
+                { "condition": { "randomInt": [ 6 ] }, "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.0" }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.stay.memoryLane.1",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.stay.memoryLane.1.txt",
+            "duration": "3:00",
+            "exits":
+            [
+                {
+                    "text": "stay",
+                    "target": "dungeon.lookAround.secondDoor.stay.memoryLane.0",
+					"onExit":
+					{
+						"chaos": [ { "type": "randomInt", "from": 1, "to": 6, "constraint": "noConsecutiveRepeat" } ]
+					}
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.stay.memoryLane.2",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.stay.memoryLane.2.txt",
+            "duration": "3:00",
+            "exits":
+            [
+                {
+                    "text": "stay",
+                    "target": "dungeon.lookAround.secondDoor.stay.memoryLane.0",
+					"onExit":
+					{
+						"chaos": [ { "type": "randomInt", "from": 1, "to": 6, "constraint": "noConsecutiveRepeat" } ]
+					}
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.stay.memoryLane.3",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.stay.memoryLane.3.txt",
+            "duration": "3:00",
+            "exits":
+            [
+                {
+                    "text": "stay",
+                    "target": "dungeon.lookAround.secondDoor.stay.memoryLane.0",
+					"onExit":
+					{
+						"chaos": [ { "type": "randomInt", "from": 1, "to": 6, "constraint": "noConsecutiveRepeat" } ]
+					}
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.stay.memoryLane.4",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.stay.memoryLane.4.txt",
+            "duration": "3:00",
+            "exits":
+            [
+                {
+                    "text": "stay",
+                    "target": "dungeon.lookAround.secondDoor.stay.memoryLane.0",
+					"onExit":
+					{
+						"chaos": [ { "type": "randomInt", "from": 1, "to": 6, "constraint": "noConsecutiveRepeat" } ]
+					}
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.stay.memoryLane.5",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.stay.memoryLane.5.txt",
+            "duration": "3:00",
+            "exits":
+            [
+                {
+                    "text": "stay",
+                    "target": "dungeon.lookAround.secondDoor.stay.memoryLane.0",
+					"onExit":
+					{
+						"chaos": [ { "type": "randomInt", "from": 1, "to": 6, "constraint": "noConsecutiveRepeat" } ]
+					}
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.secondDoor.exhausted",
+			"type": "text",
+            "file": "room-dungeon.lookAround.secondDoor.exhausted.txt",
+            "duration": "1:00",
+            "exits": 
+            [
+                {
+                    "text": "stay",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.secondDoor.stay.0"
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.0",
+			"type": "hub",
+            "exits": 
+            [
+                { "target": "dungeon.lookAround.thirdDoor.visited", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.thirdDoor.state", "value": "visited" } }},
+                { "target": "dungeon.lookAround.thirdDoor.exhausted", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.thirdDoor.state", "value": "exhausted" } }},
+                { "target": "dungeon.lookAround.thirdDoor.firstVisit"}
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.firstVisit",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.firstVisit.txt",
+            "duration": "0:30",
+			"onRoomEnter": 
+			{
+				"setImplicitData": { "dungeon.lookAround.thirdDoor.state": "visited" }
+			},
+            "exits":
+            [
+                {
+                    "text": "talkToPrisoner",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.0"
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.visited",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.visited.txt",
+            "duration": "0:30",
+            "exits":
+            [
+                {
+                    "text": "talkToPrisoner",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.0"
+                },
+                {
+                    "text": "go",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.talkToPrisoner.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.talkToPrisoner.0.txt",
+            "duration": "0:10",
+            "exits":
+            [
+                {
+                    "text": "greet",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.greet.0"
+                },
+                {
+                    "text": "askAboutAncientShrine",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.askAboutAncientShrine.0",
+					"condition":
+					{
+						"and":
+						[
+							{ "hasKnowledge": "ancientShrineExistence" },
+							{ "hasFlag": "dungeon.prisoner.talkative" },
+							{ "not": { "hasKnowledge": "secretPassage" } }
+						]
+					}
+                },
+                {
+                    "text": "askWho",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.askWho.0",
+					"condition": { "hasNoFlag": "dungeon.prisoner.talkative" }
+                },
+                {
+                    "text": "growl",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.growl.0"
+                },
+                {
+                    "text": "goAway",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.talkToPrisoner.greet.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.talkToPrisoner.greet.0.txt",
+            "duration": "1:00",
+            "exits":
+            [
+                {
+                    "text": "continueTalking",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.0"
+                },
+                {
+                    "text": "goAway",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.talkToPrisoner.askWho.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.talkToPrisoner.askWho.0.txt",
+            "duration": "5:00",
+			"onRoomEnter": 
+			{
+				"setFlag": "dungeon.prisoner.talkative"
+			},
+            "exits":
+            [
+                {
+                    "text": "continueTalking",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.0"
+                },
+                {
+                    "text": "goAway",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.talkToPrisoner.askAboutAncientShrine.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.talkToPrisoner.askAboutAncientShrine.0.txt",
+            "duration": "1:00",
+			"onRoomEnter": 
+			{
+				"setImplicitData": { "dungeon.lookAround.thirdDoor.state": "exhausted" }
+			},
+            "on learnAboutSecretPassage":
+            {
+                "addKnowledge": [ "secretPassage" ]
+            },
+            "exits":
+            [
+                {
+                    "text": "continueTalking",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.thirdDoor.talkToPrisoner.0"
+                },
+                {
+                    "text": "goAway",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.talkToPrisoner.growl.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.talkToPrisoner.growl.0.txt",
+            "duration": "1:00",
+			"onRoomEnter": 
+			{
+				"setImplicitData": { "dungeon.lookAround.thirdDoor.state": "exhausted" },
+				"setFlag": "dungeon.lookAround.prisoner.dead"
+			},
+            "exits":
+            [
+                {
+                    "text": "goAway",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.thirdDoor.exhausted",
+			"type": "text",
+            "file": "room-dungeon.lookAround.thirdDoor.exhausted.txt",
+            "duration": "0:30",
+            "exits": 
+            [
+                {
+                    "text": "goBack",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.inFrontOfOwnCell.0",
+			"type": "hub",
+            "exits": 
+            [
+				{ "target": "dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.0", "condition": { "isTimerActive": { "timer": "timers.priestUnconscious", "within": "(sourceExit,sourceRoom]" } } },
+                { "target": "dungeon.lookAround.inFrontOfOwnCell.priestDead.0", "condition": { "implicitDataEquals": { "key": "dungeon.lookAround.priestState", "value": "dead" } } },
+                { "target": "dungeon.lookAround.inFrontOfOwnCell.priestMissing" }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.inFrontOfOwnCell.priestMissing",
+			"type": "text",
+            "file": "room-dungeon.lookAround.inFrontOfOwnCell.priestMissing.txt",
+            "duration": "1:00",
+			"onRoomEnter":
+			{
+				"setImplicitData": { "dungeon.lookAround.priestState": "missing" }
+			},
+            "exits":
+            [
+                {
+                    "text": "lookAround",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0",
+                    "onExit": 
+                    {
+                        "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+                    }
+                },
+                {
+                    "text": "enterOldCell",
+                    "target": "(timers.backupSummoned)??dungeon.enterOldCell.0"
+                },
+                {
+                    "text": "exitDungeon",
+                    "target": "(timers.backupSummoned)??dungeon.exitDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.0.txt",
+            "duration": "1:00",
+            "exits":
+            [
+                {
+                    "text": "killThePriest",
+                    "target": "dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.killThePriest",
+					"condition": { "not": { "implicitDataEquals": { "key": "dungeon.lookAround.priestState", "value": "dead" } } }
+                },
+                {
+                    "text": "eatThePriest",
+                    "target": "dungeon.begin.eatThePriest"
+                },
+                {
+                    "text": "lookAround",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0",
+                    "onExit": 
+                    {
+                        "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+                    }
+                },
+                {
+                    "text": "enterOldCell",
+                    "target": "(timers.backupSummoned)??dungeon.enterOldCell.0"
+                },
+                {
+                    "text": "exitDungeon",
+                    "target": "(timers.backupSummoned)??dungeon.exitDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.inFrontOfOwnCell.priestDead.0",
+			"type": "text",
+            "file": "room-dungeon.lookAround.inFrontOfOwnCell.priestDead.0.txt",
+            "duration": "1:00",
+            "exits":
+            [
+                {
+                    "text": "eatTheDeadPriest",
+                    "target": "dungeon.begin.eatThePriest",
+					"condition": { "implicitDataEquals": { "key": "dungeon.lookAround.priestState", "value": "dead" } }
+                },
+                {
+                    "text": "lookAround",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0",
+                    "onExit": 
+                    {
+                        "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+                    }
+                },
+                {
+                    "text": "enterOldCell",
+                    "target": "(timers.backupSummoned)??dungeon.enterOldCell.0"
+                },
+                {
+                    "text": "exitDungeon",
+                    "target": "(timers.backupSummoned)??dungeon.exitDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.killThePriest",
+			"type": "text",
+            "file": "room-dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.killThePriest.txt",
+            "duration": "2:00",
+			"onRoomEnter":
+			{
+				"setImplicitData": { "dungeon.lookAround.priestState": "dead" },
+                "stopTimers": 
+				[
+					{ "key": "timers.backupSummoned" },
+					{ "key": "timers.priestUnconscious" }
+				]
+			},
+            "exits":
+            [
+                {
+                    "text": "eatThePriest",
+                    "target": "dungeon.begin.eatThePriest"
+                },
+                {
+                    "text": "lookAround",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.0",
+                    "onExit": 
+                    {
+                        "setImplicitData": { "dungeon.lookAround.playerMovement": "movingDeeper" }
+                    }
+                },
+                {
+                    "text": "enterOldCell",
+                    "target": "(timers.backupSummoned)??dungeon.enterOldCell.0"
+                },
+                {
+                    "text": "exitDungeon",
+                    "target": "(timers.backupSummoned)??dungeon.exitDungeon.0"
+                }
+            ]
+        },
+        {
+            "key": "dungeon.enterOldCell.0",
+			"type": "text",
+            "file": "room-dungeon.enterOldCell.0.txt",
+            "duration": "0:30",
+            "exits": 
+            [
+                {
+                    "text": "goBack",
+                    "target": "(timers.backupSummoned)??dungeon.lookAround.inFrontOfOwnCell.0"
+                }
+            ]
+        }
+    ]
+}

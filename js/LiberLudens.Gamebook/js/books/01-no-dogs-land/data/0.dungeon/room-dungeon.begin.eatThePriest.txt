@@ -1,0 +1,14 @@
+For a while, the dark dungeon tunnels are filled with eager grumbling and grinding sounds. As you eat you feel your body regaining its natural strength.
+
+@regainStrength@
+
+When you finish your meal, the echoing dungeon silence returns. You are already staying there for a minute or two, enjoying the pleasant feeling of fullness, when a distant sound brings you out of your bloodthirsty meditation.
+
+What is your luck? Is somebody coming (dice roll is less than 3) or it's just a random noise from the building (dice roll is 3 or more)?
+
+{
+	"exits":
+	{
+		"throwDice": "Roll a dice to find out!"
+	}
+}

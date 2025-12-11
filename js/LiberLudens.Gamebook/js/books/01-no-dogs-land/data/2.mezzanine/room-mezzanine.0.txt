@@ -1,0 +1,22 @@
+!!! 
+
+@@DEF mezzanine.playerMovement.1.A@You go upstairs.@@ENDDEF@
+@@DEF mezzanine.playerMovement.1.B@You go out to the mezzanine balcony.@@ENDDEF@
+
+@@DEF mezzanine.doorStates.1.A@There are two closed doors accessible from the balcony.@@ENDDEF@
+@@DEF mezzanine.doorStates.1.B@The left door is wide open, as you left it on your way out, and you can see the empty room behind it. The right door is tightly shut.@@ENDDEF@
+@@DEF mezzanine.doorStates.1.C@The right door is open, as you left it on your way out. The left door is tightly shut.@@ENDDEF@
+@@DEF mezzanine.doorStates.1.D@Both doors are open. You can see the empty room behind the left door. There is a drift coming from the open balcony door in the right room.@@ENDDEF@
+
+@mezzanine.playerMovement.1@ @mezzanine.doorStates.1@
+
+{
+	"exits":
+	{
+		"tryLeftDoor": "Try to open the left door",
+		"reenterLeftRoom": "Enter the left room",
+		"tryRighDoor": "Try to open the right door",
+		"reenterRighRoom": "Enter the right room",
+		"goDown": "Go down to the entrance hall"
+	}
+}

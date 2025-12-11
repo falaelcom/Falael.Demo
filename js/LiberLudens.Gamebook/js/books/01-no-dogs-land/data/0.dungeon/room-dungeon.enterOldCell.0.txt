@@ -1,0 +1,12 @@
+You feel quite uncomfortable entering back the cell you just escaped at the price of a murder. Not to say that there is absolutely nothing here that's worth of your attention - only the cold stone floor surrounded by cold stone walls, and the smell of urine, feces and desperation. Oh, and many scratches in the stone - markings of your futile efforts to fray your chains.
+
+This place depresses you.
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"goBack": "Go out in the corridor"
+	}
+}

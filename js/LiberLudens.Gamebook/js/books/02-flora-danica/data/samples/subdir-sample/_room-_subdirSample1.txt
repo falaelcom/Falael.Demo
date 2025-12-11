@@ -1,0 +1,9 @@
+
+_room-_subdirSample1.txt
+
+{
+	"exits":
+	{
+		"_subdirSample2": "To _subdirSample2"
+	}
+}

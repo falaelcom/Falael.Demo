@@ -1,0 +1,12 @@
+!!! What would you say?
+
+{
+	"exits":
+	{
+		"greet": "Good morrow, stranger!",
+		"askWho": "Who are you, who's lying there in the dirt?",
+		"askAboutAncientShrine": "Ask about the ancient shrine",
+		"growl": "Just growl",
+		"goAway": "Go away"
+	}
+}

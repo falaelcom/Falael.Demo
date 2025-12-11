@@ -1,0 +1,13 @@
+﻿You've been living in this room since you've been born, and everything is so familiar: the king-size bed with the crimson linen and pitch-black baldaquin; the dressing table engraved with butterflies, snakes and poison ivy leaves; the full-length crystal mirror (<i>"Mirror, mirror, on the wall, who's the fairest of them all?"</i> you start chanting for yourself, silently); the pink doll house; the weapon armoire with the large platinum lion knobs... You open up the weapon armoire and gently slide your fingers over the cool metal of the large collection of knives, sabres, poignards and other cold weapons. You have spent countless hours in training together with John Gordon, the son of His Majesty Supreme Deputy Sangon, mastering every one of these blades.
+
+Your eyes land on a slightly curved sabre, a bit shorter and lighter then the others, sharp as a razor and lodged in a beautiful back sheath made of firm leather. This weapon is a little bit heavy for your lady's hand, but you find it to be especially comfortable during flight, tightly mounted on the back between your wings. And, although it puts extra strain on your wings, it is also very handy when it comes to sudden slashing attacks from above. <i>(Sabre stats: speed -3, might +30, grants skill: Death from Above; using the Death from Above skill always activates the flying stance; grants additional +15 might.)</i>
+
+Would you like to take the sabre with you and go? Or maybe you should close the cabinet and look around a bit more?
+
+{
+	"exits":
+	{
+		"takeSabre": "Take the sabre",
+		"continueLooking": "Look more"
+	}
+}

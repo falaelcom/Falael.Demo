@@ -1,0 +1,77 @@
+{
+    "rooms":
+    [
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.entry.noChains.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.entry.noChains.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.entry.withChains.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.entry.withChains.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.entry.withChains.tentative.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.entry.withChains.tentative.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.entry.withChains.noisy.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.entry.withChains.noisy.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.entry.withChains.noisy.victory.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.entry.withChains.noisy.victory.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.entry.withChains.quiet.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.entry.withChains.quiet.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.location.wallShadows.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.location.wallShadows.0" }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??entranceHall.guarded.location.wallShadows.attackTheGuards.0",
+			"type": "hub",
+            "exits":
+            [
+                { "target": "entranceHall.(timers.backupSummoned)" , "condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } } },
+                { "target": "entranceHall.guarded.location.wallShadows.attackTheGuards.0" }
+            ]
+        }
+    ]
+}

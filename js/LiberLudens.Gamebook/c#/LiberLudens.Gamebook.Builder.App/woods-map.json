@@ -1,0 +1,477 @@
+{
+  "scale": 0.21,
+  "nodes":
+  [
+    {
+      "name": "hunter",
+      "xPt": "914",
+      "yPt": "1416",
+      "xM": "4352.38",
+      "yM": "6742.86"
+    },
+    {
+      "name": "palaceCrossing",
+      "xPt": "2258",
+      "yPt": "1298",
+      "xM": "10752.38",
+      "yM": "6180.95"
+    },
+    {
+      "name": "bridgeTrolls",
+      "xPt": "2786",
+      "yPt": "1221",
+      "xM": "13266.67",
+      "yM": "5814.29"
+    },
+    {
+      "name": "hollowTreeCrossing",
+      "xPt": "2716",
+      "yPt": "971",
+      "xM": "12933.33",
+      "yM": "4623.81"
+    },
+    {
+      "name": "hollowTree",
+      "xPt": "2551",
+      "yPt": "957",
+      "xM": "12147.62",
+      "yM": "4557.14"
+    },
+    {
+      "name": "wolfDen",
+      "xPt": "1861",
+      "yPt": "181",
+      "xM": "8861.90",
+      "yM": "861.90"
+    },
+    {
+      "name": "lionDen",
+      "xPt": "1645",
+      "yPt": "82",
+      "xM": "7833.33",
+      "yM": "390.48"
+    },
+    {
+      "name": "magpieChristianMission",
+      "xPt": "1698",
+      "yPt": "1066",
+      "xM": "8085.71",
+      "yM": "5076.19"
+    },
+    {
+      "name": "palace",
+      "xPt": "2167",
+      "yPt": "1185",
+      "xM": "10319.05",
+      "yM": "5642.86"
+    },
+    {
+      "name": "undergroundFleshChambers",
+      "xPt": "3585",
+      "yPt": "1243",
+      "xM": "17071.43",
+      "yM": "5919.05"
+    },
+    {
+      "name": "mysteryCastle",
+      "xPt": "3060",
+      "yPt": "1030",
+      "xM": "14571.43",
+      "yM": "4904.76"
+    },
+    {
+      "name": "deathmount",
+      "xPt": "3470",
+      "yPt": "648",
+      "xM": "16523.81",
+      "yM": "3085.71"
+    },
+    {
+      "name": "eagleNest",
+      "xPt": "3514",
+      "yPt": "387",
+      "xM": "16733.33",
+      "yM": "1842.86"
+    },
+    {
+      "name": "sevenDwarves",
+      "xPt": "3135",
+      "yPt": "394",
+      "xM": "14928.57",
+      "yM": "1876.19"
+    },
+    {
+      "name": "redhatsResidence",
+      "xPt": "2673",
+      "yPt": "518",
+      "xM": "12728.57",
+      "yM": "2466.67"
+    },
+    {
+      "name": "foxDen",
+      "xPt": "2148",
+      "yPt": "512",
+      "xM": "10228.57",
+      "yM": "2438.10"
+    },
+    {
+      "name": "blackKeep",
+      "xPt": "1189",
+      "yPt": "519",
+      "xM": "5661.90",
+      "yM": "2471.43"
+    },
+    {
+      "name": "forgottenSwamp",
+      "xPt": "236",
+      "yPt": "1155",
+      "xM": "1123.81",
+      "yM": "5500"
+    },
+    {
+      "name": "bridgeCrossing",
+      "xPt": "1828",
+      "yPt": "1319",
+      "xM": "8704.76",
+      "yM": "6280.95"
+    },
+    {
+      "name": "easterRabbitHole",
+      "xPt": "2612",
+      "yPt": "1671",
+      "xM": "12438.10",
+      "yM": "7957.14"
+    },
+    {
+      "name": "well",
+      "xPt": "2727",
+      "yPt": "1820",
+      "xM": "12985.71",
+      "yM": "8666.67"
+    },
+    {
+      "name": "ancientAthenaeum",
+      "xPt": "3254",
+      "yPt": "2199",
+      "xM": "15495.24",
+      "yM": "10471.43"
+    },
+    {
+      "name": "rabbitPopulation",
+      "xPt": "990",
+      "yPt": "1551",
+      "xM": "4714.29",
+      "yM": "7385.71"
+    },
+    {
+      "name": "ruinedVillage",
+      "xPt": "1242",
+      "yPt": "1884",
+      "xM": "5914.29",
+      "yM": "8971.43"
+    },
+    {
+      "name": "stGeorgeAirport",
+      "xPt": "2043",
+      "yPt": "2078",
+      "xM": "9728.57",
+      "yM": "9895.24"
+    },
+    {
+      "name": "nanAndPopsCabin",
+      "xPt": "1847",
+      "yPt": "1760",
+      "xM": "8795.24",
+      "yM": "8380.95"
+    },
+    {
+      "name": "nannyGoatsDwelling",
+      "xPt": "1629",
+      "yPt": "1626",
+      "xM": "7757.14",
+      "yM": "7742.86"
+    },
+    {
+      "name": "hutOnChickenLegs",
+      "xPt": "2069",
+      "yPt": "1770",
+      "xM": "9852.38",
+      "yM": "8428.57"
+    }
+  ],
+  "edges":
+  [
+    {
+      "name": "route1",
+      "node1": "sevenDwarves",
+      "node2": "eagleNest",
+      "distancePt": 379.06,
+      "distanceM": 1805.07,
+      "timeMin_4kmPerH": 27.08
+    },
+    {
+      "name": "route1",
+      "node1": "hollowTree",
+      "node2": "blackKeep",
+      "distancePt": 1478.11,
+      "distanceM": 7038.62,
+      "timeMin_4kmPerH": 105.58
+    },
+    {
+      "name": "route1",
+      "node1": "lionDen",
+      "node2": "blackKeep",
+      "distancePt": 634.39,
+      "distanceM": 3020.88,
+      "timeMin_4kmPerH": 45.31
+    },
+    {
+      "name": "route1",
+      "node1": "lionDen",
+      "node2": "wolfDen",
+      "distancePt": 249.9,
+      "distanceM": 1190.02,
+      "timeMin_4kmPerH": 17.85
+    },
+    {
+      "name": "route1",
+      "node1": "wolfDen",
+      "node2": "foxDen",
+      "distancePt": 511.96,
+      "distanceM": 2437.90,
+      "timeMin_4kmPerH": 36.57
+    },
+    {
+      "name": "route1",
+      "node1": "foxDen",
+      "node2": "redhatsResidence",
+      "distancePt": 533.6,
+      "distanceM": 2540.96,
+      "timeMin_4kmPerH": 38.11
+    },
+    {
+      "name": "route1",
+      "node1": "redhatsResidence",
+      "node2": "sevenDwarves",
+      "distancePt": 597.91,
+      "distanceM": 2847.17,
+      "timeMin_4kmPerH": 42.71
+    },
+    {
+      "name": "route1",
+      "node1": "deathmount",
+      "node2": "eagleNest",
+      "distancePt": 1119.02,
+      "distanceM": 5328.67,
+      "timeMin_4kmPerH": 79.93
+    },
+    {
+      "name": "route1",
+      "node1": "mysteryCastle",
+      "node2": "deathmount",
+      "distancePt": 1585.97,
+      "distanceM": 7552.22,
+      "timeMin_4kmPerH": 113.28
+    },
+    {
+      "name": "route1",
+      "node1": "hollowTreeCrossing",
+      "node2": "redhatsResidence",
+      "distancePt": 490.61,
+      "distanceM": 2336.24,
+      "timeMin_4kmPerH": 35.04
+    },
+    {
+      "name": "route1",
+      "node1": "magpieChristianMission",
+      "node2": "bridgeCrossing",
+      "distancePt": 284.45,
+      "distanceM": 1354.50,
+      "timeMin_4kmPerH": 20.32
+    },
+    {
+      "name": "route1",
+      "node1": "bridgeCrossing",
+      "node2": "nannyGoatsDwelling",
+      "distancePt": 397.18,
+      "distanceM": 1891.33,
+      "timeMin_4kmPerH": 28.37
+    },
+    {
+      "name": "route1",
+      "node1": "bridgeCrossing",
+      "node2": "hutOnChickenLegs",
+      "distancePt": 511.35,
+      "distanceM": 2435.01,
+      "timeMin_4kmPerH": 36.53
+    },
+    {
+      "name": "route1",
+      "node1": "bridgeCrossing",
+      "node2": "palaceCrossing",
+      "distancePt": 435.07,
+      "distanceM": 2071.78,
+      "timeMin_4kmPerH": 31.08
+    },
+    {
+      "name": "route1",
+      "node1": "stGeorgeAirport",
+      "node2": "ancientAthenaeum",
+      "distancePt": 1244.93,
+      "distanceM": 5928.24,
+      "timeMin_4kmPerH": 88.92
+    },
+    {
+      "name": "route1",
+      "node1": "well",
+      "node2": "ancientAthenaeum",
+      "distancePt": 687.06,
+      "distanceM": 3271.71,
+      "timeMin_4kmPerH": 49.08
+    },
+    {
+      "name": "route1",
+      "node1": "well",
+      "node2": "undergroundFleshChambers",
+      "distancePt": 1049.09,
+      "distanceM": 4995.69,
+      "timeMin_4kmPerH": 74.94
+    },
+    {
+      "name": "route1",
+      "node1": "palaceCrossing",
+      "node2": "easterRabbitHole",
+      "distancePt": 579.48,
+      "distanceM": 2759.42,
+      "timeMin_4kmPerH": 41.39
+    },
+    {
+      "name": "route1",
+      "node1": "palace",
+      "node2": "palaceCrossing",
+      "distancePt": 145.09,
+      "distanceM": 690.89,
+      "timeMin_4kmPerH": 10.36
+    },
+    {
+      "name": "route1",
+      "node1": "hollowTree",
+      "node2": "hollowTreeCrossing",
+      "distancePt": 165.59,
+      "distanceM": 788.54,
+      "timeMin_4kmPerH": 11.83
+    },
+    {
+      "name": "route1",
+      "node1": "palace",
+      "node2": "hollowTree",
+      "distancePt": 449.46,
+      "distanceM": 2140.27,
+      "timeMin_4kmPerH": 32.10
+    },
+    {
+      "name": "route1",
+      "node1": "hollowTreeCrossing",
+      "node2": "mysteryCastle",
+      "distancePt": 368.27,
+      "distanceM": 1753.65,
+      "timeMin_4kmPerH": 26.30
+    },
+    {
+      "name": "route1",
+      "node1": "hollowTreeCrossing",
+      "node2": "bridgeTrolls",
+      "distancePt": 266.69,
+      "distanceM": 1269.95,
+      "timeMin_4kmPerH": 19.05
+    },
+    {
+      "name": "route1",
+      "node1": "bridgeTrolls",
+      "node2": "easterRabbitHole",
+      "distancePt": 485.68,
+      "distanceM": 2312.77,
+      "timeMin_4kmPerH": 34.69
+    },
+    {
+      "name": "route1",
+      "node1": "easterRabbitHole",
+      "node2": "well",
+      "distancePt": 188.22,
+      "distanceM": 896.28,
+      "timeMin_4kmPerH": 13.44
+    },
+    {
+      "name": "route1",
+      "node1": "hutOnChickenLegs",
+      "node2": "well",
+      "distancePt": 667.22,
+      "distanceM": 3177.24,
+      "timeMin_4kmPerH": 47.66
+    },
+    {
+      "name": "route1",
+      "node1": "hutOnChickenLegs",
+      "node2": "nanAndPopsCabin",
+      "distancePt": 222.23,
+      "distanceM": 1058.21,
+      "timeMin_4kmPerH": 15.87
+    },
+    {
+      "name": "route1",
+      "node1": "hutOnChickenLegs",
+      "node2": "stGeorgeAirport",
+      "distancePt": 318.88,
+      "distanceM": 1518.49,
+      "timeMin_4kmPerH": 22.78
+    },
+    {
+      "name": "route1",
+      "node1": "forgottenSwamp",
+      "node2": "hunter",
+      "distancePt": 791.46,
+      "distanceM": 3768.84,
+      "timeMin_4kmPerH": 56.53
+    },
+    {
+      "name": "route1",
+      "node1": "ruinedVillage",
+      "node2": "stGeorgeAirport",
+      "distancePt": 831.69,
+      "distanceM": 3960.44,
+      "timeMin_4kmPerH": 59.41
+    },
+    {
+      "name": "route1",
+      "node1": "rabbitPopulation",
+      "node2": "ruinedVillage",
+      "distancePt": 475.9,
+      "distanceM": 2266.17,
+      "timeMin_4kmPerH": 33.99
+    },
+    {
+      "name": "route1",
+      "node1": "hunter",
+      "node2": "rabbitPopulation",
+      "distancePt": 154.92,
+      "distanceM": 737.73,
+      "timeMin_4kmPerH": 11.07
+    },
+    {
+      "name": "route1",
+      "node1": "nannyGoatsDwelling",
+      "node2": "nanAndPopsCabin",
+      "distancePt": 255.89,
+      "distanceM": 1218.53,
+      "timeMin_4kmPerH": 18.28
+    },
+    {
+      "name": "route1",
+      "node1": "hunter",
+      "node2": "nannyGoatsDwelling",
+      "distancePt": 827.85,
+      "distanceM": 3942.16,
+      "timeMin_4kmPerH": 59.13
+    }
+  ]
+}

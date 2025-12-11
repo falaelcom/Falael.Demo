@@ -1,0 +1,22 @@
+You adjust the crown on your head.
+
+@takeCrown@
+
+You turn towards the mirror, wings half-spread, and take a long self-satisfied look at yourself. The platinum bijou suits perfectly your black hair and pale skin.
+
+Then you meet the reflection of your own eyes and you know - the time to go has come.
+
+{
+	"exits":
+	{
+		"leave": "Leave your bedroom"
+	},
+	"inventory":
+	{
+		"crown1": "Crown"
+	},
+	"skills":
+	{
+		"authority": "Authority"
+	}
+}

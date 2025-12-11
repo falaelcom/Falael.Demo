@@ -1,0 +1,22 @@
+!!!
+
+Protected by the cover of the darkness, you have now a little time to consider your next moves.
+
+@@ON !knowledge::ancientShrineExistence && !knowledge::secretPassage, onlyOnce(entranceHall.wallShadows.redBanner.1)@
+You feel fairly invisible in the shadows where you stand, yet the decorations in the middle of the entrance hall seem to offer an even better place to hide, especially the red banner, which stands a little to the fore of the plants and armors.
+@@ON knowledge::ancientShrineExistence && !knowledge::secretPassage, onlyOnce(entranceHall.wallShadows.redBanner.2)@
+As you eyes inspecting intensely every little detail of your surroundings, you look for any clues on how to access the shrine you have seen from the room upstairs. The red banner keeps attracting your attention, partially with its bright color and partially because you mentally project the extension of the bridge that you saw to a point on the wall that's right behind the banner.
+@@ENDON@
+
+What do you want to do?
+
+{
+	"exits":
+	{
+		"attackTheGuards": "Attack the humans in surprise!",
+		"goToMezzanine": "Go upstairs to the mezzanine",
+		"goToDungeon": "Go back to the dungeon",
+		"goBehindGreenBanner": "Sneak behind the green banner",
+		"goBehindRedBanner": "Sneak behind the red banner"
+	}
+}

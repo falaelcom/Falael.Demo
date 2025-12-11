@@ -1,0 +1,56 @@
+﻿<div class="bookView backpane">
+    <div class="header">
+        <input id="{restart:id}" type="button" class="restart" value="Restart" />
+        <input id="{back:id}" type="button" class="back" value="Back" /> | 
+        <input id="{changeTheme:id}" type="button" class="changeTheme" value="Theme" />
+		<span id="{betaVersion:id}" class="betaVersion">--- BETA VERSION ---</span>
+        <div id="{playerStats:id}" class="playerStats">
+            <div id="{stance:id}" class="stance value"></div>
+            <div class="stance title">ST</div>
+            <div id="{speed:id}" class="speed value"></div>
+            <div class="speed title">SP</div>
+            <div id="{might:id}" class="might value"></div>
+            <div class="might title">M</div>
+            <div id="{energy:id}" class="energy value"></div>
+            <div class="energy title">EP</div>
+            <div id="{health:id}" class="health value"></div>
+            <div class="health title">HP</div>
+        </div>
+    </div>
+    <div id="{dateTime:id}" class="dateTime"></div>
+    <div id="{subHeader:id}" class="subHeader"></div>
+    <div id="{title:id}" class="coverTitle"></div>
+    <div id="{coverImage:id}" class="coverImage"></div>
+    <div id="{actionList:id}" class="actionList"></div>
+    <div id="{text:id}" class="text"></div>
+    <div id="{finalActionList:id}" class="finalActionList"></div>
+    <div id="{combat1_0:id}" class="combat1_0"></div>
+    <div id="{navigation:id}" class="navigation"></div>
+    <table id="{playerInventory:id}" class="playerInventory" width="100%">
+        <tr>
+            <th class="knowledge title">Knowledge</th>
+            <th class="inventory title">Inventory</th>
+            <th class="skills title">Skills</th>
+        </tr>
+        <tr>
+            <td id="{knowledge:id}" class="knowledge value"></td>
+            <td id="{inventory:id}" class="inventory value"></td>
+            <td id="{skills:id}" class="skills value"></td>
+        </tr>
+        <tr id="{implicitTitleRow:id}">
+            <td class="implicit title" colspan="3">Implicit data</td>
+        </tr>
+        <tr id="{implicitRow:id}">
+            <td id="{implicit:id}" class="implicit value" colspan="3"></td>
+        </tr>
+        <tr id="{contextTitleRow:id}">
+            <td class="context title" colspan="3">Context</td>
+        </tr>
+        <tr id="{contextRow:id}">
+            <td id="{context:id}" class="context value" colspan="3"></td>
+        </tr>
+    </table>
+    <div id="timersTitle" class="timers title">Timers</div>
+    <table id="{timersTable:id}" class="timersTable" width="100%">
+    </table>
+</div>

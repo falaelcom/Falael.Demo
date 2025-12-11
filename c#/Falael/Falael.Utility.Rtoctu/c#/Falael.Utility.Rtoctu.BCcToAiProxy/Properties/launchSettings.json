@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Falael.Utility.Rtoctu.BCcToAiProxy": {
+      "commandName": "Project",
+      "commandLineArgs": "--focused-file-full-path=C:\\dev\\www\\oc_v4.1.0.3-accento\\catalog\\controller\\common\\cart.php --focused-file-line-number=16 --file-name=cart.php --unfocused-dir-full-path=C:\\temp\\kuchko-alvina-theme\\src\\oc_v4.0.2.3-alvina-stripped-tamed\\catalog\\controller\\common\\ --file-ext=.php --file-name-without-ext=cart --unfocused-file-rel-path=..\\..\\temp\\kuchko-alvina-theme\\src\\oc_v4.0.2.3-alvina-stripped-tamed\\catalog\\controller\\common\\cart.php --unfocused-dir-rel-path=..\\..\\temp\\kuchko-alvina-theme\\src\\oc_v4.0.2.3-alvina-stripped-tamed\\catalog\\controller\\common\\"
+    }
+  }
+}

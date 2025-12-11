@@ -1,0 +1,19 @@
+!!!
+
+It feels so good to be free from the chains! You confidently jump at the humans from behind the banner. You choose the close-standing, unarmed priest as your first victim. You take his head in your bite and break his neck with one mighty move. A little triumph, but you have not time to enjoy it. The guards' reaction is fast and you have to defend yourself as they charge at you with naked swords in their hands.
+
+@@DEF entranceHall.guarded.location.behindBanner.attackTheGuards.noChains.playerVictory@
+You are victorious!
+@@ENDDEF@
+
+{
+    "combat1.0":
+    {
+		"name": "Soldiers",
+		"image": "enemy_twoGuards.png"
+    },
+    "exits":
+    {
+        "next": "Continue..."
+    }
+}

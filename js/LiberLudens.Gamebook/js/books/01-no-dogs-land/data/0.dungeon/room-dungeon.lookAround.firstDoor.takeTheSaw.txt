@@ -1,0 +1,16 @@
+The saw disappears within the folds of your clothes.
+
+@takeSaw@
+
+You dig around a little bit more, but there's nothing else here for you. It's time to move on, so you...
+
+{
+	"inventory":
+	{
+		"saw": "Saw"
+	},
+	"exits":
+	{
+		"next": "...go back to the corridor"
+	}
+}

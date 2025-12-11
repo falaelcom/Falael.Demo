@@ -1,0 +1,41 @@
+.navigationPanel 
+{
+    padding-left: 5px;
+}
+
+.button.mainTabControl_tabButton_mainView,
+.button.mainTabControl_tabButton_sdTransformExplorer,
+.button.mainTabControl_tabButton_channelExplorer
+{
+    margin-top: 3px;
+    margin-right: 6px;
+}
+
+.button.mainTabControl_tabButton_mainView
+{
+    margin-left: 3px;
+}
+
+
+.panel.mainTabControl_tabPagePanel_channelExplorer
+{
+    display: block;
+}
+
+.tabControlNavigationPanel.mainTabControl_navigationPanel
+{
+    background: #5e5a6e;
+}
+
+
+.slider.slider1
+{
+    width: 200px;
+    height: 32px;
+}
+
+.slider.slider1 span.gripper
+{
+    margin-top: -32px;
+    border-width: 0 2.5px 32px 2.5px;
+}

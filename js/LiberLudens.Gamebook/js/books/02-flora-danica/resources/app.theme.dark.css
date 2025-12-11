@@ -1,0 +1,62 @@
+body.dark
+{
+    background: black !important;
+    color: white;
+}
+
+body.dark .bookView.backpane .text .stub
+{
+    border-top: solid 1px #3E3A1B;
+    border-bottom: solid 1px #3E3A1B;
+    background: #26220D;
+    color: #C3C0A2;
+}
+
+body.dark .bookView.backpane .header,
+body.dark .bookView.backpane .subHeader,
+body.dark .bookView.backpane .dateTime,
+body.dark .bookView.backpane .actionList
+{
+    border-bottom-color: #555555;
+}
+
+body.dark .bookView.backpane .dateTime
+{
+    color: #cccc99;
+}
+
+body.dark .bookView.backpane .actionListRow
+{
+    color: #b3b3b3;
+}
+
+body.dark .bookView.backpane .playerStats .value,
+body.dark .bookView.backpane .playerInventory .value,
+body.dark .bookView.backpane .timersTable .tableHeader,
+body.dark .bookView.backpane .timersTable .value
+{
+    border-color: #333333;
+}
+
+body.dark .bookView.backpane .finalActionList,
+body.dark .bookView.backpane .footnotes,
+body.dark .bookView.backpane .playerInventory
+{
+    border-top-color: #555555;
+}
+
+body.dark .bookView.backpane .playerStats,
+body.dark .bookView.backpane .playerInventory,
+body.dark .bookView.backpane .epigraph,
+body.dark .bookView.backpane .song,
+body.dark .bookView.backpane .source,
+body.dark .bookView.backpane .timers.title,
+body.dark .bookView.backpane .timersTable .value
+{
+    color: #d1d1d1;
+}
+
+body.dark .bookView.backpane .timersTable .tableHeader
+{
+    color: #eaeaea;
+}

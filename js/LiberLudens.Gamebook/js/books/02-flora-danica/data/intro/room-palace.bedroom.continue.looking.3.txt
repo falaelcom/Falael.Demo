@@ -1,0 +1,13 @@
+As you put the crown back on the table, you notice that one of the drawers of the cabinet underneath is slightly open. You pull it out and there it is - the magic wand that Tzar Pyotr brought to you as a gift for your 13th birthday. It's a very fairy-style magic wand, golden, with pink strips and a fluffy pompon on the top. It is actually a great amplifier for spells and other magic activities, and you have used it many times during your training at the Old Hex's Hut, but you sincerely dispise its outlook. You like black. You like pale. You like sharp and dangerous. That's why you keep the wand in the drawer, burried and forgotten.
+
+On the other hand the magic wand is a quite useful item, especially when you know how to operate it. <i>(It grants the Spell Caster skill; this skill allows you to use magic during the game.)</i>
+
+Would you like to take it? Or maybe you just prefer to hide the tacky stick back in the drawer and move on?
+
+{
+	"exits":
+	{
+		"takeWand": "Take the wand",
+		"noWeapon": "Just leave"
+	}
+}

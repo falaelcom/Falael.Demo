@@ -1,0 +1,47 @@
+<div class="epigraph">"I'm living in a world someone has thought up without bothering to tell me, or maybe even himself."</div>
+<div class="source">-- Arkady and Boris Strugatsky</div>
+
+<separator />
+
+"Good evening, your Highness!" 
+
+As you walk by, the seven dwarves salute you in chorus, respectfully bowing, arranged in a colorful line alongside the forest path, holding short flickering torches. You smile at them and nod majestically. Passing on, you can hear them march away behind your back, cheerfully singing a dwarven song.
+
+The night Zirnyr<span class="footnoteAsterisk">*</span> air is warm and soft, full of familiar forest scents: fern, pine, peppermint, gum, lilac, cooked vegetables and roasted meat, oven smoke and dung. It's already dark, but being only partially human you possess several peculiar abilities, among wich is your talent to see in complete darkness. Another one is your ability to fly, but tonight you prefer to walk through the lively forest, meeting omnifarious wooden creatures, and to check in passing on your kingdom: the Kingdom of the Woods...
+
+"God save you, Princess!"
+
+On the edge of the path, a black-and-white magpie is standing still in an obsequious posture, eyes lowered respectfully. You dismiss her with an imperious gesture.
+
+You continue on your way, enjoying the evening walk. On the next crossing a squad of squirrels, armed to the teeth, come running across your path. As they notice you, they stop and swiftly align themselves forming a cordon.
+
+"Hail, Princess Margarita!" they shriek enthusiastically.
+
+You smile again and walk ceremoniously thrwough the cordon.
+
+A broom whooshes above your head, leaving a trail of rustling leaves and giggling wind. Three drunk piglettes stroll by, snorting and squeaking the verses of a dirty song. A mouse dashes through the bushes, crying for help in panic, and a fox races after, stopping guiltily when she sees you, but immideately moving on and disappearing in the thicket.
+
+You feel warm satisfaction. This is home and everything is in place. With every next step you sink deeper into your thoughts, automatically following the path to the Palace.
+
+What do you like to do next?
+
+<div class="footnotes">* In the Woods, Zirnyr is the third month of the year. This is the time when the bushes and the trees are already green, covered with fresh leaves, only few of them still glowing with white, pink, red or soft blue blooming flowerets. The evenings are getting warmer and the first lights of the fireflies start flickering after sunset.</div>
+
+{
+	"title": "Part One: Intro",
+	"coverImage": "part1IntroCover.jpg",
+	"coverImageSize": "size16_9",
+	"exits":
+	{
+		"thoughts": "Listen to your thoughts",
+		"theNightBefore-palace": "Go straight to the Palace",
+		"transportation-test": "[TEST] Transportation",
+		"_timerTests": "[TEST] Timers",
+		"_sample1": "[TEST] To Sample 1"
+	},
+	"skills":
+	{
+		"flying": "Flying",
+		"night-vision": "Night Vision"
+	}
+}

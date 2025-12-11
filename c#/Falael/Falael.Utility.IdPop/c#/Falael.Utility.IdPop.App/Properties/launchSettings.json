@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Falael.Utility.IdPop.App": {
+      "commandName": "Project",
+      "commandLineArgs": "\"c:\\repos\\Falael.CODE\\code\\Falael\\*.(cs|js)\""
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@@INSERT (blend.action.removeChains).description.2@
+
+@chainsOff@
+
+@@INSERT (blend.action.removeChains).description.3@
+
+{
+	"exits":
+	{
+		"next": "Go out in the corridor"
+	}
+}

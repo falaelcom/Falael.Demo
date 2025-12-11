@@ -1,0 +1,26 @@
+aj;fas;f ;as uasdih asio'dh'ashdg 'asigh
+
+@@DEF testText_isBefore_TRUE@ *testText_isBefore_TRUE* @@ENDDEF@
+@@DEF testText_isBefore_FALSE@ *testText_isBefore_FALSE* @@ENDDEF@
+@@DEF testText_isBeforeDate_TRUE@ *testText_isBeforeDate_TRUE* @@ENDDEF@
+@@DEF testText_isBeforeDate_FALSE@ *testText_isBeforeDate_FALSE* @@ENDDEF@
+@@DEF testText_isBeforeTime_TRUE@ *testText_isBeforeTime_TRUE* @@ENDDEF@
+@@DEF testText_isBeforeTime_FALSE@ *testText_isBeforeTime_FALSE* @@ENDDEF@
+
+@@DEF testText_isAfter_TRUE@ *testText_isAfter_TRUE* @@ENDDEF@
+@@DEF testText_isAfter_FALSE@ *testText_isAfter_FALSE* @@ENDDEF@
+@@DEF testText_isAfterDate_TRUE@ *testText_isAfterDate_TRUE* @@ENDDEF@
+@@DEF testText_isAfterDate_FALSE@ *testText_isAfterDate_FALSE* @@ENDDEF@
+@@DEF testText_isAfterTime_TRUE@ *testText_isAfterTime_TRUE* @@ENDDEF@
+@@DEF testText_isAfterTime_FALSE@ *testText_isAfterTime_FALSE* @@ENDDEF@
+
+@@DEF testText_isBetween_TRUE@ *testText_isBetween_TRUE* @@ENDDEF@
+@@DEF testText_isBetween_FALSE@ *testText_isBetween_FALSE* @@ENDDEF@
+@@DEF testText_isBetweenDate_TRUE@ *testText_isBetweenDate_TRUE* @@ENDDEF@
+@@DEF testText_isBetweenDate_FALSE@ *testText_isBetweenDate_FALSE* @@ENDDEF@
+@@DEF testText_isBetweenTime_TRUE@ *testText_isBetweenTime_TRUE* @@ENDDEF@
+@@DEF testText_isBetweenTime_FALSE@ *testText_isBetweenTime_FALSE* @@ENDDEF@
+
+@insertHere@
+
+'suh s;au gfa' dihg'sdigha'sidgh 'asihdg

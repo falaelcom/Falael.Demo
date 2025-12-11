@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+ARIA 1.0//EN" "http://www.w3.org/WAI/ARIA/schemata/xhtml-aria-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="application/xhtml+xml; text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="en" />
+	<meta http-equiv="default-style" content="normal-css" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" href="normal.css" title="normal-css" />
+
+	<meta name="boot::ROUTE" rel="-/pb/natalis" content="natalis" />
+	<meta name="boot::ROUTE" rel="-/pb/xenesio" content="xenesio" />
+	<meta name="boot::ROUTE" rel="-/zen/natalis" content="natalis" />
+	<meta name="boot::ROUTE" rel="-/zen/xenesio" content="xenesio" />
+	<meta name="boot::PB_DEBUG_MANIFEST" content="/pb-debug-manifest.json" />
+	<meta name="context::CONFIG" content='{}' />
+	<meta name="context::VERSION" content='{ "major": 0, "minor": 1, "text": "0.1" }' />
+
+	<meta name="global::PB_DEBUG" content="true" />
+
+	<script type="text/javascript" src="xenesio/Boot.js"></script>
+	<script type="text/javascript" src="xenesio/ConfigureContext.js"></script>
+
+	<script type="text/javascript">
+		//<![CDATA[
+		{
+			console.time("boot");
+			global.Pb = {};
+			global.Zen = {};
+
+			////////////////////////////////////////////////
+			//	Validate Runtime
+
+			const unsupported = require("-/pb/natalis/000/Runtime.js").caps({ query: "unsupported", acknowledge: ["GlobalObject:global", "Process", "Process:stdout", "Process:stderr", "Process:hrtime"] });
+			unsupported.length ? console.error(`Unsupported runtime caps:`, unsupported) : void 0;
+
+			////////////////////////////////////////////////
+			//	natalis
+
+			global.Pb.Context = require("-/pb/natalis/010/Context.js");
+			global.Pb.Exception = require("-/pb/natalis/003/Exception.js");
+			global.Pb.Type = require("-/pb/natalis/000/Native.js").Type;
+			global.Pb.Enum = require("-/pb/natalis/011/Enum.js");
+			global.Pb.Crypto = require("-/pb/natalis/005/Crypto.js");
+			global.Pb.Feedback = require("-/pb/natalis/012/Feedback.js");
+			global.Pb.Configuration = require("-/pb/natalis/012/Configuration.js");
+			global.Pb.Options = require("-/pb/natalis/012/Options.js");
+
+			console.timeEnd("boot");
+
+			////////////////////////////////////////////////
+			//	xenesio
+
+			global.Pb.Logger = require("-/pb/natalis/005/Logger.js");
+		}
+		//]]>
+	</script>
+
+	<script type="text/javascript">
+		//<![CDATA[
+		async function runTests()
+		{
+			let asyncTests = [];
+			console.log(`Running unit tests...`);
+			{
+				console.log(`For "pb/natalis"...`);
+				asyncTests = asyncTests.concat(require("-/pb/natalis/UnitTests.js").unitTest(
+					v => v.skipping ? console.warn(`Tests for ${JSON.stringify(v.skipping)} are suppressed by configuration.`) : v.ex ? (console.error("Test failed with exception:", v), console.error(v.ex)) : console.error("Test failed:", v)
+				));
+			}
+			console.log(`Done.`);
+			{
+				console.log(`For "pb/xenesio"...`);
+				asyncTests = asyncTests.concat(require("-/pb/xenesio/UnitTests.js").unitTest(
+					v => v.skipping ? console.warn(`Tests for ${JSON.stringify(v.skipping)} are suppressed by configuration.`) : v.ex ? (console.error("Test failed with exception:", v), console.error(v.ex)) : console.error("Test failed:", v)
+				));
+			}
+			console.log(`Done.`);
+
+			console.warn("Awiting async tests (browser tab might need to be visible to complete)...");
+			Promise.all(asyncTests).then(() => { console.warn("Done."); console.log("Ready.") });
+
+			{
+				console.log("Running performance tests...");
+				require("-/pb/natalis/PerformanceTests.js").run();
+				console.log("Done.");
+			}
+
+			if (false)
+			{
+				const feedback = new Pb.Feedback(
+				{
+					log: console.log.bind(console),
+					alert: console.error.bind(console),
+					progress: (progressSnapshot, ...args) => console.log(progressSnapshot.getPercent() + "%", ...args),
+				});
+				const outcome = await require("-/pb/natalis/PerformanceProfile.js").run(feedback);
+				feedback.info(JSON.stringify(outcome, null, "\t"));
+			}
+		}
+
+		async function test()
+		{
+			console.log(`Testing resource routes...`);
+			global.Zen.Bogus = require("-/zen/natalis/010/Bogus.js");
+			global.Zen.Resource = await require.resource("-/zen/natalis/bogus.xhtml");
+			console.log(global.Zen.Resource);
+			console.log(`Done.`);
+		}
+
+		async function prerun()
+		{
+			await runTests();
+			await test();
+		}
+
+		prerun();
+
+		window.addEventListener("load", () =>
+		{
+			const form1 = document.getElementById("form1");
+			form1.addEventListener("submit", async function (event)
+			{
+				event.preventDefault();
+				try
+				{
+					const formData = new FormData(form1);
+					const searchParams = new URLSearchParams();
+					for (const pair of formData)
+					{
+						const value = pair[1];
+						if (!Pb.Type.isString(value)) continue;
+						searchParams.append(pair[0], value);
+					}
+					const response = await fetch("/v01/test",
+						{
+							method: "POST",
+							//body: searchParams,		//	"application/x-www-form-urlencoded"
+							body: formData,			//	"multipart/form-data"
+						});
+					console.log(6661, await response.text());
+				}
+				catch (ex)
+				{
+					console.error(6662, ex);
+				}
+			});
+		});
+							//]]>
+	</script>
+</head>
+<body>
+	<form id="form1">
+		<input type="text" name="field1яяя" value="text" /><br />
+		<input type="file" name="field2№" /><br />
+		<input type="submit" />
+	</form>
+</body>
+</html>

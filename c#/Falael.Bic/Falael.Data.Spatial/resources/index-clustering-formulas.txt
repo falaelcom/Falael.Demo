@@ -1,0 +1,211 @@
+single dimension
+
+interval: [0, 8]
+
+frag = 10, start = 0, end = 8
+pass 0, step =     1: 0, 1, 2, 3, 4, 5, 6, 7, 8					  	  count = 9								total = 9
+pass 1, step =   0.1: 0.1, 0.2, 0.3  ... 0.9, 2.1, 2.2 ... 7.9		  count = (10 - 1) * (9 - 1) = 72		total = 81
+pass 2, step =  0.01: 0.01, 0.02, 0.03 ... 0.09, 0.11 ... 7.99		  count = (10 - 1) * (81 - 1) = 720		total = 801
+pass 3, step = 0.001: 0.001, 0.002, 0.003 ... 0.009, 0.011 ... 7.999  count = (10 - 1) * (801 - 1) = 7200	total = 8001
+
+frag = 4, start = 0, end = 10
+pass 0, step =        2.5: 0, 2.5, 5, 7.5, 10
+pass 1, step =      0.625: 0.625, 1.25, 1.875, 3.125, 3.75, 4.375, 5.625, 6.25, 6.875, 8.125, 8.75, 9.375
+
+frag = 4, start = 5.5, end = 15.76
+pass 0, step =      2.565: 5.5, 8.065, 10.63, 13.195, 15.76
+
+pass(p) definition
+		
+	pass(p).step = (n2 - n1) / Math.pow(frag, p + 1)
+	pass(p).total = Math.pow(frag, p + 1) + 1
+
+	for p = 0
+	pass(p).count = pass(p).total
+	
+	for p > 0
+	pass(p).count = Math.pow(frag, p + 1) - Math.floor(Math.pow(frag, p + 1) / frag);
+
+	where 
+
+	p (- Z, p >= -1 - pass number
+	frag (- R, frag > 0 - fragmentation (each interval from a pass is splitted to frag equal intervals to produce the next pass)
+	n1 (- R - interval start (test with non-whole numbers)
+	n2 (- R - interval end (test with non-whole numbers)
+
+
+//	si: step index within pass
+//	ti: tick index within pass
+function si2ti(pass, si)
+{
+	if(pass.p == 0)
+	{
+		return si;
+	}
+	var localOffset = si % pass.frag;
+	if(localOffset == 0)
+	{
+		return -1;
+	}
+	var partentOffset = Math.floor(si / pass.frag);
+	return partentOffset * (pass.frag - 1) + localOffset - 1;
+}
+
+v				     19 23  
+n                    |  |
+i   0    1    2    3     4    5    6    7     8    9    10
+	0    |    |    |	25    |    |    | 	 50    |    |    |	75    |    |    |	100
+		6.25 12.5 18.75      31.25 37.5 43.75     56.25
+   
+p0i 0                    1                    2                  3
+p1i      0    1    2          3    4    5          6    7	 8        9
+
+
+		v = 19	step = 6.25	n = 3.04
+round:  nearest n = 3	nearest v = 18.75	i = 2
+ceil:   nearest n = 4	nearest v = 25		i = 2	WRONG n, v
+floor:  nearest n = 3	nearest v = 18.75	i = 2
+
+		v = 23	step = 6.25	n = 3.68
+round:  nearest n = 4	nearest v = 25		i = 2	WRONG i
+ceil:   nearest n = 4	nearest v = 25		i = 2	WRONG i
+floor:  nearest n = 3	nearest v = 18.75	i = 2	WRONG n, v, i
+
+	
+	
+multiple dimensions (x, y, z)
+
+v = (vx, vy, vz)
+
+vx -> (px, ix), ix <= pass(px).count
+vy -> (py, iy), iy <= pass(py).count
+vz -> (pz, iz), iz <= pass(pz).count
+
+v -> ([px!maxpx, py!maxpy, pz!maxpz], [ix!pass(px).count, iy!pass(py).count, iz!pass(pz).count])
+
+c0 = [x!maxx, y!maxy, z!maxz, ..., t!maxt] = 
+
+	var c1 = x;
+	var maxc1 = (maxx + 1) - 1;
+
+	var c2 = (maxy + 1) * c1 + y;
+	var maxc2 = (maxy + 1) * (maxc1 + 1) - 1;
+
+	var c3 = (maxz + 1) * c2 + z;
+	var maxc3 = (maxz + 1) * (maxc2 + 1) - 1;
+
+	...
+
+	var c0 = (maxt + 1) * c? + t;
+	var maxc0 = (maxt + 1) * (maxc? + 1) - 1;
+
+revrse operation 
+
+	var t1 = c0 % (maxt + 1);
+	var c? = (c0 - t1) / (maxt + 1);
+
+	...
+
+	var z1 = c3 % (maxz + 1);
+	var c2 = (c3 - z1) / (maxz + 1);
+
+	var y1 = c2 % (maxy + 1);
+	var c1 = (c2 - y1) / (maxy + 1);
+
+	var x1 = c1;
+
+to test
+
+	var sb = [];
+	sb.push("c0 TEST ==================================================<br />");
+	var maxx = 10;
+	var maxy = 10;
+	var maxz = 10;
+
+	sb.push("<pre>");
+	sb.push("c0");
+	sb.push("\t");
+	sb.push("x");
+	sb.push("\t");
+	sb.push("x1");
+	sb.push("\t");
+	sb.push("y");
+	sb.push("\t");
+	sb.push("y1");
+	sb.push("\t");
+	sb.push("z");
+	sb.push("\t");
+	sb.push("z1");
+	sb.push("<br />");
+
+	for(var x = 0; x <= maxx; ++x)
+	{
+		var c1 = x;
+		var maxc1 = (maxx + 1) - 1;
+			
+		for(var y = 0; y <= maxy; ++y)
+		{
+			var c2 = (maxy + 1) * c1 + y;
+			var maxc2 = (maxy + 1) * (maxc1 + 1) - 1;
+
+			for(var z = 0; z <= maxz; ++z)
+			{
+				var c3 = (maxz + 1) * c2 + z;
+				var maxc3 = (maxz + 1) * (maxc2 + 1) - 1;
+
+				var z1 = c3 % (maxz + 1);
+				var c2 = (c3 - z1) / (maxz + 1);
+				
+				var y1 = c2 % (maxy + 1);
+				var c1 = (c2 - y1) / (maxy + 1);
+				
+				var x1 = c1;
+				
+				sb.push(c3);
+				sb.push("\t");
+				sb.push(x);
+				sb.push("\t");
+				sb.push(x1);
+				sb.push("\t");
+				sb.push(y);
+				sb.push("\t");
+				sb.push(y1);
+				sb.push("\t");
+				sb.push(z);
+				sb.push("\t");
+				sb.push(z1);
+				sb.push("<br />");
+			}
+		}
+	}
+	sb.push("</pre>");
+	document.getElementById("c0Div").innerHTML = sb.join("");
+
+
+
+	
+
+
+resources	
+	
+javascript print number in binary
+(dec >>> 0).toString(2);
+
+
+
+
+If you want the last X bits of a value, there is a simple trick that can be used.
+
+unsigned  mask;
+mask = (1 << X) - 1;
+lastXbits = value & mask;
+If you want to isolate a run of X bits in the middle of 'value' starting at 'startBit' ...
+
+unsigned  mask;
+mask = ((1 << X) - 1) << startBit;
+isolatedXbits = value & mask;
+
+-- http://stackoverflow.com/questions/8011700/how-do-i-extract-specific-n-bits-of-a-32-bit-unsigned-integer-in-c
+
+- chunkId parts use a higher numeric system, e.g. 66 = 56 (alpha) + 10 (digits), or even igher
+	- http://stackoverflow.com/questions/923771/quickest-way-to-convert-a-base-10-number-to-any-base-in-net

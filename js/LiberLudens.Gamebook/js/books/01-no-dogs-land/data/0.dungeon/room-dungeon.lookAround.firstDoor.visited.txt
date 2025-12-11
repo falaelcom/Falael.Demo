@@ -1,0 +1,11 @@
+!!! The door statys slightly open after your earlier attempt to open it.
+
+You feel that if you put all of your weight on the door, it will open. Are you ready to try this?
+
+{
+	"exits":
+	{
+		"openFirstDoor": "Yes, force the door",
+		"giveUp": "No, it's too dangerous"
+	}
+}

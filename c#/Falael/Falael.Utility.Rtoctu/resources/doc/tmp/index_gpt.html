@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Minimal Chat (MD5 view)</title>
+
+  <!-- JS endpoint constants FIRST -->
+  <script>
+    const ENDPOINT_CHECK  = "http://localhost:8080/api/check";        // GET ?validTimestamp=37465923345 -> true|false
+    const ENDPOINT_LIST   = "http://localhost:8080/api/chats";        // GET -> {chats:[{chatId,time,title}], validTimestamp:int}
+    const ENDPOINT_READ   = "http://localhost:8080/api/chat";         // GET ?id=tmp0avlzg -> {messages:[{role,content,time}], chatId,title,validTimestamp:int} OR single {role,content}
+    const ENDPOINT_POST   = "http://localhost:8080/api/post";         // POST {chatId,content} -> {chatId,event,errorMessage,validTimestamp:int}
+  </script>
+
+  <!-- Materialize CSS + jQuery + Materialize JS + md5 lib (CDNs) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+  <!-- Custom CSS (soft light Materialize palette) -->
+  <style>
+    html, body { height:100%; }
+    body {
+      margin:0;
+      background:#fafafa;
+      color:#263238;
+      font-family: Roboto, Arial, sans-serif;
+      overflow-y: scroll;
+    }
+    /* Left chat list */
+    #sidebar {
+      position:fixed;
+      top:0;
+      left:0;
+      bottom:70px; /* leave space for input bar */
+      width:280px;
+      background:#eceff1; /* blue-grey lighten-5 */
+      border-right:1px solid #cfd8dc;
+      overflow-y:auto;
+      padding:10px 0;
+    }
+    .chat-item {
+      padding:10px 16px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    .chat-item:hover { background:#e3f2fd; }           /* light blue lighten-5 */
+    .chat-item.active { background:#bbdefb; }          /* light blue lighten-4 */
+    .chat-item .title { font-weight:500; }
+    .chip-new {
+      margin-left:auto;
+      background:#ffe0b2; /* orange lighten-4 */
+      color:#ef6c00;      /* orange darken-3 */
+      height:22px;
+      line-height:22px;
+    }
+
+    /* Main content area (body scrolls; this area just has margins) */
+    #content {
+      margin-left:280px;
+      margin-bottom:70px; /* input bar height */
+      padding:16px 24px 24px 24px;
+    }
+    #chat-header {
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      margin:8px 0 12px 0;
+      color:#0d47a1; /* blue darken-4 */
+    }
+    #chat-title { font-size:20px; font-weight:600; }
+    #chat-id { font-size:12px; color:#607d8b; }
+    #messages {
+      background:#ffffff;
+      border:1px solid #e0e0e0;
+      border-radius:8px;
+      padding:12px 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.06);
+      min-height:300px;
+    }
+    .msg {
+      padding:8px 10px;
+      border-bottom:1px dashed #e0e0e0;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      word-break:break-all;
+    }
+    .msg:last-child { border-bottom:none; }
+    .role {
+      font-size:11px;
+      font-weight:600;
+      color:#546e7a;
+      text-transform:uppercase;
+      padding:2px 6px;
+      border-radius:4px;
+      background:#eceff1;
+      flex:0 0 auto;
+    }
+    .hash {
+      flex:1 1 auto;
+      font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:12px;
+      color:#263238;
+    }
+    .time {
+      flex:0 0 auto;
+      font-size:11px;
+      color:#78909c;
+      margin-left:8px;
+    }
+
+    /* Bottom input bar */
+    #input-bar {
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      height:70px;
+      background:#eceff1;
+      border-top:1px solid #cfd8dc;
+      display:flex;
+    }
+    #input-bar-inner {
+      display:flex;
+      width:100%;
+      max-width: calc(100% - 280px);
+      margin-left:280px;
+      padding:8px 12px;
+      gap:10px;
+      align-items:stretch;
+    }
+    #composer {
+      width:100%;
+      resize:none;
+      border:1px solid #cfd8dc;
+      border-radius:6px;
+      padding:10px 12px;
+      background:#ffffff;
+      height:54px; /* multiline but compact */
+      line-height:1.35;
+    }
+    #send-btn {
+      flex:0 0 120px;
+      border-radius:6px;
+      height:54px;
+    }
+
+    /* Utility */
+    .thin { font-weight:300; }
+    .muted { color:#78909c; }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar: chats -->
+  <div id="sidebar">
+    <div class="center-align" style="padding:10px 0 6px 0;">
+      <span class="blue-text text-darken-4" style="font-weight:600;">Chats</span>
+    </div>
+    <div id="chat-list"></div>
+  </div>
+
+  <!-- Main content -->
+  <div id="content">
+    <div id="chat-header">
+      <div id="chat-title" class="blue-text text-darken-4">Select a chat</div>
+      <div id="chat-id" class="muted"></div>
+    </div>
+    <div id="messages"></div>
+  </div>
+
+  <!-- Bottom input bar -->
+  <div id="input-bar">
+    <div id="input-bar-inner">
+      <textarea id="composer" placeholder="Type message…  ⏎ to send, Shift+⏎ for newline"></textarea>
+      <button id="send-btn" class="btn waves-effect waves-light blue darken-2">Send</button>
+    </div>
+  </div>
+
+  <!-- App JS -->
+  <script>
+    // State
+    let validTimestamp = 0;
+    let pollingBusy = false;
+    let currentChatId = null;
+    let unread = new Set();           // chatIds highlighted until clicked
+    const lastSeen = new Map();       // chatId -> last known time (string or number)
+    let chatsCache = [];              // latest chat list
+
+    // Helpers
+    const $chatList = () => $("#chat-list");
+    const $messages = () => $("#messages");
+    const $composer = () => $("#composer");
+    const $chatTitle = () => $("#chat-title");
+    const $chatId = () => $("#chat-id");
+
+    function toast(msg) { M && M.toast ? M.toast({html: msg, displayLength: 2000}) : alert(msg); }
+
+    function updateValidTimestamp(obj) {
+      if (obj && typeof obj.validTimestamp === "number") {
+        validTimestamp = Math.max(validTimestamp, obj.validTimestamp);
+      }
+    }
+
+    function isPageAtBottom() {
+      const epsilon = 2;
+      return (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - epsilon);
+    }
+
+    function scrollPageBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "instant" in window ? "instant" : "auto" });
+    }
+
+    function renderChatList(list) {
+      chatsCache = Array.isArray(list) ? list : [];
+      const html = chatsCache.map(ch => {
+        const active = ch.chatId === currentChatId ? "active" : "";
+        const isNew = unread.has(ch.chatId) && ch.chatId !== currentChatId;
+        const chip = isNew ? `<span class="chip chip-new">new</span>` : "";
+        const title = (ch.title || ch.chatId || "untitled").toString();
+        const time = ch.time ? `<div class="muted thin" style="font-size:11px;">${ch.time}</div>` : "";
+        return `<div class="chat-item ${active}" data-id="${ch.chatId}">
+                  <i class="material-icons tiny muted">chat_bubble_outline</i>
+                  <div style="display:flex;flex-direction:column;gap:2px;">
+                    <div class="title">${escapeHtml(title)}</div>
+                    ${time}
+                  </div>
+                  ${chip}
+                </div>`;
+      }).join("");
+      $chatList().html(html);
+
+      // Click binding
+      $(".chat-item").off("click").on("click", function() {
+        const id = $(this).data("id");
+        if (!id) return;
+        unread.delete(id);
+        loadChat(id, { forceScrollBottom: true }); // always scroll to bottom on switch
+        renderChatList(chatsCache); // refresh highlighting/active state
+      });
+    }
+
+    function normalizeMessages(payload) {
+      if (!payload) return [];
+      if (Array.isArray(payload.messages)) return payload.messages;
+      if (payload.role && payload.content !== undefined) return [payload];
+      if (Array.isArray(payload)) return payload;
+      return [];
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function renderChat(payload, scrollPolicy) {
+      const wasAtBottom = isPageAtBottom();
+      const savedScroll = window.scrollY;
+
+      const msgs = normalizeMessages(payload);
+      const title = payload && payload.title ? payload.title : (currentChatId || "");
+      $chatTitle().text(title || "Chat");
+      $chatId().text(currentChatId ? `#${currentChatId}` : "");
+
+      const rows = msgs.map(m => {
+        const role = (m.role || "user").toString();
+        const hash = md5(String(m.content ?? ""));
+        const time = m.time ? `<span class="time">${escapeHtml(m.time)}</span>` : "";
+        return `<div class="msg">
+                  <span class="role">${escapeHtml(role)}</span>
+                  <span class="hash">${hash}</span>
+                  ${time}
+                </div>`;
+      }).join("");
+
+      $messages().html(rows || `<div class="msg"><span class="role">info</span><span class="hash muted">No messages.</span></div>`);
+
+      // Scroll policy
+      if (scrollPolicy === "forceBottom") {
+        scrollPageBottom();
+      } else {
+        if (wasAtBottom) scrollPageBottom();
+        else window.scrollTo(0, savedScroll);
+      }
+    }
+
+    // Networking
+    async function getJSON(url) {
+      const r = await fetch(url, { method: "GET", cache: "no-store" });
+      if (!r.ok) throw new Error(`GET ${url} -> ${r.status}`);
+      const ct = r.headers.get("Content-Type") || "";
+      if (ct.includes("application/json")) return r.json();
+      // boolean 'true|false' for check endpoint
+      const txt = await r.text();
+      return txt.trim().toLowerCase() === "true";
+    }
+
+    async function postJSON(url, body) {
+      const r = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body || {})
+      });
+      if (!r.ok) throw new Error(`POST ${url} -> ${r.status}`);
+      return r.json();
+    }
+
+    async function loadChatList() {
+      const data = await getJSON(`${ENDPOINT_LIST}`);
+      updateValidTimestamp(data);
+      const list = Array.isArray(data?.chats) ? data.chats : [];
+      // mark unread based on new timestamps
+      list.forEach(ch => {
+        const prev = lastSeen.get(ch.chatId);
+        if (ch.time && prev && ch.time > prev && ch.chatId !== currentChatId) unread.add(ch.chatId);
+        if (ch.time && (!prev || ch.time > prev)) lastSeen.set(ch.chatId, ch.time);
+      });
+      renderChatList(list);
+      // auto-select first if none chosen
+      if (!currentChatId && list.length) {
+        currentChatId = list[0].chatId;
+        unread.delete(currentChatId);
+        renderChatList(list);
+        await loadChat(currentChatId, { forceScrollBottom: true });
+      }
+    }
+
+    async function loadChat(chatId, opts = {}) {
+      currentChatId = chatId;
+      renderChatList(chatsCache);
+      const url = `${ENDPOINT_READ}?id=${encodeURIComponent(chatId)}`;
+      try {
+        const data = await getJSON(url);
+        if (data && typeof data === "object") updateValidTimestamp(data);
+        const payload = data && data.messages ? data : (Array.isArray(data) ? {messages:data} : data);
+        renderChat(payload || {}, opts.forceScrollBottom ? "forceBottom" : "preserve");
+      } catch (e) {
+        toast("Failed to load chat");
+      }
+    }
+
+    async function sendMessage() {
+      const content = $composer().val();
+      if (!currentChatId) { toast("Pick a chat first"); return; }
+      if (!content || !content.trim()) return;
+      try {
+        const res = await postJSON(ENDPOINT_POST, { chatId: currentChatId, content });
+        updateValidTimestamp(res);
+        if (res.event === "changed") {
+          $composer().val("");
+          await loadChat(currentChatId, { forceScrollBottom: false });
+        } else {
+          toast(res.errorMessage || "Error");
+        }
+      } catch (e) {
+        toast("Send failed");
+      }
+    }
+
+    // Polling
+    async function pollTick() {
+      if (pollingBusy) return;
+      pollingBusy = true;
+      try {
+        const hasNew = await getJSON(`${ENDPOINT_CHECK}?validTimestamp=${encodeURIComponent(validTimestamp)}`);
+        if (hasNew === true) {
+          await Promise.all([
+            (async () => { try { await loadChatList(); } catch(e){} })(),
+            (async () => { if (currentChatId) { try { await loadChat(currentChatId, { forceScrollBottom:false }); } catch(e){} } })()
+          ]);
+        }
+      } catch (e) {
+        // ignore transient poll errors
+      } finally {
+        pollingBusy = false;
+      }
+    }
+
+    // Events
+    $(document).ready(async function() {
+      // Initial load
+      try { await loadChatList(); } catch(e) { toast("Cannot load chat list"); }
+
+      // Send button
+      $("#send-btn").on("click", sendMessage);
+
+      // Keyboard in textarea: Enter sends, Shift+Enter newline
+      $composer().on("keydown", function(e) {
+        if (e.key === "Enter") {
+          if (e.shiftKey) return; // allow newline
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+
+      // 1s polling
+      setInterval(pollTick, 1000);
+    });
+  </script>
+</body>
+</html>

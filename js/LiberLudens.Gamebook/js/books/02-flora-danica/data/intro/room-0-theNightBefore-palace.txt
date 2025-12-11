@@ -1,0 +1,8 @@
+It's good to be home. Familiar faces, familiar sounds, lights, smells... You eat, have a short general conversation with your mother and retreat to your chambers. It is not long before your eyelids feel heavy and you go to bed. One sheep, two sheep... Sleep.
+
+{
+	"exits":
+	{
+		"room-palace.bedroom.waking.up": "Next morning"
+	}
+}

@@ -1,0 +1,9 @@
+You very carefully open the door and...
+
+{
+	"exits":
+	{
+		"next": "...enter the keep's hall"
+	}
+}
+

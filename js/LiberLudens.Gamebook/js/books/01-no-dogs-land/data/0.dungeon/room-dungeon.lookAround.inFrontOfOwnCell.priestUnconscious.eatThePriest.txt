@@ -1,0 +1,10 @@
+!!! You fiest on the dead body. How refreshing!
+
+@regainStrength@
+
+{
+	"exits":
+	{
+		"throwDice": "Roll a dice to find out!"
+	}
+}

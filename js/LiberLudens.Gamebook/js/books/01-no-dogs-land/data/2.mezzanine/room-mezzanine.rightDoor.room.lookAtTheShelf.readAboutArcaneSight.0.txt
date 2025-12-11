@@ -1,0 +1,12 @@
+!!! 
+
+You come closer to the shelf. The smell emanating from the many strange potions gets quite too strong for your keen sense of smell, and you wrinkle your nose. It smells of all kinds of chemicals and other unholly stuff. Deliberately ignoring all potions you move your focus to the scrolls arranged on the shelves. You take out one and read it. Boring religious stuff about angels, demons and God. You randomly pick another. Again some gibberish regarding demons. Wait! You are just about to put the scroll back when you notice the word "summoning" in the script. You have already read about the demon summoning in the book on the desk - Demonologica. You get back to the text of the scroll and start reading carefully.
+
+It turns out to be a scholarly writing on arcane sight and how to acquire it through use of magic items. Demonologica has inflamed your curiosity about invisible demons, and the news that magic items and other techniques can help material creatures see invisible demons excites you. You finish the scroll and try a few more, which prove to be more boring than you can bare, so you eventually turn your back to the shelf.
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

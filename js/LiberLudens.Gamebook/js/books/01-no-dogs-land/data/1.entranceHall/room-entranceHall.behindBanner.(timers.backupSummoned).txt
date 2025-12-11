@@ -1,0 +1,10 @@
+!!!
+
+Backup for the guard you killed arrives while you are crowching behind a banner. Nobody sees you and after a minute all guards disappear in the dungeon. You wait for a while. After some time the guards return from the dungeon, obviously unable to find you there, and disappear where they came from.
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

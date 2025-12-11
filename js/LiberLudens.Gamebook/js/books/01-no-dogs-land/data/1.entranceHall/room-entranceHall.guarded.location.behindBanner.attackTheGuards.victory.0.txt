@@ -1,0 +1,14 @@
+!!!
+
+@@ON entranceHall.priestFled@
+The guards are dead. The priest has fled bravely.
+@@ON !entranceHall.priestFled@
+You killed the guards and the priest.
+@@ENDON@
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

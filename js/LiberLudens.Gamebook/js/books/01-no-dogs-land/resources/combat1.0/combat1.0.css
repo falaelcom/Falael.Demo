@@ -1,0 +1,318 @@
+.bookView.backpane .combat1_0
+{
+    padding-top: 6px;
+    padding-bottom: 10px;
+}
+
+.bookView.backpane .combat1_0.backpane
+{
+    border-collapse: separate; 
+}
+
+.bookView.backpane .combat1_0.backpane .cardTitle
+{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 7px;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.bookView.backpane .combat1_0.backpane .cardImage
+{
+    padding-bottom: 7px;
+}
+
+.bookView.backpane .combat1_0.backpane .cardLeft,
+.bookView.backpane .combat1_0.backpane .cardRight
+{
+    width: 162px;
+    border: solid 2px #999999;
+    border-radius: 7px;
+    padding: 8px;
+    font-size: 11pt;
+    background: #202020;
+}
+
+.bookView.backpane .combat1_0.backpane .combatInfo
+{
+    background: black;
+    text-align: center;
+    padding: 12px;
+}
+
+.bookView.backpane .combat1_0.backpane .ballanceLabel
+{
+    padding-top: 25px;
+}
+
+
+
+.bookView.backpane .combat1_0 .turnListContainer
+{
+    padding: 3px;
+    position: relative;
+}
+
+.bookView.backpane .combat1_0 .turnList
+{
+    margin: 0px 0px 0px 0px;
+    background-image: url(turnBg.png), url(turnBg.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: top 50px left, top 100px right;
+    background-size: 70px 100%, 70px 100%;
+}
+
+.bookView.backpane .combat1_0 .turnList:before
+{
+    content: "";
+    background: black;
+    width: 6px;
+    height: 59px;
+    position: absolute;
+    margin-top: 0px;
+    margin-left: -4px;
+}
+
+.bookView.backpane .combat1_0 .turnListContainer:before
+{
+    right: 0;
+    content: "";
+    background: black;
+    width: 5px;
+    height: 87px;
+    position: absolute;
+    margin-top: -0px;
+    margin-left: 0px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Turn.backpane.playerAttack,
+.bookView.backpane .combat1_0 .combat1_0Turn.backpane.enemyAttack
+{
+    border: solid 2px #999999;
+    border-top: none;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Turn.backpane.playerOptions,
+.bookView.backpane .combat1_0 .combat1_0Turn.backpane.enemyOptions
+{
+    padding-top: 10px;
+
+    border: solid 2px #999999;
+    border-top: none;
+    border-bottom: none;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .partyLeft,
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .partyRight
+{
+    width: 120px;
+    padding-bottom: 7px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .partyRight
+{
+    text-align: right;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .partyImage.attacker
+{
+    width: 120px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .partyImage.defender
+{
+    width: 80px;
+    margin-top: 50px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .partyImage.left
+{
+    margin-left: -6px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .partyImage.right
+{
+    margin-right: -6px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage
+{
+    display: block;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.attacker,
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.defender.none
+{
+    display: none;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.small
+{
+    width: 40px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.medium
+{
+    width: 60px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.huge
+{
+    width: 80px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.left
+{
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.defender.left.small
+{
+    margin-top: -85px;
+    margin-left: 32px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.defender.right.small
+{
+    margin-top: -85px;
+    margin-left: 39px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.defender.left.medium
+{
+    margin-top: -97px;
+    margin-left: 19px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.defender.right.medium
+{
+    margin-top: -97px;
+    margin-left: 36px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.defender.left.huge
+{
+    margin-top: -101px;
+    margin-left: 12px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .splatterImage.defender.right.huge
+{
+    margin-top: -101px;
+    margin-left: 22px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .attackDirectionImage
+{
+    width: 40px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .attackDirectionImage.leftToRight
+{
+    margin-top: 67px;
+    margin-left: 25px;
+}
+
+.bookView.backpane .combat1_0 .combat1_0Options.backpane .attackDirectionImage.rightToLeft
+{
+    margin-left: -7px;
+    margin-top: 68px;
+
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.bookView.backpane .combat1_0 .messageList
+{
+    padding: 5px 5px 5px 5px;
+    font-size: 11pt;
+    color: #b3b3b3;
+}
+
+.bookView.backpane .combat1_0 .rightCombatMessage
+{
+    text-align: right;
+}
+
+.bookView.backpane .combat1_0 .actionRow
+{
+    width: 100%;
+    background: black;
+    padding-top: 20px;
+}
+
+.bookView.backpane .combat1_0 .actionRow .actionButton
+{
+    width: 100%;
+    text-align: center;
+}
+
+
+.bookView.backpane .combat1_0 .twoDiceRollView
+{
+    position: relative;
+    width: 100px;
+    height: 40px;
+    background: url(../dice-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100px;
+	background-position: center; 
+
+    margin-left: auto;
+}
+
+.bookView.backpane .combat1_0 .dice1
+{
+    position: absolute;
+    left: 24px;
+    top: 2px;
+    width: 26px;
+    height: 26px;
+}
+
+.bookView.backpane .combat1_0 .dice2
+{
+    position: absolute;
+    left: 34px;
+    top: 12px;
+    width: 30px;
+    height: 30px;
+}
+
+.bookView.backpane .combat1_0 .diceView .twoDiceRollView
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bookView.backpane .combat1_0 .diceView.enemy .twoDiceRollView .dice1
+{
+    left: 55px;
+    top: 2px;
+}
+
+.bookView.backpane .combat1_0 .diceView.enemy .twoDiceRollView .dice2
+{
+    left: 42px;
+    top: 12px;
+}
+
+.bookView.backpane .combat1_0 .illustration.span
+{
+    width: 100%;
+    padding: 5px 0px 13px 0px;
+    float: none;
+}
+

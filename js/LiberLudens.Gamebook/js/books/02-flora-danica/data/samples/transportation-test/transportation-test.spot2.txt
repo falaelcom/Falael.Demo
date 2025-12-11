@@ -1,0 +1,10 @@
+﻿Transportation Test SPOT 2
+
+{
+	"exits":
+	{
+		"home": "Go back home",
+		"spot1": "Go to Spot 1",
+		"spot3": "Go to Spot 3"
+	}
+}

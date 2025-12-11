@@ -1,0 +1,17 @@
+!!! After a short silence there is a voice: "Who am I you ask? I am..." the voice tells a grim story about the imprisonment and about the happy days preceding the prison time (worked for the order, part of the non-clergy administrative staff of the fortress) and about the plan to escape through some imaginary secret passage.
+
+@learnAboutSecretPassage@
+
+Then the prisoner becomes quiet.
+
+{
+	"knowledge":
+	{
+		"secretPassage": "Secret passage location"
+	},
+	"exits":
+	{
+		"continueTalking": "Continue talking",
+		"goAway": "Go away"
+	}
+}

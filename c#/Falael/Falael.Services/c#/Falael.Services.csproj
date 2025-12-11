@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>..\..\..\..\bin\debug\Falael.Auto</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>..\..\..\..\bin\release\Falael.Auto</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591;CS1998;CS0618;IDE0062;IDE0066;IDE0055;IDE0063;IDE0290;CA1869;SYSLIB1045;SYSLIB1054;NU1901;NU1902;NU1903;NU1904</NoWarn>
+    <Optimize>False</Optimize>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591;CS1998;CS0618;IDE0062;IDE0066;IDE0055;IDE0063;IDE0290;CA1869;SYSLIB1045;SYSLIB1054;NU1901;NU1902;NU1903;NU1904</NoWarn>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Discord.Net" Version="3.16.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
+    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.68.0.3421" />
+    <PackageReference Include="Ical.Net" Version="4.2.0" />
+    <PackageReference Include="MailKit" Version="4.7.0" />
+    <PackageReference Include="SharpSvn" Version="1.14001.156" />
+    <PackageReference Include="SendGrid" Version="9.28.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Vendor\WebDav.Client\c#\src\WebDav.Client\WebDav.Client2\WebDav.Client2.csproj" />
+    <ProjectReference Include="..\..\Falael.Core\c#\Falael.Core.csproj" />
+    <ProjectReference Include="..\..\Falael\c#\Falael.csproj" />
+  </ItemGroup>
+
+</Project>

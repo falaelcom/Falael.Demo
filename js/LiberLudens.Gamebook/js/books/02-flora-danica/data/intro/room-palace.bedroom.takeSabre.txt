@@ -1,0 +1,20 @@
+You remove the sabre from the stand and tighten the straps over your leather suit.
+
+@takeWeapon@
+
+You take one last quick look around, but you know that the time to go has come, so you turn around and...
+
+{
+	"exits":
+	{
+		"leave": "...leave your bedroom"
+	},
+	"inventory":
+	{
+		"sabre1": "Sabre"
+	},
+	"skills":
+	{
+		"death-from-above": "Death from Above"
+	}
+}

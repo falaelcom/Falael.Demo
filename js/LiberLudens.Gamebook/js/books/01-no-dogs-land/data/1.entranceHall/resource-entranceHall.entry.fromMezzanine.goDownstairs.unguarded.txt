@@ -1,0 +1,6 @@
+@@DEF entranceHall.entry.fromMezzanine.goDownstairs.unguarded@
+
+You quickly run down the stairs.
+
+@@ENDDEF@
+

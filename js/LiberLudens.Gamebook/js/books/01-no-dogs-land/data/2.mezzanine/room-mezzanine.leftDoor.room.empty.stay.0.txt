@@ -1,0 +1,13 @@
+!!!
+
+The mountain and the waterfall offer a wonderful view. You stay for a while listening the the distant sound of the water. It's so peaceful!
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"enjoyTheView": "Enjoy the view a little more",
+		"goBack": "Go back to the mezzanine balcony"
+	}
+}

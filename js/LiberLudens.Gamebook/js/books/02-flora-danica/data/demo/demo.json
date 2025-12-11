@@ -1,0 +1,28 @@
+{
+    "rooms":
+    [
+        {
+            "key": "woods.palace.inAir",
+            "file": "room-woods.palace.inAir.txt",
+            "duration": "3:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "(n/a)"
+                }
+            ]
+        },
+        {
+            "key": "woods.nanPopCabin",
+            "file": "room-woods.nanPopCabin.txt",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "(n/a)"
+                }
+            ]
+        }
+    ]
+}

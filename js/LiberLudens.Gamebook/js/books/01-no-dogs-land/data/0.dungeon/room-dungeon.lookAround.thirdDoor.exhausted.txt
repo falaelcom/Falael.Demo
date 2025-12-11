@@ -1,0 +1,8 @@
+!!! Nothing interesting here
+
+{
+	"exits":
+	{
+		"goBack": "Continue..."
+	}
+}

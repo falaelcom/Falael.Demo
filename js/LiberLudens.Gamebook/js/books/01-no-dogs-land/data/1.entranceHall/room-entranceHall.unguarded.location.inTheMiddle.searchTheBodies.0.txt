@@ -1,0 +1,20 @@
+After a closer inspection you discover that one of the guards is wearing a strong leather belt on top of his steel armor. A large ring of keys is attached to it. For a moment your heart jumps for joy - may be one of these keys opens the main gate, paving for you immediate way to freedom? But a quick look towards the gate crashes your hopes - none of the keys is big enough to fit the gate's keyhole. Nevertheless, it seems a very useful instrument in this building full of doors (a feature, which you, being a wild spirit, find to be especially ugly, irritating and an indication of the despicable paranoia of the weak creatures that dared to capture and imprison you), so you decide to take the ring of keys with you.
+
+@takeKeyChain@
+
+@@ON entranceHall.priestFled@@@INSERT entranceHall.searchTheBodies.finish@
+@@ON !entranceHall.priestFled@
+The priest's body lies a bit to the side. You paw it condescendingly. What a soft, skinny, hideous piece of meat! You are already truning away from it, when a beautiful green glitter catches your attentions.
+@@ENDON@
+
+{
+	"inventory":
+	{
+		"keyChain": "Ring of keys"
+	},
+	"exits":
+	{
+		"lookAround": "Continue...",
+		"searchPriestBody": "Take a closer look"
+	}
+}

@@ -1,0 +1,8 @@
+!!! The prisoner screams with a weak voice than becomes owfully quiet. He's dead after having a heart attack. Nothing to do here anymore.
+
+{
+	"exits":
+	{
+		"goAway": "Go away"
+	}
+}

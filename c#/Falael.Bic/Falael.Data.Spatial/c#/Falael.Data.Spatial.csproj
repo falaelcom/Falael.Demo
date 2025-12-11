@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E155EC17-B058-439A-9359-2EA9BDBB3FE2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Falael.Data.Spatial</RootNamespace>
+    <AssemblyName>Falael.Data.Spatial</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\bin\debug\Falael.Legacy\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\..\bin\release\Falael.Legacy\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EPassHitTestHint.cs" />
+    <Compile Include="EDimensionHitTestHint.cs" />
+    <Compile Include="FragmentedDimension.cs" />
+    <Compile Include="ISpace.cs" />
+    <Compile Include="SpaceIterationPlan.cs" />
+    <Compile Include="Storage\EIndexEntryFlagsByte.cs" />
+    <Compile Include="Storage\IndexEntry.cs" />
+    <Compile Include="Storage\SpatialStorage_Safe.cs" />
+    <Compile Include="SubSpace.cs" />
+    <Compile Include="SpaceHitTestResult.cs" />
+    <Compile Include="IPass.cs" />
+    <Compile Include="SpaceIterator.cs" />
+    <Compile Include="SubPass.cs" />
+    <Compile Include="FragmentedSubDimension.cs" />
+    <Compile Include="DimensionHitTestResult.cs" />
+    <Compile Include="IDimension.cs" />
+    <Compile Include="FractalDimension.cs" />
+    <Compile Include="Operators\Map.cs" />
+    <Compile Include="Operators\RangeFilter.cs" />
+    <Compile Include="Operators\Slice.cs" />
+    <Compile Include="ReverseMapping.cs" />
+    <Compile Include="OperatorResult.cs" />
+    <Compile Include="OperatorContext.cs" />
+    <Compile Include="Pass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Space.cs" />
+    <Compile Include="IOperator.cs" />
+    <Compile Include="Storage\SpatialStorageIndex.cs" />
+    <Compile Include="Storage\FileSystem.cs" />
+    <Compile Include="Storage\DbInfo.cs" />
+    <Compile Include="Storage\SpatialStorage_Unsafe.cs" />
+    <Compile Include="Transformation.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Falael.Core\c#\Falael.Core.csproj">
+      <Project>{3ee43606-4c36-4e02-9697-68fdd7ea49a3}</Project>
+      <Name>Falael.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Falael.Legacy\c#\Falael.Legacy.csproj">
+      <Project>{f84beeed-a6cb-4486-9513-35e7e1530660}</Project>
+      <Name>Falael.Legacy</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

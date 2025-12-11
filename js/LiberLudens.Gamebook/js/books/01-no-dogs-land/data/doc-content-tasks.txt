@@ -1,0 +1,148 @@
+﻿Malaphar
+
+===========================
+pass 1
+===========================
+
+- content
+
+- victory image on combat victory
+
+- write more meaningful texts
+	+ on death, there must be a feeling that things could have gone in a different way, create a motivation to replay the game
+		+ add to the text more of the wolf's thoughts about escaping, searching for an exit
+		- add hope scenes (hope for escape)
+		+ add more of the wolf's thoughts about getting rid of the chains
+	+ diverese texts on death, different illustrations for every death situation; incorporate the idea for replaying the game with different decisions directly into the texts
+	+ second prison cell - retrospection place, different text when you wait the first 5-6 times, telling wolf's memories
+	- mezzanine left door - different text when you wait the first 5-6 times, telling what's going on outside - a bird files by, a fish jumps in the waterfall, a bear family visits the mountain river, a group of dwarfes walks over a distant mountain ridge, a beautiful pig farmer lady, getting tackeled by her swine on nearby pasture and left there to bleed
+
++ use better images
+
+===========================
+pass 2 - deployment
+===========================
+
+- game obfuscation
+- add difficulty levels
+	- normal - no hints, no cheating
+	- easy - hints, cheating
+		- "Token of Divine Grace" acquisition (initially - per game session, after integrating with user account - permanent)
+			- (pass 2b) seeing a full screen ad grants one "Token of Divine Grace"
+			- (pass 2b) performing one of the following actions also grants "Token of Divine Grace"
+				- 2x - sharing on facebook
+				- 2x - sharing on twitter
+				- 2x - sharing on instagram
+				- Nx - purchase of N "Token of Divine Grace" for real money
+		- "Token of Divine Grace" spending
+			- allows the player to return to an automatic save point within the game session in exchange for 5 "Token of Divine Grace"
+			- allows the player to go a step back in exchange for 15 "Token of Divine Grace"
+			- allow for 1 hint per game session in exchange for 30 "Token of Divine Grace"
+		- adjust the conversion rates in "Token of Divine Grace" between acquisition actions and speding actions
+		- adds occasional google AdSense/AdMob in text
+			- https://support.google.com/adsense/answer/6242051?hl=en&visit_id=636933272867737889-2802611592&rd=2
+
+- scroll to top after combat is not working correctly in mobile
+- vertical alignment for the knowledge, inventory and skill lists; cards for list items
+- combat - responsive design
+
+- (pass 2b) mobile app
+
+===========================
+pass 3 - polish
+===========================
+
+- dungeon
+
+	- every room that makes a loud noise is tracked in the context (or as implicit data) by adding a value to some noise amount accumulator; this value is internally used to determine the probability that somebody has heard that noise; on every navigation action this probability is used to randomly determine whether someone has heard the noise; if yes, a global event is triggered and a massive guard attack follows
+
+		- add global events												priest is dead		priest has fainted		priest has escaped
+			- two entrance guards fight (invoked by the priest)			(never)				(after 20 minutes)		(after 3 minutes)
+			- massive guard attack (invoked by the priest)				(never)				(after 37 minutes)		(after 20 minutes)
+			
+			- massive guard attack
+				- if the wolf has managed to take off the chains he engages in a fight in the middle of the corridor which allows him to figh only two guards at a time; he throws a dice 3 times and has to throw 6 or more in order to survive
+				- if the wolf survivses, there is no more risk for a massive guard attack and the wolf can move freely around
+
+	- add a secret - second cell
+		- wait causes a quick timer to appear after each "stay" navigation, simulating the staying and causing forced delay in the gameplay
+		- (once) if you wait for long enough, a secret event happens (come out with ideas)
+	
+- entranceHall
+
+	- add more incaccessible doors in the entrance hall, one of them is accessible though, leads to the barraks and is full with guards. opening it leads to certain death, unless wolf has the jaw AND has eaten the priest's body in the dungeon
+
+	- add a secret: in the mezzanine right room, when inspecting the shelf, allow for infinite book and scroll inspection; books and scrolls represent pages from some of the public domain ancient books and scrolls and are rotated randomly; the 13-th book or scroll provides wolf with some unique knowledge
+	
+	- if wolf's hp is below a threshold, offer to eat the priest after killing a priest or finding a priest dead body anywhere in the fortress
+		- increase wolf's might only once, after the first time he eats a priest
+		- the first time wolf eats a priest, there is sligt chance for backup appearance because of the loud greedy noises
+		
+	- allow the priest to leave the left mezzanine room freely (player won't be able to finish the game though)
+	
+	- if the guards have missed you (you were hidden behind the banners, or you were in the mezzanine when they were alerted) - add a new battle with 2 guards in the dungeon and a battle with 4 guards in the entrance hall
+	
+	- (1) if the priest has fainted, start other timers for his coming to senses and his appearance in the entry hall; 
+		- if it happens so that you are in the main hall in this moment
+			- see him appear; option to kill him, after which the noisy entry is activated (if guarded, else - nothing), or to stay still, or hide behind banners, or go to the dungeon, or to the mezzanine; backup appers afterwards
+		- if it happens so that you are in the dungeon in this moment
+			- see/hear him moan and get up; option to kill him; if not kill him, backup appers immediately
+		
+	- always start a timer elapsing after 1 hour; when this timer elapses, a priest goes down to the dungeon to check on the delegation, sees that you have escaped and calls for backup; see (1) for an alternative event development
+	
+	- if wolf's life, strength and speed are above specific thresholds
+		- guard backup is unable to finish him, but leaves him with highly reduced hp
+		- wolf can decide to exterminate all guards and priests in the fortress
+			- the barracks becomes a corridor system with several rooms: kitchen, several large bedrooms, armory, huge dining room, two guard rooms in two guard towers
+			- the next door is no more abandoned but leads to the priest: several living rooms, a chapel, dining room connected to the kitchen, torchure chamber
+			- in every room there are either soldiers, either priests, wolf simply kills priests; combats with soldiers
+	
+- entranceHall/mezzanine mechanics
+
+	- can take off the chains also in
+		- dungeon - at the exit - always caught
+		- entrance hall - unguarded - always caught
+		- mezzanine balcony - always caught
+		- mezzanine - right door - success; the loud noise makes malaphar reveal himself in some way
+
+		- entrance hall - guarded - cuases guards to attack
+		
+	- left room - add some interior and if wolf has adventurine ring - chance to find a healing potion in a hidden locker, which wolf can drink immediately or later, right before going out on the balcony 
+
+- mezzanine
+	
+	- in right door - inspect the shelf must be visitable only once in the four situations:
+		- no demonologica, no ring
+		- demonologica, no ring
+		- no demonologica, ring
+		- demonologica, ring
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+изводите, до които стигнах от всичко, което ми беше споделено, са
+- аудиторията за този жанр е специфична. имаше хора, които постоянно ми даваха съвети, с които на практика се опитваха да променят играта да не е книга, а нещо по-шарено 😀 т.е., със сигурност имам ограничен target
+- не всеки чете всичко. дългите текстове обезкуражават играчите. накрая ще мина и ще нацепя руумовете, които са по-дълги от някакъв стандарт, който ще въведа, и ще ги направя на по 2-3 руума с бутон continue... накрая
+- смъртта на главния герой действа стимулиращо на играчите и им вдига адреналина - червена точка за смъртта 😀
+- многократното преиграване на играта води до там, че хората вече не четат текстовете, ами се ориентират само по бутоните и превръщат играта в обхождане на граф и търсене на най-бързия път до финала - черна точка за смъртта
+- в резултат планирам да намаля риска от смърт, но не напълно. освен това се погрижих вече да не пише GAME OVER като умреш, ами да те прехвърли в началото, в килията, с едно описание, как седиш и гледаш мъртвия вълк отстрани и изведнъж времето се пренавива назад
+друг начин да negate-на отрицателния ефект от преиграването, като дам възможност играчът да си събира in-game currency като гледа реклами, share-ва в социалните медии и купува с пари, а после с това in-game currency да може да се връща назад - към save point или по няколко стъпки, или да получава hint-ове
+нямам представа, до колко това ще е успешно за harvest-ване на пари от играта
+тъй че предстоят тестове
+също така е хубаво да имплементирам събиране на anonymous usage data, което всъщност да ми събмитва всяка game-сесия, когато приключи, и при мен да имам нещо като player, с който да гледам как е играл играчът; технически е доста лесно да се изпълни с този вид игри, защото данните за историята на една game сесия ги имам anyway и са малко като килобайти, напълно реалистично е
+за разделянето на room-овете на по-малки части, дори мога да го направя автоматично, на края на параграфа, който exceed-ва определена дължина на текста, се слага бутон continue и останалото се визуализира на следваща стъпка

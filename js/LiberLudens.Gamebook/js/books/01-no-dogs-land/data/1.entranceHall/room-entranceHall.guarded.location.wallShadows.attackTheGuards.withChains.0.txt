@@ -1,0 +1,17 @@
+!!!
+
+@@DEF entranceHall.guarded.location.wallShadows.attackTheGuards.withChains.playerVictory@
+You are victorious!
+@@ENDDEF@
+
+{
+    "combat1.0":
+    {
+		"name": "Soldiers",
+		"image": "enemy_twoGuards.png"
+    },
+    "exits":
+    {
+        "next": "Continue..."
+    }
+}

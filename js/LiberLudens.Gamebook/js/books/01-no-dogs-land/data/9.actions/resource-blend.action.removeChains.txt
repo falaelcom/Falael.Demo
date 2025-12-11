@@ -1,0 +1,89 @@
+@@DEF (blend.action.removeChains).description.1@
+	Breathing heavily, you start filing. No matter how carefully you try to operate, the loud noise of scraping metal resounds around the dungeon.
+
+	Eventually, after some time, the chain that's attached to your legs breaks. You grunt with satisfaction, stretch your hind-limbs and take a short rest. After all the rasping and grinding the silence now seems cottony and thick.
+
+	A few breaths later, and you feel ready to continue. It's time to get rid of the shackles fastened around your writsts.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).description.2@
+	Initially you try to hold the saw with your hind legs, but this naughty puppy pose proves to be extremely incomfortable and imbalancing. Enraged by the lack of success you grab the saw with your maw as if you are about to crunch it, but, surprizingly, you feel it fitting firmly between your teeth. Holding this position you tilt your head sideways and, bringing the shackles up to your mouth, begin to rub them up and down the saw.
+
+	Your jaw is already severily hurting from the struggle, when the much shorter and thicker chain of the shackles falls apart.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).description.3@
+	That's it! You spit out the saw and slowly stretch all your fours. It feels soo good!
+
+	But now that you regained freedom of movement, there's nothing else left for you here, and if you want to find your way out of this dreadful prison, you better move on!
+@@ENDDEF@
+
+
+
+
+@@DEF (blend.action.removeChains).dungeon.exitDungeon.0@
+TODO: You can also make use of the saw and try to get rid of the chains before you open the door.
+@@ENDDEF@
+
+
+
+
+@@DEF (blend.action.removeChains).exitText@Use the saw to remove the chains@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.enterOldCell.0@
+Nevertheless, you could use what privacy the cell has to offer you to saw the chains off of your limbs.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.lookAround.firstDoor.exhausted@
+Actually, you could use what privacy the cell has to offer you to saw the chains off of your limbs.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.lookAround.secondDoor.stay@
+You could use what privacy the cell has to offer you to saw the chains off of your limbs while waiting.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.lookAround.secondDoor.exhausted@
+Actually, you could use what privacy the cell has to offer you to saw the chains off of your limbs.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.lookAround.0@
+You can also try using the saw to remove the chains.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.lookAround.inFrontOfOwnCell.priestMissing@
+You could try to use the saw to remove the chains, though.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.killThePriest@
+You can also try using the saw to remove the chains.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).dungeon.lookAround.inFrontOfOwnCell.priestDead.0@
+You can also try using the saw to remove the chains.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).mezzanine.leftDoor.room.empty.0@
+You can try using the saw to remove the chains.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).mezzanine.leftDoor.room.empty.stay.0@
+You can use the privacy the room offers to saw the chains off of your limbs.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).mezzanine.leftDoor.room.empty.stay.0@
+You can use the privacy the room offers to saw the chains off of your limbs.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).mezzanine.leftDoor.room.priestDead.0@
+You can use the privacy the room offers to saw the chains off of your limbs.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).secretPassage.0@
+While you stand there in general wondering, you could use the time and get rid of the dreaded chains.
+@@ENDDEF@
+
+@@DEF (blend.action.removeChains).mezzanine.rightDoor.room.0@
+You can use the privacy the room offers to saw the chains off of your limbs.
+@@ENDDEF@
+
+

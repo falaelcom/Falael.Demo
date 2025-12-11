@@ -1,0 +1,15 @@
+You push your huge shoulder against the door. It opens making loud moaning metal noises, and you enter the narrow room. Relying primarily on your nose you locate the source of the rusty smell. It's a heap of something that was probably human clothing once but now represents a half-rotten dirty mess. You start digging, and your claws almost immediately scratch at something hard and coarse. You grab it and pull out a bunch of broken and snarled chains. You snarl irritatedly in response. So disappointing... But when you try to throw out the chains, you discover that there's something heavy attached to them, still burrowed deep in the pile of garbage. You continue digging and eventually take out a tool, which on closer inspection turns out to be a well preserved saw.
+
+<illustration image="item.saw.png" align="span" />
+
+Hm. You look again at the chains on the floor, then at the saw in your hand, than at your own chains. "What if...?" you wonder. An intriguing idea crosses you mind. Maybe somebody already used this saw to free themselves from their fetters? The same ones that lie in your feet? You quickly grab the gyve that's attached to your legs and make a cut with the saw. The tool is good, still sharp, and it leaves a visible mark. Maybe it will be able to acheive what your teeth couldn't, and break the gyves?
+
+You feel quite impatient to do this. The gyves are incapacitating you quite a bit, and your body shivers with the only thought of regaining freedom of movement. On the other hand it's undesirable for you to spend much more time here. The saw looks small in your hefty paw and you can easily carry it in one of the inner pockets of your leather coat. What would it be? 
+
+{
+	"exits":
+	{
+		"breakTheChains": "Start working on the dreaded chains!",
+		"moveOn": "Hide the saw and move on"
+	}
+}

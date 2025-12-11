@@ -1,0 +1,6 @@
+- look for rule sets that behave accordingly to the statistical population patterns - https://www.youtube.com/watch?v=ETrYE4MdoLQ - "The Feigenbaum Constant (4.669) - Numberphile"
+- experiment with emerging cells, given specific probability
+- define birth and death rules by probability distribution (define using graphics - equalizer-like, free-hand, wave-form)
+
+- faster game of life implementation? http://stackoverflow.com/a/6503242
+- gol over different repeating patterns (енциклопедия юного математика, стр. 200)

@@ -1,0 +1,41 @@
+{
+    "mainRoomKey": "home",
+    "defaultStanceKey": "afoot",
+    "speedPointsToKmH":  0.2,
+    "mapData": 
+    {
+        "woods": "woods-map.json"
+    },
+    "include":
+    [
+        "intro/intro.json",
+        "demo/demo.json",
+    
+        "samples/samples.json",
+        "samples/index-sample2.json",
+        "samples/subdir-sample/index.json",
+
+        "samples/transportation-test/transportation-test.json"
+    ],
+    "stances":
+    {
+        "afoot":
+        {
+        },
+        "flying":
+        {
+            "properties": { "speed": 275, "might": 15 }
+        },
+        "dragon":
+        {
+            "properties": { "speed": 1000, "might": 50 }
+        }
+    },
+    "rooms":
+    [
+		{
+			"key": "_common",
+			"file": "_common.txt"
+		}
+	]
+}

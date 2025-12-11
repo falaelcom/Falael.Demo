@@ -1,0 +1,12 @@
+It's just the sound of some old part of the fortress construction adjusting itself among other old building parts. The sound does not repeat, and you relax.
+
+Nevertheless, this minor incident reminds you that you are still amidst an emeny fortress full of Ivy Cross soldiers and priests. What do you want to do next?
+
+{
+	"exits":
+	{
+		"exitDungeon": "Head towards the dungeon's exit",
+		"enterOldCell": "Get into your old cell",
+		"lookAround": "Explore the dungeon"
+	}
+}

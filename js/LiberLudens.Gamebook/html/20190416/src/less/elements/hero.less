@@ -1,0 +1,258 @@
+.hero {
+	background: url('../img/landing-page.png') no-repeat top center, url('../img/night-sky01.png') no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: calc(100vh - 100px);
+	margin-top: 100px;
+	background-blend-mode: normal;
+
+	.container {
+		height: 100%;
+	}
+
+	.row {
+		height: 100%;
+	}
+
+	p {
+		font-family: 'Open Sans', sans-serif;
+		color: #eae7db;
+		text-align: center;
+	}
+
+	a {
+		max-width: 100%;
+		position: absolute;
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	.inner {
+		position: relative;
+	}
+}
+
+.hero-inner {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.hero-text {
+	text-align: justify;
+}
+
+.no-dogs-land {
+	position: relative;
+	height: 100%;
+
+	p {
+		top: 20px;
+		right: 0;
+		position: relative;
+		z-index: 1;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 115%;
+			height: 130%;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background: url('./../img/text-shadow.png');
+			background-size: cover;
+			z-index: -1;
+		}
+	}
+
+	a {
+		top: 0;
+	}
+
+	img {
+		padding-top: 20px;
+	}
+
+	.hero-text {
+		padding-left: 20px;
+	}
+
+	.shorter-text {
+		margin-top: -25px;
+		margin-bottom: 25px;
+		padding-left: 10px;
+		font-size: 11pt;
+		text-align: justify;
+	}
+}
+
+.pandemonium-incursion {
+	position: relative;
+	height: 100%;
+
+	p {
+		margin-right: 10px;
+		margin-bottom: 0;
+	}
+
+	a {
+		bottom: 30px;
+		right: 0;
+	}
+
+	.arrow {
+		max-width: 75px;
+	}
+
+	.shorter-text {
+		margin-top: -10px;
+		padding-left: 20px;
+		font-size: 11pt;
+		text-align: justify;
+	}
+}
+
+@media (min-width: 768px) {
+	.hero {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+}
+
+@media (max-width: 600px) {
+	.hero {
+		background: url('../img/night-sky01.png');
+		-webkit-background-size: contain;
+		-moz-background-size: contain;
+		-o-background-size: contain;
+		background-size: contain;
+
+		.inner {
+			padding: 15px;
+		}
+	}
+
+	.no-dogs-land {
+		top: 0;
+		img {
+			padding-top: 0;
+			position: relative;
+			z-index: 1;
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 115%;
+				height: 130%;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background: url('./../img/text-shadow.png');
+				background-size: cover;
+				z-index: -1;
+			}
+		}
+
+		background: url('../img/mobile-no-dogs-land-cropped.png');
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		height: 48%;
+		background-position: right;
+		filter: drop-shadow(12px 12px 25px rgba(0, 0, 0, 0.5));
+		-webkit-filter: drop-shadow(12px 12px 25px rgba(0, 0, 0, 0.5));
+	}
+
+	.pandemonium-incursion {
+		background: url('../img/mobile-pandemonium.png');
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		height: 52%;
+		background-position: left;
+		filter: drop-shadow(12px 12px 25px rgba(0, 0, 0, 0.5));
+		-webkit-filter: drop-shadow(12px 12px 25px rgba(0, 0, 0, 0.5));
+
+		.arrow {
+			max-width: 40px;
+		}
+
+		a {
+			bottom: 0
+		}
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	.pandemonium-incursion {
+		a {
+			bottom: 30px;
+		}
+	}
+}
+
+@media (min-width: 482px) and (max-width: 767px) {
+	.hero {
+		// .hidden-xs {
+		// 	display: block !important;
+		// }
+		.col-xs-12 {
+			width: 50%;
+		}
+	}
+}
+
+@media (min-width: 426px) and (max-width: 600px) {
+	.hero {
+		.col-xs-12 {
+			width: 100%;
+		}
+	}
+}
+
+@media (min-width: 600px) {
+	.pandemonium-incursion {
+		.arrow {
+			margin-right: 15px;
+		}
+	}
+	.shorter-text {
+		display: none;
+	}
+}
+
+@media (max-width: 599px) {
+	.hero-text {
+		display: none;
+	}
+}
+
+@media (max-width: 320px) {
+	.hero {
+		width: 320px;
+	}
+}

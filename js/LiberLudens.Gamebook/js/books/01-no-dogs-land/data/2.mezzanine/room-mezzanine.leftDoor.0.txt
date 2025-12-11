@@ -1,0 +1,11 @@
+!!! The left door is locked.
+
+{
+	"exits":
+	{
+		"breakTheDoor": "Use force to open the door",
+		"unlockTheDoor": "Try the keys from the guard's keychain",
+		"lookAround": "Look around",
+		"goDown": "Go back to the entrance hall"
+	}
+}

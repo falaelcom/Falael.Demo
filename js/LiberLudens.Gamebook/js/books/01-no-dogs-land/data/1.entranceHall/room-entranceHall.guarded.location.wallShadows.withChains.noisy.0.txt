@@ -1,0 +1,19 @@
+!!!
+
+You make noise. The guards charge in attack. You manage to kill the priest. Fight!
+
+@@DEF entranceHall.guarded.location.wallShadows.withChains.noisy.playerVictory@
+You are victorious!
+@@ENDDEF@
+
+{
+    "combat1.0":
+    {
+		"name": "Soldiers",
+		"image": "enemy_twoGuards.png"
+    },
+    "exits":
+    {
+        "next": "Continue..."
+    }
+}

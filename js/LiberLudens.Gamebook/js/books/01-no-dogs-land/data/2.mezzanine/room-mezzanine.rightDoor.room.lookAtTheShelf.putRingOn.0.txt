@@ -1,0 +1,22 @@
+!!! 
+
+You come closer to the shelf. The smell emanating from the many strange potions gets quite too strong for your keen sense of smell, and you wrinkle your nose. It smells of all kinds of chemicals and other unholly stuff. Deliberately ignoring all potions you move your focus to the scrolls arranged on the shelves. You take out one and read it. Boring religious stuff about angels, demons and God. You randomly pick another. Again some gibberish regarding demons. Wait! You are just about to put the scroll back when you notice the word "summoning" in the script. You have already read about the demon summoning in the book on the desk - Demonologica. You get back to the text of the scroll and start reading carefully.
+
+It turns out to be a scholarly writing on arcane sight and how to acquire it through use of magic items. Demonologica has inflamed your curiosity about invisible demons, and the news that magic items and other techniques can help material creatures see invisible demons excites you. There is also some drawing on the end of the page - a green ring. It remembers you of something, and you take out the Green Aventurine Ring that you have found on the dead priest's body. "Damn it!" you exclaim, comparing the ring with the pipcture. It seems that have gotten into posession of a magic ring that is granting its bearer arcane sight!
+
+There are too many pentagrams and text on demonolgy around this room. Maybe it would be wise for you to put the ring on? It's quite small for your hairy paws, but eventually you manage to stick your pinky finger in it. 
+
+@gainArcaneSight@
+
+After that you distractedly try a few more scrolls, which prove to be more boring than you can bare, so you eventually turn your back to the shelf.
+
+{
+	"skills":
+	{
+		"arcaneSight": "Arcane sight"
+	},
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

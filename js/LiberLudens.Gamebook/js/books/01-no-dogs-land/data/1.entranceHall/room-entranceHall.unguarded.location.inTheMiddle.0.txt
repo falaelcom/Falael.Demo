@@ -1,0 +1,27 @@
+!!!
+
+You are standing in the middle of the keep's entrance hall.
+
+@@ON !entranceHall.priestFled && !entranceHall.bodiesSearched@
+The bodies of the dead humans are lying scattered around in pools of blood. You can serch them.
+@@ON !entranceHall.priestFled && entranceHall.bodiesSearched@
+The bodies of the dead humans are lying scattered around in pools of blood.
+@@ON entranceHall.priestFled && !entranceHall.bodiesSearched@
+The bodies of the dead guards are lying in a pool of blood. You can search them.
+@@ON entranceHall.priestFled && entranceHall.bodiesSearched@
+The bodies of the dead guards are lying in a pool of blood.
+@@ENDON@
+
+What do you want to do?
+
+{
+	"exits":
+	{
+		"searchTheBodies": "Search the bodies",
+		"goToMezzanine": "Go upstairs to the mezzanine",
+		"goToDungeon": "Go back to the dungeon",
+		"openTheSideDoor": "Open the side door",
+		"goBehindGreenBanner": "Look behind the green banner",
+		"goBehindRedBanner": "Look behind the red banner"
+	}
+}

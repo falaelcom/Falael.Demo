@@ -1,0 +1,13 @@
+You turn your back to the priest, confident that the weak creature won't attack. You are right - you hear the human running in the opposite direction towards the dungeon exit. In the next moment, a sudden thought makes you freeze.
+
+"This rat will alert the guards and call for help!" you realize. "Maybe it was a mistake letting him go?" Of course it was. What could on earth possess you and make you do a stupid thing like this? It must be the hunger messing with your mind.
+
+Do you want to go after the priest and try to stop him?
+
+{
+	"exits":
+	{
+		"followPriest": "Yes, follow the priest",
+		"continueExploring": "Continue your exploration"
+	}
+}

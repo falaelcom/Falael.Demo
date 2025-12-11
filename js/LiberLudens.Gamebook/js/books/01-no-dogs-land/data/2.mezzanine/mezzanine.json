@@ -1,0 +1,625 @@
+{
+    "rooms":
+    [
+        {
+            "key": "mezzanine.0",
+			"type": "text",
+            "file": "room-mezzanine.0.txt",
+			"duration": "00:30",
+            "on mezzanine.playerMovement.1": 
+            {
+                "insertText": 
+                [
+                    { "textId": "mezzanine.playerMovement.1.A", "condition": { "implicitDataEquals": { "key": "mezzanine.playerMovement", "value": "goingUpstairs" } } },
+                    { "textId": "mezzanine.playerMovement.1.B", "condition": { "implicitDataEquals": { "key": "mezzanine.playerMovement", "value": "goingOut" } } }
+                ]
+            },
+            "on mezzanine.doorStates.1": 
+            {
+                "insertText": 
+                [
+                    { 
+						"textId": "mezzanine.doorStates.1.D", 
+						"condition": 
+						{ 
+							"and":
+							[
+								{ "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } },
+								{ "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } }
+							]
+						}
+					},
+                    { 
+						"textId": "mezzanine.doorStates.1.C",
+						"condition": 
+						{ 
+							"and":
+							[
+								{ "not": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } } },
+								{ "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } }
+							]
+						}
+					},
+                    { 
+						"textId": "mezzanine.doorStates.1.B", 
+						"condition": 
+						{ 
+							"and":
+							[
+								{ "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } },
+								{ "not": { "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } } }
+							]
+						}
+					},
+                    { 
+						"textId": "mezzanine.doorStates.1.A", 
+						"condition": 
+						{ 
+							"and":
+							[
+								{ "not": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } } },
+								{ "not": { "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } } }
+							]
+						}
+					}
+                ]
+            },
+            "exits":
+			[
+                {
+                    "text": "tryLeftDoor",
+                    "target": "mezzanine.leftDoor.0",
+					"condition": { "not": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } } }
+                },
+                {
+                    "text": "reenterLeftRoom",
+                    "target": "mezzanine.leftDoor.room.0",
+					"condition": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } }
+                },
+                {
+                    "text": "tryRighDoor",
+                    "target": "mezzanine.rightDoor.room.0",
+					"onExit":
+					{
+						"setFlag": "mezzanine.rightDoor.room.entering"
+					},
+					"condition": { "not": { "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } } }
+                },
+                {
+                    "text": "reenterRighRoom",
+                    "target": "mezzanine.rightDoor.room.0",
+					"onExit":
+					{
+						"setFlag": "mezzanine.rightDoor.room.entering"
+					},
+					"condition": { "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } }
+                },
+                {
+                    "text": "goDown",
+                    "target": "entranceHall.entry.fromMezzanine.0"
+                }
+            ]
+        },
+        {
+            "key": "mezzanine.leftDoor.0",
+			"type": "text",
+            "file": "room-mezzanine.leftDoor.0.txt",
+			"duration": "00:10",
+            "exits":
+			[
+                {
+                    "text": "breakTheDoor",
+                    "target": "mezzanine.leftDoor.breakIn.0",
+					"onExit":
+					{
+                        "setImplicitData": { "mezzanine.leftDoor.state": "breakingIn" }
+					}
+                },
+                {
+                    "text": "unlockTheDoor",
+                    "target": "mezzanine.leftDoor.room.0",
+                    "condition": { "hasItem": "keyChain" },
+					"onExit":
+					{
+                        "setImplicitData": { "mezzanine.leftDoor.state": "unlocking" }
+					}
+                },
+                {
+                    "text": "lookAround",
+                    "target": "mezzanine.0"
+                },
+                {
+                    "text": "goDown",
+                    "target": "entranceHall.entry.fromMezzanine.0"
+                }
+            ]
+        },
+		{
+            "key": "mezzanine.leftDoor.breakIn.0",
+			"type": "text",
+			"file": "room-mezzanine.leftDoor.breakIn.0.txt",
+			"duration": "00:20",
+            "onRoomExit": 
+            {
+                "chaos": [ { "type": "diceRoll" } ]
+            },
+            "exits":
+			[
+                { 
+                    "text": "throwDice",
+                    "target": "mezzanine.leftDoor.breakIn.throwDice"
+                }
+            ]
+        },
+		{
+            "key": "mezzanine.leftDoor.breakIn.throwDice",
+			"type": "hub",
+            "exits":
+			[
+                { "target": "mezzanine.leftDoor.breakIn.fail", "condition": { "diceRoll": [ 1, 2, 3, 4, 5, 6 ] } }, 
+                { "target": "mezzanine.leftDoor.room.0" }
+            ]
+        },
+        {
+            "key": "mezzanine.leftDoor.breakIn.fail",
+			"type": "text",
+            "file": "room-mezzanine.leftDoor.breakIn.fail.txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+		{
+            "key": "mezzanine.leftDoor.room.0",
+			"type": "hub",
+            "exits":
+			[
+                {
+					"target": "mezzanine.leftDoor.room.priestDead.0",
+					"condition":
+					{
+						"and":
+						[
+							{ "hasFlag": "entranceHall.priestFled" },
+							{ "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } }
+						]
+					}
+				},
+                { "target": "mezzanine.leftDoor.room.priestHiding.0", "condition": { "hasFlag": "entranceHall.priestFled" } },
+                { "target": "mezzanine.leftDoor.room.empty.0" }
+            ]
+        },
+		{
+            "key": "mezzanine.leftDoor.room.empty.0",
+			"type": "text",
+			"bookmark": "bookmark.removeChains.activate",
+            "file": "room-mezzanine.leftDoor.room.empty.0.txt",
+			"duration": "00:30",
+            "on mezzanine.leftDoor.state.1":
+            {
+                "insertText": 
+                [
+                    { "textId": "mezzanine.leftDoor.state.1.A", "condition": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "breakingIn" } } },
+                    { "textId": "mezzanine.leftDoor.state.1.B", "condition": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "unlocking" } } },
+                    { "textId": "mezzanine.leftDoor.state.1.C", "condition": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } } }
+				]
+			},
+			"onRoomExit":
+			{
+				"setImplicitData": { "mezzanine.leftDoor.state": "open" }
+			},
+            "exits":
+			[
+                {
+                    "text": "enjoyTheView",
+                    "target": "mezzanine.leftDoor.room.empty.stay.0"
+                },
+                {
+                    "text": "goBack",
+                    "target": "mezzanine.0",
+                    "onExit": 
+                    {
+                        "setImplicitData":
+						{
+							"mezzanine.playerMovement": "goingOut"
+						}
+                    }
+                }
+            ]
+        },
+		{
+            "key": "mezzanine.leftDoor.room.empty.stay.0",
+			"type": "text",
+			"bookmark": "bookmark.removeChains.activate",
+            "file": "room-mezzanine.leftDoor.room.empty.stay.0.txt",
+			"duration": "02:00",
+            "exits":
+			[
+                {
+                    "text": "enjoyTheView",
+                    "target": "mezzanine.leftDoor.room.empty.stay.0"
+                },
+                {
+                    "text": "goBack",
+                    "target": "mezzanine.0",
+                    "onExit": 
+                    {
+                        "setImplicitData":
+						{
+							"mezzanine.playerMovement": "goingOut"
+						}
+                    }
+                }
+            ]
+        },
+		{
+            "key": "mezzanine.leftDoor.room.priestHiding.0",
+			"type": "text",
+            "file": "room-mezzanine.leftDoor.room.priestHiding.0.txt",
+			"duration": "02:00",
+            "on mezzanine.leftDoor.state.2":
+            {
+                "insertText": 
+                [
+                    { "textId": "mezzanine.leftDoor.state.2.A", "condition": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "breakingIn" } } },
+                    { "textId": "mezzanine.leftDoor.state.2.B", "condition": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "unlocking" } } },
+                    { "textId": "mezzanine.leftDoor.state.2.C", "condition": { "implicitDataEquals": { "key": "mezzanine.leftDoor.state", "value": "open" } } }
+				]
+			},
+			"on takeAventurineRing":
+			{
+                "addInventory": [ { "key": "aventurineRing", "quantity": 1 } ]
+			},
+			"onRoomExit":
+			{
+				"setImplicitData":{ "mezzanine.leftDoor.state": "open" }
+			},
+            "exits":
+			[
+                {
+                    "text": "goBack",
+                    "target": "mezzanine.0",
+                    "onExit": 
+                    {
+                        "setImplicitData":
+						{
+							"mezzanine.playerMovement": "goingOut"
+						}
+                    }
+                }
+            ]
+        },
+		{
+            "key": "mezzanine.leftDoor.room.priestDead.0",
+			"type": "text",
+			"bookmark": "bookmark.removeChains.activate",
+            "file": "room-mezzanine.leftDoor.room.priestDead.0.txt",
+			"duration": "00:30",
+            "exits":
+			[
+                {
+                    "text": "goBack",
+                    "target": "mezzanine.0",
+                    "onExit": 
+                    {
+                        "setImplicitData":
+						{
+							"mezzanine.playerMovement": "goingOut"
+						}
+                    }
+                }
+            ]
+        },
+        {
+            "key": "mezzanine.rightDoor.room.0",
+			"type": "text",
+            "file": "room-mezzanine.rightDoor.room.0.txt",
+			"bookmark": "bookmark.removeChains.activate",
+			"duration": "00:30",
+            "on mezzanine.rightDoor.state.1": 
+            {
+                "insertText": 
+                [
+                    {
+						"textId": "mezzanine.rightDoor.state.1.A",
+						"condition":
+						{ 
+							"and":
+							[
+								{ "hasFlag": "mezzanine.rightDoor.room.entering" },
+								{ "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } }
+							]
+						}
+					},
+					{
+						"textId": "mezzanine.rightDoor.state.1.B",
+						"condition":
+						{
+							"and":
+							[
+								{ "hasFlag": "mezzanine.rightDoor.room.entering" },
+								{ "not": { "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } } }
+							]
+						}
+					}
+				]
+			},
+            "on mezzanine.rightDoor.state.2": 
+            {
+                "insertText": 
+                [
+                    { "textId": "mezzanine.rightDoor.state.2.A", "condition": { "not": { "implicitDataEquals": { "key": "mezzanine.rightDoor.state", "value": "open" } } } }
+				]
+			},
+			"on learn.ancientShrineExistence":
+			{
+                "addKnowledge": [ "ancientShrineExistence" ]
+			},
+			"onRoomExit":
+			{
+				"unsetFlag": "mezzanine.rightDoor.room.entering",
+				"setImplicitData": { "mezzanine.rightDoor.state": "open" }
+			},
+            "exits":
+			[
+                {
+                    "text": "fight",
+                    "target": "mezzanine.rightDoor.room.balcony.jumpOver.0",
+					"condition": { "hasSkill": "arcaneSight" }
+                },
+                {
+                    "text": "jumpOverBalcony",
+                    "target": "mezzanine.rightDoor.room.balcony.jumpOver.0",
+					"condition": { "not": { "hasSkill": "arcaneSight" } }
+                },
+                {
+                    "text": "goToBalcony",
+                    "target": "mezzanine.rightDoor.room.balcony.enterSlowly.0",
+					"condition": { "not": { "hasSkill": "arcaneSight" } }
+                },
+                {
+                    "text": "lookAtTheDesk",
+                    "target": "mezzanine.rightDoor.room.lookAtTheDesk.0",
+					"condition": { "not": { "implicitDataEquals": { "key": "mezzanine.rightDoor.room.lookAtTheDesk.state", "value": "visited" } } }
+                },
+                {
+                    "text": "lookAtTheShelf",
+                    "target": "mezzanine.rightDoor.room.lookAtTheShelf.0",
+					"condition":
+					{
+						"hasNoFlag": "mezzanine.rightDoor.room.greenAventurineRingIsOn"
+					}
+                },
+                {
+                    "text": "goBack",
+                    "target": "mezzanine.0",
+                    "onExit": 
+                    {
+                        "setImplicitData":
+						{
+							"mezzanine.playerMovement": "goingOut"
+						}
+                    }
+                }
+            ]
+        },
+        {
+            "key": "mezzanine.rightDoor.room.lookAtTheDesk.0",
+			"type": "text",
+            "file": "room-mezzanine.rightDoor.room.lookAtTheDesk.0.txt",
+			"duration": "00:30",
+			"on learnAboutPentagrams":
+			{
+                "addKnowledge": [ "pentagramUsageWithDemons" ],
+				"setImplicitData": { "mezzanine.rightDoor.room.lookAtTheDesk.state": "visited" }
+			},
+            "exits":
+			[
+                {
+                    "text": "next",
+                    "target": "mezzanine.rightDoor.room.0"
+                }
+            ]
+        },
+        {
+            "key": "mezzanine.rightDoor.room.lookAtTheShelf.0",
+			"type": "fork",
+			"paths":
+			[
+				{
+					"postfix": "putRingOn",
+					"condition":
+					{
+						"and":
+						[
+							{ "hasKnowledge": "pentagramUsageWithDemons" },
+							{ "hasNoFlag": "mezzanine.rightDoor.room.greenAventurineRingIsOn" },
+							{ "hasItem": "aventurineRing" }
+						]
+					},
+					"room":
+					{
+						"type": "text",
+						"file": "room-mezzanine.rightDoor.room.lookAtTheShelf.putRingOn.0.txt",
+						"duration": "01:30",
+						"onRoomEnter":
+						{
+							"setFlag": "mezzanine.rightDoor.room.greenAventurineRingIsOn"
+						},
+						"on gainArcaneSight":
+						{
+							"addSkills": [ "arcaneSight" ]
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "mezzanine.rightDoor.room.0"
+							}
+						]
+					}
+				},
+				{
+					"postfix": "readAboutArcaneSight",
+					"condition":
+					{
+						"and":
+						[
+							{ "hasKnowledge": "pentagramUsageWithDemons" },
+							{ "hasNoFlag": "mezzanine.rightDoor.room.greenAventurineRingIsOn" },
+							{ "not": { "hasItem": "aventurineRing" } }
+						]
+					},
+					"room":
+					{
+						"type": "text",
+						"file": "room-mezzanine.rightDoor.room.lookAtTheShelf.readAboutArcaneSight.0.txt",
+						"duration": "01:30",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "mezzanine.rightDoor.room.0"
+							}
+						]
+					}
+				},
+				{
+					"postfix": "browseScrollsInVain",
+					"room":
+					{
+						"type": "text",
+						"file": "room-mezzanine.rightDoor.room.lookAtTheShelf.browseScrollsInVain.0.txt",
+						"duration": "01:30",
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "mezzanine.rightDoor.room.0"
+							}
+						]
+					}
+				}
+			]
+        },
+        {
+            "key": "mezzanine.rightDoor.room.balcony.jumpOver.0",
+			"type": "fork",
+			"paths":
+			[
+				{
+					"postfix": "withArcaneSight",
+					"condition":
+					{
+						"hasSkill": "arcaneSight"
+					},
+					"room":
+					{
+						"type": "text",
+						"file": "room-mezzanine.rightDoor.room.balcony.jumpOver.arcaneSight.0.txt",
+						"combat1.0":
+						{
+							"hp": 380,
+							"might": 48,
+							"advantage": 0,
+							"playerVictoryTextId": "mezzanine.rightDoor.room.balcony.jumpOver.arcaneSight.playerVictory",
+							"playerDefeatTextId": "(death).mezzanine.rightDoor.room.balcony.jumpOver.arcaneSight.0"
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "mezzanine.rightDoor.room.balcony.victory.0",
+								"condition": { "isPlayerAlive": true }
+							},
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver",
+								"condition": { "isPlayerDead": true }
+							}
+						]
+					}
+				},
+				{
+					"postfix": "instantDeath",
+					"room":
+					{
+						"type": "text",
+						"file": "room-mezzanine.rightDoor.room.balcony.jumpOver.instantDeath.0.txt",
+						"exits": 
+						[
+							{
+								"textId": "startOver",
+								"systemTarget": "startOver"
+							}
+						]
+					}
+				}
+			]
+        },
+        {
+            "key": "mezzanine.rightDoor.room.balcony.victory.0",
+			"type": "text",
+            "file": "room-mezzanine.rightDoor.room.balcony.victory.0.txt",
+			"exits": 
+			[
+				{
+					"text": "next",
+					"target": "mezzanine.rightDoor.room.balcony.victory.1"
+				}
+			]
+        },
+        {
+            "key": "mezzanine.rightDoor.room.balcony.victory.1",
+			"type": "text",
+            "file": "room-mezzanine.rightDoor.room.balcony.victory.1.txt",
+			"exits": 
+			[
+				{
+					"text": "startOver",
+					"systemTarget": "startOver_fromTitle"
+				}
+			]
+        },
+		{
+            "key": "mezzanine.rightDoor.room.balcony.enterSlowly.0",
+			"type": "hub",
+			"exits":
+			[
+				{ "target": "mezzanine.rightDoor.room.balcony.enterSlowly.cautious.0", "condition": { "hasKnowledge": "pentagramUsageWithDemons" } },
+				{ "target": "mezzanine.rightDoor.room.balcony.enterSlowly.instantDeath.0" }
+			]
+		},
+		{
+			"key": "mezzanine.rightDoor.room.balcony.enterSlowly.cautious.0",
+			"type": "text",
+			"file": "room-mezzanine.rightDoor.room.balcony.enterSlowly.cautious.0.txt",
+			"exits":
+			[
+				{
+					"text": "stepIntoTheCircle",
+					"target": "mezzanine.rightDoor.room.balcony.enterSlowly.instantDeath.0"
+				},
+				{
+					"text": "goBack",
+					"target": "mezzanine.rightDoor.room.0"
+				}
+			]
+		},
+		{
+			"key": "mezzanine.rightDoor.room.balcony.enterSlowly.instantDeath.0",
+			"type": "text",
+			"file": "room-mezzanine.rightDoor.room.balcony.enterSlowly.instantDeath.0.txt",
+			"exits": 
+			[
+				{
+					"textId": "startOver",
+					"systemTarget": "startOver"
+				}
+			]
+		}
+    ]
+}

@@ -1,0 +1,19 @@
+!!!
+
+You sneak behind the guards and attack. In the last second a link in the chain toches the stone ground and makes a telltale sound. The priest turns his head in your direction and yells out a warning, then runs away. You engage in a battle with the guards, having a slight advantage because of their momentarily confusion.
+
+@@DEF entranceHall.guarded.location.behindBanner.attackTheGuards.withChains.playerVictory@
+You are victorious!
+@@ENDDEF@
+
+{
+    "combat1.0":
+    {
+		"name": "Soldiers",
+		"image": "enemy_twoGuards.png"
+    },
+    "exits":
+    {
+        "next": "Continue..."
+    }
+}

@@ -1,0 +1,11 @@
+!!! You stay motionless for a while, thinking of the past - STORY 5.
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"stay": "Stay a bit longer...",
+		"go": "Go back to the corridor"
+	}
+}

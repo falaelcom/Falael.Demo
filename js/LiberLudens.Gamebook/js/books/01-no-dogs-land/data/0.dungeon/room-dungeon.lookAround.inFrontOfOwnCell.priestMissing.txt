@@ -1,0 +1,20 @@
+You are standing in front of your old cell. 
+
+@@ON dungeon.inFrontOfOwnCell.priestEaten@
+On the squally corridor floor lie the messy remains of the priest's corpse.
+@@ENDON@
+
+There's no point for you to linger here any longer.
+
+@blend.actions.final@
+
+What do you want to do next?
+
+{
+	"exits":
+	{
+		"exitDungeon": "Head towards the dungeon's exit",
+		"enterOldCell": "Get into your old cell",
+		"lookAround": "Explore the dungeon"
+	}
+}

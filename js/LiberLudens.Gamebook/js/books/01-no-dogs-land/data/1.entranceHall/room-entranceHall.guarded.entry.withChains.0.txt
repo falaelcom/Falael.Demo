@@ -1,0 +1,16 @@
+!!!
+
+@@ON entranceHall.entry.fromDungeon && !entranceHall.visited@@@INSERT entranceHall.entry.fromDungeon.openTheDoor.firstTime@
+@@ON entranceHall.entry.fromDungeon && entranceHall.visited@@@INSERT entranceHall.entry.fromDungeon.openTheDoor@
+@@ON entranceHall.entry.fromMezzanine@@@INSERT entranceHall.entry.fromMezzanine.goDownstairs@
+@@ON entranceHall.entry.fromSecretPassage@@@INSERT entranceHall.entry.fromSecretPassage.throughTheHiddenDoor@
+@@ENDON@
+
+Despite your efforts it's very hard for you to do any movements whithout producing loud metal noises. Can you manage to keep your appearance unanounced (dice roll is 3 or more)?
+
+{
+	"exits":
+	{
+		"next": "Roll a dice to find out!"
+	}
+}

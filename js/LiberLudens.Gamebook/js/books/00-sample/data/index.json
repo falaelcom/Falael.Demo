@@ -1,0 +1,49 @@
+{
+    "mainRoomKey": "home",
+    "defaultStanceKey": "afoot",
+    "speedPointsToKmH":  0.2,
+    "include":
+    [
+        "intro/intro.json"
+    ],
+    "stances":
+    {
+        "afoot":
+        {
+        },
+        "mounted":
+        {
+            "properties": { "speed": 150, "might": 20 }
+        }
+    },
+    "rooms":
+    [
+		{
+			"key": "_common",
+			"file": "_common.txt"
+		},
+        {
+            "key": "home",
+            "file": "room-0-home.txt",
+            "dateTime": "1119.03.26;22:30:00",
+            "exits": 
+            [
+                {
+                    "text": "next",
+                    "target": "part1.home"
+                }
+            ],
+            "onRoomEnter":
+            {
+                "changeHealth": 100,
+                "changeEnergy": 5,
+                "changeMight": 15,
+                "changeSpeed": 25,
+                "changeStance": "afoot",
+                "addSkills": 
+                [
+                ]
+            }
+        }
+	]
+}

@@ -1,0 +1,22 @@
+.label
+{
+	display: inline-flex;
+    height: 100%;
+
+	vertical-align: top;
+    text-align: left;
+	
+	border: solid 1px lime;
+	border-radius: 4px;
+
+	padding: 5px 5px 5px 5px;
+
+	background: black;
+    color: lime;
+}
+
+.label span, .label
+{
+    width: 100%;
+    box-sizing: border-box;
+}

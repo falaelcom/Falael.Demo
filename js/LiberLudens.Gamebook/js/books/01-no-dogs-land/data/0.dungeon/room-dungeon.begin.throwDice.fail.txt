@@ -1,0 +1,1 @@
+@@INSERT (death).dungeon.begin.throwDice.fail@

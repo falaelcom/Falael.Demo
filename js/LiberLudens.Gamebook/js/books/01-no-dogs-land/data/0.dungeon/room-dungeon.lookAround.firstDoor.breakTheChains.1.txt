@@ -1,0 +1,8 @@
+@@INSERT (blend.action.removeChains).description.1@
+
+{
+	"exits":
+	{
+		"next": "Go on!"
+	}
+}

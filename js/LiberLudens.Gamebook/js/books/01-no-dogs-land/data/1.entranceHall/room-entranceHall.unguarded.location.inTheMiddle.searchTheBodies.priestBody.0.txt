@@ -1,0 +1,18 @@
+!!!
+
+There's something on the right hand of the priest, drowning in blood. You lift up the soft arm and brush the blood away with your fingers. On the right priest's thumb under the blood cover appears a @@INSERT global.aventurineRingText@
+
+@takeAventurineRing@
+
+@@INSERT entranceHall.searchTheBodies.finish@
+
+{
+	"inventory":
+	{
+		"aventurineRing": "Green Aventurine Ring"
+	},
+	"exits":
+	{
+		"lookAround": "Continue..."
+	}
+}

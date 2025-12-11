@@ -1,0 +1,13 @@
+1 minute passes...
+
+@@DEF timers.onRoomEnter5min.elapsed@5 minutes elapsed (timers.onRoomEnter5min.elapsed).@@ENDDEF@
+
+@timers.onRoomEnter5min.elapsed@
+
+{
+	"exits":
+	{
+		"_wait1min": "Wait 1 Minute",
+		"_timerTests": "Back to timer tests home"
+	}
+}

@@ -1,0 +1,22 @@
+{
+    "include": 
+    [
+        "index2.json"
+    ],
+    "rooms": 
+    [
+        {
+            "key": "_subdirSample1",
+            "file": "_room-_subdirSample1.txt",
+            "time": "",
+            "duration": "",
+            "exits": 
+            [
+                {
+                    "text": "_subdirSample2",
+                    "target": "_subdirSample2"
+                }
+            ]
+        }
+    ]
+}

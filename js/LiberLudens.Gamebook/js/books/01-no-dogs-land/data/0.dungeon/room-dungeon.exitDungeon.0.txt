@@ -1,0 +1,13 @@
+!!! You move towards the exit, raise the stairs and reach the door. You hear the voices.
+
+You could turn back and return to the dungeon downstairs. Or you could open the door and enter the keep's hall.
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"next": "Open the door",
+		"goBack": "Go back"
+	}
+}

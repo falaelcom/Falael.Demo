@@ -1,0 +1,19 @@
+!!! 
+
+The demon is looking at you. You are looking at him. Eventually you jump forward into the summoning circle and attack.
+
+@@DEF mezzanine.rightDoor.room.balcony.jumpOver.arcaneSight.playerVictory@
+You are victorious!
+@@ENDDEF@
+
+{
+    "combat1.0":
+    {
+		"name": "Demon",
+		"image": "enemy_malaphar.png"
+    },
+    "exits":
+    {
+        "next": "Continue..."
+    }
+}

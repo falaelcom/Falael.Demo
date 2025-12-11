@@ -1,0 +1,5 @@
+@@DEF entranceHall.entry.fromDungeon.moveInTheShadows.firstTime@
+
+You pick up a more desireable location and, sneaking behind the humans' backs, crouch in the shadows near a wall.
+
+@@ENDDEF@

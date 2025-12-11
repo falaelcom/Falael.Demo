@@ -1,0 +1,13 @@
+!!! You kill the priest. What next?
+
+@blend.actions.final@
+
+{
+	"exits":
+	{
+		"eatThePriest": "Fiest on the priest's body",
+		"exitDungeon": "Head towards the dungeon's exit",
+		"enterOldCell": "Get into your old cell",
+		"lookAround": "Explore the dungeon"
+	}
+}

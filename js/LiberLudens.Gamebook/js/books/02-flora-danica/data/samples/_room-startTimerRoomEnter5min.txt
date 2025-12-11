@@ -1,0 +1,9 @@
+
+
+{
+	"title": "Start Timer On Room Enter - 5min",
+	"exits":
+	{
+		"_wait1min": "Wait 1 Minute"
+	}
+}

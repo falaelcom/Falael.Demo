@@ -1,0 +1,16 @@
+﻿You spread your wings and rise to the level of the angels. A little position adjustment is needed and there it is - a shimmering holographic image of a letter. But this time it's a different one: a clearly distinguishable capital letter <b>A</b>. 
+
+@learnLetter2@
+
+"<b>H</b> and <b>A</b>," you think. "For someone to put so much effort into creating this almost magical holographyc effect, it must have been quite important for her to encode those letters. But why?". While going down for a landing you note for yourself to ask your mother about the artist who painted the windows.
+
+{
+	"exits":
+	{
+		"continueLookingAround": "Continue looking around"
+	},
+	"knowledge":
+	{
+		"bedroomLetters2": "Secret holographic letter A"
+	}
+}

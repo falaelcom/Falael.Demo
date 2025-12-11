@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="application=application/xhtml+xml; text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="appConfig.bookId" content="01-no-dogs-land" />
+
+    <meta name="appConfig.bookDataRoot" content="data/" />
+    <meta name="appConfig.bookResourcesRoot" content="resources/" />
+    <meta name="appConfig.bookIndexFile" content="index.json" />
+
+    <meta name="appConfig.jsBasePath" content="engine/" />
+    <meta name="appConfig.cssBasePath" content="resources/" />
+    <meta name="appConfig.templateBasePath" content="resources/" />
+    
+    <meta name="appConfig.features" content="twoDice, combat1_0" />
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-124809183-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <script src="engine/framework/Boot.Pass1.js"></script>
+
+    <script type="text/javascript">
+    // <![CDATA[
+        "use strict";
+
+        //	query string interface
+		//	- ?debug - enables debug logging at the client
+		window.appConfig =
+        {
+            isDebugMode: (getQueryStringField("debug") !== void (0)),
+            ioBasePath: location.protocol + '//' + location.hostname + (location.port ? ":" + location.port : "") + stripHtmlFileFromPath(location.pathname),
+        };
+
+		copyAppConfigFromMetaTags(window.appConfig);
+    // ]]>
+    </script>
+
+    <script src="engine/framework/Boot.Pass2.js"></script>
+    <script src="engine/Program.js"></script>
+
+    <link rel="icon" href="resources/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon" />
+
+</head>
+<body onload="javascript:Program.main()" style="background: gray;">
+    <div id="root"></div>
+</body>
+</html>

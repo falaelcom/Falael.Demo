@@ -1,0 +1,169 @@
+{
+    "rooms": 
+    [
+        {
+            "key": "_sample1",
+            "file": "_room-sample1.txt",
+            "time": "",
+            "duration": "01:00:00",
+            "exits":
+            [
+                {
+                    "text": "_sample2",
+                    "target": "_sample2"
+                },
+                {
+                    "text": "_hubSample1",
+                    "target": "_hubSample1"
+                },
+                {
+                    "text": "_sample3",
+                    "target": "_sample3"
+                }
+            ],
+            "onRoomEnter": 
+            {
+                "setImplicitData": { "testImplicitData": "1" },
+                "changeContext": [ "context.a = context.a + 1 || 1" ]
+            },
+            "on insertHere_jsonTextDef": 
+            {
+                "insertText": [ { "textId": "testText" } ]
+            }
+        },
+        {
+            "key": "_hubSample1",
+            "exits":
+            [
+                {
+                    "condition": { "expression": "context.a <= 2" },
+                    "target": "_sample1"
+                },
+                {
+                    "condition": { "expression": "context.a > 2" },
+                    "target": "_sample2"
+                }
+            ]
+        },
+        {
+            "key": "_sample2",
+            "file": "_room-sample2.txt",
+            "exits":
+            [
+                {
+                    "text": "_sample3",
+                    "target": ""
+                },
+                {
+                    "condition": { "or": { "hasSkill": "assassin1", "not": { "hasItem": "poignard" } } },
+                    "text": "theNightBefore",
+                    "target": "theNightBefore"
+                }
+            ],
+            "on insertHere":
+            {
+                "insertText": 
+                [
+                    { "condition": { "hasSkill": "assassin" }, "textId": "testText" },
+                    { "condition": { "implicitDataEquals": { "key": "testImplicitData", "value": "1" } }, "textId": "testText" },
+                        
+                    { "condition": { "isBefore": "1119.03.27;08:00:00" }, "textId": "testText_isBefore_TRUE" },
+                    { "condition": { "isBefore": "1119.03.27;11:00:00" }, "textId": "testText_isBefore_TRUE" },
+                    { "condition": { "isBefore": "1119.03.27;07:00:00" }, "textId": "testText_isBefore_FALSE" },
+                    { "condition": { "isBeforeDate": "1119.03.27" }, "textId": "testText_isBeforeDate_TRUE" },
+                    { "condition": { "isBeforeDate": "1119.03.29" }, "textId": "testText_isBeforeDate_TRUE" },
+                    { "condition": { "isBeforeDate": "1119.03.26" }, "textId": "testText_isBeforeDate_FALSE" },
+                    { "condition": { "isBeforeTime": "08:00:00" }, "textId": "testText_isBeforeTime_TRUE" },
+                    { "condition": { "isBeforeTime": "11:00:00" }, "textId": "testText_isBeforeTime_TRUE" },
+                    { "condition": { "isBeforeTime": "07:00:00" }, "textId": "testText_isBeforeTime_FALSE" },
+                        
+                    { "condition": { "isAfter": "1119.03.27;08:00:00" }, "textId": "testText_isAfter_TRUE" },
+                    { "condition": { "isAfter": "1119.03.27;07:00:00" }, "textId": "testText_isAfter_TRUE" },
+                    { "condition": { "isAfter": "1119.03.27;11:00:00" }, "textId": "testText_isAfter_FALSE" },
+                    { "condition": { "isAfterDate": "1119.03.27" }, "textId": "testText_isAfterDate_TRUE" },
+                    { "condition": { "isAfterDate": "1119.03.26" }, "textId": "testText_isAfterDate_TRUE" },
+                    { "condition": { "isAfterDate": "1119.03.29" }, "textId": "testText_isAfterDate_FALSE" },
+                    { "condition": { "isAfterTime": "08:00:00" }, "textId": "testText_isAfterTime_TRUE" },
+                    { "condition": { "isAfterTime": "07:00:00" }, "textId": "testText_isAfterTime_TRUE" },
+                    { "condition": { "isAfterTime": "11:00:00" }, "textId": "testText_isAfterTime_FALSE" },
+                        
+                    { "condition": { "isBetween": { "start": "1119.03.27;08:00:00", "end": "1119.03.27;09:00:00" } }, "textId": "testText_isBetween_TRUE" },
+                    { "condition": { "isBetween": { "start": "1119.03.27;07:00:00", "end": "1119.03.27;08:00:00" } }, "textId": "testText_isBetween_TRUE" },
+                    { "condition": { "isBetween": { "start": "1119.03.27;10:00:00", "end": "1119.03.28;08:00:00" } }, "textId": "testText_isBetween_FALSE" },
+                    { "condition": { "isBetweenDate": { "start": "1119.03.27", "end": "1119.03.28" } }, "textId": "testText_isBetweenDate_TRUE" },
+                    { "condition": { "isBetweenDate": { "start": "1119.03.26", "end": "1119.03.27" } }, "textId": "testText_isBetweenDate_TRUE" },
+                    { "condition": { "isBetweenDate": { "start": "1119.04.26", "end": "1119.05.27" } }, "textId": "testText_isBetweenDate_FALSE" },
+                    { "condition": { "isBetweenTime": { "start": "08:00:00", "end": "09:00:00" } }, "textId": "testText_isBetweenTime_TRUE" },
+                    { "condition": { "isBetweenTime": { "start": "07:00:00", "end": "08:00:00" } }, "textId": "testText_isBetweenTime_TRUE" },
+                    { "condition": { "isBetweenTime": { "start": "11:00:00", "end": "12:00:00" } }, "textId": "testText_isBetweenTime_FALSE" }
+                ]
+            }
+        },
+        {
+            "key": "_timerTests",
+            "file": "_room-timerTests.txt",
+            "exits": 
+            [
+                {
+                    "text": "_startTimerRoomEnter5min",
+                    "target": "_startTimerRoomEnter5min"
+                },
+                {
+                    "text": "_startTimerRoomEnter5minOnce",
+                    "target": "_startTimerRoomEnter5minOnce"
+                }
+            ]
+        },
+        {
+            "key": "_startTimerRoomEnter5min",
+            "file": "_room-startTimerRoomEnter5min.txt",
+            "onRoomEnter": 
+            {
+                "startTimers":
+                [
+                    {
+                        "key": "timers.onRoomEnter5min",
+                        "interval": "5:00",
+                        "once": false
+                    }
+                ]
+            },
+            "exits": 
+            [
+                {
+                    "text": "_wait1min",
+                    "target": "_wait1min"
+                }
+            ]
+        },
+        {
+            "key": "_wait1min",
+            "file": "_room-wait1min.txt",
+            "duration": "01:00",
+            "on timers.onRoomEnter5min.elapsed": 
+            {
+                "insertText": 
+                [
+                    {
+                        "condition": 
+                        {
+                            "elapses": { "timer": "timers.onRoomEnter5min", "within": "[currentRoom)" }
+                        },
+                        "textId": "timers.onRoomEnter5min.elapsed"
+                    }
+                ]
+            },
+            "exits": 
+            [
+                {
+                    "text": "_wait1min",
+                    "target": "_wait1min"
+                },
+                {
+                    "text": "_timerTests",
+                    "target": "_timerTests"
+                }
+            ]
+        }
+    ]
+}

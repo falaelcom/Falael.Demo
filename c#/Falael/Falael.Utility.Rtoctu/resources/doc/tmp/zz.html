@@ -1,0 +1,35 @@
+<script>
+function log(...args)
+{
+	console.log(...args);
+}
+class B
+{
+}
+class C extends B
+{
+}
+class A extends B
+{
+	constructor()
+	{
+		super()
+		log(new Date());
+		//this.#a = 1;
+	}
+	
+	fn()
+	{
+		log(this.#a.name)
+		switch(this.#a)
+		{
+			case A: console.log("A"); break;
+			case B: console.log("B"); break;
+			case C: console.log("C"); break;
+		}
+	}
+	#a = C;
+}
+
+new A().fn();
+</script>

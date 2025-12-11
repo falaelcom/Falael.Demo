@@ -1,0 +1,252 @@
+{
+	"blend":
+	[
+		{
+			"targets":
+			[
+				{ "key": "dungeon.enterOldCell.0", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "dungeon.lookAround.firstDoor.exhausted", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "dungeon.lookAround.secondDoor.stay.0", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "dungeon.lookAround.secondDoor.exhausted", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "mezzanine.leftDoor.room.empty.0", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "mezzanine.leftDoor.room.empty.stay.0", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "mezzanine.leftDoor.room.priestDead.0", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "secretPassage.0", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "mezzanine.rightDoor.room.0", "slot": "blend.actions.final", "insertExitWhere": "last" }
+			],
+			"items":
+			[
+				{
+					"key": "blend.action.removeChains.quiet",
+					"how": "addSlotActions",
+					"where": "/{target:key}/slots/{target:slot}",
+					"what":
+					{
+						"insertText":
+						[{
+							"textId": "(blend.action.removeChains).{target:key}",
+							"condition":
+							{
+								"and":
+								[
+									{ "hasItem": "chains" },
+									{ "hasItem": "saw" },
+									{ "hasNoFlag": "chainsOff" }
+								]
+							}
+						}],
+						"insertExits":
+						[{
+							"textId": "(blend.action.removeChains).exitText",
+							"target": "(timers.backupSummoned)??blend.action.removeChains.0",
+							"where": "{target:insertExitWhere}",
+							"condition":
+							{
+								"and":
+								[
+									{ "hasItem": "chains" },
+									{ "hasItem": "saw" },
+									{ "hasNoFlag": "chainsOff" }
+								]
+							}
+						}]
+					}
+				}
+			]
+		},
+		{
+			"targets":
+			[
+				{ "key": "dungeon.lookAround.0", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "dungeon.lookAround.inFrontOfOwnCell.priestMissing", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "dungeon.lookAround.inFrontOfOwnCell.priestUnconscious.killThePriest", "slot": "blend.actions.final", "insertExitWhere": "last" },
+				{ "key": "dungeon.lookAround.inFrontOfOwnCell.priestDead.0", "slot": "blend.actions.final", "insertExitWhere": "last" }
+			],
+			"items":
+			[
+				{
+					"key": "blend.action.removeChains.noisy",
+					"how": "addSlotActions",
+					"where": "/{target:key}/slots/{target:slot}",
+					"what":
+					{
+						"insertText":
+						[{
+							"textId": "(blend.action.removeChains).{target:key}",
+							"condition":
+							{
+								"and":
+								[
+									{ "hasItem": "chains" },
+									{ "hasItem": "saw" },
+									{ "hasNoFlag": "chainsOff" }
+								]
+							}
+						}],
+						"insertExits":
+						[{
+							"textId": "(blend.action.removeChains).exitText",
+							"target": "(timers.backupSummoned)??blend.action.removeChains.risky.0",
+							"where": "{target:insertExitWhere}",
+							"condition":
+							{
+								"and":
+								[
+									{ "hasItem": "chains" },
+									{ "hasItem": "saw" },
+									{ "hasNoFlag": "chainsOff" }
+								]
+							}
+						}]
+					}
+				}
+			]
+		}
+	],
+	"rooms":
+    [
+		{ "file": "resource-blend.action.removeChains.txt", "type": "resource" },
+		{ "file": "resource-blend.action.removeChains.death.txt", "type": "resource" },
+        {
+            "key": "blend.action.removeChains.(timers.backupSummoned)",
+			"type": "text",
+            "file": "room-blend.action.removeChains.(timers.backupSummoned).txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "blend.action.removeChains.fail.0",
+			"type": "text",
+            "file": "room-blend.action.removeChains.fail.0.txt",
+            "exits": 
+            [
+                {
+                    "textId": "startOver",
+                    "systemTarget": "startOver"
+                }
+            ]
+        },
+        {
+            "key": "(timers.backupSummoned)??blend.action.removeChains.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "blend.action.removeChains.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-blend.action.removeChains.0.txt",
+						"duration": "15:00",
+						"on chainsOff": 
+						{
+							"setFlags": [ "chainsOff" ],
+							"removeInventory": [ { "key": "chains", "quantity": 1 } ]
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"systemTarget": "bookmark(bookmark.removeChains.activate)"
+							}
+						]
+					}
+				}
+			]
+        },
+        {
+            "key": "(timers.backupSummoned)??blend.action.removeChains.risky.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "blend.action.removeChains.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-blend.action.removeChains.risky.0.txt",
+						"onRoomExit":
+						{
+							"chaos": [ { "type": "diceRoll" } ]
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"target": "(timers.backupSummoned)??blend.action.removeChains.risky.1"
+							}
+						]
+					}
+				}
+			]
+        },
+        {
+            "key": "(timers.backupSummoned)??blend.action.removeChains.risky.1",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "blend.action.removeChains.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "hub",
+						"exits":
+						[
+							{ "target": "blend.action.removeChains.fail.0", "condition": { "diceRoll": [1, 2, 3, 4] } },
+							{ "target": "(timers.backupSummoned)??blend.action.removeChains.success.0" }
+						]
+					}
+				}
+			]
+        },
+        {
+            "key": "(timers.backupSummoned)??blend.action.removeChains.success.0",
+			"type": "fork",
+			"paths":
+			[
+				{	
+					"room": { "type": "redirect", "target": "blend.action.removeChains.(timers.backupSummoned)" },
+					"condition": { "elapses": { "timer": "timers.backupSummoned", "within": "[sourceExit,sourceRoom]" } },
+					"postfix": "(timers.backupSummoned)"
+				},
+				{
+					"room":
+					{
+						"type": "text",
+						"file": "room-blend.action.removeChains.success.0.txt",
+						"duration": "15:00",
+						"on chainsOff": 
+						{
+							"setFlags": [ "chainsOff" ],
+							"removeInventory": [ { "key": "chains", "quantity": 1 } ]
+						},
+						"exits":
+						[
+							{
+								"text": "next",
+								"systemTarget": "bookmark(bookmark.removeChains.activate)"
+							}
+						]
+					}
+				}
+			]
+        }
+	]
+}

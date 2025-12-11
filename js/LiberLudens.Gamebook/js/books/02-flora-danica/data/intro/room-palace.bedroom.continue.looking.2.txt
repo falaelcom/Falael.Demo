@@ -1,0 +1,11 @@
+As you are turning around, wondering what are you looking for, a momentary silvery glint draws your attention - right there, on the dressing table, under the mess of black bras, soft leather gloves and lace garters! You reach over and pull out your Princess Crown. It's a beautiful circlet made of a fairy filigree of thin platinum threads, incrustated with precious stones. Been once an inseparable part of your outfit, after loosing it midflight at one occasion (later an orderly magpie returned it to the Palace) you stopped wearing it, except on official occasions.
+
+You can put the Crown on your head and go <i>(the Crown grants the Authority skill; this skill changes the way others behave in your presence)</i>. Or, alternatively, you could leave it back on the dressing table and spend just a little bit more time looking around.
+
+{
+	"exits":
+	{
+		"takeCrown": "Take the crown",
+		"continueLooking": "Continue looking"
+	}
+}

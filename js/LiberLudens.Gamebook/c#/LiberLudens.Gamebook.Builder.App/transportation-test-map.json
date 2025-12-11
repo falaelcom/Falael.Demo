@@ -1,0 +1,100 @@
+{
+  "scale": 0.21,
+  "nodes":
+  [
+    {
+      "name": "spot2",
+      "xPt": "2258",
+      "yPt": "1298",
+      "xM": "10752.38",
+      "yM": "6180.95"
+    },
+    {
+      "name": "spot1",
+      "xPt": "1985",
+      "yPt": "963",
+      "xM": "9452.38",
+      "yM": "4585.71"
+    },
+    {
+      "name": "home",
+      "xPt": "1832",
+      "yPt": "1323",
+      "xM": "8723.81",
+      "yM": "6300"
+    },
+    {
+      "name": "spot4",
+      "xPt": "1443",
+      "yPt": "1041",
+      "xM": "6871.43",
+      "yM": "4957.14"
+    },
+    {
+      "name": "spot3",
+      "xPt": "1513",
+      "yPt": "1589",
+      "xM": "7204.76",
+      "yM": "7566.67"
+    }
+  ],
+  "edges":
+  [
+    {
+      "name": "route2",
+      "node1": "home",
+      "node2": "spot4",
+      "distancePt": 2285.88,
+      "distanceM": 10885.13,
+      "timeMin_4kmPerH": 163.28
+    },
+    {
+      "name": "route1",
+      "node1": "home",
+      "node2": "spot4",
+      "distancePt": 521.06,
+      "distanceM": 2481.24,
+      "timeMin_4kmPerH": 37.22
+    },
+    {
+      "name": "route1",
+      "node1": "home",
+      "node2": "spot3",
+      "distancePt": 415.35,
+      "distanceM": 1977.87,
+      "timeMin_4kmPerH": 29.67
+    },
+    {
+      "name": "route1",
+      "node1": "home",
+      "node2": "spot2",
+      "distancePt": 430.99,
+      "distanceM": 2052.34,
+      "timeMin_4kmPerH": 30.79
+    },
+    {
+      "name": "route1",
+      "node1": "spot2",
+      "node2": "spot3",
+      "distancePt": 843.82,
+      "distanceM": 4018.18,
+      "timeMin_4kmPerH": 60.27
+    },
+    {
+      "name": "route1",
+      "node1": "spot1",
+      "node2": "home",
+      "distancePt": 391.16,
+      "distanceM": 1862.68,
+      "timeMin_4kmPerH": 27.94
+    },
+    {
+      "name": "route1",
+      "node1": "spot1",
+      "node2": "spot2",
+      "distancePt": 432.15,
+      "distanceM": 2057.86,
+      "timeMin_4kmPerH": 30.87
+    }
+  ]
+}

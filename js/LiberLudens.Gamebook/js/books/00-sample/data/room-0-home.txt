@@ -1,0 +1,43 @@
+<div class="center">
+	An RPG choice book
+	By Dan Lovschmidt
+	2018
+</div>
+
+<separator />
+
+<div class="center detail">
+	<b style="color: yellow;">BETA VERSION</b>
+	<i style="color: yellow;">This application is an early beta version of the game. You might experience bugs, crashes and content problems while playing. At this stage of testing and development such behaviors are normal and expected.</i>
+</div>
+
+<separator />
+
+<div class="epigraph">"We'll make Good from Evil, because there's nothing else one can make of it."</div>
+<div class="source">-- Arkady and Boris Strugatsky</div>
+
+Well met, Reader! Welcome to "Good from Evil" - half-book and half-RPG! In this adventure the main character is YOU! Choose your path wisely, kind Player, and may the Providence guide your steps through the bizzare and mysterios events to follow!
+
+<separator />
+
+<div class="center">
+	<b>TOC</b>
+
+	-=( Part One:   <i>Intro</i> )=-
+	-=( Part Two:   <i>Action!</i> )=-
+	-=( Part Three:  <i>Epilogue</i> )=-
+</div>
+
+<separator />
+
+<i>Press the button below to begin your adventure!</i>
+
+{
+	"title": "Good from Evil",
+	"coverImage": "bookCover.jpg",
+	"coverImageSize": "size1_1",
+	"exits":
+	{
+		"next": "Play \"Part One: Intro\""
+	}
+}

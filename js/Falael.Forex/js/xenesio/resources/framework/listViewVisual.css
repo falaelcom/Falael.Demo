@@ -1,0 +1,27 @@
+span.listView
+{
+	display: inline-flex;
+    height: 100%;
+
+	vertical-align: top;
+    text-align: left;
+	
+	border: solid 1px lime;
+	border-radius: 4px;
+
+	background: black;
+    color: lime;
+
+    cursor: default;
+}
+
+span.listView table.container, span.listView 
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+span.listView table.container tr.item.selected
+{
+    background: #6e4324;
+}

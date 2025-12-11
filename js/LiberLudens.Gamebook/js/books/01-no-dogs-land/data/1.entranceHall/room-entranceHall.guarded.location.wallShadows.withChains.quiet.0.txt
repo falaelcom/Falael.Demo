@@ -1,0 +1,10 @@
+!!!
+
+Thanks to your caution and by the mercy of the providence, you manage to keep your presence unnanounced!
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

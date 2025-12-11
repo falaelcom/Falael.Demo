@@ -1,0 +1,20 @@
+When a key rattles in the keyhole, you lazily get up and prepare. You know the drill. Usually you need to move towards left, turn your back to the door and make room for the guard to enter. 
+
+But this time it's a different drill. This time your teeth are free, and your plan is to use them to their full extent. You move to the right facing the entrance and ready to attack the guard the moment the door opens, in the hope that he won't look inside to check on you first. And there it goes.
+
+<illustration image="dungeon.begin.escape.jpg" align="span" />
+
+The suprised guard stands no chance. He confidently unlocks the door without even peeking inside. The chains hinder your ability to jump or run, so you decide for a sneak low attack. You see the guard raising his sword, and you lower your body, slinking forward and expecting the hit on your hulky back. But then you hear the sword meeting midair the goad the guard is been holding in his other hand, and you know that there won't be a hit. You confidently continue your move aiming for the thin slit at the throat, just between the steel helmet and the body armor. Your teeth separate the two metal parts, the guard's head tilts sideways, and you close your bite in his carotid. The armored body softens and goes down noisily. You step over it into the dungeon corridor.
+
+You take a quick look around. The passage continues on both of your sides. On the right is the exit, hidden behind a corner - you can smell the whift of fresh air. The terrified priest is standing there, paralyzed by fear. On your left is the rest of the corridor, ending with an empty stone wall. Along the corridor you can see three more iron lattice doors, most likely leading to other prison cells.
+
+Your eyes go back to the priest. You can kill him right now. Or you can ignore him and either go past him and leave the dungeon, or move in the other direction and see what's behind the grated doors. Make a decision!
+
+{
+	"exits":
+	{
+		"killThePriest": "Kill the priest",
+		"exitDungeon": "Head towards the dungeon's exit",
+		"lookAround": "Explore the dungeon"
+	}
+}

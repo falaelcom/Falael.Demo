@@ -1,0 +1,12 @@
+﻿Transportation Test Home Room
+
+{
+	"exits":
+	{
+		"spot1": "Go to Spot 1",
+		"spot2": "Go to Spot 2",
+		"spot3": "Go to Spot 3",
+		"spot4,route1": "Go to Spot 4 - Route 1",
+		"spot4,route2": "Go to Spot 4 - Route 2"
+	}
+}

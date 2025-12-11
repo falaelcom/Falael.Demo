@@ -1,0 +1,78 @@
+﻿The Chamber of Judgement is an inside room with no windows. Because of that fact it is always somber despite the flaming torches that are arranged alongside the walls. The air there is always thick and heavy and devoid of oxygen and hard to breathe.
+
+You like this place. <i>When you were little it was one of your favorite hiding locations during hide-and-seek. The torch light wasn't able to scatter the darkness under the high ceiling, and nobody could find you when you flew and curled up in one of the many niches formed by the complex wall decorations. On the other hand the others often looked for a cover behind the judge's trone or under the judge's desk where they became easy pray for a winged creature like you.</i>
+
+Now, you carefully open the tall heavy door, sneak in and close it behind yourself. There is nobody here and you wander slowly around the judge's throne, the juror's chair (used mostly by the executioner when he's got tired of standing), the shiny guillotine and then through the benches arranged for the occasional visitors during trials. You slide your fingers on the polished wooden backrests and breathe in deeply and with pleasure the smell of burning torches.
+
+You go back to the judge's throne. There is a heavy desk in front of it. A Judge's Periwig and a Hammer are carefully arranged on it. You reach across the desk @!enterRoomOnce:palace.judgementChambers.judgePerwigAndHammer?to stroke the periwig with your fingers@. In this moment the door opens and you lift your eyes. Your father, King Flesh, enters the chamber. He's dressed all black, as always. His long pitch-black hair falls over his shoulders.
+
+"Pap!" you exclaim delighted to see him, and with one single flap of the wings you fly over to him. You wrap your arms around his neck and quickly kiss him on the cheek. A restrained smile briefly appears on his lips.
+
+"How are you, dear?" he asks. 
+
+"Absolutely great!" you respond. Both of you slowly head towards the judge's throne. "I think I'll be gone for a while."
+
+"Where are you going?"
+
+You make yourself comfortable on the judge's throne. Father sits on the juror's chair.
+
+"I dunno. Wherever," you say. "I need some space. Need to change the setting a bit. Hope you don't mind?"
+
+"Be my guest, dear," he replies. "And have some good fun. I remember the time when I met your mother. We were away all the time."
+
+He sits silently for a minute or two.
+
+"She gave me a dragon, as a gift for my 24-th birthday, you know?"
+
+You didn't know.
+
+"Beno Junior?" you ask. "He's a gift for you from my mother?"
+
+"Yes. Back then I was sleeping mainly during daytime. I remember the afternoon when she appeared at my lair and woke me up and handed me the bridle of the dragon. Beno was young, but already large enough to be trained, and Veronica had crafted a special Dragon Muzzle to tame and subdue him. I believe I still have it somewhere."
+
+He stnads up and starts digging through the drawers below the huge judical book collection that occupies one of the walls. Eventually he gets back to you, with a tangle of straps and buckles in his hands.
+
+"Here it is," he says and hands the muzzle to you. You take it cautiously. It radiates the harsh smell of a dragon.
+
+"Oookay..." you say hesitantly. You are not very sure what to do with the smelly muzzle.
+
+"Take it," your father suggests. "I have no plans to ride the dragon any time soon. I even parked him back in the cave in Deathmount."
+
+"Deathmount?" you inquire.
+
+"It's a mountain. Several hours away, straight flight. You can even see its peaks from your tower in a very clear day, if you look carefully, right besides the Old Oak. I left Beno Jr. in his father's caverns. It's easy to spot it from the air, there is a plenty of bones scattered all around."
+
+@learnLocation@
+
+While your father talks, your fingers are unconsciously unraveling the muzzle, and now you have it tightly arranged and folded.
+
+@takeMuzzle@
+
+"Thanks, pa!" you say. "Maybe I'll pay a visit to little Beno. Although I doubt that he'll be very pleased to see me."
+
+"It's a dragon, dear," Flesh responds. "Dragons care very little about human feelings, and I recommend that you do the same with theirs. Go and ride the beast, it's a good fun."
+
+You stand up, hug your father and say: "It's time for me to go, pap. See you!"
+
+"Goodbye, dear Reptile," he says. "Take care!"
+
+You take a deep breath and leave before you get too sentimental.
+
+{
+	"exits":
+	{
+		"goToTowerRooftop": "Go to the Tower Rooftop"
+	},
+	"knowledge":
+	{
+		"dragonLocation": "Beno Junior's location"
+	},
+	"inventory":
+	{
+		"dragonMuzzle": "Dragon Muzzle"
+	},
+	"skills":
+	{
+		"dragon-rider":  "Dragon Rider"
+	}
+}

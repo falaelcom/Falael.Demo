@@ -1,0 +1,14 @@
+@@DEF defeat@
+	<illustration image="sir-wolf-rip.png" align="span" />
+	
+	Don't be upset! It's not an easy task to escape such a well-guarded prison.
+@@ENDDEF@
+
+@@DEF startOver@Continue...@@ENDDEF@
+
+{
+	"stances":
+	{
+		"afoot": { "title": "afoot", "transition": "You are back on the ground." }
+	}
+}

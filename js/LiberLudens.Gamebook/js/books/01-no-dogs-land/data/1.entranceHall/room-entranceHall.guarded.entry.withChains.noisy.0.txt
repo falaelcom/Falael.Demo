@@ -1,0 +1,35 @@
+!!!
+
+@@ON entranceHall.entry.fromDungeon@
+
+	You are already inside, carefully closing the door behind yourself, when one of the heavy iron rings attached to your feet moves down, pushed by the extreme tension of your leg muscules. The chains jangle cheerfully when they hit the floor, and the sound sharply echoes inside the large stone-walled room.
+
+	All three humans turn in your direction. The priest crosses himself and backs up, while the guards unanimously charge at you, wielding deadly swords and halberds. There is nothing else left for you to do but fight.
+
+@@ON entranceHall.entry.fromMezzanine@
+
+	You are already on the last steps, when one of the heavy iron rings attached to your feet moves down, pushed by the extreme tension of your leg muscules. The chains jangle cheerfully when they hit the floor, and the sound sharply echoes inside the large stone-walled room.
+
+	All three humans turn in your direction. The priest crosses himself and backs up, while the guards unanimously charge at you, wielding deadly swords and halberds. There is nothing else left for you to do but fight.
+
+@@ON entranceHall.entry.fromSecretPassage@
+
+	You make noise. The guards charge in attack. You manage to kill the priest. Fight!
+	
+@@ENDON@
+
+@@DEF entranceHall.guarded.entry.withChains.noisy.playerVictory@
+You are victorious!
+@@ENDDEF@
+
+{
+    "combat1.0":
+    {
+		"name": "Soldiers",
+		"image": "enemy_twoGuards.png"
+    },
+    "exits":
+    {
+        "next": "Continue..."
+    }
+}

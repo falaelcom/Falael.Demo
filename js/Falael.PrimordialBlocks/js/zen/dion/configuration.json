@@ -1,0 +1,95 @@
+{
+	"server":
+	{
+		"schema":
+		{
+			"errorToClientPolicy": "Defines the level of verbosity of the server errors that occur during requests reported to the client; one of \"bare\" | \"normal\"  \"verbose\"",
+			"hostname": "The IP address for the http server to listen on, e.g. \"0.0.0.0\"",
+			"port": "The port for the http server to listen on, e.g. 3000"
+		},
+		"common":
+		{
+			"errorToClientPolicy": "bare",
+			"hostname": "localhost"
+		},
+		"win64dev":
+		{
+			"errorToClientPolicy": "verbose",
+			"port": 3333
+		}
+	},
+	"db":
+	{
+		"schema":
+		{
+			"host": "The host or ip address of the database server; e.g. \"localhost\"",
+			"port": "The port of the database server to connect on; e.g. 27017",
+			"name": "The name of the default database for the application; e.g. \"samantha\"",
+			"limit": "Default limit for all database queries; e.g. 500"
+		},
+		"common":
+		{
+			"host": "localhost",
+			"port": 27017,
+			"name": "samantha",
+			"limit": 10000
+		}
+	},
+	"build":
+	{
+		"schema":
+		{
+			"output": "The directory to direct the build ouptut to, e.g. '../out/production'",
+			"tests": "Indicates whether unit tests and performance tests sould be included in the build output, e.g. true"
+		},
+		"common":
+		{
+			"tests": false
+		},
+		"win64dev":
+		{
+			"output": "../../../out/win64dev",
+			"tests": true
+		}
+	},
+	"sources":
+	{
+		"schema":
+		{
+			"collect":
+			[
+				{
+					"sourceDirectory": "The source directory to collect files and directories from, e.g. '../../../../../../framework/Falael.PrimordialBlocks/js/pb'; \"_moduleAliases\" keys from package.json are accepted",
+					"targetDirectory": "The target directory to copy collected files and directories to (all contents of this directory will be deleted aforehand), e.g. '../../pb'; \"_moduleAliases\" keys from package.json are accepted",
+					"recursive": "Indicates whether to follow or to ignore subdirectories, e.g. true"
+				}
+			],
+			"debug-manifest":
+			[
+				{
+					"directory": "A source directory to enumerate files from for the purposes of generating a debu manifest, e.g. '../../../../../../framework/Falael.PrimordialBlocks/js/pb'; \"_moduleAliases\" keys from package.json are accepted",
+					"recursive": "Indicates whether to follow or to ignore subdirectories, e.g. true"
+				}
+			]
+		},
+		"common":
+		{
+			"collect": [],
+			"debug-manifest": []
+		},
+		"win64dev":
+		{
+			"collect":
+			[
+				{ "sourceDirectory": "../../zen/xenesio", "targetDirectory": "../../../out/temp", "recursive": true }
+			],
+			"debug-manifest":
+			[
+				{ "directory": "-/pb/natalis", "recursive": true },
+				{ "directory": "-/pb/xenesio", "recursive": true },
+				{ "directory": "-/zen/natalis", "recursive": true },
+				{ "directory": "-/zen/xenesio", "recursive": true }
+			]
+		}
+	}
+}

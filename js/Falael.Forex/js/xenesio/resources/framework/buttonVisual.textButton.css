@@ -1,0 +1,44 @@
+.button
+{
+	display: inline-flex;
+
+	vertical-align: middle;
+	justify-content: center;	
+	text-align: center;
+	
+	border: solid 1px red;
+	border-radius: 4px;
+
+	height: 21px;
+	padding: 5px 8px 5px 8px;
+
+	background: #ffeeee;
+	color: darkred;
+
+    user-select: none;
+}
+
+.button.highlight
+{
+	background: #fffafa;
+}
+
+.button.down
+{
+	background: #fef0f0;
+}
+
+.button span.text
+{
+    display: block;
+}
+
+.button.xns-disabled,
+.button.highlight.xns-disabled,
+.button.down.xns-disabled,
+.button.up.xns-disabled
+{
+	border: solid 1px #808080;
+	background: #aeaeae;
+	color: lightgray;
+}

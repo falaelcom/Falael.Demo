@@ -1,0 +1,10 @@
+!!! 
+
+You come closer to the shelf. The smell emanating from the many strange potions gets quite too strong for your keen sense of smell and you wrinkle your nose. It smells of all kinds of chemicals and other unholly stuff. Deliberately ignoring all potions you move your focus to the scrolls arranged on the shelves. You take out one and read it. Boring religious stuff about angels, demons and God. The next two you try offer the same level of entertainment and you leave this repository of bs alone.
+
+{
+	"exits":
+	{
+		"next": "Continue..."
+	}
+}

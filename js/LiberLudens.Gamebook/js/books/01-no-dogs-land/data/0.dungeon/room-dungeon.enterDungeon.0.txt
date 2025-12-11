@@ -1,0 +1,11 @@
+!!! You carefully sneak behind the dungeon door and close it.
+
+You could go to the dungeon downstairs. Or you could open the door and enter back the keep's hall.
+
+{
+	"exits":
+	{
+		"entranceHall": "Open the door to the entrance hall",
+		"dungeon": "Go downstairs"
+	}
+}

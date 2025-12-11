@@ -1,0 +1,5 @@
+@@DEF entranceHall.searchTheBodies.finish@
+
+Now that you have finished with your looting, you straighten up and inspect you surroundings after the fight.
+
+@@ENDDEF@

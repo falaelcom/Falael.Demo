@@ -1,0 +1,70 @@
+body.light
+{
+    background: #FAF9F7 !important;
+    color: black;
+}
+
+body.light .bookView.backpane .text .stub
+{
+    border-top: solid 1px #493A13;
+    border-bottom: solid 1px #493A13;
+    background: #F8F19D;
+    color: #493A13;
+}
+
+body.light .bookView.backpane .header,
+body.light .bookView.backpane .subHeader,
+body.light .bookView.backpane .dateTime,
+body.light .bookView.backpane .actionList
+{
+    border-bottom-color: #777777;
+}
+
+body.light .bookView.backpane .dateTime
+{
+    color: #473A0C;
+}
+
+body.light .bookView.backpane .actionListRow
+{
+    color: #757575;
+}
+
+body.light .bookView.backpane .playerStats .value,
+body.light .bookView.backpane .playerInventory .value,
+body.light .bookView.backpane .timersTable .tableHeader,
+body.light .bookView.backpane .timersTable .value
+{
+    border-color: #9F9F9F;
+}
+
+body.light .bookView.backpane .finalActionList,
+body.light .bookView.backpane .footnotes,
+body.light .bookView.backpane .playerInventory 
+{
+    border-top-color: #777777;
+}
+
+body.light .bookView.backpane .playerStats,
+body.light .bookView.backpane .playerInventory,
+body.light .bookView.backpane .epigraph,
+body.light .bookView.backpane .song,
+body.light .bookView.backpane .source,
+body.light .bookView.backpane .timers.title,
+body.light .bookView.backpane .timersTable .value
+{
+    color: #757575;
+}
+
+body.light .bookView.backpane .timersTable .tableHeader
+{
+    color: #525252;
+}
+
+body.light .bookView.backpane input
+{
+    color: white;
+    background-color: #5A5651;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}

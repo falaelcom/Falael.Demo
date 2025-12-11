@@ -1,0 +1,10 @@
+------WebKitFormBoundaryTNUesaKJ1pQOkgcL
+Content-Disposition: form-data; name="field1яяя"
+
+text
+------WebKitFormBoundaryTNUesaKJ1pQOkgcL
+Content-Disposition: form-data; name="field2№"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryTNUesaKJ1pQOkgcL--

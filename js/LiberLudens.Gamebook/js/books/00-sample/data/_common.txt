@@ -1,0 +1,7 @@
+{
+	"stances":
+	{
+		"afoot": { "title": "afoot", "transition": "You are back on the ground." },
+		"mounted": { "title": "mounted", "transition": "You happily riding a horse." }
+	}
+}

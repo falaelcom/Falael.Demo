@@ -1,0 +1,5 @@
+@@DEF entranceHall.entry.fromDungeonOrMezzanine.guardsDescription.firstTime@
+
+In the middle of the room are standing the two soldiers, packed in armor, and the priest. You can smell the guards sweating underneath the metal, which is fine, but there is also a waft of something else, a little ugly sweet stench coming from the same direction! After sniffing several times intensly you identify the priest as the most likely source. "What on Earth is wrong with this creature?" you think, barely suppressing your vomit reflex. You better move away from the drift carrying the smell!
+
+@@ENDDEF@

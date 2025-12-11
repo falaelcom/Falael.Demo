@@ -1,0 +1,9 @@
+@@DEF entranceHall.entry.firstTime.roomDescription@
+
+The entrance hall is a large, nearly square room with high ceiling and stone walls with no windows on them. The meager light of several wall torches reveals some of the featuress of this gloomy place. 
+
+A heavy wooden gate blocks the stronghold entrance, tightly shut and locked for good (a detail that you know only by accident from overhearing a conversation between the guard and the priest when they were leaving your cell after inerrogation - the main gate is only opened on special occasions and the fortress inhabitants use a side exit located in the barrack room to communicate with the outer world). Opposite to the gate rears a massive dark mezzanine with two symmetrically positioned stone stairways raising up on both of its sides. In the base of the mezzanine terrace, between the stairways, you can see a neatly organized corner with several large plant urns, decorative full armors and two flag stands, all arranged in a half-circle along the wall. One of the flags catches your eye with its bright red dye. An image of a golden-colored classical cross is emblazoned on it's face. You briefly look at the other one to compare - it's a green banner depicting the more intricate Ivy Cross emblem.
+
+There are also two closed interior blackwood doors on one of the other walls. You correctly guess that one of them leads to the barracks. The other one seems to be abandoned and generally not in use.
+
+@@ENDDEF@

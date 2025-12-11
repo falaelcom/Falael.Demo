@@ -1,0 +1,327 @@
+/********************************************/
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	height: 100vh;
+	overflow: hidden;
+	font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+	font-size: 1rem;
+}
+
+h1 { font-size: 1.25rem; font-weight: 700; }
+h2 { font-size: 1.20rem; font-weight: 600; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+h4 { font-size: 1.10rem; font-weight: 500; }
+h5 { font-size: 1.05rem; font-weight: 500; }
+h6 { font-size: 1.00rem; font-weight: 500; }
+
+/********************************************/
+#chat-list {
+	width: 360px;
+	background-color: #ddedfa;
+	border-right: 1px solid #ddd;
+	overflow-y: auto;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	z-index: 100;
+}
+
+#chat-list .chat-item {
+	padding: 15px;
+	border-bottom: 1px solid #eee;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	position: relative;
+}
+
+#chat-list .chat-item:hover {
+	background-color: #9dfe9c;
+}
+
+#chat-list .chat-item.active {
+	background-color: #225c94;
+	border-left: 4px solid #9dfe9c;
+	color: white;
+}
+
+#chat-list .chat-item.new-chat {
+	background-color: #fff3e0;
+	border-left: 8px solid #f40be3;
+}
+
+#chat-list .chat-item.new-chat.active {
+	background-color: #225c94;
+	border-left: 8px solid #f40be3;
+}
+
+.chat-title {
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 0.8rem;
+}
+
+.chat-time {
+	font-size: 0.75rem;
+}
+
+#chat-container {
+	margin-left: 360px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-color: white;
+}
+
+#chat-content {
+	scroll-behavior: smooth;
+	flex: 1;
+	padding: 20px;
+	overflow-y: auto;
+	padding-bottom: 150px;
+	width: 1150px;
+	max-width: 1150px;
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+
+#input-container {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 360px;
+	background-color: #e1ecf4;
+	border-top: 1px solid #ddd;
+	padding: 15px;
+	z-index: 200;
+	box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#chat-content pre {
+	display: block;
+	white-space: pre;
+	overflow-x: auto;
+	overflow-y: hidden;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+#chat-loader {
+	display: none;
+	text-align: center;
+	padding: 15px;
+	border-bottom: 1px solid #eee;
+}
+
+#chat-filter {
+	width: 360px;
+    padding: 10px;
+	background-color: #e1ecf4;
+	border-top: 1px solid #ddd;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+#chat-filter-input {
+	height: 25px;
+    background-color: white;
+    width: 302px;
+    padding: 6px 10px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 0.9rem;
+	border: 4px solid #e1ecf4;
+}
+#chat-filter-input:focus {
+	outline: 4px solid #e1ecf4;
+	border: 4px solid #9dfe9c;
+}
+
+.chat-item .chat-copy-btn,
+.chat-item .chat-history-btn {
+	position: absolute;
+	bottom: 8px;
+	font-size: 1.75rem;
+	color: black;
+	cursor: pointer;
+	display: none;
+}
+
+.chat-item:hover .chat-copy-btn,
+.chat-item:hover .chat-history-btn {
+	display: block;
+}
+
+.chat-item .chat-copy-btn:hover,
+.chat-item .chat-history-btn:hover {
+	color: white;
+}
+
+/* position individually */
+.chat-item .chat-copy-btn {
+	right: 8px;
+}
+.chat-item .chat-history-btn {
+	right: 36px; /* move left of copy-link button */
+}
+
+/********************************************/
+#message-input {
+	background-color: white;
+	width: 100%;
+	min-height: 100px;
+	resize: vertical;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 10px;
+	font-family: monospace, Arial, sans-serif;
+	font-size: 1rem;
+	border: 4px solid #e1ecf4;
+}
+
+#message-input:focus {
+	outline: 4px solid #e1ecf4;
+	border: 4px solid #9dfe9c;
+}
+
+.message {
+	margin-bottom: 15px;
+	padding: 10px;
+	padding-bottom: 30px;
+	border-radius: 8px;
+	position: relative;
+}
+
+.message.user .delete-btn {
+	position: absolute;
+	right: 5px;
+	bottom: 7px;
+	cursor: pointer;
+	color: #ccc;
+	font-size: 1.75rem;
+}
+.message.assistant .delete-btn {
+	position: absolute;
+	left: 5px;
+	bottom: 7px;
+	cursor: pointer;
+	color: #ccc;
+	font-size: 1.75rem;
+}
+.message .delete-btn:hover {
+	color: #d00;
+}
+
+.message.user .copy-btn,
+.message.assistant .copy-btn {
+	position: absolute;
+	bottom: 7px;
+	cursor: pointer;
+	color: #ccc;
+	font-size: 1.75rem;
+}
+.message.user .copy-btn { right: 40px; }
+.message.assistant .copy-btn { left: 40px; }
+.message .copy-btn:hover {
+	color: #090;
+}
+
+
+.message.user {
+	background-color: #e3f2fd;
+	margin-left: 50px;
+}
+
+.message.system {
+	background-color: #f5f5f5;
+	margin-right: 70px;
+}
+
+.message.assistant {
+	background-color: white;
+	margin-right: 70px;
+}
+
+.message .role {
+	font-weight: bold;
+	margin-bottom: 5px;
+	color: #666;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.message .content {
+	line-height: 2rem;
+}
+
+.message.user pre,
+.message.assistant pre {
+	line-height: 1.5rem;
+	font-size: 0.85rem;
+	display: block;
+	padding: 10px;
+	border-radius: 6px;
+}
+.message.user pre { background-color: #f9fafd; }
+.message.assistant pre { background-color: #f9f9f9; }
+.codeblock-wrapper {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.code-copy-btn {
+    display: block;
+    margin-top: 4px;
+    margin-left: auto;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #225c94;
+    color: white;
+    cursor: pointer;
+}
+
+.code-copy-btn:hover {
+    background-color: #1a4570;
+}
+
+.message.user code {
+	background-color: #f9fafd;
+	padding: 6px;
+	border-radius: 6px;
+}
+.message.assistant code {
+	background-color: #f3f3f3;
+	padding: 6px;
+	border-radius: 6px;
+}
+
+.loading {
+	text-align: center;
+	color: #666;
+	padding: 20px;
+}
+
+/********************************************/
+.scroll-btn {
+	position: fixed;
+	right: 7px;
+	z-index: 300;
+	background-color: #225c94 !important;
+}
+.scroll-btn {
+	width: 30px !important;
+	height: 30px !important;
+	line-height: 30px !important;
+}
+.scroll-btn i {
+	font-size: 15px !important;
+	line-height: 30px !important;
+}
+
+#scroll-top-btn { top: 15px; }
+#scroll-prev-btn { bottom: 235px; }
+#scroll-next-btn { bottom: 200px; }
+#scroll-bottom-btn { bottom: 155px; }

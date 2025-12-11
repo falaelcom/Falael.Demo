@@ -1,0 +1,510 @@
+<html>
+<head>
+    <script src="space.js"></script>
+    <script src="space-transformations.js"></script>
+    <script src="space-storage.js"></script>
+	<script>
+        //<editor-fold desc="utility">
+        var utility =
+        {
+            color:
+            {
+                RGBtoHSV: function(par)
+                {
+                    var r = par.r;
+                    var g = par.g;
+                    var b = par.b;
+
+                    var max = Math.max(r, g, b), min = Math.min(r, g, b),
+                            d = max - min,
+                            h,
+                            s = (max === 0 ? 0 : d / max),
+                            v = max / 255;
+
+                    switch(max)
+                    {
+                        case min:
+                            h = 0;
+                            break;
+                        case r:
+                            h = (g - b) + d * (g < b ? 6 : 0);
+                            h /= 6 * d;
+                            break;
+                        case g:
+                            h = (b - r) + d * 2;
+                            h /= 6 * d;
+                            break;
+                        case b:
+                            h = (r - g) + d * 4;
+                            h /= 6 * d;
+                            break;
+                    }
+
+                    return {
+                        h: h,
+                        s: s,
+                        v: v
+                    };
+                },
+
+                HSVtoRGB: function(par)
+                {
+                    var s = par.s;
+                    var v = par.v;
+                    var h = par.h;
+
+                    var r, g, b, i, f, p, q, t;
+                    i = Math.floor(h * 6);
+                    f = h * 6 - i;
+                    p = v * (1 - s);
+                    q = v * (1 - f * s);
+                    t = v * (1 - (1 - f) * s);
+                    switch(i % 6)
+                    {
+                        case 0:
+                            r = v, g = t, b = p;
+                            break;
+                        case 1:
+                            r = q, g = v, b = p;
+                            break;
+                        case 2:
+                            r = p, g = v, b = t;
+                            break;
+                        case 3:
+                            r = p, g = q, b = v;
+                            break;
+                        case 4:
+                            r = t, g = p, b = v;
+                            break;
+                        case 5:
+                            r = v, g = p, b = q;
+                            break;
+                    }
+                    return {
+                        r: Math.round(r * 255),
+                        g: Math.round(g * 255),
+                        b: Math.round(b * 255)
+                    };
+                },
+
+                HSVtoHSL: function(par)
+                {
+                    var s = par.s;
+                    var v = par.v;
+                    var h = par.h;
+
+                    var _h = h,
+                            _s = s * v,
+                            _l = (2 - s) * v;
+                    _s /= (_l <= 1) ? _l : 2 - _l;
+                    _l /= 2;
+
+                    return {
+                        h: _h,
+                        s: _s,
+                        l: _l,
+                    };
+                },
+
+                HSLtoHSV: function(par)
+                {
+                    var s = par.s;
+                    var l = par.l;
+                    var h = par.h;
+
+                    var _h = h,
+                            _s,
+                            _v;
+
+                    l *= 2;
+                    s *= (l <= 1) ? l : 2 - l;
+                    _v = (l + s) / 2;
+                    _s = (2 * s) / (l + s);
+
+                    return {
+                        h: _h,
+                        s: _s,
+                        v: _v
+                    };
+                },
+            },
+        };
+        //</editor-fold>
+
+        //<editor-fold desc="utility functions">
+
+        function _stringArray_fromHashSetKeys(hashSet)
+        {
+            var result = [];
+            for(var key in hashSet)
+            {
+                result.push(key);
+            }
+            return result;
+        }
+
+        function _stringArray_compare(left, right)
+        {
+            if(!left || !right)
+            {
+                return -1;
+            }
+
+            if(!left.length)
+            {
+                if(!right.length)
+                {
+                    return 0;
+                }
+
+                return -1;
+            }
+
+            if(!right.length)
+            {
+                return 1;
+            }
+
+            if(left.length < right.length)
+            {
+                return -1;
+            }
+            if(left.length > right.length)
+            {
+                return 1;
+            }
+
+            var leftHashSet = _stringArray_getKeyHashSet(left);
+            for(var length = right.length, i = 0; i < 0; ++i)
+            {
+                var item = right[i];
+                if(!leftHashSet[item])
+                {
+                    return -1;
+                }
+            }
+
+            return 0;
+        }
+
+        function _stringArray_getKeyHashSet(array)
+        {
+            var result = {};
+            for(var length = array.length, i = 0; i < length; ++i)
+            {
+                result[String(array[i])] = {index: i};
+            }
+
+            return result;
+        }
+
+        function _stringArray_pluck(array, propertyName)
+        {
+            var result = [];
+            for(var length = array.length, i = 0; i < length; ++i)
+            {
+                result.push(array[i][propertyName]);
+            }
+
+            return result;
+        }
+
+        //</editor-fold>
+
+        //<editor-fold desc="CanvasDevice">
+        function CanvasDevice(canvasElement, width, height)
+        {
+            this.width = width;
+            this.height = height;
+
+            this.scale = 1;
+            this.offsetX = 0;
+            this.offsetY = 0;
+            this.scaledOffsetX = 0;
+            this.scaledOffsetY = 0;
+
+            this.canvasElement = canvasElement;
+            this.canvasElement.style.width = this.width + "px";
+            this.canvasElement.style.height = this.height + "px";
+            this.canvasElement.width = this.canvasElement.offsetWidth;
+            this.canvasElement.height = this.canvasElement.offsetHeight;
+
+            this.canvasGraphics = this.canvasElement.getContext("2d", {alpha: false});
+            this.canvasGraphics.imageSmoothingEnabled = false;
+
+            this.bufferElement = document.createElement("canvas");
+            this.bufferElement.width = this.canvasElement.width;
+            this.bufferElement.height = this.canvasElement.height;
+
+            this.bufferGraphics = this.bufferElement.getContext("2d", {alpha: false});
+            this.bufferGraphics.imageSmoothingEnabled = false;
+            this.bufferGraphics.translate(0.5, 0.5);    //  decrease antialiasing, grant pixel-accurate h- and v-lines
+
+            this.lockType = CanvasDevice.LOCK_TYPE_NONE;
+            this.pixelGraphics = null;
+            this.vectorGraphics = null;
+
+            this.setScale = function(value)
+            {
+                this.canvasGraphics.scale(1/this.scale, 1/this.scale);
+                this.scale = value;
+                this.scaledOffsetX = Math.round(this.offsetX / this.scale);
+                this.scaledOffsetY = Math.round(this.offsetY / this.scale);
+
+                this.bufferGraphics.translate(-0.5, -0.5);
+                this.bufferElement.width = Math.ceil(this.canvasElement.width / this.scale);
+                this.bufferElement.height = Math.ceil(this.canvasElement.height / this.scale);
+                this.bufferGraphics.translate(0.5, 0.5);
+
+                this.canvasGraphics.scale(this.scale, this.scale);
+            };
+
+            this.getScale = function()
+            {
+                return this.scale;
+            };
+
+            this.getScaledWidth = function()
+            {
+                return this.bufferElement.width;
+            }
+
+            this.getScaledHeight = function()
+            {
+                return this.bufferElement.height;
+            }
+
+            this.setOrigin = function(offsetX, offsetY)
+            {
+                this.bufferGraphics.translate(-this.scaledOffsetX, -this.scaledOffsetY);
+                this.offsetX = offsetX;
+                this.offsetY = offsetY;
+                this.scaledOffsetX = Math.round(this.offsetX / this.scale);
+                this.scaledOffsetY = Math.round(this.offsetY / this.scale);
+                this.bufferGraphics.translate(this.scaledOffsetX, this.scaledOffsetY);
+            };
+
+            this.getScaledOriginX = function()
+            {
+                return this.scaledOffsetX;
+            };
+
+            this.getScaledOriginY = function()
+            {
+                return this.scaledOffsetY;
+            };
+
+            this.lockVectorGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_NONE)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_NONE";
+                }
+                this.lockType = CanvasDevice.LOCK_TYPE_VECTOR;
+
+                this.vectorGraphics =
+                {
+                    graphics: this.bufferGraphics,
+                    canvas: this.bufferElement,
+                    device: this,
+                    clear: function(fillStyle)
+                    {
+                        this.graphics.beginPath();
+                        this.graphics.fillStyle = fillStyle;
+                        this.graphics.fillRect(
+                                -this.device.getScaledOriginX() - 1,
+                                -this.device.getScaledOriginY() - 1,
+                                this.canvas.width + 1,
+                                this.canvas.height + 1
+                        );
+                        this.graphics.fill();
+                    },
+                    drawRect: function(x, y, width, height, strokeStyle)
+                    {
+                        this.graphics.beginPath();
+                        this.graphics.strokeStyle = strokeStyle.strokeStyle;
+                        this.graphics.lineWidth = strokeStyle.lineWidth;
+                        this.graphics.rect(x, y, width, height);
+                        this.graphics.stroke();
+                    },
+                };
+
+                return this.vectorGraphics;
+            };
+
+            this.releaseVectorGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_VECTOR)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_VECTOR";
+                }
+                this.vectorGraphics = null;
+                this.lockType = CanvasDevice.LOCK_TYPE_NONE;
+            };
+
+            this.lockRasterGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_NONE)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_NONE";
+                }
+                this.lockType = CanvasDevice.LOCK_TYPE_RASTER;
+
+                this.pixelGraphics =
+                {
+                    pixelData: this.bufferGraphics.getImageData(0, 0, this.bufferElement.width, this.bufferElement.height),
+                    device: this,
+                    setPixel: function(x, y, r, g, b, a)
+                    {
+                        if(this.device.lockType != CanvasDevice.LOCK_TYPE_RASTER)
+                        {
+                            throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_RASTER";
+                        }
+
+                        x = Math.round(x + this.device.scaledOffsetX);
+                        y = Math.round(y + this.device.scaledOffsetY);
+
+                        if(x >= this.pixelData.width || x < 0)
+                        {
+                            return;
+                        }
+                        if(y >= this.pixelData.height || y < 0)
+                        {
+                            return;
+                        }
+
+                        var index = (x + y * this.pixelData.width) * 4;
+                        this.pixelData.data[index++] = r;
+                        this.pixelData.data[index++] = g;
+                        this.pixelData.data[index++] = b;
+                        this.pixelData.data[index++] = a;
+                    },
+                };
+
+                return this.pixelGraphics;
+            };
+
+            this.releaseRasterGraphics = function()
+            {
+                if(this.lockType != CanvasDevice.LOCK_TYPE_RASTER)
+                {
+                    throw "ASSERTION FAILED: this.lockType == CanvasDevice.LOCK_TYPE_RASTER";
+                }
+
+                this.bufferGraphics.putImageData(this.pixelGraphics.pixelData, 0, 0);
+                this.pixelGraphics = null;
+                this.lockType = CanvasDevice.LOCK_TYPE_NONE;
+            };
+
+            this.flush = function()
+            {
+                this.canvasGraphics.drawImage(this.bufferElement, 0, 0);
+            };
+        }
+
+        CanvasDevice.LOCK_TYPE_NONE = 0;
+        CanvasDevice.LOCK_TYPE_VECTOR = 1;
+        CanvasDevice.LOCK_TYPE_RASTER = 2;
+        //</editor-fold>
+
+        //<editor-fold desc="Application">
+        function Application()
+        {
+            this.timerId = -1;
+            this.device = null;
+
+            this.run = function()
+            {
+                var deviceCanvas = document.createElement("canvas");
+                document.body.appendChild(deviceCanvas);
+
+                this.device = new CanvasDevice(deviceCanvas, 800, 800);
+                this.device.setScale(1)
+
+                _drawSpace.bind(this)();
+
+                function _drawSpace()
+                {
+                    if(this.timerId != -1)
+                    {
+                        window.clearInterval(this.timerId);
+                        this.timerId = -1;
+                    }
+
+                    function getfrag(origin, p)
+                    {
+                        if(p == 0)
+                        {
+                            return origin;
+                        }
+                        var frag = Math.ceil(origin / ((p + 1) * (p + 1)));
+                        return frag > 1 ? frag : 2;
+                    }
+                    var maxp = 3;
+                    var dimension1 = new Dimension(20, maxp, 0, 800, getfrag);
+                    var dimension2 = new Dimension(20, maxp, 0, 800, getfrag);
+                    var space = new Space([dimension1, dimension2]);
+                    var indexer = space.first();
+                    var counter = 0;
+
+                    var infoDiv = document.getElementById("infoDiv");
+                    var stepStart;
+                    var stepEnd;
+                    var durationMs;
+                    this.timerId = window.setInterval(function()
+                    {
+                        stepStart = new Date();
+
+                        var pvector = space.getPvector(indexer.ipi);
+                        var p_max = Math.max.apply(null, pvector);
+                        var p_min = Math.min.apply(null, pvector);
+
+                        var blue = 255 - Math.round(255 * p_max / maxp);
+                        var green = 255 - Math.round(255 * p_min / maxp);
+
+                        var vvector = space.getAt(indexer);
+
+                        var r = this.device.lockRasterGraphics();
+                        try
+                        {
+                            r.setPixel(vvector[0], vvector[1], 255, green, blue, 255);
+                        }
+                        finally
+                        {
+                            this.device.releaseRasterGraphics();
+                        }
+                        this.device.flush();
+
+                        indexer = space.next(indexer);
+                        ++counter;
+
+                        stepEnd = new Date();
+                        durationMs = stepEnd.getTime() - stepStart.getTime();
+
+                        var sb = [];
+                        sb.push("progress: ");
+                        sb.push(Math.round(counter * 10000 / space.getTickCount()) / 100);
+                        sb.push("%");
+                        sb.push("; time: ");
+                        sb.push(durationMs);
+                        sb.push(" ms");
+                        sb.push("; vvector=");
+                        sb.push(JSON.stringify(vvector));
+
+                        infoDiv.innerHTML = sb.join("");
+                    }.bind(this), 0);
+                }
+            };
+        }
+        //</editor-fold>
+
+        function onload()
+		{
+            var application = new Application();
+            application.run();
+        }
+	</script>
+</head>
+<body onload="javascript:onload()"></body>
+    <div id="infoDiv"></div>
+</html>

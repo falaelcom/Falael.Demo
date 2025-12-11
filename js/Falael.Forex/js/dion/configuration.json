@@ -1,0 +1,59 @@
+{
+	"hosts":
+	{
+		"schema":
+		{
+			"[devserver]": "The host name/ip address of the developer's server machine/vm, without a protocol or port, e.g. 'localhost' or '192.168.56.101'; use it only in 'development' sections"
+		},
+		"vmdev":
+		{
+			"devserver": "192.168.56.13"
+		},
+		"win64dev":
+		{
+			"devserver": "localhost"
+		}
+	},
+	"server":
+	{
+		"schema":
+		{
+			"errorToClientPolicy": "Defines the level of verbosity of the errors that occur during requests reported to the client; one of \"bare\" | \"normal\"  \"verbose\"",
+            "listenOnIp": "The IP address for the fastify application to listen on, e.g. \"0.0.0.0\"",
+            "listenOnPort": "The port for the fastify application to listen on, e.g. 3000"
+		},
+        "common": 
+        {
+            "errorToClientPolicy":  "bare"
+        },
+        "vmdev":
+		{
+            "errorToClientPolicy":  "verbose",
+			"listenOnIp": "0.0.0.0",
+			"listenOnPort": 3000
+		},
+		"win64dev":
+		{
+            "errorToClientPolicy":  "verbose",
+			"listenOnIp": "localhost",
+			"listenOnPort": 3333
+		}
+	},
+	"db":
+	{
+		"schema":
+		{
+			"host": "The host or ip address of the database server; e.g. \"localhost\"",
+            "port": "The port of the database server to connect on; e.g. 27017",
+            "name": "The name of the default database for the application; e.g. \"samantha\"",
+			"limit": "Default limit for all database queries; e.g. 500"
+		},
+        "common": 
+        {
+            "host": "localhost",
+            "port": 27017,
+            "name": "samantha",
+            "limit": 10000
+        }
+	}
+}

@@ -1,12 +1,7 @@
-Status
+Summary
 ===========================
 
 This document describes exhaustively the behavior of fully conformant POSIX and GNU options parsers.
-
-Falael Implementation Status
--------------------
-
-_The POSIX and GNU options parsers have been fully implemented in the `Falael` JavaScript codebase (`PrimordialBlocks`) and partially in the `Falael` C# codebase (no help printout is implemented, and the high-level options class needs redesign; the JavaScript implementation might be used as a template for the redesign)._
 
 POSIX Conformance
 ===========================

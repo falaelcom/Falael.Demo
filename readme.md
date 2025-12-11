@@ -33,7 +33,7 @@ A GPT proxy server and frontend for OpenCart codebase diff analysis and merge ai
 
 - Project code: https://github.com/falaelcom/Falael.Demo/tree/main/c%23/Falael/Falael.Utility.Rtoctu
 
-![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/trunk/Falael.Utility.Rtoctu.BCcToAiProxy.WebServer.png)
+![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/main/Falael.Utility.Rtoctu.BCcToAiProxy.WebServer.png)
 
 ### Conway Set Explorer
 
@@ -41,7 +41,7 @@ A visual navigator in the 3D space of all [Game of Life ](https://en.wikipedia.o
 
 - Project code: https://github.com/falaelcom/Falael.Demo/tree/main/c%23/Falael.Bic
 
-![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/trunk/Falael.Bic.Research.ConwaySetExplorer.png)
+![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/main/Falael.Bic.Research.ConwaySetExplorer.png)
 
 ### Fractal Playground
 
@@ -50,7 +50,7 @@ A simple binary-tree-based fractal playground app.
 - Project code: https://github.com/falaelcom/Falael.Demo/tree/main/c%23/Qnd.Bic.Research.Fractals.BinaryTree
 - Sample images: https://github.com/falaelcom/Falael.Demo/tree/main/c%23/Qnd.Bic.Research.Fractals.BinaryTree/resources/samples
 
-![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/trunk/Qnd.Bic.Research.Fractals.BinaryTree.App.png)
+![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/main/Qnd.Bic.Research.Fractals.BinaryTree.App.png)
 
 ## Web
 
@@ -65,7 +65,7 @@ A FOREX trading simulator for algo-trading research using real historical tick d
 
 - Project path: https://github.com/falaelcom/Falael.Demo/tree/main/js/Falael.Forex
 
-![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/trunk/Falael.Forex.png)
+![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/main/Falael.Forex.png)
 
 ### No Dog's Land - Gamebook
 

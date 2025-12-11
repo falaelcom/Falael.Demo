@@ -14,7 +14,7 @@ DSP (Digital Sound Processor) for audio track metrics generation, visualization 
 
 ### Falael.Standard
 
-A GPT proxy server and frontend for OpenCart codebase diff analysis and merge aid, integrated with [BeyondCompare](https://www.scootersoftware.com/).
+A robust and highly compliant .NET implementation of POSX and GNU CLI options standards.
 
 - Project code: https://github.com/falaelcom/Falael.Demo/tree/main/c%23/Falael/Falael.Standard
 - Whitepaper: https://github.com/falaelcom/Falael.Demo/tree/main/c%23/Falael/Falael.Standard/resources/whitepaper.md
@@ -66,6 +66,12 @@ A FOREX trading simulator for algo-trading research using real historical tick d
 - Project path: https://github.com/falaelcom/Falael.Demo/tree/main/js/Falael.Forex
 
 ![App screenshot](https://github.com/falaelcom/Falael.Demo/blob/main/Falael.Forex.png)
+
+### Raw-Profiler
+
+An in-app manual code profiler and logger for NodeJs.
+
+- Project code: https://github.com/falaelcom/raw-profiler
 
 ### No Dog's Land - Gamebook
 

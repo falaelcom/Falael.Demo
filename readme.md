@@ -56,7 +56,7 @@ A simple binary-tree-based fractal playground app.
 
 ### PrimordialBlocks JS Framework
 
-- Project code and summary: https://github.com/falaelcom/Falael.Demo/tree/main/js/Falael.PrimordialBlocks
+- Project code and summary: https://github.com/falaelcom/Falael.Demo/tree/main/js/Falael.PrimordialBlocks/js
 - Transcribe Protocol 1.0 Whitepaper: https://github.com/falaelcom/Falael.Demo/tree/main/js/Falael.PrimordialBlocks/resources/whitepaper.md
 
 ### FOREX Trading Simulator
